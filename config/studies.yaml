@@ -1,0 +1,16 @@
+# Study list. Fields set to null have NOT been verified yet; fill them from the source
+# paper/ENA record in the phase that needs them, and record the source URL.
+# Primer removal and truncation settings per study are added in Phase 2.
+studies:
+  - id: zheng2024_soil
+    accession: PRJNA1029248        # from the project brief; confirm against ENA in Phase 0
+    doi: 10.1038/s41467-024-53446-4
+    habitat: soil
+    n_environment_samples: 6       # six soils, per the pilot; confirm in Phase 0
+    media: ["1% TSA", "soil extract"]   # per the pilot; confirm and harmonize in Phase 0
+    temperature_c: 26
+    oxygen: null
+    incubation_days: 28            # "4 weeks" per the pilot
+    primers: null
+    region: null
+    status: phase0_candidate

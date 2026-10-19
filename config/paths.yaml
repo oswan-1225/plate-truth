@@ -1,0 +1,9 @@
+# Paths relative to the repository root.
+raw: data/raw
+interim: data/interim
+processed: data/processed
+database: data/plate_truth.sqlite
+tools: tools
+results: results
+figures: figures
+notes: notes

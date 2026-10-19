@@ -1,0 +1,31 @@
+# Pre-set analysis thresholds. Change values here, never inline in code.
+# Any change after modelling starts must be logged with the reason.
+
+# "Grew" (primary): enriched on plates relative to the matching environmental sample.
+grew:
+  min_fold_enrichment: 2.0   # plate relative abundance / environment relative abundance
+  min_reads: 5               # reads in the plating condition
+
+# "Detected" (looser, always reported alongside "grew").
+detected:
+  min_reads: 2
+
+# Nearest-relative identity.
+identity:
+  # VSEARCH --iddef value. The project definition specifies 1 (gaps counted). Verify against the
+  # current VSEARCH manual in Phase 0 and record the source URL.
+  iddef: 1
+  alt_iddef: null            # set in Phase 0 after reading the manual, for the sensitivity run
+  # Bin edges in percent identity. Bins: none, <90, [90,94.5), [94.5,97), [97,99), >=99
+  bin_edges_percent: [90.0, 94.5, 97.0, 99.0]
+  database_proxy_percent: 94.5   # "has a cultured relative" shortcut being tested
+
+# Phase 0 sensitivity grid.
+sensitivity:
+  min_reads: [2, 5, 10]
+  min_fold_enrichment: [1.5, 2.0, 5.0]
+
+# Bootstrap / resampling.
+resampling:
+  n_bootstrap: 1000
+  seed: 20261019

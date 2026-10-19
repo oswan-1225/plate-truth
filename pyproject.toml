@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "plate-truth"
+version = "0.1.0"
+description = "Does having a cultured relative mean a microbe will actually grow? A cross-study test against plate data."
+readme = "README.md"
+requires-python = ">=3.11"
+# Dependencies are managed by environment.yml (conda), not pip.
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests", "scripts"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP"]

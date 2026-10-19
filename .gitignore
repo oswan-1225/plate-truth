@@ -218,3 +218,38 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# ---- plate-truth ----
+# Agent / AI-assistant instructions and working files (kept local, never published)
+CLAUDE.md
+AGENTS.md
+GEMINI.md
+.agent/
+.claude/
+.cursor/
+.cursorrules
+.aider*
+.mcp.json
+
+# Data: large inputs stay out of git; small processed tables are committed
+data/raw/*
+!data/raw/.gitkeep
+data/interim/*
+!data/interim/.gitkeep
+data/plate_truth.sqlite
+
+# Downloaded third-party binaries (scripts/00_get_vsearch.py)
+tools/*
+!tools/.gitkeep
+
+# Local scratch
+scratch/
+*.tmp
+.vscode/settings.json
+
+# Decision log (agent working doc, kept local)
+DECISIONS.md
+
+# All markdown docs except the README stay local
+*.md
+!README.md

@@ -1,0 +1,44 @@
+name: plate-truth
+channels:
+  - conda-forge
+  - bioconda
+dependencies:
+  - python=3.12
+  # --- data and statistics ---
+  - numpy
+  - pandas
+  - scipy
+  - statsmodels
+  - scikit-learn
+  - lightgbm
+  - pyarrow
+  # --- figures ---
+  - matplotlib
+  - seaborn
+  # --- sequences and data access ---
+  - biopython
+  - requests
+  - pyyaml
+  - python-dotenv
+  - tqdm
+  # --- app and manuscript ---
+  - streamlit
+  - pandoc
+  # --- dev ---
+  - pytest
+  - pytest-cov
+  - ruff
+  - ipykernel
+  # --- R (mixed models only) ---
+  - r-base=4.4
+  - r-lme4
+  - r-glmmtmb
+  # Pin OpenBLAS: the default MKL build crashed natively on matrix multiply on the
+  # Windows development machine (seen in the soil pilot).
+  - libblas=*=*openblas
+# Not in this file on purpose:
+#   * VSEARCH has no win-64 conda package. scripts/00_get_vsearch.py downloads the
+#     official Windows release binary into tools/ (Linux/macOS users install it from
+#     bioconda instead: bioconda::vsearch).
+#   * Phase 2 tools (DADA2, cutadapt, SRA Toolkit) are added when the Phase 2 pipeline
+#     is chosen. Several are not packaged for win-64.
