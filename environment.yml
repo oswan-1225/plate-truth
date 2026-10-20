@@ -12,6 +12,7 @@ dependencies:
   - scikit-learn
   - lightgbm
   - pyarrow
+  - openpyxl
   # --- figures ---
   - matplotlib
   - seaborn
@@ -36,9 +37,12 @@ dependencies:
   # Pin OpenBLAS: the default MKL build crashed natively on matrix multiply on the
   # Windows development machine (seen in the soil pilot).
   - libblas=*=*openblas
+  - pip
+  - pip:
+      - cutadapt==5.2   # primer trimming and in-silico PCR; installed by pip on every OS
 # Not in this file on purpose:
 #   * VSEARCH has no win-64 conda package. scripts/00_get_vsearch.py downloads the
 #     official Windows release binary into tools/ (Linux/macOS users install it from
 #     bioconda instead: bioconda::vsearch).
-#   * Phase 2 tools (DADA2, cutadapt, SRA Toolkit) are added when the Phase 2 pipeline
-#     is chosen. Several are not packaged for win-64.
+#   * Reads are denoised with VSEARCH UNOISE3 (not DADA2), so no R/Bioconductor step is
+#     needed for read processing.

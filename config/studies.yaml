@@ -1,16 +1,23 @@
 # Study list. Fields set to null have NOT been verified yet; fill them from the source
-# paper/ENA record in the phase that needs them, and record the source URL.
-# Primer removal and truncation settings per study are added in Phase 2.
+# paper/ENA record in the phase that needs them, and record the source URL in notes.
 studies:
   - id: zheng2024_soil
-    accession: PRJNA1029248        # from the project brief; confirm against ENA in Phase 0
+    accession: PRJNA1029248        # verified: ENA read_run filereport, 2026-10-20
     doi: 10.1038/s41467-024-53446-4
     habitat: soil
-    n_environment_samples: 6       # six soils, per the pilot; confirm in Phase 0
-    media: ["1% TSA", "soil extract"]   # per the pilot; confirm and harmonize in Phase 0
+    # The six soils (Supplementary Data 1). The same BioProject also holds activated-sludge
+    # samples, which are a separate habitat and are not used in Phase 0.
+    source_samples: [TA, SM, HN, YN, NX, GD]
+    n_environment_samples: 6
+    media: ["1% TSA", "soil extract"]   # Methods: 1% strength TSA; soil extraction medium
     temperature_c: 26
-    oxygen: null
-    incubation_days: 28            # "4 weeks" per the pilot
-    primers: null
-    region: null
-    status: phase0_candidate
+    oxygen: [aerobic, anaerobic, microaerophilic]   # not every soil had every condition
+    incubation_days: 28            # "26 C for 4 weeks"
+    primers:
+      forward: GTGCCAGCMGCCGCGGTAA      # 515F (Methods)
+      reverse: GGACTACHVGGGTWTCTAAT     # 806R (Methods)
+    region: V4
+    platform: Illumina NovaSeq 6000 PE250
+    blanks_in_ena: false           # no extraction/PCR blank libraries deposited
+    contaminant_list: Supplementary Data 2   # internal-standard screen, 47 sequences
+    status: phase0

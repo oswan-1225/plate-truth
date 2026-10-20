@@ -29,3 +29,20 @@ sensitivity:
 resampling:
   n_bootstrap: 1000
   seed: 20261019
+
+# Read processing (reads -> ASVs), shared by every study unless overridden in studies.yaml.
+amplicon:
+  primer_error_rate: 0.1      # cutadapt -e: up to 1 mismatch per 10 primer bases
+  max_ee: 1.0                 # VSEARCH --fastq_maxee after merging
+  min_len: 200                # merged amplicon minimum length (V4 ~253 bp)
+  unoise_minsize: 8           # minimum pooled abundance of a unique sequence to become an ASV
+  unoise_alpha: 2.0
+  map_id: 0.97                # reads are counted to their nearest ASV within 3% differences
+
+# Cultured 16S reference.
+reference:
+  full_min_len: 1000          # BacDive strain 16S: minimum length of the full sequence
+  full_max_ambig: 0.01        # BacDive strain 16S: maximum fraction of ambiguous bases
+  pcr_error_rate: 0.15        # in-silico PCR primer mismatch tolerance (about 3 per primer)
+  region_min_len: 220         # extracted amplified region length window (V4 ~253 bp)
+  region_max_len: 300
