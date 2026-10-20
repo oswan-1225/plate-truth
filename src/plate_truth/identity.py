@@ -20,15 +20,17 @@ FIELDS = ["query", "target", "id1", "id2", "mid", "alnlen", "ids", "mism", "gaps
 
 
 def search(query: Path, db: Path, out: Path, iddef: int, min_id: float, maxaccepts: int,
-           maxrejects: int, threads: int = 0) -> None:
+           maxrejects: int, threads: int = 0, top_hits_only: bool = False) -> None:
     """Global-align every query against the database; write tab-separated hits (FIELDS).
 
     maxaccepts/maxrejects = 0 makes the search exhaustive; otherwise candidate targets are
-    tried in decreasing k-mer similarity and the search stops early.
+    tried in decreasing k-mer similarity and the search stops early. top_hits_only keeps only
+    the hits tied at the best identity under iddef (needed to keep exhaustive output small).
     """
+    extra = ["--top_hits_only"] if top_hits_only else []
     vsearch("--usearch_global", query, "--db", db, "--iddef", iddef, "--id", min_id,
             "--maxaccepts", maxaccepts, "--maxrejects", maxrejects, "--strand", "plus",
-            "--threads", threads, "--userout", out, "--userfields", "+".join(FIELDS))
+            "--threads", threads, "--userout", out, "--userfields", "+".join(FIELDS), *extra)
 
 
 def read_hits(path: Path) -> pd.DataFrame:

@@ -128,10 +128,14 @@ def parse_bacdive_record(bid: int, rec: dict) -> dict:
     if isinstance(lpsn, list):
         lpsn = lpsn[0]
     cg = rec.get("Culture and growth conditions") or {}
-    growth_entries = as_list(cg.get("culture medium")) + as_list(cg.get("culture temp"))
-    has_growth = any(str(e.get("growth", "")).lower() != "no" for e in growth_entries)
+    def positive(entries):
+        return any(str(e.get("growth", "")).lower() != "no" for e in entries)
+
+    has_medium = positive(as_list(cg.get("culture medium")))
+    has_temp = positive(as_list(cg.get("culture temp")))
     strain = {"bacdive_id": bid, "type_strain": tax.get("type strain"),
-              "has_growth_record": has_growth}
+              "has_growth_record": has_medium or has_temp,
+              "has_medium_and_temp": has_medium and has_temp}
     for rank in ["domain", "phylum", "genus", "species"]:
         strain[rank] = lpsn.get(rank) or tax.get(rank)
     seq = rec.get("Sequence information") or {}

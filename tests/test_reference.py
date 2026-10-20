@@ -63,6 +63,7 @@ def test_parse_bacdive_record():
                                                          {"BV-BRC accession": "1.1"}]}}
     out = parse_bacdive_record(7, rec)
     assert out["strain"]["has_growth_record"] is True
+    assert out["strain"]["has_medium_and_temp"] is False  # the only medium entry says 'no'
     assert out["strain"]["species"] == "Foo bar"
     assert out["s16"] == [{"bacdive_id": 7, "accession": "X1", "length": 1500}]
     assert out["genomes"] == [{"bacdive_id": 7, "assembly": "GCA_000000001"}]

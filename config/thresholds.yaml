@@ -46,3 +46,8 @@ reference:
   pcr_error_rate: 0.15        # in-silico PCR primer mismatch tolerance (about 3 per primer)
   region_min_len: 220         # extracted amplified region length window (V4 ~253 bp)
   region_max_len: 300
+
+# An ASV is 'present' in a source sample if it has at least this many reads summed over the
+# sample's environmental PCR replicates (same rule as the pilot).
+environment:
+  min_reads: 2
