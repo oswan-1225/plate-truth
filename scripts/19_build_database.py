@@ -13,6 +13,7 @@ import pandas as pd
 
 from plate_truth.config import data_path, load_config, project_root
 from plate_truth.database import condition_ids, conditions_table, is_organelle, write_tables
+from plate_truth.media import media_table
 from plate_truth.reference import read_fasta
 
 STUDY_COLS = ["study_id", "study_group", "accession", "doi", "citation", "habitat",
@@ -57,10 +58,7 @@ def media_tables() -> tuple[pd.DataFrame, pd.DataFrame]:
     cfg = load_config("media")
     classes = pd.DataFrame([{"medium_class": k, "definition": v}
                             for k, v in cfg["classes"].items()])
-    media = pd.DataFrame(cfg.get("media") or [],
-                         columns=["study_id", "medium", "medium_name", "medium_class",
-                                  "class_rule"])
-    return media, classes
+    return media_table(cfg.get("media") or []), classes
 
 
 def main() -> None:
