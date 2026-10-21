@@ -332,3 +332,59 @@ studies:
     reason: >-
       The original culture-enriched molecular profiling study, but the ENA run table for this
       accession returns no runs; needs an SRA-side check before it can be used.
+
+  - id: bhatt2021_groundnut
+    accession: PRJNA665712
+    doi: 10.7717/peerj.11805
+    citation: Bhatt et al. 2021, PeerJ
+    study_group: bhatt2021
+    linkage: per_sample
+    tier: B
+    tier_note: >-
+      Plates come from two rhizosphere samples (R3, R4) only, and colonies were pooled across
+      the two incubation temperatures, so medium is resolved per library but temperature is not.
+    habitat: soil
+    host_associated: false
+    media: ["soil extract agar", "nutrient agar", "YEM agar", "yeast mannitol agar",
+            "tryptic soy agar", "Azotobacter mannitol agar", "actinomycetes isolation agar"]
+    temperature_c: [27, 37]
+    oxygen: [aerobic]
+    incubation_days: 14
+    region: V3-V4
+    primers: 341F/785R
+    platform: ILLUMINA
+    match_field: sample_title
+    env_pattern: '(?:Bulk|Post-harvest|Pre-Sowing|Rhizosphere) soil sample'
+    plate_pattern: '^Cultured diversity of Sample'
+    decision: include
+    reason: >-
+      Groundnut rhizosphere soil: whole plate surfaces scraped after 14 days on eight media
+      (plus cycloheximide) and sequenced alongside culture-independent soil libraries from the
+      same farms. Verified from the methods and the ENA sample titles.
+
+  - id: leapcs2026_plant
+    accession: PRJNA1262666
+    doi: null
+    citation: 2026, LEAP-CS phytobiome culturomics
+    study_group: leapcs2026
+    linkage: per_site
+    tier: C
+    tier_note: Only 12 amplicon runs; plate format is a membrane system, not standard agar.
+    habitat: plant (rhizosphere)
+    host_associated: true
+    media: null
+    temperature_c: null
+    oxygen: null
+    incubation_days: null
+    region: null
+    primers: null
+    platform: ILLUMINA
+    match_field: description
+    env_pattern: 'soil seed inoculum'
+    plate_pattern: 'LEAP plate microbiome'
+    decision: pending
+    reason: >-
+      ENA sample titles pair "bulk/rhizospheric soil seed inoculum" with "LEAP plate
+      microbiome", which is the right design, but the methods have not been read and the
+      LEAP-CS plate is a membrane-based system that may not count as solid-medium plating.
+      The patterns below also need fixing: all 12 runs currently fall on the environment side.
