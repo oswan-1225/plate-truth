@@ -1,6 +1,11 @@
 import pandas as pd
 
-from plate_truth.samples import condition_id, parse_zheng_library
+from plate_truth.config import load_config
+from plate_truth.samples import (
+    PARSERS, condition_id, link_summary, nielsen_compartment, parse_bhatt2021,
+    parse_dekeyser2020, parse_dueholm2023, parse_dueholm2026, parse_fonseca2025,
+    parse_higuera2024, parse_indraningrat2019, parse_nielsen2019, parse_wang2023,
+    parse_zheng2024, parse_zheng_library)
 
 
 def test_parse_zheng_library_kinds():
@@ -20,3 +25,142 @@ def test_condition_id_only_for_plates():
     cid = condition_id(df)
     assert cid[0] == "SM|1% TSA|aerobic"
     assert pd.isna(cid[1])
+
+
+# --- Phase 2 parsers: each test uses names copied from the real ENA records ---------------------
+
+def meta(**cols):
+    """A small ENA-like metadata frame; missing columns are filled with None."""
+    n = len(next(iter(cols.values())))
+    base = {c: [None] * n for c in ("library_name", "sample_title", "sample_alias",
+                                     "description", "isolation_source")}
+    return pd.DataFrame({**base, **cols})
+
+
+def test_zheng2024_sludge_merges_tank_labels_and_reads_r2a():
+    out = parse_zheng2024(meta(library_name=[
+        "XM2_AN_4_AN_R2A", "XM2_AE_26_ORI_ORI", "SZ_24_AN_R2A", "EBPR_14_AE_R2A", "TA_3_ORI_ORI",
+        "XM4_2_AE_Vb12"]), "sludge")
+    assert out.loc[0, ["source_sample", "kind", "medium", "oxygen"]].tolist() == [
+        "XM2", "plate", "R2A", "anaerobic"]
+    assert out.loc[0, "condition_detail"] == "AN" and out.loc[0, "replicate"] == 4
+    assert out.loc[1, ["source_sample", "kind"]].tolist() == ["XM2", "environment"]
+    assert out.loc[2, "medium"] == "R2A"                    # a digit inside the medium code
+    assert out.loc[3:5, "kind"].tolist() == ["other"] * 3   # EBPR, soil, unlisted XM4
+
+
+def test_zheng2024_soil_matches_phase0_parser():
+    out = parse_zheng2024(meta(library_name=["TA_12_AN_TSA", "GD_1_MI_inSITU", "SZ_24_AN_R2A"]),
+                          "soil")
+    assert out.loc[0, ["medium", "oxygen"]].tolist() == ["1% TSA", "anaerobic"]
+    assert out.loc[1, "medium"] == "soil extract"
+    assert out.loc[2, "kind"] == "other"
+
+
+def test_nielsen_compartments_and_sample_types():
+    assert nielsen_compartment("Biopore soil") == "biopore"
+    assert nielsen_compartment("matrix 80-120 cmbs extracted soil community") == "matrix_80_120"
+    out = parse_nielsen2019(meta(
+        description=["type of sample:soil sample_plow layer", "type of sample:Nycodenz extraction",
+                     "type of sample:reference plate", "type of sample:PSM_incubation:NH",
+                     "type of sample:PSM_incubation:15mm"],
+        isolation_source=["plow layer soil", "extracted plow layer soil community",
+                          "extracted red fracture soil community grown on solid medium",
+                          "biopore soil community grown onto a hydrated surface",
+                          "biopore soil community grown onto a hydrated surface"]))
+    assert out["kind"].tolist() == ["environment", "inoculum", "plate", "plate", "other"]
+    assert out["source_sample"].tolist()[:4] == ["plow_layer", "plow_layer", "red_fracture",
+                                                  "biopore"]
+    assert out.loc[3, "condition_detail"] == "PSM full plate"
+
+
+def test_wang2023_temperature_and_medium_from_name():
+    out = parse_wang2023(meta(library_name=["BS", "RH41", "BL32", "XX"]))
+    assert out.loc[0, ["source_sample", "kind"]].tolist() == ["bulk", "environment"]
+    assert out.loc[1, ["source_sample", "medium", "temperature_c"]].tolist() == [
+        "rhizosphere", "M41", 45]
+    assert out.loc[2, "temperature_c"] == 15
+    assert out.loc[3, "kind"] == "other"
+
+
+def test_dueholm2023_batches_are_separate_sources():
+    out = parse_dueholm2023(meta(
+        library_name=["MQ210611-179", "MQ210611-183", "MQ210611-155", "MQ210129-1",
+                      "MQ210129-2", "MQ210129-173", "MQ210611-9"],
+        sample_title=["MV-PHN-AS-A", "MV-PHN-AS-str-A", "MV-PHN-PL7-Anaer-C", "MV-PHN-PL-AS2",
+                      "MV-PHN-PL-NEG", "MV-PHN-PL-101", "MV-PHN-PL1-Med-C-1"]))
+    assert out["kind"].tolist() == ["environment", "inoculum", "plate", "environment",
+                                    "control", "plate", "other"]
+    assert out["source_sample"].tolist()[:4] == ["AS_exp2", "AS_exp2", "AS_exp2", "AS_exp1"]
+    assert out.loc[2, ["medium", "oxygen", "replicate"]].tolist() == ["PL7", "anaerobic", 3]
+    assert out.loc[5, ["medium", "condition_detail"]].tolist() == ["unresolved", "plate 101"]
+
+
+def test_dueholm2026_antibiotics_controls_and_raw():
+    out = parse_dueholm2026(meta(library_name=["RAW_2", "CTRL_1", "CIP_HC_1", "PCRNEG1",
+                                               "isolate_7"]))
+    assert out["kind"].tolist() == ["environment", "plate", "plate", "control", "other"]
+    assert out.loc[2, ["medium", "condition_detail", "replicate"]].tolist() == [
+        "ASF agarose + CIP", "HC", 1]
+
+
+def test_indraningrat2019_links_by_sponge_number():
+    out = parse_indraningrat2019(meta(
+        library_name=["Indra_Curacao_AS6", "Indra_Cultivation_Mu.AS11.67",
+                      "Indra_Cultivation_XM10.16", "Indra_Curacao_SW7"],
+        sample_title=["SCR50", "Mu.AS11", "MA.XM10", "W2"],
+        description=["sponges", "scraping colonies on plates", "sponge_inoculum",
+                     "filter_water"]))
+    assert out["kind"].tolist() == ["environment", "plate", "inoculum", "other"]
+    assert out["source_sample"].tolist()[:3] == ["AS6", "AS11", "XM10"]
+    assert out.loc[1, "medium"] == "Mu"
+
+
+def test_fonseca2025_keeps_16s_only():
+    out = parse_fonseca2025(meta(
+        sample_alias=["16S_Ale_Root_3", "ITS_Ale_Stem_3", "16s-isolation_10", "its-isolation_10"],
+        description=["Rhizosphere microbiota", "Stem microbiota", "leaf isolates",
+                     "leaf isolates"]))
+    assert out["kind"].tolist() == ["environment", "other", "plate", "other"]
+    assert out.loc[0, "source_sample"] == "rhizosphere" and out.loc[2, "source_sample"] == "leaf"
+
+
+def test_higuera2024_only_direct_pools_are_plates():
+    out = parse_higuera2024(meta(sample_alias=["PSh-A", "AFS-B", "PSh-D", "PSh-metaG"],
+                                 library_name=["PSh_A1", "AFS_B10", "PSh_D1", "PSh"]))
+    assert out["kind"].tolist() == ["environment", "plate", "other", "other"]
+    assert out.loc[1, ["source_sample", "replicate"]].tolist() == ["AFS", 10]
+
+
+def test_dekeyser2020_carcass_area_temperature():
+    out = parse_dekeyser2020(meta(library_name=["Back_D_SH", "Breast_D_BA7", "Breast_D_TSA30"]))
+    assert out.loc[0, ["source_sample", "kind"]].tolist() == ["D_back", "environment"]
+    assert out.loc[1, ["source_sample", "medium", "temperature_c"]].tolist() == [
+        "D_breast", "blood agar", 7]
+    assert out.loc[2, "temperature_c"] == 30
+
+
+def test_bhatt2021_links_farm_replicates_only():
+    out = parse_bhatt2021(meta(
+        library_name=["R31", "R35", "R13", "R3-SEA"],
+        sample_title=["Rhizosphere soil sample R31", "Rhizosphere soil sample R35",
+                      "Rhizosphere soil sample R13",
+                      "Cultured diversity of Sample R3 on media Soil Extract agar"]))
+    assert out["kind"].tolist() == ["environment", "environment", "other", "plate"]
+    assert out.loc[3, ["source_sample", "medium"]].tolist() == ["R3", "Soil Extract agar"]
+
+
+def test_every_included_study_has_a_parser():
+    included = {s["id"] for s in load_config("census_studies")["studies"]
+                if s["decision"] == "include"}
+    assert included <= set(PARSERS)
+
+
+def test_link_summary_counts_linked_plates():
+    sheet = pd.DataFrame({
+        "study_id": ["s"] * 5,
+        "source_sample": ["a", "a", "a", "b", "b"],
+        "kind": ["environment", "plate", "plate", "plate", "inoculum"]})
+    row = link_summary(sheet).iloc[0]
+    assert (row["environment_runs"], row["plate_runs"], row["linked_plate_runs"],
+            row["linked_sources"]) == (1, 3, 2, 1)

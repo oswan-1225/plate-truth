@@ -322,11 +322,12 @@ studies:
     match_field: sample_title
     env_pattern: '^Bovine rumen sample'
     plate_pattern: '^Agar plate media'
-    decision: include
+    decision: exclude
     reason: >-
-      Plates come from one selected cow, so only one source sample can be linked to plates;
-      the other rumen libraries are unmatched and only that cow's library is used. Included as
-      a single-source tier C study, like the two Dueholm studies. The paper names 515F/806R
+      Plates come from one selected cow, but neither the paper nor its supplement says which of
+      the 37 deposited rumen libraries is that cow, and the 6 inoculum-dilution libraries the
+      methods describe are not identifiable in ENA. Choosing the library most similar to the
+      plates would be circular, so the plates cannot be linked to their source (D-019). The paper names 515F/806R
       (V4) but prints the 341F and 907R sequences; the deposited reads are 252-253 bp, already
       primer-trimmed and merged, and start at the base after 515F, so the data are V4.
 
