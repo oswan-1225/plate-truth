@@ -131,9 +131,11 @@ def parse_nielsen2019(meta: pd.DataFrame) -> pd.DataFrame:
         if desc == "Nycodenz extraction":
             return {**out, "kind": "inoculum"}
         if desc == "reference plate":
-            return {**out, "kind": "plate", "condition_detail": "reference plate"}
+            return {**out, "kind": "plate", "medium": "25% R2A",
+                    "condition_detail": "reference plate"}
         if desc == "PSM_incubation:NH":
-            return {**out, "kind": "plate", "condition_detail": "PSM full plate"}
+            return {**out, "kind": "plate", "medium": "25% R2A",
+                    "condition_detail": "PSM full plate"}
         return {**out, "kind": "other", "condition_detail": desc}
     return _sheet(meta, row)
 
@@ -142,6 +144,11 @@ def parse_nielsen2019(meta: pd.DataFrame) -> pd.DataFrame:
 # {B|R}{L|M|H}{medium number}, L/M/H = 15/30/45 C (sample titles BCL ... RCH).
 WANG_SOURCE = {"B": "bulk", "R": "rhizosphere"}
 WANG_TEMPERATURE = {"L": 15, "M": 30, "H": 45}
+# Medium abbreviations M1-M60 in order, from the list above Supplementary Table 8.
+WANG_MEDIA = ("BEN BHI BRA CSA CHIA CZA GN1 GYM GLA GGA HA HVA KB LNMS LB MCA MYP MIC MM PYG "
+              "PYS PPS PDA RA RH RZ1 RZ2 SA SSM SSTY CMCA SLA SEAB SEAR SCA SGCY SNA STA STBG T5 "
+              "TP TGY TCN YGCP YMG 1xTSA 0.1xTSA 0.01xTSA 1xNA 0.1xNA 0.01xNA 1xAIA 0.1xAIA "
+              "0.01xAIA 1xR2A 0.1xR2A 0.01xR2A 1xMA 0.1xMA 0.01xMA").split()
 
 
 def parse_wang2023(meta: pd.DataFrame) -> pd.DataFrame:
@@ -153,9 +160,21 @@ def parse_wang2023(meta: pd.DataFrame) -> pd.DataFrame:
         m = re.match(r"^([BR])([LMH])(\d+)$", name)
         if not m:
             return {}
-        return {"source_sample": WANG_SOURCE[m[1]], "kind": "plate", "medium": f"M{m[3]}",
+        return {"source_sample": WANG_SOURCE[m[1]], "kind": "plate",
+                "medium": f"M{m[3]} ({WANG_MEDIA[int(m[3]) - 1]})",
                 "temperature_c": WANG_TEMPERATURE[m[2]]}
     return _sheet(meta, row)
+
+
+def wang_incubation_days(table9_text: str) -> dict[str, int]:
+    """Plate library name -> incubation days, from the text of Wang et al. Supplementary
+    Table 9 (rows: medium no., abbreviation, then six (library, days) pairs)."""
+    days = {}
+    for line in table9_text.splitlines():
+        if re.match(r"^\s*M\d+\s", line):
+            for lib, d in re.findall(r"\b([BR][LMH]\d+)\s+(\d+)\b", line):
+                days[lib] = int(d)
+    return days
 
 
 # Dueholm et al. 2023: two experiments, each with its own sludge sample, told apart by the
@@ -216,14 +235,21 @@ def parse_dueholm2026(meta: pd.DataFrame) -> pd.DataFrame:
 
 # Indraningrat et al. 2019 sponges: environment libraries Indra_Curacao_{AS|XM}{n}; plate
 # sample titles {medium}.{AS|XM}{n}, so the individual sponge is the shared AS/XM number.
+# Media codes from the paper (Table 1). "Co"/"Cryo" is not one of the six media: plates were
+# inoculated from cryopreserved (glycerol) sponge homogenate, so those libraries are most likely
+# the inoculum despite their ENA description; being ambiguous, they are not used (D-022).
+SPONGE_MEDIUM = {"MA": "marine agar 1/10", "M3": "M3 agar", "OL": "OLIGO agar", "GP": "GP agar",
+                 "Mu": "mucin agar", "CR": "Crenarchaeota agar"}
+
+
 def parse_indraningrat2019(meta: pd.DataFrame) -> pd.DataFrame:
     """Sponge individuals and the plate scrapings made from each one."""
     def row(r):
         if m := re.match(r"^Indra_Curacao_((?:AS|XM)\d+)$", _str(r.library_name)):
             return {"source_sample": m[1], "kind": "environment"}
         if (m := re.match(r"^([A-Za-z0-9]+)\.((?:AS|XM)\d+)$", _str(r.sample_title))) \
-                and "scraping" in _str(r.description):
-            return {"source_sample": m[2], "kind": "plate", "medium": m[1]}
+                and "scraping" in _str(r.description) and m[1] in SPONGE_MEDIUM:
+            return {"source_sample": m[2], "kind": "plate", "medium": SPONGE_MEDIUM[m[1]]}
         if m and "sponge_inoculum" in _str(r.description):
             return {"source_sample": m[2], "kind": "inoculum", "condition_detail": m[1]}
         return {}

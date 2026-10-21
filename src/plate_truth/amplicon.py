@@ -103,3 +103,56 @@ def otutab_to_long(path: Path) -> pd.DataFrame:
     tab.index.name = "asv_id"
     long = tab.reset_index().melt(id_vars="asv_id", var_name="run", value_name="count")
     return long[long["count"] > 0].reset_index(drop=True)
+
+
+# --- Phase 2: one read-preparation path for every study ---------------------------------------
+# Studies deposit reads differently (D-024): primers still in the reads in either orientation,
+# primers already removed, or single PacBio reads. Every path ends in the same object: reads
+# covering exactly the inter-primer window, in the forward orientation, then quality-filtered
+# and dereplicated per run.
+
+def fastq_urls(fastq_ftp: str) -> list[str]:
+    """The run's read files as https URLs: the _1/_2 pair if present, else the single file."""
+    pair = paired_fastq_urls(fastq_ftp)
+    if pair:
+        return pair
+    files = [u for u in str(fastq_ftp).split(";") if u.endswith(".fastq.gz")]
+    return ["https://" + u if not u.startswith("http") else u for u in files[:1]]
+
+
+def merge_pairs(r1: Path, r2: Path, out: Path) -> None:
+    """Merge read pairs; staggered pairs keep only the overlap (adapter read-through removed)."""
+    vsearch("--fastq_mergepairs", r1, "--reverse", r2, "--fastq_maxdiffs", 10,
+            "--fastq_allowmergestagger", "--fastqout", out)
+
+
+def cut_window(reads: Path, out: Path, fwd: str, rev: str, error_rate: float, min_len: int,
+               max_len: int, report: Path) -> dict:
+    """Keep the part of each read between the two primers, in forward orientation.
+
+    cutadapt linked adapter FWD...revcomp(REV), searched on both strands (--revcomp), so reads
+    in either orientation, with barcodes or spacers before the primer, give the same window.
+    Reads without both primer sites are discarded. Returns the cutadapt JSON report.
+    """
+    cutadapt("-g", f"{fwd}...{reverse_complement(rev)}", "-e", error_rate, "--revcomp",
+             "--discard-untrimmed", "-m", min_len, "-M", max_len, "-j", 1,
+             "--json", report, "-o", out, reads)
+    return json.loads(Path(report).read_text())
+
+
+def orient_reads(reads: Path, db: Path, out: Path) -> None:
+    """Put primer-free reads in forward orientation by k-mer comparison with a reference;
+    reads whose orientation cannot be decided are dropped."""
+    vsearch("--orient", reads, "--db", db, "--fastqout", out)
+
+
+def filter_derep(reads: Path, workdir: Path, run: str, out: Path, max_ee: float, min_len: int,
+                 max_len: int) -> None:
+    """Expected-error and length filter, then dereplicate one run (FASTA with ;size=)."""
+    filt = workdir / "filt.fa"
+    vsearch("--fastq_filter", reads, "--fastq_maxee", max_ee, "--fastq_minlen", min_len,
+            "--fastq_maxlen", max_len, "--fastq_maxns", 0, "--fastaout", filt,
+            "--relabel", f"{run}.")
+    part = out.with_name(out.name + ".part")
+    vsearch("--derep_fulllength", filt, "--sizeout", "--relabel", f"{run}.u", "--output", part)
+    part.replace(out)

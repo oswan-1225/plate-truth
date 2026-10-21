@@ -5,7 +5,7 @@ from plate_truth.samples import (
     PARSERS, condition_id, link_summary, nielsen_compartment, parse_bhatt2021,
     parse_dekeyser2020, parse_dueholm2023, parse_dueholm2026, parse_fonseca2025,
     parse_higuera2024, parse_indraningrat2019, parse_nielsen2019, parse_wang2023,
-    parse_zheng2024, parse_zheng_library)
+    parse_zheng2024, parse_zheng_library, wang_incubation_days)
 
 
 def test_parse_zheng_library_kinds():
@@ -78,9 +78,11 @@ def test_wang2023_temperature_and_medium_from_name():
     out = parse_wang2023(meta(library_name=["BS", "RH41", "BL32", "XX"]))
     assert out.loc[0, ["source_sample", "kind"]].tolist() == ["bulk", "environment"]
     assert out.loc[1, ["source_sample", "medium", "temperature_c"]].tolist() == [
-        "rhizosphere", "M41", 45]
+        "rhizosphere", "M41 (TP)", 45]
     assert out.loc[2, "temperature_c"] == 15
     assert out.loc[3, "kind"] == "other"
+    assert parse_wang2023(meta(library_name=["BM11", "RL60"]))["medium"].tolist() == [
+        "M11 (HA)", "M60 (0.01xMA)"]                  # HA is M11 in the paper's Fig. 7 caption
 
 
 def test_dueholm2023_batches_are_separate_sources():
@@ -113,7 +115,14 @@ def test_indraningrat2019_links_by_sponge_number():
                      "filter_water"]))
     assert out["kind"].tolist() == ["environment", "plate", "inoculum", "other"]
     assert out["source_sample"].tolist()[:3] == ["AS6", "AS11", "XM10"]
-    assert out.loc[1, "medium"] == "Mu"
+    assert out.loc[1, "medium"] == "mucin agar"
+
+
+def test_indraningrat2019_cryo_libraries_are_not_plates():
+    out = parse_indraningrat2019(meta(library_name=["Indra_Cultivation_Co.AS11.49"],
+                                      sample_title=["Co.AS11"],
+                                      description=["scraping colonies on plates"]))
+    assert out.loc[0, "kind"] == "other"
 
 
 def test_fonseca2025_keeps_16s_only():
@@ -164,3 +173,14 @@ def test_link_summary_counts_linked_plates():
     row = link_summary(sheet).iloc[0]
     assert (row["environment_runs"], row["plate_runs"], row["linked_plate_runs"],
             row["linked_sources"]) == (1, 3, 2, 1)
+
+
+def test_wang_incubation_days_reads_table9_rows():
+    text = "\n".join([
+        "Medi Abbr. 15 C Incubation",
+        "M1     BEN       BL1   8           BM1   3                 BH1   6           RL1   9"
+        "           RM1   3                RH1                      3",
+        "M11    HA        BL11  8   BM11  3   BH11  6   RL11  13  RM11  4   RH11  13"])
+    d = wang_incubation_days(text)
+    assert len(d) == 12
+    assert d["BL1"] == 8 and d["RH1"] == 3 and d["RL11"] == 13 and d["BM11"] == 3

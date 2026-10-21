@@ -46,6 +46,15 @@ reference:
   pcr_error_rate: 0.15        # in-silico PCR primer mismatch tolerance (about 3 per primer)
   region_min_len: 220         # extracted amplified region length window (V4 ~253 bp)
   region_max_len: 300
+  # Phase 2: length window per amplified region (primers removed), [min, max] bp. Set wide
+  # around the expected lengths (V3-V4 ~425, V1-V3 ~450-470) so length-variable taxa are not
+  # lost; script 15 reports the observed length percentiles per reference to check this.
+  region_length:
+    V4: [220, 300]
+    V3-V4: [360, 480]
+    V1-V3: [380, 560]
+  # Full-length (PacBio) studies are cut in silico to this study's primer pair (D-017, D-023).
+  full_length_cut_to: zheng2024_soil
 
 # An ASV is 'present' in a source sample if it has at least this many reads summed over the
 # sample's environmental PCR replicates (same rule as the pilot).

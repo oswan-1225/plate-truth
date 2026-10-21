@@ -10,6 +10,9 @@
 # primer_fwd / primer_rev: primer sequences exactly as printed in the paper (or its
 # supplement); the source URL for each is in notes/sources.md. incubation_days is the longest
 # plate incubation; ranges and per-condition detail are in incubation_note.
+# read_prep: how the deposited reads are prepared (D-024): primers_in_reads (merge, then cut
+# the primer window on both strands), primers_removed (merge, then orient against the
+# reference), pacbio (single reads, cut to the V4 window), unresolved (not processed yet).
 
 studies:
   - id: zheng2024_soil
@@ -31,6 +34,7 @@ studies:
     primer_fwd: GTGCCAGCMGCCGCGGTAA
     primer_rev: GGACTACHVGGGTWTCTAAT
     platform: ILLUMINA
+    read_prep: primers_in_reads
     match_field: library_name
     env_pattern: '^(?:TA|SM|HN|YN|NX|GD)_\d+_ORI_ORI$'
     plate_pattern: '^(?:TA|SM|HN|YN|NX|GD)_\d+_(?:AE|AN|MI)_(?:TSA|inSITU)$'
@@ -56,6 +60,7 @@ studies:
     primer_fwd: GTGCCAGCMGCCGCGGTAA
     primer_rev: GGACTACHVGGGTWTCTAAT
     platform: ILLUMINA
+    read_prep: primers_in_reads
     match_field: library_name
     env_pattern: '^(?:XM1|XM2|SZ|NJ|SH|EBPR)(?:_[A-Z]+)?_\d+_ORI_ORI$'
     plate_pattern: '^(?:XM1|XM2|SZ|NJ|SH|EBPR)(?:_[A-Z]+)?_\d+_(?:AE|AN|MI)_(?:R2A|inSITU|Artificial|influent_inSITU)$'
@@ -84,6 +89,7 @@ studies:
     primer_fwd: CCTACGGGNGGCWGCAG
     primer_rev: GACTACHVGGGTATCTAATCC
     platform: ILLUMINA
+    read_prep: primers_in_reads
     match_field: sample_title
     env_pattern: 'community extracted from soil|DNA extracted from soil'
     plate_pattern: 'grown on (?:hydrated surface|solid medium)'
@@ -113,6 +119,7 @@ studies:
     primer_fwd: AGRGTTTGATYNTGGCTCAG
     primer_rev: TASGGHTACCTTGTTASGACTT
     platform: PACBIO_SMRT
+    read_prep: pacbio
     match_field: sample_title
     env_pattern: '^OSS$'
     plate_pattern: '^[BR]C[LMH]$'
@@ -142,6 +149,7 @@ studies:
     primer_fwd: AGAGTTTGATCCTGGCTCAG
     primer_rev: ATTACCGCGGCTGCTGG
     platform: ILLUMINA
+    read_prep: primers_removed   # deposited with primers removed, forward orientation
     match_field: sample_title
     env_pattern: '^MV-PHN-AS'
     plate_pattern: '^MV-PHN-PL'
@@ -172,6 +180,7 @@ studies:
     primer_fwd: AGRGTTYGATYMTGGCTCAG
     primer_rev: GACGGGCGGTGWGTRCA
     platform: PACBIO_SMRT
+    read_prep: pacbio
     match_field: library_name
     env_pattern: '^RAW_\d+$'
     plate_pattern: '^(?:CTRL|AMP|CAR|CHL|CIP|ERI|GEN|KAN|NEO|RIF|STR|TET)_'
@@ -191,7 +200,7 @@ studies:
     tier_note: individual sponges with matched cultivation libraries; 6 media
     habitat: marine sponge
     host_associated: true
-    media: ["marine agar 1/10", "M3", "oligotrophic", "cryo", "mucin", "Cren"]
+    media: ["marine agar 1/10", "M3", "OLIGO", "GP", "mucin", "Crenarchaeota"]
     temperature_c: [30]
     oxygen: [aerobic]
     incubation_days: 28
@@ -200,6 +209,7 @@ studies:
     primer_fwd: GTGYCAGCMGCCGCGGTAA
     primer_rev: GGACTACNVGGGTWTCTAAT
     platform: ILLUMINA
+    read_prep: primers_in_reads   # barcode + Unitag before the primer, both orientations
     match_field: description
     env_pattern: '^sponges$'
     plate_pattern: 'scraping colonies on plates'
@@ -231,6 +241,8 @@ studies:
     primer_fwd: GTGBCAGCMGCCGCGGTAA
     primer_rev: GGACTACHVGGGTWTCTAA   # as printed (19 nt); trim with the standard 806R if it fails
     platform: ILLUMINA
+    read_prep: primers_in_reads
+    read_prep_plate: primers_removed   # plate libraries were deposited without primers
     match_field: description
     env_pattern: '(?:Leaf|Stem|Rhizosphere) microbiota'
     plate_pattern: '(?:leaf|stem|rhizosphere) isolates'
@@ -264,6 +276,7 @@ studies:
     primer_fwd: GAGTTTGATCMTGGCTCAG
     primer_rev: GWATTACCGCGGCKGCTG
     platform: ILLUMINA
+    read_prep: unresolved   # primers mostly stripped, ragged R1 starts; decide before processing
     match_field: sample_title
     env_pattern: '^Bacterial community$'
     plate_pattern: '^Culturable bacteria pool$'   # D-020: re-plated subcultures excluded
@@ -292,6 +305,7 @@ studies:
     primer_fwd: CCTAYGGGRBGCASCAG
     primer_rev: GGACTACNNGGGTATCTAAT
     platform: ILLUMINA
+    read_prep: primers_in_reads
     match_field: library_name
     env_pattern: '_SH$'
     plate_pattern: '_(?:BA|TSA|PCA)\d+$'
@@ -404,6 +418,7 @@ studies:
     primer_fwd: CCTACGGGNGGCWGCAG       # Klindworth et al. 2013 (cited by the paper)
     primer_rev: GACTACHVGGGTATCTAATCC
     platform: ILLUMINA
+    read_prep: primers_in_reads
     match_field: sample_title
     env_pattern: '(?:Bulk|Post-harvest|Pre-Sowing|Rhizosphere) soil sample'
     plate_pattern: '^Cultured diversity of Sample'
