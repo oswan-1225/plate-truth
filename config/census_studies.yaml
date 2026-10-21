@@ -6,6 +6,10 @@
 # table to label each run. Runs matching neither are "other" (isolates, controls, liquid
 # enrichments) and are not used. Fields left null are not yet verified.
 # decision: include | exclude | pending. Inclusion criteria: DECISIONS.md D-015.
+#
+# primer_fwd / primer_rev: primer sequences exactly as printed in the paper (or its
+# supplement); the source URL for each is in notes/sources.md. incubation_days is the longest
+# plate incubation; ranges and per-condition detail are in incubation_note.
 
 studies:
   - id: zheng2024_soil
@@ -24,6 +28,8 @@ studies:
     incubation_days: 28
     region: V4
     primers: 515F/806R
+    primer_fwd: GTGCCAGCMGCCGCGGTAA
+    primer_rev: GGACTACHVGGGTWTCTAAT
     platform: ILLUMINA
     match_field: library_name
     env_pattern: '^(?:TA|SM|HN|YN|NX|GD)_\d+_ORI_ORI$'
@@ -47,6 +53,8 @@ studies:
     incubation_days: 28
     region: V4
     primers: 515F/806R
+    primer_fwd: GTGCCAGCMGCCGCGGTAA
+    primer_rev: GGACTACHVGGGTWTCTAAT
     platform: ILLUMINA
     match_field: library_name
     env_pattern: '^(?:XM1|XM2|SZ|NJ|SH|EBPR)(?:_[A-Z]+)?_\d+_ORI_ORI$'
@@ -64,12 +72,17 @@ studies:
     tier_note: 5 soil/sediment compartments; plates link to compartment
     habitat: soil
     host_associated: false
-    media: ["R2A (porous surface model)", "reference agar plate"]
-    temperature_c: null
+    media: ["25% R2A (porous surface model plate lift)", "25% R2A (reference plate)"]
+    temperature_c: [25]
     oxygen: [aerobic]
-    incubation_days: null
+    incubation_days: 3
+    incubation_note: >-
+      Inoculated ceramic discs held 24 or 48 h at room temperature, then lifted onto 25% R2A
+      (natamycin) and incubated 48-72 h at 25 C; reference plates drop-plated directly on 25% R2A.
     region: V3-V4
     primers: 341F/806R
+    primer_fwd: CCTACGGGNGGCWGCAG
+    primer_rev: GACTACHVGGGTATCTAATCC
     platform: ILLUMINA
     match_field: sample_title
     env_pattern: 'community extracted from soil|DNA extracted from soil'
@@ -93,9 +106,12 @@ studies:
     media: ["many (culturomics panel incl. R2A, TSA, HA)"]
     temperature_c: [15, 30, 45]
     oxygen: [aerobic]
-    incubation_days: null       # "3-15 days", per-treatment table
+    incubation_days: 15
+    incubation_note: 3-15 days depending on medium (per-treatment table in the paper).
     region: full-length
     primers: 27F/1492R
+    primer_fwd: AGRGTTTGATYNTGGCTCAG
+    primer_rev: TASGGHTACCTTGTTASGACTT
     platform: PACBIO_SMRT
     match_field: sample_title
     env_pattern: '^OSS$'
@@ -116,12 +132,15 @@ studies:
     tier_note: one activated sludge source; many media and oxygen conditions
     habitat: activated sludge
     host_associated: false
-    media: null                 # several agarose media, see paper Table 1
-    temperature_c: null
+    media: ["R2A agarose", "activated sludge filtrate (ASF) agarose + carbon/nitrogen sources"]
+    temperature_c: [25]
     oxygen: [aerobic, anaerobic]
-    incubation_days: null
+    incubation_days: 21
+    incubation_note: 2-3 weeks at 25 C, oxic or anoxic; the medium of each plate comes from its sample metadata.
     region: V1-V3
-    primers: null
+    primers: 27F/534R
+    primer_fwd: AGAGTTTGATCCTGGCTCAG
+    primer_rev: ATTACCGCGGCTGCTGG
     platform: ILLUMINA
     match_field: sample_title
     env_pattern: '^MV-PHN-AS'
@@ -142,11 +161,16 @@ studies:
     habitat: activated sludge
     host_associated: false
     media: ["activated sludge filtrate (ASF) agarose", "ASF + 12 antibiotics x 3 levels"]
-    temperature_c: null
-    oxygen: null
+    temperature_c: [25]
+    oxygen: [aerobic]
     incubation_days: 14
+    incubation_note: >-
+      Plates sealed with parafilm at 25 C for 14 days. No anaerobic incubation is described, so
+      aerobic is inferred from the methods, not stated.
     region: full-length
-    primers: null
+    primers: 27F/1391R
+    primer_fwd: AGRGTTYGATYMTGGCTCAG
+    primer_rev: GACGGGCGGTGWGTRCA
     platform: PACBIO_SMRT
     match_field: library_name
     env_pattern: '^RAW_\d+$'
@@ -171,8 +195,10 @@ studies:
     temperature_c: [30]
     oxygen: [aerobic]
     incubation_days: 28
-    region: null
-    primers: null
+    region: V4
+    primers: 515FY/806RB
+    primer_fwd: GTGYCAGCMGCCGCGGTAA
+    primer_rev: GGACTACNVGGGTWTCTAAT
     platform: ILLUMINA
     match_field: description
     env_pattern: '^sponges$'
@@ -192,12 +218,18 @@ studies:
     tier_note: linkage at tissue level (leaf/stem/rhizosphere)
     habitat: plant (oak)
     host_associated: true
-    media: ["TSA", "TSA 1/10", "MEA", "MEA 1/10", "R2A", "+ oak leaf extract"]
-    temperature_c: null
+    media: ["R2A", "nutrient agar", "potato dextrose agar", "malt extract agar", "TSA",
+            "0.1x TSA and 0.1x MEA, +/- 2% oak leaf extract", "fastidious anaerobe agar (stem only)"]
+    temperature_c: null         # agar-plate temperature not stated in the paper
     oxygen: [aerobic, anaerobic]
     incubation_days: 7
-    region: null
-    primers: null
+    incubation_note: >-
+      One week aerobic; anaerobic jars only for the stem-targeted plates. Colonies pooled per
+      tissue and per agar type (R2A, NtA, PDA, TSA, MEA).
+    region: V4
+    primers: 515F/806R
+    primer_fwd: GTGBCAGCMGCCGCGGTAA
+    primer_rev: GGACTACHVGGGTWTCTAA   # as printed (19 nt); trim with the standard 806R if it fails
     platform: ILLUMINA
     match_field: description
     env_pattern: '(?:Leaf|Stem|Rhizosphere) microbiota'
@@ -217,16 +249,24 @@ studies:
     tier_note: 2 sites; 2 media with and without 3 antibiotics
     habitat: marine water
     host_associated: false
-    media: ["nutrient medium", "saline medium", "+ antibiotics (OTC, FLQ, FFC)"]
-    temperature_c: null         # "room temperature"
+    media: ["pool of 7 media (Instant Ocean agar, seawater agar, R2A x3 variants, LB 1/10, TSAYE)",
+            "nutrient medium (LB 1/10)", "saline medium (R2A in seawater)",
+            "+ antibiotics (OTC, FLQ, FFC)"]
+    temperature_c: [22.5]       # stated as 20-25 C; midpoint
     oxygen: [aerobic]
-    incubation_days: 5
+    incubation_days: 7
+    incubation_note: >-
+      20-25 C for 7 days. The "Culturable community" pool combines scrapings of all 7 media from
+      the seawater. The nutrient/saline (+/- antibiotic) plates were inoculated from that pool,
+      NOT from seawater, so only the pool links directly to the environmental sample.
     region: V1-V3
-    primers: null
+    primers: 28F/519R
+    primer_fwd: GAGTTTGATCMTGGCTCAG
+    primer_rev: GWATTACCGCGGCKGCTG
     platform: ILLUMINA
     match_field: sample_title
     env_pattern: '^Bacterial community$'
-    plate_pattern: '^Culturable'
+    plate_pattern: '^Culturable bacteria pool$'   # D-020: re-plated subcultures excluded
     decision: include
     reason: >-
       Two sites (salmon farm and Pacific shore) with a direct community library and culturable
@@ -245,9 +285,12 @@ studies:
     media: ["plate count agar", "TSA", "blood agar"]
     temperature_c: [7, 30]
     oxygen: [aerobic]
-    incubation_days: null       # 3 days at 30 C; 4-7 days at 7 C
-    region: null
-    primers: null
+    incubation_days: 7
+    incubation_note: 30 C for 72 h, or 7 C for 4-7 days; aerobic counting plates were washed.
+    region: V3-V4
+    primers: 341F/806R
+    primer_fwd: CCTAYGGGRBGCASCAG
+    primer_rev: GGACTACNNGGGTATCTAAT
     platform: ILLUMINA
     match_field: library_name
     env_pattern: '_SH$'
@@ -264,23 +307,28 @@ studies:
     study_group: zehavi2018
     linkage: single_source
     tier: C
-    tier_note: plates from one cow only
+    tier_note: plates from one cow only (single source, like the two Dueholm studies)
     habitat: rumen
     host_associated: true
     media: ["M10 defined", "M10 + clarified rumen fluid"]
     temperature_c: [39]
     oxygen: [anaerobic]
     incubation_days: 3
-    region: null
-    primers: null
+    region: V4
+    primers: 515F/806R
+    primer_fwd: null            # printed sequences are 341F/907R, not 515F/806R; see reason
+    primer_rev: null
     platform: ILLUMINA
     match_field: sample_title
     env_pattern: '^Bovine rumen sample'
     plate_pattern: '^Agar plate media'
-    decision: pending
+    decision: include
     reason: >-
       Plates come from one selected cow, so only one source sample can be linked to plates;
-      the other 36 rumen libraries are unmatched. Keep as a low-weight study, decide at GATE 1.
+      the other rumen libraries are unmatched and only that cow's library is used. Included as
+      a single-source tier C study, like the two Dueholm studies. The paper names 515F/806R
+      (V4) but prints the 341F and 907R sequences; the deposited reads are 252-253 bp, already
+      primer-trimmed and merged, and start at the base after 515F, so the data are V4.
 
   - id: eevers2021_phylloplane
     accession: PRJNA626008
@@ -328,10 +376,10 @@ studies:
     match_field: library_name
     env_pattern: null
     plate_pattern: null
-    decision: pending
+    decision: exclude
     reason: >-
-      The original culture-enriched molecular profiling study, but the ENA run table for this
-      accession returns no runs; needs an SRA-side check before it can be used.
+      The original culture-enriched molecular profiling study, but no raw reads are public:
+      the BioProject exists at NCBI yet links to zero SRA runs, and ENA returns no runs.
 
   - id: bhatt2021_groundnut
     accession: PRJNA665712
@@ -352,6 +400,8 @@ studies:
     incubation_days: 14
     region: V3-V4
     primers: 341F/785R
+    primer_fwd: CCTACGGGNGGCWGCAG       # Klindworth et al. 2013 (cited by the paper)
+    primer_rev: GACTACHVGGGTATCTAATCC
     platform: ILLUMINA
     match_field: sample_title
     env_pattern: '(?:Bulk|Post-harvest|Pre-Sowing|Rhizosphere) soil sample'
@@ -364,8 +414,8 @@ studies:
 
   - id: leapcs2026_plant
     accession: PRJNA1262666
-    doi: null
-    citation: 2026, LEAP-CS phytobiome culturomics
+    doi: 10.1186/s13007-026-01539-0
+    citation: Mazumder et al. 2026, Plant Methods (LEAP-CS)
     study_group: leapcs2026
     linkage: per_site
     tier: C
@@ -382,9 +432,11 @@ studies:
     match_field: description
     env_pattern: 'soil seed inoculum'
     plate_pattern: 'LEAP plate microbiome'
-    decision: pending
+    decision: exclude
     reason: >-
-      ENA sample titles pair "bulk/rhizospheric soil seed inoculum" with "LEAP plate
+      Excluded after reading the methods: microbes grow as a lawn on soil-extract Phytagel under
+      a dialysis membrane with live seedlings on top for up to 15 days, i.e. a plant co-culture,
+      not plating on a medium alone; only 12 amplicon runs. Earlier note: ENA sample titles pair "bulk/rhizospheric soil seed inoculum" with "LEAP plate
       microbiome", which is the right design, but the methods have not been read and the
       LEAP-CS plate is a membrane-based system that may not count as solid-medium plating.
       The patterns below also need fixing: all 12 runs currently fall on the environment side.
