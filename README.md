@@ -13,7 +13,37 @@ Throughout, **"predicted to grow"** (a model or database output) is kept strictl
 
 ## Status
 
-Early setup. The repository structure and environment are in place; no results yet. Progress will be reported here as phases complete.
+**In progress.** Two stages are complete: a calibration on one soil dataset, and a census of the datasets available for the cross-study analysis.
+
+### First result: the shortcut overstates what grows
+
+Using six soils for which both the soil community and the communities grown from it on plates were sequenced (Zheng et al. 2024, BioProject PRJNA1029248), the probability that a taxon grew on plates rises steeply with its 16S identity to the nearest cultured relative:
+
+| Identity to nearest cultured relative | Taxa enriched on plates | Taxa detected on plates |
+|---|---|---|
+| below 90% | 0.09% | 0.7% |
+| 90–94.5% | 0.17% | 1.7% |
+| 94.5–97% | 1.8% | 5.7% |
+| 97–99% | 6.8% | 18.4% |
+| 99% or above | 27.3% | 55.9% |
+
+Each soil was predicted from the other five, giving a held-out AUC of 0.88 (95% CI 0.87–0.90) for enrichment on plates, with predicted probabilities matching observed rates in every identity band.
+
+A common database shortcut — counting a taxon as culturable if it has a relative at 94.5% identity or above — covers 50% of soil reads, against 3.3% observed enriched on plates and 13.3% detected. That is an overestimate of roughly 15-fold and 3.8-fold respectively.
+
+Two methodological findings came out of this stage: about 1.3% of genome assemblies labelled as isolates in a standard reference carry 16S genes from unrelated phyla, which inflates the apparent supply of cultured relatives; and once reference sequences are trimmed to the sequenced region, whether alignment gaps are counted makes no difference to the result.
+
+![Growth on plates against identity to the nearest cultured relative](figures/fig_phase0_calibration.png)
+
+Plain-language caption: `figures/captions.md`. Numbers: `results/phase0/`.
+
+### Dataset census
+
+A literature and archive search (1,120 articles screened, 597 sequencing projects checked against their public records) identified 10 independent studies that sequenced both an environmental sample and the plate-grown communities from it, spanning soil, activated sludge, seawater, marine sponge, plant and food. The summary table is `data/processed/census.csv`.
+
+**Next:** reprocessing those studies through a single pipeline, then fitting and validating the cross-study model.
+
+All results so far come from a single dataset, under one set of plating conditions, and should be read that way until the cross-study analysis is done.
 
 ## Setup
 
