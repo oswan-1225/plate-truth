@@ -38,3 +38,11 @@ def test_asv_copy_number_falls_back_up_ranks():
     assert out.loc["a"].tolist() == [9.0, "genus"]
     assert out.loc["b"].tolist() == [3.0, "family"]
     assert out.loc["c"].tolist() == [2.0, "default"]
+
+
+def test_phylum_consistency():
+    from plate_truth.taxonomy import base_phylum, phylum_consistent
+    assert base_phylum("p__Bacillota_A") == "Bacillota"
+    assert phylum_consistent("p__Bacillota_A", "Bacillota")
+    assert not phylum_consistent("p__Pseudomonadota", "Acidobacteriota")
+    assert phylum_consistent("p__Pseudomonadota", None)  # unclassified: cannot judge

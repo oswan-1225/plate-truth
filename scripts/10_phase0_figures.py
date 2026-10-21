@@ -3,7 +3,7 @@
 fig_phase0_calibration.(png|pdf):
   (a) observed share of soil ASVs that grew, per nearest-relative identity bin, for the
       enriched (primary) and detected definitions, with soil-bootstrap 95% intervals, and the
-      mean held-out prediction for that bin (open marker).
+      mean held-out prediction for that bin (black tick).
   (b) per soil: read-weighted share of the soil community that has a cultured relative
       (>= 94.5%, the database proxy), that the held-out calibration predicts will grow, and
       that was observed enriched on plates.
@@ -44,9 +44,11 @@ def panel_bins(ax, calib):
         ax.errorbar(x + shift, d["observed"], yerr=np.clip(err, 0, None), fmt="o", ms=7,
                     color=colour, ecolor=colour, elinewidth=2, capsize=0,
                     label=LABELS[outcome] + ", observed")
-        ax.plot(x + shift, d["predicted"], "o", ms=8, mfc="none", mec=colour, mew=1.5,
-                label=LABELS[outcome].split(" (")[0] + ", held-out prediction")
-    ax.set_xticks(x, [b if b != "none" else "no hit" for b in bins])
+        ax.plot(x + shift, d["predicted"], "_", ms=16, mew=2.5, color=INK, zorder=3,
+                label="Held-out prediction" if outcome == "enriched_on_plates" else None)
+    n = sub[sub["outcome"] == "enriched_on_plates"].set_index("identity_bin")["n"]
+    ticks = [("no hit" if b == "none" else b) + f"\nn={n[b]:,}" for b in bins]
+    ax.set_xticks(x, ticks)
     ax.set_xlabel("16S identity to nearest cultured relative (%)", color=INK)
     ax.set_ylabel("Share of soil ASVs", color=INK)
     ax.set_ylim(0, 1)
@@ -61,7 +63,8 @@ def panel_recovery(ax, rec):
     for col, colour, lab in [("proxy_has_relative", ORANGE, "Has cultured relative (≥94.5%)"),
                              ("predicted_calibrated", AQUA, "Predicted (held-out calibration)"),
                              ("observed_grew", BLUE, "Observed enriched on plates")]:
-        ax.plot(d[col], y, "o", ms=8, color=colour, label=lab, mec="white", mew=1)
+        off = {"proxy_has_relative": 0.0, "predicted_calibrated": 0.15, "observed_grew": -0.15}
+        ax.plot(d[col], y + off[col], "o", ms=8, color=colour, label=lab, mec="white", mew=1)
     for yi, (_, r) in zip(y, d.iterrows(), strict=True):
         lo = r[["proxy_has_relative", "predicted_calibrated", "observed_grew"]].min()
         hi = r[["proxy_has_relative", "predicted_calibrated", "observed_grew"]].max()

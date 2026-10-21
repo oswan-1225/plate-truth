@@ -7,8 +7,9 @@ Inputs (data/raw/):
   reference/gtdb_r232_ssu_all.fna.gz + *_metadata.tsv.gz   GTDB release 232
 Outputs (data/interim/reference/):
   bacdive_strains.csv, bacdive_16s_choice.csv, bacdive_genomes.csv
-  cultured_v4.fasta            unique amplified-region sequences (ref_000001, ...)
-  cultured_v4_members.csv      ref_id -> every source sequence with that exact region
+  cultured_v4_unfiltered.fasta unique amplified-region sequences (ref_000001, ...)
+  cultured_v4_members_unfiltered.csv  ref_id -> every source sequence with that region
+  (scripts/03b_filter_reference.py then removes contaminated genome assemblies)
   pcr_report_*.json            cutadapt in-silico PCR reports
 """
 
@@ -123,9 +124,9 @@ def main() -> None:
                   cfg["region_min_len"], cfg["region_max_len"], out / "pcr_report_v4.json")
     clean = [(rid, seq) for rid, seq in read_fasta(region) if not re.search(r"[^ACGT]", seq)]
     uniques, members = dereplicate((rid.split()[0], seq) for rid, seq in clean)
-    write_fasta(uniques, out / "cultured_v4.fasta")
+    write_fasta(uniques, out / "cultured_v4_unfiltered.fasta")
     members["source"] = members["member_id"].str.split("|").str[0]
-    members.to_csv(out / "cultured_v4_members.csv", index=False)
+    members.to_csv(out / "cultured_v4_members_unfiltered.csv", index=False)
 
     full_src = pd.Series([h.split("|")[0] for h, _ in read_fasta(full)]).value_counts()
     summary = pd.DataFrame({"full_length": full_src,

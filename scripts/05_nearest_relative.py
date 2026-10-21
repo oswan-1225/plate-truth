@@ -1,12 +1,16 @@
 """Nearest cultured relative for every Zheng et al. soil ASV.
 
-Reference sets: all sources (primary), BacDive strains only (the pilot's reference) and
-RefSeq type material only. (GTDB isolates alone are almost identical to 'all' and are not run.)
+Reference sets: all sources after removing contaminated genome assemblies (primary; script
+03b), all sources before that filter ('all_unfiltered', sensitivity), BacDive strains only (the
+pilot's reference) and RefSeq type material only.
 
 For each set: an exhaustive search ranked by id1 and another ranked by id2 (top hits only),
 so the best id1 and id2 identities are exact. The gap-blind identity (mid) is the best over
 the union of those hits plus a bounded search's 64 accepted hits; it is an approximation and
 is used only in the sensitivity analysis.
+
+Hit files in data/interim/nearest_relative/ are reused if present; delete that folder after
+changing the ASVs or the reference.
 
 Output: data/processed/zheng2024_nearest_relative.csv (asv_id x reference set)
 """
@@ -36,19 +40,22 @@ def main() -> None:
     asv_ids = [h.split(";")[0] for h, _ in read_fasta(asvs)]
     uniques = dict(read_fasta(ref_dir / "cultured_v4.fasta"))
     members = pd.read_csv(ref_dir / "cultured_v4_members.csv")
+    unfiltered = dict(read_fasta(ref_dir / "cultured_v4_unfiltered.fasta"))
 
     tables = []
-    for name, source in [("all", None), ("bacdive_strain", "bacdive_strain"),
-                         ("refseq_type", "refseq_type")]:
+    for name, source in [("all", None), ("all_unfiltered", None),
+                         ("bacdive_strain", "bacdive_strain"), ("refseq_type", "refseq_type")]:
         db = work / f"ref_{name}.fasta"
-        subset_fasta(uniques, members, source, db)
+        subset_fasta(unfiltered if name == "all_unfiltered" else uniques, members, source, db)
         parts = []
         for iddef in (1, 2):
             path = work / f"hits_{name}_exhaustive_id{iddef}.tsv"
-            search(asvs, db, path, iddef, MIN_ID, 0, 0, top_hits_only=True)
+            if not path.exists():
+                search(asvs, db, path, iddef, MIN_ID, 0, 0, top_hits_only=True)
             parts.append(read_hits(path))
         path = work / f"hits_{name}_bounded.tsv"
-        search(asvs, db, path, 1, MIN_ID, MAXACCEPTS, MAXREJECTS)
+        if not path.exists():
+            search(asvs, db, path, 1, MIN_ID, MAXACCEPTS, MAXREJECTS)
         parts.append(read_hits(path))
         hits = pd.concat(parts).drop_duplicates(["query", "target"])
         t = nearest_relative_table(asv_ids, hits)

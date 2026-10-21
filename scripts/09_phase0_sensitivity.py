@@ -4,7 +4,8 @@ with one choice changed, at the (ASV, soil) unit, held-out identity-bin model.
 Scenarios:
   thresholds    enriched: min reads {2,5,10} x fold {1.5,2,5}; detected: min reads {2,5,10}
   identity      id1 (primary) / id2 (terminal gaps ignored) / mid (all gaps ignored)
-  reference     all sources / BacDive strains only (pilot) / RefSeq type material only
+  reference     all sources (contaminated assemblies removed) / all sources unfiltered /
+                BacDive strains only (pilot) / RefSeq type material only
   environment   original soil (primary) / plated inoculum (filtrate)
   copy_number   off (primary) / relative abundances divided by rrnDB 16S copy number
   contaminants  kept and flagged (primary) / paper's candidate-contaminant ASVs excluded
@@ -65,7 +66,7 @@ def main() -> None:
                          scenario="thresholds"))
     for id_col in ["id2", "mid"]:
         rows.append(dict(run(**base, id_col=id_col), scenario="identity"))
-    for ref in ["bacdive_strain", "refseq_type"]:
+    for ref in ["all_unfiltered", "bacdive_strain", "refseq_type"]:
         rows.append(dict(run(**base, ref_set=ref), scenario="reference"))
         rows.append(dict(run(**base, ref_set=ref, outcome="detected_on_plates"),
                          scenario="reference"))

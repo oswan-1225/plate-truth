@@ -83,3 +83,40 @@ def asv_copy_number(tax: pd.DataFrame, lookup: dict, default: float) -> pd.DataF
         cn.append(value)
         src.append(rank_used)
     return pd.DataFrame({"copy_number": cn, "copy_number_rank": src}, index=tax.index)
+
+
+def run_sintax_chunks(query: Path, db: Path, out: Path, cutoff: float, seed: int,
+                      n_chunks: int, workdir: Path) -> None:
+    """SINTAX in parallel: split the query into chunks, classify each with one thread and the
+    same seed (so the result is reproducible), then concatenate the outputs."""
+    from concurrent.futures import ThreadPoolExecutor
+
+    from plate_truth.reference import write_fasta
+
+    records = list(read_fasta(query))
+    paths = []
+    for i in range(n_chunks):
+        chunk = workdir / f"sintax_chunk_{i}.fasta"
+        write_fasta(records[i::n_chunks], chunk)
+        paths.append(chunk)
+    with ThreadPoolExecutor(n_chunks) as pool:
+        list(pool.map(lambda p: run_sintax(p, db, p.with_suffix(".tsv"), cutoff, seed), paths))
+    with open(out, "w") as handle:
+        for p in paths:
+            handle.write(p.with_suffix(".tsv").read_text())
+            p.unlink()
+            p.with_suffix(".tsv").unlink()
+
+
+def base_phylum(name) -> str | None:
+    """Phylum name without GTDB prefixes/suffixes: 'p__Bacillota_A' -> 'Bacillota'."""
+    if not isinstance(name, str) or not name:
+        return None
+    return re.sub(r"_[A-Z]$", "", name.removeprefix("p__"))
+
+
+def phylum_consistent(genome_phylum, ssu_phylum) -> bool:
+    """False only when both phyla are known and differ; an unclassified 16S cannot be judged
+    and is treated as consistent."""
+    g, s = base_phylum(genome_phylum), base_phylum(ssu_phylum)
+    return g is None or s is None or g == s
