@@ -1,0 +1,281 @@
+# Phase 1 census: candidate studies that sequenced BOTH an environmental sample and the
+# plate-grown community from it. Curated by reading each paper's methods and each study's ENA
+# run table; counts are NOT written here, script 12 computes them from the cached ENA tables.
+#
+# env_pattern / plate_pattern: regular expressions applied to `match_field` of the ENA run
+# table to label each run. Runs matching neither are "other" (isolates, controls, liquid
+# enrichments) and are not used. Fields left null are not yet verified.
+# decision: include | exclude | pending. Inclusion criteria: DECISIONS.md D-015.
+
+studies:
+  - id: zheng2024_soil
+    accession: PRJNA1029248
+    doi: 10.1038/s41467-024-53446-4
+    citation: Zheng et al. 2024, Nat Commun
+    habitat: soil
+    host_associated: false
+    media: ["1% TSA", "soil extract"]
+    temperature_c: [26]
+    oxygen: [aerobic, anaerobic, microaerophilic]
+    incubation_days: 28
+    region: V4
+    primers: 515F/806R
+    platform: ILLUMINA
+    match_field: library_name
+    env_pattern: '^(?:TA|SM|HN|YN|NX|GD)_\d+_ORI_ORI$'
+    plate_pattern: '^(?:TA|SM|HN|YN|NX|GD)_\d+_(?:AE|AN|MI)_(?:TSA|inSITU)$'
+    decision: include
+    reason: Phase 0 study; verified against the paper and Supplementary Data 1.
+
+  - id: zheng2024_sludge
+    accession: PRJNA1029248
+    doi: 10.1038/s41467-024-53446-4
+    citation: Zheng et al. 2024, Nat Commun
+    habitat: activated sludge
+    host_associated: false
+    media: ["R2A", "extraction medium", "artificial influent"]
+    temperature_c: [26]
+    oxygen: [aerobic, anaerobic, microaerophilic]
+    incubation_days: 28
+    region: V4
+    primers: 515F/806R
+    platform: ILLUMINA
+    match_field: library_name
+    env_pattern: '^(?:XM1|XM2|SZ|NJ|SH|EBPR)(?:_[A-Z]+)?_\d+_ORI_ORI$'
+    plate_pattern: '^(?:XM1|XM2|SZ|NJ|SH|EBPR)(?:_[A-Z]+)?_\d+_(?:AE|AN|MI)_(?:R2A|inSITU|Artificial|influent_inSITU)$'
+    decision: include
+    reason: Same project as the soil study but a different habitat; analysed as its own study.
+
+  - id: lennon2019_claytill
+    accession: PRJNA483533
+    doi: 10.1128/aem.02658-18
+    citation: Nielsen et al. 2019, Appl Environ Microbiol
+    habitat: soil
+    host_associated: false
+    media: ["R2A (porous surface model)", "reference agar plate"]
+    temperature_c: null
+    oxygen: [aerobic]
+    incubation_days: null
+    region: V3-V4
+    primers: 341F/806R
+    platform: ILLUMINA
+    match_field: sample_title
+    env_pattern: 'community extracted from soil|DNA extracted from soil'
+    plate_pattern: 'grown on (?:hydrated surface|solid medium)'
+    decision: include
+    reason: >-
+      Nycodenz-extracted soil communities and the DNA extracted from soil are the culture-
+      independent side; agar-plate communities (full reference plates and porous-surface-model
+      plates) are the plate side, from the same five soil/sediment compartments.
+
+  - id: wang2023_desertsoil
+    accession: PRJNA889009
+    doi: 10.1038/s41522-023-00439-8
+    citation: Wang et al. 2023, npj Biofilms Microbiomes
+    habitat: soil
+    host_associated: false
+    media: ["many (culturomics panel incl. R2A, TSA, HA)"]
+    temperature_c: [15, 30, 45]
+    oxygen: [aerobic]
+    incubation_days: null       # "3-15 days", per-treatment table
+    region: full-length
+    primers: 27F/1492R
+    platform: PACBIO_SMRT
+    match_field: sample_title
+    env_pattern: '^OSS$'
+    plate_pattern: '^[BR]C[LMH]$'
+    decision: include
+    reason: >-
+      Methods state full-length 16S sequencing of "the two original soil samples and the 360
+      culture-enriched samples"; culture samples are labelled bulk/rhizosphere at 15/30/45 C.
+      Only two source samples, so it contributes conditions, not independent source samples.
+
+  - id: dueholm2023_sludge
+    accession: PRJNA981068
+    doi: 10.1128/aem.01151-23
+    citation: Dueholm et al. 2023, Appl Environ Microbiol
+    habitat: activated sludge
+    host_associated: false
+    media: null                 # several agarose media, see paper Table 1
+    temperature_c: null
+    oxygen: [aerobic, anaerobic]
+    incubation_days: null
+    region: V1-V3
+    primers: null
+    platform: ILLUMINA
+    match_field: sample_title
+    env_pattern: '^MV-PHN-AS'
+    plate_pattern: '^MV-PHN-PL'
+    decision: include
+    reason: >-
+      Total plate biomass sequenced per plate plus the source activated sludge; the many
+      Isolate_* libraries are single isolates and are excluded by the pattern.
+
+  - id: dueholm2026_sludge_antibiotics
+    accession: PRJEB85528
+    doi: 10.1128/spectrum.01477-26
+    citation: 2026, Microbiol Spectrum
+    habitat: activated sludge
+    host_associated: false
+    media: ["activated sludge filtrate (ASF) agarose", "ASF + 12 antibiotics x 3 levels"]
+    temperature_c: null
+    oxygen: null
+    incubation_days: 14
+    region: full-length
+    primers: null
+    platform: PACBIO_SMRT
+    match_field: library_name
+    env_pattern: '^RAW_\d+$'
+    plate_pattern: '^(?:CTRL|AMP|CAR|CHL|CIP|ERI|GEN|KAN|NEO|RIF|STR|TET)_'
+    decision: include
+    reason: >-
+      Full-length 16S of biomass scraped from each plate after 14 days plus the raw activated
+      sludge source (RAW_*); isolate_* and PCR controls excluded by the pattern. Antibiotic
+      plates are a selective medium class.
+
+  - id: versluis2019_sponges
+    accession: PRJNA453745
+    doi: 10.3390/md17100578
+    citation: Indraningrat et al. 2019, Mar Drugs
+    habitat: marine sponge
+    host_associated: true
+    media: ["marine agar 1/10", "M3", "oligotrophic", "cryo", "mucin", "Cren"]
+    temperature_c: [30]
+    oxygen: [aerobic]
+    incubation_days: 28
+    region: null
+    primers: null
+    platform: ILLUMINA
+    match_field: description
+    env_pattern: '^sponges$'
+    plate_pattern: 'scraping colonies on plates'
+    decision: include
+    reason: >-
+      ENA isolation_source separates direct sponge samples from plate scrapings; filtered
+      seawater samples are a separate environment and are not matched to the sponge plates.
+
+  - id: fonseca2025_oak
+    accession: PRJEB82441
+    doi: 10.1093/ismeco/ycaf019
+    citation: 2025, ISME Communications
+    habitat: plant (oak)
+    host_associated: true
+    media: ["TSA", "TSA 1/10", "MEA", "MEA 1/10", "R2A", "+ oak leaf extract"]
+    temperature_c: null
+    oxygen: [aerobic, anaerobic]
+    incubation_days: 7
+    region: null
+    primers: null
+    platform: ILLUMINA
+    match_field: description
+    env_pattern: '(?:Leaf|Stem|Rhizosphere) microbiota'
+    plate_pattern: '(?:leaf|stem|rhizosphere) isolates'
+    decision: include
+    reason: >-
+      Colonies pooled per tissue and per agar type, alongside direct tissue amplicons.
+      Linkage is at tissue level (leaf/stem/rhizosphere), not per individual tree.
+
+  - id: higuera2024_seawater
+    accession: PRJNA971915
+    doi: 10.1186/s40659-024-00556-4
+    citation: 2024, Biol Res
+    habitat: marine water
+    host_associated: false
+    media: ["nutrient medium", "saline medium", "+ antibiotics (OTC, FLQ, FFC)"]
+    temperature_c: null         # "room temperature"
+    oxygen: [aerobic]
+    incubation_days: 5
+    region: V1-V3
+    primers: null
+    platform: ILLUMINA
+    match_field: sample_title
+    env_pattern: '^Bacterial community$'
+    plate_pattern: '^Culturable'
+    decision: include
+    reason: >-
+      Two sites (salmon farm and Pacific shore) with a direct community library and culturable
+      pools on two media with and without antibiotics.
+
+  - id: dekeyser2020_broiler
+    accession: PRJNA635448
+    doi: 10.3389/fmicb.2020.539540
+    citation: De Keyser et al. 2020, Front Microbiol
+    habitat: food (broiler carcass)
+    host_associated: true
+    media: ["plate count agar", "TSA", "blood agar"]
+    temperature_c: [7, 30]
+    oxygen: [aerobic]
+    incubation_days: null       # 3 days at 30 C; 4-7 days at 7 C
+    region: null
+    primers: null
+    platform: ILLUMINA
+    match_field: library_name
+    env_pattern: '_SH$'
+    plate_pattern: '_(?:BA|TSA|PCA)\d+$'
+    decision: include
+    reason: >-
+      Carcass homogenates (_SH) sequenced alongside plate washes of the same homogenate on
+      three media at two temperatures.
+
+  - id: fuentes2018_rumen
+    accession: SRP153190
+    doi: 10.3389/fmicb.2018.01999
+    citation: Zehavi et al. 2018, Front Microbiol
+    habitat: rumen
+    host_associated: true
+    media: ["M10 defined", "M10 + clarified rumen fluid"]
+    temperature_c: [39]
+    oxygen: [anaerobic]
+    incubation_days: 3
+    region: null
+    primers: null
+    platform: ILLUMINA
+    match_field: sample_title
+    env_pattern: '^Bovine rumen sample'
+    plate_pattern: '^Agar plate media'
+    decision: pending
+    reason: >-
+      Plates come from one selected cow, so only one source sample can be linked to plates;
+      the other 36 rumen libraries are unmatched. Keep as a low-weight study, decide at GATE 1.
+
+  - id: eevers2021_phylloplane
+    accession: PRJNA626008
+    doi: 10.1186/s12866-021-02119-z
+    citation: 2021, BMC Microbiol
+    habitat: plant (ivy phylloplane)
+    host_associated: true
+    media: ["LB", "LB 1/10", "YMA", "YFlour", "YEx"]
+    temperature_c: [30]
+    oxygen: [aerobic]
+    incubation_days: null
+    region: null
+    primers: null
+    platform: LS454
+    match_field: library_name
+    env_pattern: '^uncultured_'
+    plate_pattern: '^(?:LB|LB01|YMA|YFlour|YEx)_'
+    decision: pending
+    reason: >-
+      Clean design (leaf-wash community vs five media), but 454 pyrosequencing: different error
+      profile from the Illumina studies, so reprocessing needs a separate denoising setting.
+
+  - id: lau2016_humangut
+    accession: PRJNA321331
+    doi: 10.1186/s13073-016-0327-7
+    citation: Lau et al. 2016, Genome Med
+    habitat: human gut
+    host_associated: true
+    media: ["33 media"]
+    temperature_c: [37]
+    oxygen: [aerobic, anaerobic, microaerophilic]
+    incubation_days: null
+    region: null
+    primers: null
+    platform: null
+    match_field: library_name
+    env_pattern: null
+    plate_pattern: null
+    decision: pending
+    reason: >-
+      The original culture-enriched molecular profiling study, but the ENA run table for this
+      accession returns no runs; needs an SRA-side check before it can be used.
