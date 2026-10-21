@@ -276,7 +276,7 @@ studies:
     primer_fwd: GAGTTTGATCMTGGCTCAG
     primer_rev: GWATTACCGCGGCKGCTG
     platform: ILLUMINA
-    read_prep: unresolved   # primers mostly stripped, ragged R1 starts; decide before processing
+    read_prep: unresolved   # provider-trimmed reads; window not reconstructible; held out (D-026)
     match_field: sample_title
     env_pattern: '^Bacterial community$'
     plate_pattern: '^Culturable bacteria pool$'   # D-020: re-plated subcultures excluded
