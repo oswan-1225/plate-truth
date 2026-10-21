@@ -12,6 +12,10 @@ studies:
     accession: PRJNA1029248
     doi: 10.1038/s41467-024-53446-4
     citation: Zheng et al. 2024, Nat Commun
+    study_group: zheng2024
+    linkage: per_sample
+    tier: A
+    tier_note: 6 soils, each with its own plate conditions
     habitat: soil
     host_associated: false
     media: ["1% TSA", "soil extract"]
@@ -31,6 +35,10 @@ studies:
     accession: PRJNA1029248
     doi: 10.1038/s41467-024-53446-4
     citation: Zheng et al. 2024, Nat Commun
+    study_group: zheng2024
+    linkage: per_sample
+    tier: A
+    tier_note: 5 sludges + 1 reactor; same lab as the soil rows
     habitat: activated sludge
     host_associated: false
     media: ["R2A", "extraction medium", "artificial influent"]
@@ -50,6 +58,10 @@ studies:
     accession: PRJNA483533
     doi: 10.1128/aem.02658-18
     citation: Nielsen et al. 2019, Appl Environ Microbiol
+    study_group: nielsen2019
+    linkage: per_site
+    tier: B
+    tier_note: 5 soil/sediment compartments; plates link to compartment
     habitat: soil
     host_associated: false
     media: ["R2A (porous surface model)", "reference agar plate"]
@@ -72,6 +84,10 @@ studies:
     accession: PRJNA889009
     doi: 10.1038/s41522-023-00439-8
     citation: Wang et al. 2023, npj Biofilms Microbiomes
+    study_group: wang2023
+    linkage: per_site
+    tier: B
+    tier_note: only 2 source samples (bulk, rhizosphere) but 360 plate samples over 3 temperatures
     habitat: soil
     host_associated: false
     media: ["many (culturomics panel incl. R2A, TSA, HA)"]
@@ -94,6 +110,10 @@ studies:
     accession: PRJNA981068
     doi: 10.1128/aem.01151-23
     citation: Dueholm et al. 2023, Appl Environ Microbiol
+    study_group: dueholm2023
+    linkage: single_source
+    tier: C
+    tier_note: one activated sludge source; many media and oxygen conditions
     habitat: activated sludge
     host_associated: false
     media: null                 # several agarose media, see paper Table 1
@@ -115,6 +135,10 @@ studies:
     accession: PRJEB85528
     doi: 10.1128/spectrum.01477-26
     citation: 2026, Microbiol Spectrum
+    study_group: dueholm2026
+    linkage: single_source
+    tier: C
+    tier_note: one raw activated sludge source; 12 antibiotics x 3 concentrations
     habitat: activated sludge
     host_associated: false
     media: ["activated sludge filtrate (ASF) agarose", "ASF + 12 antibiotics x 3 levels"]
@@ -137,6 +161,10 @@ studies:
     accession: PRJNA453745
     doi: 10.3390/md17100578
     citation: Indraningrat et al. 2019, Mar Drugs
+    study_group: indraningrat2019
+    linkage: per_sample
+    tier: A
+    tier_note: individual sponges with matched cultivation libraries; 6 media
     habitat: marine sponge
     host_associated: true
     media: ["marine agar 1/10", "M3", "oligotrophic", "cryo", "mucin", "Cren"]
@@ -158,6 +186,10 @@ studies:
     accession: PRJEB82441
     doi: 10.1093/ismeco/ycaf019
     citation: 2025, ISME Communications
+    study_group: fonseca2025
+    linkage: per_site
+    tier: B
+    tier_note: linkage at tissue level (leaf/stem/rhizosphere)
     habitat: plant (oak)
     host_associated: true
     media: ["TSA", "TSA 1/10", "MEA", "MEA 1/10", "R2A", "+ oak leaf extract"]
@@ -179,6 +211,10 @@ studies:
     accession: PRJNA971915
     doi: 10.1186/s40659-024-00556-4
     citation: 2024, Biol Res
+    study_group: higuera2024
+    linkage: per_site
+    tier: B
+    tier_note: 2 sites; 2 media with and without 3 antibiotics
     habitat: marine water
     host_associated: false
     media: ["nutrient medium", "saline medium", "+ antibiotics (OTC, FLQ, FFC)"]
@@ -200,6 +236,10 @@ studies:
     accession: PRJNA635448
     doi: 10.3389/fmicb.2020.539540
     citation: De Keyser et al. 2020, Front Microbiol
+    study_group: dekeyser2020
+    linkage: per_sample
+    tier: A
+    tier_note: 15 carcass homogenates each with their own plate washes; 3 media x 2 temperatures
     habitat: food (broiler carcass)
     host_associated: true
     media: ["plate count agar", "TSA", "blood agar"]
@@ -221,6 +261,10 @@ studies:
     accession: SRP153190
     doi: 10.3389/fmicb.2018.01999
     citation: Zehavi et al. 2018, Front Microbiol
+    study_group: zehavi2018
+    linkage: single_source
+    tier: C
+    tier_note: plates from one cow only
     habitat: rumen
     host_associated: true
     media: ["M10 defined", "M10 + clarified rumen fluid"]
@@ -242,6 +286,10 @@ studies:
     accession: PRJNA626008
     doi: 10.1186/s12866-021-02119-z
     citation: 2021, BMC Microbiol
+    study_group: eevers2021
+    linkage: per_site
+    tier: C
+    tier_note: 454 platform; excluded by D-017
     habitat: plant (ivy phylloplane)
     host_associated: true
     media: ["LB", "LB 1/10", "YMA", "YFlour", "YEx"]
@@ -254,15 +302,20 @@ studies:
     match_field: library_name
     env_pattern: '^uncultured_'
     plate_pattern: '^(?:LB|LB01|YMA|YFlour|YEx)_'
-    decision: pending
+    decision: exclude
     reason: >-
-      Clean design (leaf-wash community vs five media), but 454 pyrosequencing: different error
-      profile from the Illumina studies, so reprocessing needs a separate denoising setting.
+      Clean design (leaf-wash community vs five media), but 454 pyrosequencing: homopolymer
+      errors and a separate denoising path for 24 runs (4 environmental). Excluded by D-017;
+      revisit only if it fills a habitat gap nothing else covers.
 
   - id: lau2016_humangut
     accession: PRJNA321331
     doi: 10.1186/s13073-016-0327-7
     citation: Lau et al. 2016, Genome Med
+    study_group: lau2016
+    linkage: unknown
+    tier: C
+    tier_note: no runs returned by ENA
     habitat: human gut
     host_associated: true
     media: ["33 media"]

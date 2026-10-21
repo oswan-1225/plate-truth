@@ -66,12 +66,15 @@ def main() -> None:
     census.to_csv(out / "census.csv", index=False)
     if per_run:
         pd.concat(per_run).to_csv(out / "census_runs.csv", index=False)
-    show = ["study_id", "accession", "habitat", "host_associated", "decision",
-            "n_amplicon_runs", "n_environment_runs", "n_plate_runs", "platform_observed"]
+    show = ["study_id", "study_group", "habitat", "tier", "linkage", "decision",
+            "n_environment_runs", "n_plate_runs", "platform_observed"]
     print(census[show].to_string(index=False))
     usable = census[(census["decision"] == "include") & (census["n_environment_runs"] > 0)
                     & (census["n_plate_runs"] > 0)]
-    print(f"\nincluded with both sides present: {len(usable)}")
+    print(f"\nincluded rows with both sides present: {len(usable)}")
+    print(f"independent study groups: {usable['study_group'].nunique()} "
+          f"(tier A {(usable['tier'] == 'A').sum()}, B {(usable['tier'] == 'B').sum()}, "
+          f"C {(usable['tier'] == 'C').sum()})")
     print("habitats (non-host):",
           sorted(usable.loc[~usable["host_associated"], "habitat"].unique()))
     print("habitats (host-associated):",
@@ -80,9 +83,9 @@ def main() -> None:
 
 def summary_fields(study: dict) -> dict:
     """The curated fields copied through to the census table."""
-    keys = ["id", "accession", "doi", "citation", "habitat", "host_associated", "media",
-            "temperature_c", "oxygen", "incubation_days", "region", "primers", "decision",
-            "reason"]
+    keys = ["id", "study_group", "accession", "doi", "citation", "habitat", "host_associated",
+            "tier", "linkage", "tier_note", "media", "temperature_c", "oxygen",
+            "incubation_days", "region", "primers", "decision", "reason"]
     out = {k if k != "id" else "study_id": study.get(k) for k in keys}
     for k in ("media", "temperature_c", "oxygen"):
         if isinstance(out[k], list):
