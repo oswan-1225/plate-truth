@@ -6,6 +6,8 @@ window, dereplicate. Raw FASTQs are deleted after each run.
   primers_in_reads   merge pairs, then keep the window between the primers on either strand
   primers_removed    merge pairs, then orient against the study's cultured reference
   pacbio             single reads, cut to the window of the study's reference primer pair (V4)
+  merged_primers_removed  deposited reads already merged and primer-trimmed (one file per run):
+                     orient against the study's cultured reference (D-028)
 Per study (pooled over its runs): UNOISE3 + uchime3 de novo chimera removal, then every run's
 reads are mapped back to the ASVs.
 
@@ -13,6 +15,7 @@ Usage: python scripts/16_reads_to_asvs.py STUDY_ID [STUDY_ID ...] [--per-run-onl
 Outputs (data/interim/phase2/{study}/): derep/, qc/, asv_seqs.fasta, counts.csv, read_qc.csv
 """
 
+import gzip
 import shutil
 import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -42,6 +45,13 @@ def prepare_reads(raw: list, mode: str, ref: dict, amp: dict, lo: int, hi: int, 
     """Turn the downloaded files into window reads (FASTQ). Returns (path, reads_in)."""
     if mode == "pacbio":
         reads, n_in = raw[0], None
+    elif mode == "merged_primers_removed":
+        if len(raw) != 1:
+            raise ValueError(f"{mode} needs one merged file, got {len(raw)}")
+        reads = tmp / "merged.fq"
+        with gzip.open(raw[0], "rb") as src, open(reads, "wb") as dst:
+            shutil.copyfileobj(src, dst)
+        n_in = count_fastq_records(reads)
     else:
         if len(raw) != 2:
             raise ValueError(f"{mode} needs paired files, got {len(raw)}")
@@ -53,7 +63,7 @@ def prepare_reads(raw: list, mode: str, ref: dict, amp: dict, lo: int, hi: int, 
         rep = cut_window(reads, out, ref["primer_fwd"], ref["primer_rev"],
                          amp["primer_error_rate"], lo, hi, tmp / "cutadapt.json")
         n_in = n_in if n_in is not None else rep["read_counts"]["input"]
-    elif mode == "primers_removed":
+    elif mode in ("primers_removed", "merged_primers_removed"):
         orient_reads(reads, ref["fasta"], out)
     else:
         raise ValueError(f"unknown read_prep {mode!r}")

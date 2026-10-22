@@ -25,6 +25,14 @@ def test_primer_sets_groups_identical_pairs_and_maps_full_length_to_v4():
     assert out["ref_name"].tolist() == ["V4_515F_806R", "V4_515F_806R_2", "V3-V4_341F_806R"]
 
 
+def test_primer_sets_window_of_shares_the_named_study_set():
+    studies = [{**V4, "id": "a"},
+               {"id": "r", "region": "V4", "primers": "515F/806R", "primer_fwd": None,
+                "primer_rev": None, "window_of": "a"}]
+    out = primer_sets(studies, V4)
+    assert len(out) == 1 and out.loc[0, "studies"] == "a;r"
+
+
 def test_flag_contaminated_genomes_drops_whole_genome():
     members = pd.DataFrame({
         "ref_id": ["r1", "r2", "r3", "r4"],

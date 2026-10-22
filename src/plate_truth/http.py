@@ -25,7 +25,7 @@ def get(url: str, params: dict | None = None, retries: int = 5, timeout: int = 1
     return resp
 
 
-def download(url: str, dest: Path, params: dict | None = None) -> Path:
+def download(url: str, dest: Path, params: dict | None = None, retries: int = 5) -> Path:
     """Stream a URL to dest unless dest already exists; write via a .part file so an
     interrupted download never looks complete."""
     dest = Path(dest)
@@ -33,10 +33,17 @@ def download(url: str, dest: Path, params: dict | None = None) -> Path:
         return dest
     dest.parent.mkdir(parents=True, exist_ok=True)
     part = dest.with_name(dest.name + ".part")
-    resp = get(url, params=params, stream=True)
-    resp.raise_for_status()
-    with part.open("wb") as handle:
-        for chunk in resp.iter_content(chunk_size=1 << 20):
-            handle.write(chunk)
+    for attempt in range(retries):
+        resp = get(url, params=params, stream=True)
+        resp.raise_for_status()
+        try:
+            with part.open("wb") as handle:
+                for chunk in resp.iter_content(chunk_size=1 << 20):
+                    handle.write(chunk)
+            break
+        except requests.RequestException:          # connection dropped mid-stream: start over
+            if attempt == retries - 1:
+                raise
+            time.sleep(2 ** attempt)
     part.replace(dest)
     return dest

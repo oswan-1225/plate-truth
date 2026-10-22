@@ -17,241 +17,241 @@ classes:
   unresolved: The paper does not say which medium the plate used (e.g. numbered plates without a published
     key).
 media:
-- study_id: bhatt2021_groundnut
+- study_id: hinsu2021_groundnut
   medium: Actinomycetes Isolation agar
   medium_name: null
-- study_id: bhatt2021_groundnut
+- study_id: hinsu2021_groundnut
   medium: Azotobacter Mannitol agar
   medium_name: null
-- study_id: bhatt2021_groundnut
+- study_id: hinsu2021_groundnut
   medium: Nutrient agar
   medium_name: Nutrient agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 13.0
-  composition_source: Bhatt et al. 2021 Table 1 (HiMedia); standard nutrient agar recipe as printed in
-    Wang et al. 2023 Suppl. Table 8 (Oxoid)
-- study_id: bhatt2021_groundnut
+  composition_source: Hinsu et al. 2021 Table 1 (HiMedia); standard nutrient agar recipe as printed in
+    Li et al. 2023 Suppl. Table 8 (Oxoid)
+- study_id: hinsu2021_groundnut
   medium: R2A agar
   medium_name: Reasoner's 2A agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 3.05
-  composition_source: Bhatt et al. 2021 Table 1 (HiMedia); standard R2A recipe as printed in Wang et al.
+  composition_source: Hinsu et al. 2021 Table 1 (HiMedia); standard R2A recipe as printed in Li et al.
     2023 Suppl. Table 8 (BD)
-- study_id: bhatt2021_groundnut
+- study_id: hinsu2021_groundnut
   medium: Soil Extract agar
   medium_name: Soil extract agar
   antibacterial: false
   habitat_material: true
   complex_source: true
   organic_g_per_l: null
-  composition_source: Bhatt et al. 2021 Table 1 (HiMedia)
-- study_id: bhatt2021_groundnut
+  composition_source: Hinsu et al. 2021 Table 1 (HiMedia)
+- study_id: hinsu2021_groundnut
   medium: Tryptic soy agar
   medium_name: Tryptic soy agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 22.5
-  composition_source: Bhatt et al. 2021 Table 1 (HiMedia); standard TSA recipe as printed in Wang et al.
+  composition_source: Hinsu et al. 2021 Table 1 (HiMedia); standard TSA recipe as printed in Li et al.
     2023 Suppl. Table 8 (BD)
-- study_id: bhatt2021_groundnut
+- study_id: hinsu2021_groundnut
   medium: YEM agar
   medium_name: null
-- study_id: bhatt2021_groundnut
+- study_id: hinsu2021_groundnut
   medium: Yeast Mannitol agar
   medium_name: null
-- study_id: dekeyser2020_broiler
+- study_id: yu2020_broiler
   medium: TSA
   medium_name: Tryptic soy agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 22.5
-  composition_source: De Keyser et al. 2020 methods (Oxoid); standard TSA recipe as printed in Wang et
+  composition_source: Yu et al. 2020 methods (Oxoid); standard TSA recipe as printed in Li et
     al. 2023 Suppl. Table 8 (BD)
-- study_id: dekeyser2020_broiler
+- study_id: yu2020_broiler
   medium: blood agar
   medium_name: null
-- study_id: dekeyser2020_broiler
+- study_id: yu2020_broiler
   medium: plate count agar
   medium_name: null
-- study_id: dueholm2023_sludge
+- study_id: verhoeven2023_sludge
   medium: PL1
   medium_name: null
   medium_class_override: unresolved
   override_reason: the paper does not say which medium this plate used
-- study_id: dueholm2023_sludge
+- study_id: verhoeven2023_sludge
   medium: PL10
   medium_name: null
   medium_class_override: unresolved
   override_reason: the paper does not say which medium this plate used
-- study_id: dueholm2023_sludge
+- study_id: verhoeven2023_sludge
   medium: PL2
   medium_name: null
   medium_class_override: unresolved
   override_reason: the paper does not say which medium this plate used
-- study_id: dueholm2023_sludge
+- study_id: verhoeven2023_sludge
   medium: PL3
   medium_name: null
   medium_class_override: unresolved
   override_reason: the paper does not say which medium this plate used
-- study_id: dueholm2023_sludge
+- study_id: verhoeven2023_sludge
   medium: PL4
   medium_name: null
   medium_class_override: unresolved
   override_reason: the paper does not say which medium this plate used
-- study_id: dueholm2023_sludge
+- study_id: verhoeven2023_sludge
   medium: PL5
   medium_name: null
   medium_class_override: unresolved
   override_reason: the paper does not say which medium this plate used
-- study_id: dueholm2023_sludge
+- study_id: verhoeven2023_sludge
   medium: PL6
   medium_name: null
   medium_class_override: unresolved
   override_reason: the paper does not say which medium this plate used
-- study_id: dueholm2023_sludge
+- study_id: verhoeven2023_sludge
   medium: PL7
   medium_name: null
   medium_class_override: unresolved
   override_reason: the paper does not say which medium this plate used
-- study_id: dueholm2023_sludge
+- study_id: verhoeven2023_sludge
   medium: PL8
   medium_name: null
   medium_class_override: unresolved
   override_reason: the paper does not say which medium this plate used
-- study_id: dueholm2023_sludge
+- study_id: verhoeven2023_sludge
   medium: PL9
   medium_name: null
   medium_class_override: unresolved
   override_reason: the paper does not say which medium this plate used
-- study_id: dueholm2023_sludge
+- study_id: verhoeven2023_sludge
   medium: unresolved
   medium_name: null
   medium_class_override: unresolved
   override_reason: the paper does not say which medium this plate used
-- study_id: dueholm2026_sludge_antibiotics
+- study_id: villanelo2026_sludge_antibiotics
   medium: ASF agarose
   medium_name: Activated sludge filtrate agarose
   antibacterial: false
   habitat_material: true
   complex_source: true
   organic_g_per_l: null
-  composition_source: Dueholm 2026 methods (ASF + concentrated R2A + C/N source)
-- study_id: dueholm2026_sludge_antibiotics
+  composition_source: Villanelo 2026 methods (ASF + concentrated R2A + C/N source)
+- study_id: villanelo2026_sludge_antibiotics
   medium: ASF agarose + AMP
   medium_name: Activated sludge filtrate agarose + AMP
   antibacterial: true
   habitat_material: true
   complex_source: true
   organic_g_per_l: null
-  composition_source: Dueholm 2026 methods (12 antibiotics x 3 concentrations)
-- study_id: dueholm2026_sludge_antibiotics
+  composition_source: Villanelo 2026 methods (11 antibiotics x 3 concentrations)
+- study_id: villanelo2026_sludge_antibiotics
   medium: ASF agarose + CAR
   medium_name: Activated sludge filtrate agarose + CAR
   antibacterial: true
   habitat_material: true
   complex_source: true
   organic_g_per_l: null
-  composition_source: Dueholm 2026 methods (12 antibiotics x 3 concentrations)
-- study_id: dueholm2026_sludge_antibiotics
+  composition_source: Villanelo 2026 methods (11 antibiotics x 3 concentrations)
+- study_id: villanelo2026_sludge_antibiotics
   medium: ASF agarose + CHL
   medium_name: Activated sludge filtrate agarose + CHL
   antibacterial: true
   habitat_material: true
   complex_source: true
   organic_g_per_l: null
-  composition_source: Dueholm 2026 methods (12 antibiotics x 3 concentrations)
-- study_id: dueholm2026_sludge_antibiotics
+  composition_source: Villanelo 2026 methods (11 antibiotics x 3 concentrations)
+- study_id: villanelo2026_sludge_antibiotics
   medium: ASF agarose + CIP
   medium_name: Activated sludge filtrate agarose + CIP
   antibacterial: true
   habitat_material: true
   complex_source: true
   organic_g_per_l: null
-  composition_source: Dueholm 2026 methods (12 antibiotics x 3 concentrations)
-- study_id: dueholm2026_sludge_antibiotics
+  composition_source: Villanelo 2026 methods (11 antibiotics x 3 concentrations)
+- study_id: villanelo2026_sludge_antibiotics
   medium: ASF agarose + ERI
   medium_name: Activated sludge filtrate agarose + ERI
   antibacterial: true
   habitat_material: true
   complex_source: true
   organic_g_per_l: null
-  composition_source: Dueholm 2026 methods (12 antibiotics x 3 concentrations)
-- study_id: dueholm2026_sludge_antibiotics
+  composition_source: Villanelo 2026 methods (11 antibiotics x 3 concentrations)
+- study_id: villanelo2026_sludge_antibiotics
   medium: ASF agarose + GEN
   medium_name: Activated sludge filtrate agarose + GEN
   antibacterial: true
   habitat_material: true
   complex_source: true
   organic_g_per_l: null
-  composition_source: Dueholm 2026 methods (12 antibiotics x 3 concentrations)
-- study_id: dueholm2026_sludge_antibiotics
+  composition_source: Villanelo 2026 methods (11 antibiotics x 3 concentrations)
+- study_id: villanelo2026_sludge_antibiotics
   medium: ASF agarose + KAN
   medium_name: Activated sludge filtrate agarose + KAN
   antibacterial: true
   habitat_material: true
   complex_source: true
   organic_g_per_l: null
-  composition_source: Dueholm 2026 methods (12 antibiotics x 3 concentrations)
-- study_id: dueholm2026_sludge_antibiotics
+  composition_source: Villanelo 2026 methods (11 antibiotics x 3 concentrations)
+- study_id: villanelo2026_sludge_antibiotics
   medium: ASF agarose + NEO
   medium_name: Activated sludge filtrate agarose + NEO
   antibacterial: true
   habitat_material: true
   complex_source: true
   organic_g_per_l: null
-  composition_source: Dueholm 2026 methods (12 antibiotics x 3 concentrations)
-- study_id: dueholm2026_sludge_antibiotics
+  composition_source: Villanelo 2026 methods (11 antibiotics x 3 concentrations)
+- study_id: villanelo2026_sludge_antibiotics
   medium: ASF agarose + RIF
   medium_name: Activated sludge filtrate agarose + RIF
   antibacterial: true
   habitat_material: true
   complex_source: true
   organic_g_per_l: null
-  composition_source: Dueholm 2026 methods (12 antibiotics x 3 concentrations)
-- study_id: dueholm2026_sludge_antibiotics
+  composition_source: Villanelo 2026 methods (11 antibiotics x 3 concentrations)
+- study_id: villanelo2026_sludge_antibiotics
   medium: ASF agarose + STR
   medium_name: Activated sludge filtrate agarose + STR
   antibacterial: true
   habitat_material: true
   complex_source: true
   organic_g_per_l: null
-  composition_source: Dueholm 2026 methods (12 antibiotics x 3 concentrations)
-- study_id: dueholm2026_sludge_antibiotics
+  composition_source: Villanelo 2026 methods (11 antibiotics x 3 concentrations)
+- study_id: villanelo2026_sludge_antibiotics
   medium: ASF agarose + TET
   medium_name: Activated sludge filtrate agarose + TET
   antibacterial: true
   habitat_material: true
   complex_source: true
   organic_g_per_l: null
-  composition_source: Dueholm 2026 methods (12 antibiotics x 3 concentrations)
-- study_id: fonseca2025_oak
+  composition_source: Villanelo 2026 methods (11 antibiotics x 3 concentrations)
+- study_id: ordonez2025_oak
   medium: unresolved
   medium_name: null
   medium_class_override: unresolved
   override_reason: the paper does not say which medium this plate used
-- study_id: higuera2024_seawater
+- study_id: ortizseverin2024_seawater
   medium: pool of 7 media
   medium_name: Pool of 7 marine and general media
   medium_class_override: other
   override_reason: one library pools scrapings from 7 media of different classes
-  composition_source: Higuera 2024 Additional file 1
-- study_id: lennon2019_claytill
+  composition_source: Ortiz-Severín 2024 Additional file 1
+- study_id: kruger2019_claytill
   medium: 25% R2A
   medium_name: Reasoner's 2A agar (25%)
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 0.76
-  composition_source: Nielsen et al. 2019 methods; standard R2A recipe as printed in Wang et al. 2023
+  composition_source: Krüger et al. 2019 methods; standard R2A recipe as printed in Li et al. 2023
     Suppl. Table 8 (BD)
   note: natamycin added (antifungal, not antibacterial)
-- study_id: versluis2019_sponges
+- study_id: indraningrat2019_sponges
   medium: Crenarchaeota agar
   medium_name: Crenarchaeota agar
   antibacterial: false
@@ -260,7 +260,7 @@ media:
   organic_g_per_l: 0.0
   composition_source: Indraningrat et al. 2019 methods 4.2
   note: carbonate, NH4Cl, trace metals, vitamins
-- study_id: versluis2019_sponges
+- study_id: indraningrat2019_sponges
   medium: GP agar
   medium_name: Gram-positive agar
   antibacterial: true
@@ -269,7 +269,7 @@ media:
   organic_g_per_l: 13.0
   composition_source: Indraningrat et al. 2019 methods 4.2
   note: 2-phenylethanol 2.5 mL/L
-- study_id: versluis2019_sponges
+- study_id: indraningrat2019_sponges
   medium: M3 agar
   medium_name: M3 agar
   antibacterial: true
@@ -278,7 +278,7 @@ media:
   organic_g_per_l: 11.1
   composition_source: Indraningrat et al. 2019 methods 4.2
   note: nalidixic acid 0.015 g/L and K2Cr2O7
-- study_id: versluis2019_sponges
+- study_id: indraningrat2019_sponges
   medium: OLIGO agar
   medium_name: OLIGO agar
   antibacterial: false
@@ -287,16 +287,16 @@ media:
   organic_g_per_l: 0.65
   composition_source: Indraningrat et al. 2019 methods 4.2
   note: artificial seawater base
-- study_id: versluis2019_sponges
+- study_id: indraningrat2019_sponges
   medium: marine agar 1/10
   medium_name: Marine agar 2216 (1/10)
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 0.61
-  composition_source: Indraningrat et al. 2019 methods 4.2; Marine 2216E recipe in Wang et al. 2023 Suppl.
+  composition_source: Indraningrat et al. 2019 methods 4.2; Marine 2216E recipe in Li et al. 2023 Suppl.
     Table 8 (6.1 g/L organic at full strength)
-- study_id: versluis2019_sponges
+- study_id: indraningrat2019_sponges
   medium: mucin agar
   medium_name: Mucin agar
   antibacterial: false
@@ -305,545 +305,545 @@ media:
   organic_g_per_l: 1.0
   composition_source: Indraningrat et al. 2019 methods 4.2
   note: mucin counted as a complex source; artificial seawater
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M1 (BEN)
   medium_name: Bennet's agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 13.5
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M10 (GGA)
   medium_name: Glycerol glycine agar
   antibacterial: false
   habitat_material: false
   complex_source: false
   organic_g_per_l: 22.5
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M11 (HA)
   medium_name: Halophilic agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 12.5
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: 100 g/L NaCl
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M12 (HVA)
   medium_name: Humic acid-vitamin agar
   antibacterial: false
   habitat_material: false
   complex_source: false
   organic_g_per_l: 0.1
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: humic acid + B vitamins
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M13 (KB)
   medium_name: King's B agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 30.0
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M14 (LNMS)
   medium_name: Low nutrient mineral salts agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 0.2
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M15 (LB)
   medium_name: Luria-Bertani agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 15.0
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M16 (MCA)
   medium_name: Mannitol casein agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 2.3
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M17 (MYP)
   medium_name: Mannitol yeast peptone agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 14.0
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M18 (MIC)
   medium_name: Microcrystalline cellulose agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 1.0
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: cellulose not counted
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M19 (MM)
   medium_name: Minimal medium agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 1.0
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: contains 0.5 g/L yeast extract
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M2 (BHI)
   medium_name: Brain heart infusion agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 29.5
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M20 (PYG)
   medium_name: Peptone yeast glucose agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 15.0
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M21 (PYS)
   medium_name: Peptone yeast sodium succinate agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 8.3
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M22 (PPS)
   medium_name: Polypeptone starch agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 15.0
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M23 (PDA)
   medium_name: Potato dextrose agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 20.0
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: '>= (potato infusion not quantified)'
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M24 (RA)
   medium_name: R agar
   antibacterial: false
   habitat_material: false
   complex_source: true
-  organic_g_per_l: 29.0
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  organic_g_per_l: 29.05
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M25 (RH)
   medium_name: Raffinose histidine agar
   antibacterial: false
   habitat_material: false
   complex_source: false
   organic_g_per_l: 6.0
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M26 (RZ1)
   medium_name: Rhizobium 1 agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 11.5
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M27 (RZ2)
   medium_name: Rhizobium 2 agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 6.6
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M28 (SA)
   medium_name: Salt agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 10.0
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: 58.4 g/L NaCl
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M29 (SSM)
   medium_name: Salt sodium molybdate agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 5.0
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: 100 g/L NaCl
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M3 (BRA)
   medium_name: Brooks agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 9.0
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M30 (SSTY)
   medium_name: Sea salt tryptone yeast agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 10.0
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: 35 g/L sea salt
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M31 (CMCA)
   medium_name: Carboxymethyl cellulose agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 5.4
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M32 (SLA)
   medium_name: Sodium lactate agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 11.0
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M33 (SEAB)
   medium_name: Soil extract agar (bulk soil)
   antibacterial: false
   habitat_material: true
   complex_source: true
   organic_g_per_l: null
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: soil extract 1 L; Table 9 swaps M33/M34 labels
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M34 (SEAR)
   medium_name: Soil extract agar (rhizosphere)
   antibacterial: false
   habitat_material: true
   complex_source: true
   organic_g_per_l: null
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: soil extract 1 L; Table 9 swaps M33/M34 labels
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M35 (SCA)
   medium_name: Starch casein agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 10.3
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M36 (SGCY)
   medium_name: Starch glucose casein yeast agar
   antibacterial: false
   habitat_material: false
   complex_source: true
-  organic_g_per_l: 20.0
-  composition_source: Wang et al. 2023 Supplementary Table 8
-  note: '>= (starch alone)'
-- study_id: wang2023_desertsoil
+  organic_g_per_l: 35.0
+  composition_source: Li et al. 2023 Supplementary Table 8
+  note: starch 20 + glucose 5 + casein acid hydrolysate 5 + yeast extract 5
+- study_id: li2023_desertsoil
   medium: M37 (SNA)
   medium_name: Starch nitrate agar
   antibacterial: false
   habitat_material: false
   complex_source: false
   organic_g_per_l: 20.0
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: 100 g/L NaCl
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M38 (STA)
   medium_name: Starch tryptone agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 7.5
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M39 (STBG)
   medium_name: Sucrose tryptone beef glucose agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 14.0
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M4 (CSA)
   medium_name: Casein salt agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 5.0
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: 100 g/L NaCl
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M40 (T5)
   medium_name: Tang 5 agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 4.5
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M41 (TP)
   medium_name: Trehalose proline agar
   antibacterial: false
   habitat_material: false
   complex_source: false
   organic_g_per_l: 8.0
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M42 (TGY)
   medium_name: Tryptic glucose yeast agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 9.0
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M43 (TCN)
   medium_name: Tyrosine casein nitrate agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 13.0
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M44 (YGCP)
   medium_name: Yeast glucose carbonate peptone agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 11.5
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M45 (YMG)
   medium_name: Yeast milk glucose agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 12.0
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M46 (1xTSA)
   medium_name: Tryptic soy agar (1x)
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 22.5
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M47 (0.1xTSA)
   medium_name: Tryptic soy agar (0.1x)
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 2.25
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M48 (0.01xTSA)
   medium_name: Tryptic soy agar (0.01x)
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 0.225
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M49 (1xNA)
   medium_name: Nutrient agar (1x)
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 13.0
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M5 (CHIA)
   medium_name: Chitin agar
   antibacterial: false
   habitat_material: false
   complex_source: false
   organic_g_per_l: 0.0
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: chitin only (insoluble, not counted)
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M50 (0.1xNA)
   medium_name: Nutrient agar (0.1x)
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 1.3
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M51 (0.01xNA)
   medium_name: Nutrient agar (0.01x)
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 0.13
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M52 (1xAIA)
   medium_name: Actinomycete isolation agar (1x)
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 6.1
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M53 (0.1xAIA)
   medium_name: Actinomycete isolation agar (0.1x)
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 0.61
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M54 (0.01xAIA)
   medium_name: Actinomycete isolation agar (0.01x)
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 0.061
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M55 (1xR2A)
   medium_name: Reasoner's 2A agar (1x)
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 3.05
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M56 (0.1xR2A)
   medium_name: Reasoner's 2A agar (0.1x)
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 0.305
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M57 (0.01xR2A)
   medium_name: Reasoner's 2A agar (0.01x)
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 0.0305
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M58 (1xMA)
   medium_name: Marine 2216E agar (1x)
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 6.1
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M59 (0.1xMA)
   medium_name: Marine 2216E agar (0.1x)
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 0.61
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M6 (CZA)
   medium_name: Czapek's agar
   antibacterial: false
   habitat_material: false
   complex_source: false
   organic_g_per_l: 30.0
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M60 (0.01xMA)
   medium_name: Marine 2216E agar (0.01x)
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 0.061
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M7 (GN1)
   medium_name: Gauze's no. 1 agar
   antibacterial: false
   habitat_material: false
   complex_source: false
   organic_g_per_l: 20.0
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M8 (GYM)
   medium_name: Glucose yeast malt agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 18.0
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
-- study_id: wang2023_desertsoil
+- study_id: li2023_desertsoil
   medium: M9 (GLA)
   medium_name: Glycerol agar
   antibacterial: false
   habitat_material: false
   complex_source: true
   organic_g_per_l: 71.0
-  composition_source: Wang et al. 2023 Supplementary Table 8
+  composition_source: Li et al. 2023 Supplementary Table 8
   note: null
 - study_id: zheng2024_sludge
   medium: R2A
@@ -852,7 +852,7 @@ media:
   habitat_material: false
   complex_source: true
   organic_g_per_l: 3.05
-  composition_source: Zheng et al. 2024 methods; standard R2A recipe as printed in Wang et al. 2023 Suppl.
+  composition_source: Zheng et al. 2024 methods; standard R2A recipe as printed in Li et al. 2023 Suppl.
     Table 8 (BD)
 - study_id: zheng2024_sludge
   medium: extraction medium (filtered wastewater)
@@ -869,7 +869,7 @@ media:
   habitat_material: false
   complex_source: true
   organic_g_per_l: 0.225
-  composition_source: Zheng et al. 2024 methods; standard TSA recipe as printed in Wang et al. 2023 Suppl.
+  composition_source: Zheng et al. 2024 methods; standard TSA recipe as printed in Li et al. 2023 Suppl.
     Table 8 (BD)
 - study_id: zheng2024_soil
   medium: soil extract
@@ -879,3 +879,24 @@ media:
   complex_source: true
   organic_g_per_l: null
   composition_source: Zheng et al. 2024 methods (water extract of the soil)
+- study_id: zehavi2018_rumen
+  medium: M10 defined
+  medium_name: Medium 10 (Caldwell and Bryant 1966), modified, with volatile fatty acids
+  antibacterial: false
+  habitat_material: false
+  complex_source: true
+  organic_g_per_l: null
+  composition_source: Zehavi et al. 2018 methods (Medium Preparation)
+  note: per L trypticase 2.0 g, yeast extract 0.5 g, L-cysteine HCl 1.0 g, sugar mix 1 mmol (>=0.15 g),
+    plus 3.1 mL/L volatile fatty acid mix whose composition is not printed, so the total (>=3.65 g/L)
+    cannot be placed either side of the 4 g/L cut; amphotericin B is antifungal only
+- study_id: zehavi2018_rumen
+  medium: M10 + clarified rumen fluid
+  medium_name: Medium 10 (Caldwell and Bryant 1966), modified, with 30% clarified rumen fluid
+  antibacterial: false
+  habitat_material: true
+  complex_source: true
+  organic_g_per_l: null
+  composition_source: Zehavi et al. 2018 methods (Medium Preparation)
+  note: 30 mL clarified rumen fluid per 100 mL replaces the fatty acid mix; amphotericin B is antifungal
+    only

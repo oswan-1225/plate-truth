@@ -16,7 +16,7 @@ def test_defined_minimal_ignores_organic_content():
 
 
 def test_dilute_threshold_puts_r2a_in_dilute():
-    # R2A: ~3.05 g/L organic (Wang et al. Suppl. Table 8 recipe); 1x nutrient agar: 13 g/L
+    # R2A: ~3.05 g/L organic (Li et al. Suppl. Table 8 recipe); 1x nutrient agar: 13 g/L
     assert classify_medium(False, False, True, 3.05)[0] == "dilute_oligotrophic"
     assert classify_medium(False, False, True, 4.0)[0] == "dilute_oligotrophic"
     assert classify_medium(False, False, True, 13.0)[0] == "rich_complex"

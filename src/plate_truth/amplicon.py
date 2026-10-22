@@ -156,3 +156,73 @@ def filter_derep(reads: Path, workdir: Path, run: str, out: Path, max_ee: float,
     part = out.with_name(out.name + ".part")
     vsearch("--derep_fulllength", filt, "--sizeout", "--relabel", f"{run}.u", "--output", part)
     part.replace(out)
+
+
+# --- Forward reads only (sensitivity for runs whose mates are missing, D-030) -----------------
+
+def asv_end_groups(asvs: list[tuple[str, str]], length: int, end: str) -> pd.DataFrame:
+    """Group ASVs that share their first (end='start') or last (end='end') `length` bases: a
+    single read from that end of the amplicon cannot tell them apart.
+
+    asvs: (asv_id, sequence). Returns asv_id, group_id, part; group ids {s|e}1, {s|e}2, ... in
+    order of first appearance.
+    """
+    if end not in ("start", "end"):
+        raise ValueError(f"end must be 'start' or 'end', not {end!r}")
+    ids: dict[str, str] = {}
+    rows = []
+    for asv_id, seq in asvs:
+        part = seq[:length] if end == "start" else seq[-length:]
+        ids.setdefault(part, f"{end[0]}{len(ids) + 1}")
+        rows.append({"asv_id": asv_id, "group_id": ids[part], "part": part})
+    return pd.DataFrame(rows)
+
+
+def reads_by_orientation(reads: Path, fwd: str, rev: str, error_rate: float, out_dir: Path
+                         ) -> tuple[Path, Path]:
+    """Split single reads by the primer they start with (spacers before it allowed) and remove
+    it: (reads read from the forward primer, reads read from the reverse primer). Reads with
+    neither primer are dropped."""
+    cutadapt("-g", f"fwd={fwd}", "-g", f"rev={rev}", "-e", error_rate, "--discard-untrimmed",
+             "-j", 1, "-o", out_dir / "start-{name}.fq", reads)
+    return out_dir / "start-fwd.fq", out_dir / "start-rev.fq"
+
+
+def window_end_reads(reads: Path, length: int, max_ee: float, out: Path, workdir: Path,
+                     revcomp: bool) -> None:
+    """Truncate primer-free reads to `length`, expected-error filter (no Ns), optionally reverse-
+    complement (reads from the reverse primer then show the window's last bases in forward
+    orientation), and dereplicate with sizes."""
+    filt = workdir / f"{out.stem}_filt.fa"
+    vsearch("--fastq_filter", reads, "--fastq_trunclen", length, "--fastq_maxee", max_ee,
+            "--fastq_maxns", 0, "--fastaout", filt)
+    if revcomp:
+        rc = workdir / f"{out.stem}_rc.fa"
+        vsearch("--fastx_revcomp", filt, "--fastaout", rc)
+        filt = rc
+    vsearch("--derep_fulllength", filt, "--sizeout", "--output", out)
+
+
+def split_group_counts(group_counts: pd.DataFrame, groups: pd.DataFrame,
+                       weights: pd.DataFrame) -> pd.DataFrame:
+    """Share each (run, group) count among the group's ASVs in proportion to their counts in
+    another table for the same run (weights: run, asv_id, count); equally if those are all
+    zero. Integer counts by largest remainder, so each group's total is kept exactly.
+
+    group_counts: run, group_id, count. groups: asv_id, group_id. Returns run, asv_id, count.
+    """
+    g = group_counts.merge(groups[["asv_id", "group_id"]], on="group_id")
+    g = g.merge(weights.rename(columns={"count": "w"}), on=["run", "asv_id"], how="left")
+    g["w"] = g["w"].fillna(0).astype(float)
+    key = ["run", "group_id"]
+    wsum = g.groupby(key)["w"].transform("sum")
+    size = g.groupby(key)["asv_id"].transform("size")
+    share = (g["w"] / wsum).where(wsum > 0, 1.0 / size)
+    exact = g["count"] * share
+    g["out"] = exact.astype(int)
+    g["rem"] = exact - g["out"]
+    short = g["count"] - g.groupby(key)["out"].transform("sum")
+    g["rank"] = g.groupby(key)["rem"].rank(method="first", ascending=False)
+    g["out"] += (g["rank"] <= short).astype(int)
+    out = g[g["out"] > 0][["run", "asv_id", "out"]].rename(columns={"out": "count"})
+    return out.reset_index(drop=True)

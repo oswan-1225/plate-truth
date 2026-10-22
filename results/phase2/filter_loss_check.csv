@@ -1,0 +1,5 @@
+study_id,run,kind,reads_pass,reads_fail,within_1.25,random_loss_within_1.25,beyond_2
+verhoeven2023_sludge,SRR24857849,environment,10222,22418,0.8586,0.931,0.0223
+verhoeven2023_sludge,SRR24857850,environment,9312,20724,0.8846,0.9634,0.0253
+verhoeven2023_sludge,SRR24857762,plate,21257,16883,0.9491,0.9983,0.0
+verhoeven2023_sludge,SRR24857897,plate,23234,16170,0.9962,1.0,0.0

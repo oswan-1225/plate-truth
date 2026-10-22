@@ -12,36 +12,49 @@ import pandas as pd
 
 from plate_truth.config import project_root
 
+COUNT_TABLES = ("abundances", "abundances_every_read")
+
 
 def connect(db: Path | None = None) -> sqlite3.Connection:
     """Open the harmonized database (default data/plate_truth.sqlite)."""
     return sqlite3.connect(db or project_root() / "data" / "plate_truth.sqlite")
 
 
-def environment_counts(con: sqlite3.Connection, prokaryotes_only: bool = True) -> pd.DataFrame:
+def _count_table(table: str) -> str:
+    """The read-count table to use: paired-read counts (default) or, for the studies that have
+    it, counts from every read (D-030)."""
+    if table not in COUNT_TABLES:
+        raise ValueError(f"table must be one of {COUNT_TABLES}, not {table!r}")
+    return table
+
+
+def environment_counts(con: sqlite3.Connection, prokaryotes_only: bool = True,
+                       table: str = "abundances") -> pd.DataFrame:
     """Environmental reads pooled over each source sample's runs (PCR or sample replicates).
 
     Columns: study_id, source_sample, asv_id, count. Organelle and non-prokaryote ASVs are
-    dropped unless prokaryotes_only is False.
+    dropped unless prokaryotes_only is False. table: 'abundances' or 'abundances_every_read'
+    (only the studies whose reads were partly deposited without mates have the latter).
     """
     org = "AND t.is_organelle = 0" if prokaryotes_only else ""
     return pd.read_sql(f"""
         SELECT s.study_id, s.source_sample, a.asv_id, SUM(a.count) AS count
-        FROM abundances a JOIN samples s USING (run_accession)
+        FROM {_count_table(table)} a JOIN samples s USING (run_accession)
         JOIN taxonomy t USING (asv_id)
         WHERE s.kind = 'environment' {org}
         GROUP BY s.study_id, s.source_sample, a.asv_id""", con)
 
 
-def plate_counts(con: sqlite3.Connection, prokaryotes_only: bool = True) -> pd.DataFrame:
+def plate_counts(con: sqlite3.Connection, prokaryotes_only: bool = True,
+                 table: str = "abundances") -> pd.DataFrame:
     """Plate reads pooled over the replicate plates of each plating condition.
 
-    Columns: study_id, condition_id, asv_id, count.
+    Columns: study_id, condition_id, asv_id, count. table as in environment_counts.
     """
     org = "AND t.is_organelle = 0" if prokaryotes_only else ""
     return pd.read_sql(f"""
         SELECT s.study_id, s.condition_id, a.asv_id, SUM(a.count) AS count
-        FROM abundances a JOIN samples s USING (run_accession)
+        FROM {_count_table(table)} a JOIN samples s USING (run_accession)
         JOIN taxonomy t USING (asv_id)
         WHERE s.kind = 'plate' {org}
         GROUP BY s.study_id, s.condition_id, a.asv_id""", con)

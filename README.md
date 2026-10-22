@@ -13,7 +13,7 @@ Throughout, **"predicted to grow"** (a model or database output) is kept strictl
 
 ## Status
 
-**In progress.** Two stages are complete: a calibration on one soil dataset, and a census of the datasets available for the cross-study analysis.
+**In progress.** Three stages are complete: a calibration on one soil dataset, a census of the datasets available for the cross-study analysis, and the reprocessing of those datasets into one database. The cross-study model is next.
 
 ### First result: the shortcut overstates what grows
 
@@ -24,7 +24,7 @@ Using six soils for which both the soil community and the communities grown from
 | below 90% | 0.09% | 0.7% |
 | 90–94.5% | 0.17% | 1.7% |
 | 94.5–97% | 1.8% | 5.7% |
-| 97–99% | 6.8% | 18.4% |
+| 97–99% | 6.8% | 18.3% |
 | 99% or above | 27.3% | 55.9% |
 
 Each soil was predicted from the other five, giving a held-out AUC of 0.88 (95% CI 0.87–0.90) for enrichment on plates, with predicted probabilities matching observed rates in every identity band.
@@ -39,9 +39,15 @@ Plain-language caption: `figures/captions.md`. Numbers: `results/phase0/`.
 
 ### Dataset census
 
-A literature and archive search (1,120 articles screened, 597 sequencing projects checked against their public records) identified 10 independent studies that sequenced both an environmental sample and the plate-grown communities from it, spanning soil, activated sludge, seawater, marine sponge, plant and food. The summary table is `data/processed/census.csv`.
+A literature and archive search (1,120 articles screened, 597 sequencing projects checked against their public records) identified 11 independent studies that sequenced both an environmental sample and the plate-grown communities from it, spanning soil, activated sludge, seawater, marine sponge, plant, food and rumen. The summary table is `data/processed/census.csv`; every study's citation and accession is checked against its publisher record and paper by `scripts/21_verify_references.py`.
 
-**Next:** reprocessing those studies through a single pipeline, then fitting and validating the cross-study model.
+### Reprocessed dataset
+
+Ten of those studies (the seawater study is held out because its deposited reads were already trimmed in a way that cannot be undone) were reprocessed from raw reads with one pipeline: 1,358 sequencing runs (128 environmental samples, 1,157 plate communities) in 716 plating conditions, 41,393 sequence variants, each with its identity to the nearest cultured relative. The per-study quality report is in `results/phase2/`.
+
+One finding from this stage affects the first result above: in the soil dataset, 58% of reads were deposited without their mate and could not be used, and which reads lost their mate is not random. Counting every read leaves the identity-growth curve nearly unchanged below 99% identity but lowers the share of the closest relatives that grew. The first result above is from complete read pairs only and will be superseded by the cross-study analysis.
+
+**Next:** fitting and validating the cross-study model, with the analysis plan registered before any model is fitted.
 
 All results so far come from a single dataset, under one set of plating conditions, and should be read that way until the cross-study analysis is done.
 

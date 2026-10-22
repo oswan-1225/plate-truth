@@ -1,0 +1,9 @@
+study_id,runs,lost_share,bray_curtis_kept_vs_lost_median,group_rows_summarised,distortion_p05,distortion_p95,share_reads_distortion_within_1.25,random_loss_within_1.25,share_reads_distortion_beyond_2,random_loss_beyond_2
+zheng2024_soil,4,0.4391,0.2763,589,0.0243,1.344,0.8734,0.9984,0.044,0.0
+zheng2024_sludge,4,0.3641,0.3512,407,0.3149,1.1468,0.8784,0.9985,0.016,0.0
+kruger2019_claytill,4,0.3223,0.4917,1957,0.812,1.1216,0.966,0.9989,0.0004,0.0
+verhoeven2023_sludge,4,0.2525,0.1239,452,0.8055,1.1903,0.9758,0.9993,0.0009,0.0
+indraningrat2019_sponges,4,0.0269,0.1455,425,0.9796,1.014,1.0,1.0,0.0,0.0
+ordonez2025_oak,4,0.022,0.3187,132,0.9727,1.0236,0.9915,1.0,0.0,0.0
+yu2020_broiler,4,0.1888,0.205,963,0.9035,1.1069,0.9992,0.9999,0.0,0.0
+hinsu2021_groundnut,4,0.0377,0.4034,471,0.9419,1.0387,0.9993,1.0,0.0,0.0

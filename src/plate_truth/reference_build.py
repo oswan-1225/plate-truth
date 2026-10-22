@@ -83,13 +83,20 @@ def primer_sets(studies: list[dict], full_length_set: dict) -> pd.DataFrame:
 
     Full-length studies (region 'full-length') are cut in silico to `full_length_set` (a dict
     with region, primers, primer_fwd, primer_rev) for the pooled analysis (D-017), so they share
-    that set. Returns columns: ref_name, region, primers, primer_fwd, primer_rev, studies
-    (';'-joined ids). ref_name is '{region}_{primer names}', with a numeric suffix if two
-    different sequence pairs share a name.
+    that set. A study whose deposited reads are already cut to the window of another study's
+    primer pair names that study in `window_of` and shares its set (D-028). Returns columns:
+    ref_name, region, primers, primer_fwd, primer_rev, studies (';'-joined ids). ref_name is
+    '{region}_{primer names}', with a numeric suffix if two different sequence pairs share a name.
     """
+    by_id = {s["id"]: s for s in studies}
     rows = {}
     for s in studies:
-        src = full_length_set if s["region"] == "full-length" else s
+        if s["region"] == "full-length":
+            src = full_length_set
+        elif s.get("window_of"):
+            src = by_id[s["window_of"]]
+        else:
+            src = s
         key = (src["primer_fwd"], src["primer_rev"])
         if key not in rows:
             rows[key] = {"region": src["region"], "primers": src["primers"],

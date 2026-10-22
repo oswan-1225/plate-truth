@@ -1,0 +1,7 @@
+study_id,run_accession,library_name,reads_in,reads_mapped,reads_prokaryotic,asvs
+verhoeven2023_sludge,SRR24857888,MQ210129-186,8,2,2,2
+verhoeven2023_sludge,SRR24857889,MQ210129-185,30123,12681,12681,854
+villanelo2026_sludge_antibiotics,ERR14330141,PCRNEG1,154,137,137,29
+villanelo2026_sludge_antibiotics,ERR14330148,PCRNEG2,51,49,49,20
+villanelo2026_sludge_antibiotics,ERR14330155,PCRPOS1,62437,54382,54382,970
+villanelo2026_sludge_antibiotics,ERR14330162,PCRPOS2,108,101,101,25

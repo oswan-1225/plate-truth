@@ -60,3 +60,9 @@ reference:
 # sample's environmental PCR replicates (same rule as the pilot).
 environment:
   min_reads: 2
+
+# Minimum depth (D-027): a plating condition is usable only if its pooled plate reads AND its
+# source sample's pooled environmental reads (prokaryotic ASVs only) both reach min_pool_reads.
+depth:
+  min_pool_reads: 1000
+  sensitivity: [5000, 10000]

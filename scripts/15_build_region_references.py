@@ -12,9 +12,13 @@ Outputs:
   data/interim/reference/regions/gtdb_genome_check.csv     (all regions, union of drops)
   data/processed/primer_sets.csv                           (study -> reference)
   results/phase2/reference_regions.csv                     (coverage per region and source)
+
+With --sets-only, only primer_sets.csv (and the studies column of reference_regions.csv) is
+rewritten: for a study change that adds no new primer pair, the references stay as built.
 """
 
 import re
+import sys
 
 import pandas as pd
 
@@ -61,6 +65,21 @@ def cut_region(full, row, cfg, out) -> pd.DataFrame:
     return members
 
 
+def write_sets_only(sets: pd.DataFrame, out) -> None:
+    """Rewrite the study -> reference table when no primer pair is new (references kept)."""
+    missing = [r for r in sets["ref_name"] if not (out / f"cultured_{r}.fasta").exists()]
+    if missing:
+        raise SystemExit(f"new primer pair(s) {missing}: run the full build instead")
+    tmp = data_path("processed") / "primer_sets.csv.tmp"
+    sets.to_csv(tmp, index=False)
+    tmp.replace(data_path("processed") / "primer_sets.csv")
+    res = data_path("results") / "phase2" / "reference_regions.csv"
+    summary = pd.read_csv(res)
+    summary["studies"] = summary["ref_name"].map(sets.set_index("ref_name")["studies"])
+    summary.to_csv(res, index=False)
+    print(sets.to_string(index=False))
+
+
 def main() -> None:
     raw = data_path("raw")
     out = data_path("interim") / "reference" / "regions"
@@ -70,6 +89,9 @@ def main() -> None:
     studies = [s for s in load_config("census_studies")["studies"] if s["decision"] == "include"]
     fl = next(s for s in studies if s["id"] == cfg["full_length_cut_to"])
     sets = primer_sets(studies, fl)
+    if "--sets-only" in sys.argv:
+        write_sets_only(sets, out)
+        return
     sets.to_csv(data_path("processed") / "primer_sets.csv", index=False)
     print(sets.to_string(index=False))
 

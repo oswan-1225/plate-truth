@@ -67,11 +67,11 @@ studies:
     decision: include
     reason: Same project as the soil study but a different habitat; analysed as its own study.
 
-  - id: lennon2019_claytill
+  - id: kruger2019_claytill
     accession: PRJNA483533
     doi: 10.1128/aem.02658-18
-    citation: Nielsen et al. 2019, Appl Environ Microbiol
-    study_group: nielsen2019
+    citation: Krüger et al. 2019, Appl Environ Microbiol
+    study_group: kruger2019
     linkage: per_site
     tier: B
     tier_note: 5 soil/sediment compartments; plates link to compartment
@@ -99,11 +99,11 @@ studies:
       independent side; agar-plate communities (full reference plates and porous-surface-model
       plates) are the plate side, from the same five soil/sediment compartments.
 
-  - id: wang2023_desertsoil
+  - id: li2023_desertsoil
     accession: PRJNA889009
     doi: 10.1038/s41522-023-00439-8
-    citation: Wang et al. 2023, npj Biofilms Microbiomes
-    study_group: wang2023
+    citation: Li et al. 2023, npj Biofilms Microbiomes
+    study_group: li2023
     linkage: per_site
     tier: B
     tier_note: only 2 source samples (bulk, rhizosphere) but 360 plate samples over 3 temperatures
@@ -129,11 +129,11 @@ studies:
       culture-enriched samples"; culture samples are labelled bulk/rhizosphere at 15/30/45 C.
       Only two source samples, so it contributes conditions, not independent source samples.
 
-  - id: dueholm2023_sludge
+  - id: verhoeven2023_sludge
     accession: PRJNA981068
     doi: 10.1128/aem.01151-23
-    citation: Dueholm et al. 2023, Appl Environ Microbiol
-    study_group: dueholm2023
+    citation: Verhoeven et al. 2023, Appl Environ Microbiol
+    study_group: verhoeven2023
     linkage: single_source
     tier: C
     tier_note: one activated sludge source; many media and oxygen conditions
@@ -158,17 +158,17 @@ studies:
       Total plate biomass sequenced per plate plus the source activated sludge; the many
       Isolate_* libraries are single isolates and are excluded by the pattern.
 
-  - id: dueholm2026_sludge_antibiotics
+  - id: villanelo2026_sludge_antibiotics
     accession: PRJEB85528
     doi: 10.1128/spectrum.01477-26
-    citation: 2026, Microbiol Spectrum
-    study_group: dueholm2026
+    citation: Villanelo et al. 2026, Microbiol Spectrum
+    study_group: villanelo2026
     linkage: single_source
     tier: C
-    tier_note: one raw activated sludge source; 12 antibiotics x 3 concentrations
+    tier_note: one raw activated sludge source; 11 antibiotics x 3 concentrations
     habitat: activated sludge
     host_associated: false
-    media: ["activated sludge filtrate (ASF) agarose", "ASF + 12 antibiotics x 3 levels"]
+    media: ["activated sludge filtrate (ASF) agarose", "ASF + 11 antibiotics x 3 levels"]
     temperature_c: [25]
     oxygen: [aerobic]
     incubation_days: 14
@@ -190,7 +190,7 @@ studies:
       sludge source (RAW_*); isolate_* and PCR controls excluded by the pattern. Antibiotic
       plates are a selective medium class.
 
-  - id: versluis2019_sponges
+  - id: indraningrat2019_sponges
     accession: PRJNA453745
     doi: 10.3390/md17100578
     citation: Indraningrat et al. 2019, Mar Drugs
@@ -218,11 +218,11 @@ studies:
       ENA isolation_source separates direct sponge samples from plate scrapings; filtered
       seawater samples are a separate environment and are not matched to the sponge plates.
 
-  - id: fonseca2025_oak
+  - id: ordonez2025_oak
     accession: PRJEB82441
     doi: 10.1093/ismeco/ycaf019
-    citation: 2025, ISME Communications
-    study_group: fonseca2025
+    citation: Ordonez et al. 2025, ISME Communications
+    study_group: ordonez2025
     linkage: per_site
     tier: B
     tier_note: linkage at tissue level (leaf/stem/rhizosphere)
@@ -251,11 +251,11 @@ studies:
       Colonies pooled per tissue and per agar type, alongside direct tissue amplicons.
       Linkage is at tissue level (leaf/stem/rhizosphere), not per individual tree.
 
-  - id: higuera2024_seawater
+  - id: ortizseverin2024_seawater
     accession: PRJNA971915
     doi: 10.1186/s40659-024-00556-4
-    citation: 2024, Biol Res
-    study_group: higuera2024
+    citation: Ortiz-Severín et al. 2024, Biol Res
+    study_group: ortizseverin2024
     linkage: per_site
     tier: B
     tier_note: 2 sites; 2 media with and without 3 antibiotics
@@ -285,11 +285,11 @@ studies:
       Two sites (salmon farm and Pacific shore) with a direct community library and culturable
       pools on two media with and without antibiotics.
 
-  - id: dekeyser2020_broiler
+  - id: yu2020_broiler
     accession: PRJNA635448
     doi: 10.3389/fmicb.2020.539540
-    citation: De Keyser et al. 2020, Front Microbiol
-    study_group: dekeyser2020
+    citation: Yu et al. 2020, Front Microbiol
+    study_group: yu2020
     linkage: per_sample
     tier: A
     tier_note: 15 carcass homogenates each with their own plate washes; 3 media x 2 temperatures
@@ -314,42 +314,49 @@ studies:
       Carcass homogenates (_SH) sequenced alongside plate washes of the same homogenate on
       three media at two temperatures.
 
-  - id: fuentes2018_rumen
+  - id: zehavi2018_rumen
     accession: SRP153190
     doi: 10.3389/fmicb.2018.01999
     citation: Zehavi et al. 2018, Front Microbiol
     study_group: zehavi2018
     linkage: single_source
     tier: C
-    tier_note: plates from one cow only (single source, like the two Dueholm studies)
+    tier_note: >-
+      One cow's rumen sample only; 2 media x 6 dilutions, duplicate plates. Like the two
+      activated-sludge studies, it contributes conditions, not independent source samples.
     habitat: rumen
     host_associated: true
     media: ["M10 defined", "M10 + clarified rumen fluid"]
     temperature_c: [39]
     oxygen: [anaerobic]
     incubation_days: 3
+    incubation_note: 39 C for 3 days inside an anaerobic chamber (5% H2, 20% CO2, 75% N2).
     region: V4
     primers: 515F/806R
     primer_fwd: null            # printed sequences are 341F/907R, not 515F/806R; see reason
     primer_rev: null
+    window_of: zheng2024_soil   # deposited reads are the 515F-806R window, primers removed (D-028)
     platform: ILLUMINA
+    read_prep: merged_primers_removed
     match_field: sample_title
-    env_pattern: '^Bovine rumen sample'
-    plate_pattern: '^Agar plate media'
-    decision: exclude
+    env_pattern: '^Rumen inoculum source Dilution factor 0$'
+    plate_pattern: '^Agar plate media M10'
+    decision: include
     reason: >-
-      Plates come from one selected cow, but neither the paper nor its supplement says which of
-      the 37 deposited rumen libraries is that cow, and the 6 inoculum-dilution libraries the
-      methods describe are not identifiable in ENA. Choosing the library most similar to the
-      plates would be circular, so the plates cannot be linked to their source (D-019). The paper names 515F/806R
-      (V4) but prints the 341F and 907R sequences; the deposited reads are 252-253 bp, already
-      primer-trimmed and merged, and start at the base after 515F, so the data are V4.
+      Plates come from one cow's glycerol-stored rumen sample, serially diluted 10-1 to 10-6 and
+      plated in duplicate on M10 with or without clarified rumen fluid. ENA labels that sample
+      ("Rumen inoculum source Dilution factor 0"), its six dilutions and the 24 plates, matching
+      the paper ("24 plate samples, 7 rumen samples from the cultivation experiment"), so the
+      plates link to their source (D-028, which corrects the D-019 amendment). The 37 "Bovine
+      rumen sample" libraries are other cows and are not used. The paper names 515F/806R (V4)
+      but prints the 341F and 907R sequences; the deposited reads are one merged file per run,
+      252-254 bp, starting at the base after 515F, so the data are the V4 window.
 
-  - id: eevers2021_phylloplane
+  - id: stevens2021_phylloplane
     accession: PRJNA626008
     doi: 10.1186/s12866-021-02119-z
-    citation: 2021, BMC Microbiol
-    study_group: eevers2021
+    citation: Stevens et al. 2021, BMC Microbiol
+    study_group: stevens2021
     linkage: per_site
     tier: C
     tier_note: 454 platform; excluded by D-017
@@ -396,11 +403,11 @@ studies:
       The original culture-enriched molecular profiling study, but no raw reads are public:
       the BioProject exists at NCBI yet links to zero SRA runs, and ENA returns no runs.
 
-  - id: bhatt2021_groundnut
+  - id: hinsu2021_groundnut
     accession: PRJNA665712
-    doi: 10.7717/peerj.11805
-    citation: Bhatt et al. 2021, PeerJ
-    study_group: bhatt2021
+    doi: 10.7717/peerj.12035
+    citation: Hinsu et al. 2021, PeerJ
+    study_group: hinsu2021
     linkage: per_sample
     tier: B
     tier_note: >-
@@ -408,7 +415,7 @@ studies:
       the two incubation temperatures, so medium is resolved per library but temperature is not.
     habitat: soil
     host_associated: false
-    media: ["soil extract agar", "nutrient agar", "YEM agar", "yeast mannitol agar",
+    media: ["R2A agar", "soil extract agar", "nutrient agar", "YEM agar", "yeast mannitol agar",
             "tryptic soy agar", "Azotobacter mannitol agar", "actinomycetes isolation agar"]
     temperature_c: [27, 37]
     oxygen: [aerobic]
@@ -428,11 +435,11 @@ studies:
       (plus cycloheximide) and sequenced alongside culture-independent soil libraries from the
       same farms. Verified from the methods and the ENA sample titles.
 
-  - id: leapcs2026_plant
+  - id: mazumder2026_plant
     accession: PRJNA1262666
     doi: 10.1186/s13007-026-01539-0
     citation: Mazumder et al. 2026, Plant Methods (LEAP-CS)
-    study_group: leapcs2026
+    study_group: mazumder2026
     linkage: per_site
     tier: C
     tier_note: Only 12 amplicon runs; plate format is a membrane system, not standard agar.

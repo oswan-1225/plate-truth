@@ -1,0 +1,12 @@
+study_id,asvs,asvs_prokaryotic,runs_control,runs_environment,runs_inoculum,runs_plate,conditions,conditions_linked,sources_linked
+hinsu2021_groundnut,5937,5933,0,10,0,16,16,16,2
+indraningrat2019_sponges,2034,2014,0,25,9,47,47,38,12
+kruger2019_claytill,7956,7936,0,6,3,60,10,4,2
+li2023_desertsoil,864,864,0,2,0,360,360,360,2
+ordonez2025_oak,1258,1163,0,9,0,39,39,39,3
+verhoeven2023_sludge,2913,2913,2,7,7,94,58,58,2
+villanelo2026_sludge_antibiotics,1337,1337,4,3,0,102,34,34,1
+yu2020_broiler,3964,3947,0,15,0,90,90,90,15
+zehavi2018_rumen,1125,1124,0,1,6,24,12,12,1
+zheng2024_sludge,5431,5430,0,27,24,132,20,20,5
+zheng2024_soil,8574,8563,0,23,18,193,30,30,6

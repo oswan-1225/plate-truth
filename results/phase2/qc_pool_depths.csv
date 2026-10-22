@@ -1,0 +1,702 @@
+study_id,source_sample,condition_id,plate_depth,env_depth,usable
+zheng2024_soil,HN,zheng2024_soil|HN|1% TSA|aerobic|26|NA,112152,22408,True
+zheng2024_soil,TA,zheng2024_soil|TA|soil extract|anaerobic|26|NA,108854,33057,True
+zheng2024_soil,SM,zheng2024_soil|SM|1% TSA|aerobic|26|NA,99885,95455,True
+zheng2024_soil,SM,zheng2024_soil|SM|1% TSA|anaerobic|26|NA,135669,95455,True
+zheng2024_soil,NX,zheng2024_soil|NX|soil extract|aerobic|26|NA,283707,43254,True
+zheng2024_soil,NX,zheng2024_soil|NX|soil extract|microaerophilic|26|NA,222952,43254,True
+zheng2024_soil,GD,zheng2024_soil|GD|soil extract|anaerobic|26|NA,194064,110540,True
+zheng2024_soil,HN,zheng2024_soil|HN|soil extract|aerobic|26|NA,355432,22408,True
+zheng2024_soil,YN,zheng2024_soil|YN|1% TSA|anaerobic|26|NA,218337,63303,True
+zheng2024_soil,YN,zheng2024_soil|YN|1% TSA|microaerophilic|26|NA,275995,63303,True
+zheng2024_soil,YN,zheng2024_soil|YN|1% TSA|aerobic|26|NA,184840,63303,True
+zheng2024_soil,GD,zheng2024_soil|GD|soil extract|aerobic|26|NA,304398,110540,True
+zheng2024_soil,GD,zheng2024_soil|GD|1% TSA|aerobic|26|NA,256203,110540,True
+zheng2024_soil,GD,zheng2024_soil|GD|1% TSA|anaerobic|26|NA,200131,110540,True
+zheng2024_soil,TA,zheng2024_soil|TA|soil extract|microaerophilic|26|NA,225119,33057,True
+zheng2024_soil,TA,zheng2024_soil|TA|1% TSA|microaerophilic|26|NA,199388,33057,True
+zheng2024_soil,SM,zheng2024_soil|SM|1% TSA|microaerophilic|26|NA,116365,95455,True
+zheng2024_soil,SM,zheng2024_soil|SM|soil extract|microaerophilic|26|NA,127370,95455,True
+zheng2024_soil,YN,zheng2024_soil|YN|soil extract|anaerobic|26|NA,323975,63303,True
+zheng2024_soil,YN,zheng2024_soil|YN|soil extract|microaerophilic|26|NA,229092,63303,True
+zheng2024_soil,SM,zheng2024_soil|SM|soil extract|anaerobic|26|NA,122240,95455,True
+zheng2024_soil,NX,zheng2024_soil|NX|1% TSA|aerobic|26|NA,180023,43254,True
+zheng2024_soil,NX,zheng2024_soil|NX|1% TSA|anaerobic|26|NA,154271,43254,True
+zheng2024_soil,NX,zheng2024_soil|NX|soil extract|anaerobic|26|NA,118385,43254,True
+zheng2024_soil,NX,zheng2024_soil|NX|1% TSA|microaerophilic|26|NA,258381,43254,True
+zheng2024_soil,SM,zheng2024_soil|SM|soil extract|aerobic|26|NA,124289,95455,True
+zheng2024_soil,TA,zheng2024_soil|TA|1% TSA|anaerobic|26|NA,150424,33057,True
+zheng2024_soil,YN,zheng2024_soil|YN|soil extract|aerobic|26|NA,148500,63303,True
+zheng2024_soil,TA,zheng2024_soil|TA|soil extract|aerobic|26|NA,214301,33057,True
+zheng2024_soil,TA,zheng2024_soil|TA|1% TSA|aerobic|26|NA,131103,33057,True
+zheng2024_sludge,XM1,zheng2024_sludge|XM1|R2A|microaerophilic|26|NA,151389,63861,True
+zheng2024_sludge,XM1,zheng2024_sludge|XM1|extraction medium (filtered wastewater)|aerobic|26|NA,149040,63861,True
+zheng2024_sludge,SZ,zheng2024_sludge|SZ|R2A|anaerobic|26|NA,107649,15053,True
+zheng2024_sludge,SH,zheng2024_sludge|SH|extraction medium (filtered wastewater)|aerobic|26|NA,123643,18895,True
+zheng2024_sludge,SH,zheng2024_sludge|SH|R2A|anaerobic|26|NA,93753,18895,True
+zheng2024_sludge,SH,zheng2024_sludge|SH|R2A|aerobic|26|NA,92814,18895,True
+zheng2024_sludge,NJ,zheng2024_sludge|NJ|R2A|anaerobic|26|NA,157242,109739,True
+zheng2024_sludge,XM2,zheng2024_sludge|XM2|R2A|anaerobic|26|AN,85241,50038,True
+zheng2024_sludge,XM2,zheng2024_sludge|XM2|extraction medium (filtered wastewater)|anaerobic|26|AN,105247,50038,True
+zheng2024_sludge,XM2,zheng2024_sludge|XM2|R2A|aerobic|26|AE,61789,50038,True
+zheng2024_sludge,SZ,zheng2024_sludge|SZ|R2A|aerobic|26|NA,84339,15053,True
+zheng2024_sludge,NJ,zheng2024_sludge|NJ|extraction medium (filtered wastewater)|anaerobic|26|NA,148307,109739,True
+zheng2024_sludge,NJ,zheng2024_sludge|NJ|extraction medium (filtered wastewater)|aerobic|26|NA,269476,109739,True
+zheng2024_sludge,XM1,zheng2024_sludge|XM1|extraction medium (filtered wastewater)|microaerophilic|26|NA,166619,63861,True
+zheng2024_sludge,NJ,zheng2024_sludge|NJ|R2A|aerobic|26|NA,161767,109739,True
+zheng2024_sludge,XM2,zheng2024_sludge|XM2|extraction medium (filtered wastewater)|aerobic|26|AE,99661,50038,True
+zheng2024_sludge,XM1,zheng2024_sludge|XM1|extraction medium (filtered wastewater)|anaerobic|26|NA,117715,63861,True
+zheng2024_sludge,SH,zheng2024_sludge|SH|extraction medium (filtered wastewater)|anaerobic|26|NA,106214,18895,True
+zheng2024_sludge,XM1,zheng2024_sludge|XM1|R2A|aerobic|26|NA,120652,63861,True
+zheng2024_sludge,XM1,zheng2024_sludge|XM1|R2A|anaerobic|26|NA,163983,63861,True
+kruger2019_claytill,plow_layer,kruger2019_claytill|plow_layer|25% R2A|aerobic|25|PSM full plate,982899,176050,True
+kruger2019_claytill,biopore,kruger2019_claytill|biopore|25% R2A|aerobic|25|PSM full plate,691900,189118,True
+kruger2019_claytill,biopore,kruger2019_claytill|biopore|25% R2A|aerobic|25|reference plate,83185,189118,True
+kruger2019_claytill,plow_layer,kruger2019_claytill|plow_layer|25% R2A|aerobic|25|reference plate,116782,176050,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M41 (TP)|aerobic|45|NA,11472,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M32 (SLA)|aerobic|45|NA,10888,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M30 (SSTY)|aerobic|45|NA,11354,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M32 (SLA)|aerobic|15|NA,11692,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M26 (RZ1)|aerobic|45|NA,10032,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M25 (RH)|aerobic|45|NA,11197,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M22 (PPS)|aerobic|45|NA,11381,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M19 (MM)|aerobic|45|NA,11258,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M34 (SEAR)|aerobic|30|NA,11549,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M30 (SSTY)|aerobic|30|NA,11101,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M28 (SA)|aerobic|30|NA,10734,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M27 (RZ2)|aerobic|30|NA,9432,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M22 (PPS)|aerobic|30|NA,11367,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M7 (GN1)|aerobic|15|NA,11640,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M15 (LB)|aerobic|30|NA,10896,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M3 (BRA)|aerobic|30|NA,11515,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M21 (PYS)|aerobic|15|NA,11375,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M19 (MM)|aerobic|15|NA,11250,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M3 (BRA)|aerobic|15|NA,11411,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M17 (MYP)|aerobic|15|NA,11497,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M53 (0.1xAIA)|aerobic|45|NA,11767,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M53 (0.1xAIA)|aerobic|15|NA,8129,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M51 (0.01xNA)|aerobic|15|NA,7372,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M50 (0.1xNA)|aerobic|15|NA,9149,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M59 (0.1xMA)|aerobic|45|NA,11590,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M49 (1xNA)|aerobic|45|NA,11078,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M36 (SGCY)|aerobic|30|NA,11318,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M31 (CMCA)|aerobic|30|NA,9696,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M28 (SA)|aerobic|30|NA,10738,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M19 (MM)|aerobic|30|NA,11272,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M14 (LNMS)|aerobic|30|NA,11586,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M7 (GN1)|aerobic|30|NA,11591,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M2 (BHI)|aerobic|30|NA,9844,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M16 (MCA)|aerobic|15|NA,11655,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M44 (YGCP)|aerobic|45|NA,10906,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M41 (TP)|aerobic|45|NA,11638,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M15 (LB)|aerobic|15|NA,10691,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M30 (SSTY)|aerobic|45|NA,11351,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M23 (PDA)|aerobic|45|NA,11526,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M21 (PYS)|aerobic|45|NA,10980,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M13 (KB)|aerobic|15|NA,11316,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M16 (MCA)|aerobic|45|NA,11666,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M15 (LB)|aerobic|45|NA,10772,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M12 (HVA)|aerobic|45|NA,10863,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M11 (HA)|aerobic|45|NA,11279,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M10 (GGA)|aerobic|45|NA,11528,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M5 (CHIA)|aerobic|45|NA,11620,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M3 (BRA)|aerobic|45|NA,11015,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M60 (0.01xMA)|aerobic|30|NA,11721,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M29 (SSM)|aerobic|15|NA,11463,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M56 (0.1xR2A)|aerobic|30|NA,11721,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M54 (0.01xAIA)|aerobic|30|NA,11383,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M47 (0.1xTSA)|aerobic|30|NA,10893,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M43 (TCN)|aerobic|30|NA,11180,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M38 (STA)|aerobic|30|NA,11092,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M55 (1xR2A)|aerobic|15|NA,11404,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M53 (0.1xAIA)|aerobic|15|NA,10958,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M50 (0.1xNA)|aerobic|15|NA,10551,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M49 (1xNA)|aerobic|15|NA,11497,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M47 (0.1xTSA)|aerobic|15|NA,11150,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M46 (1xTSA)|aerobic|15|NA,11235,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M44 (YGCP)|aerobic|15|NA,11432,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M40 (T5)|aerobic|15|NA,11517,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M39 (STBG)|aerobic|15|NA,10958,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M37 (SNA)|aerobic|15|NA,11293,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M36 (SGCY)|aerobic|15|NA,11357,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M33 (SEAB)|aerobic|15|NA,11228,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M32 (SLA)|aerobic|15|NA,10258,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M31 (CMCA)|aerobic|15|NA,11005,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M9 (GLA)|aerobic|45|NA,11463,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M5 (CHIA)|aerobic|45|NA,11442,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M60 (0.01xMA)|aerobic|30|NA,11477,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M11 (HA)|aerobic|15|NA,11452,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M41 (TP)|aerobic|30|NA,11720,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M40 (T5)|aerobic|30|NA,11429,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M43 (TCN)|aerobic|45|NA,10169,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M42 (TGY)|aerobic|45|NA,11382,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M33 (SEAB)|aerobic|15|NA,11463,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M37 (SNA)|aerobic|45|NA,11318,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M35 (SCA)|aerobic|45|NA,11486,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M29 (SSM)|aerobic|45|NA,11598,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M28 (SA)|aerobic|45|NA,11112,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M24 (RA)|aerobic|45|NA,10757,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M21 (PYS)|aerobic|45|NA,11312,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M33 (SEAB)|aerobic|30|NA,11664,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M8 (GYM)|aerobic|15|NA,11529,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M26 (RZ1)|aerobic|30|NA,11690,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M19 (MM)|aerobic|30|NA,11597,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M5 (CHIA)|aerobic|30|NA,10962,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M4 (CSA)|aerobic|30|NA,10978,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M1 (BEN)|aerobic|30|NA,11593,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M60 (0.01xMA)|aerobic|15|NA,8430,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M23 (PDA)|aerobic|15|NA,11148,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M14 (LNMS)|aerobic|15|NA,11425,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M13 (KB)|aerobic|15|NA,11255,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M18 (MIC)|aerobic|15|NA,11429,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M57 (0.01xR2A)|aerobic|45|NA,11652,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M54 (0.01xAIA)|aerobic|45|NA,11675,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M5 (CHIA)|aerobic|15|NA,9601,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M56 (0.1xR2A)|aerobic|15|NA,10979,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M4 (CSA)|aerobic|15|NA,11805,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M48 (0.01xTSA)|aerobic|15|NA,8287,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M46 (1xTSA)|aerobic|15|NA,11549,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M45 (YMG)|aerobic|15|NA,11608,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M43 (TCN)|aerobic|15|NA,11503,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M38 (STA)|aerobic|15|NA,11365,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M60 (0.01xMA)|aerobic|45|NA,11652,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M56 (0.1xR2A)|aerobic|45|NA,10829,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M54 (0.01xAIA)|aerobic|45|NA,11383,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M35 (SCA)|aerobic|30|NA,11550,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M34 (SEAR)|aerobic|30|NA,10928,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M18 (MIC)|aerobic|30|NA,9954,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M10 (GGA)|aerobic|30|NA,11103,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M9 (GLA)|aerobic|30|NA,10627,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M24 (RA)|aerobic|15|NA,11129,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M3 (BRA)|aerobic|30|NA,11147,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M46 (1xTSA)|aerobic|45|NA,10494,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M42 (TGY)|aerobic|45|NA,10838,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M35 (SCA)|aerobic|45|NA,11017,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M34 (SEAR)|aerobic|45|NA,11414,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M32 (SLA)|aerobic|45|NA,11188,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M29 (SSM)|aerobic|45|NA,11283,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M14 (LNMS)|aerobic|15|NA,10048,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M27 (RZ2)|aerobic|45|NA,11558,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M19 (MM)|aerobic|45|NA,11503,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M18 (MIC)|aerobic|45|NA,11436,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M17 (MYP)|aerobic|45|NA,11311,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M37 (SNA)|aerobic|30|NA,11394,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M7 (GN1)|aerobic|45|NA,11566,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M2 (BHI)|aerobic|45|NA,10639,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M59 (0.1xMA)|aerobic|30|NA,11413,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M57 (0.01xR2A)|aerobic|30|NA,11684,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M53 (0.1xAIA)|aerobic|30|NA,11604,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M52 (1xAIA)|aerobic|30|NA,11602,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M48 (0.01xTSA)|aerobic|30|NA,11702,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M42 (TGY)|aerobic|30|NA,10534,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M59 (0.1xMA)|aerobic|15|NA,11475,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M23 (PDA)|aerobic|15|NA,11713,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M58 (1xMA)|aerobic|15|NA,11494,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M56 (0.1xR2A)|aerobic|15|NA,11377,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M41 (TP)|aerobic|15|NA,9465,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M28 (SA)|aerobic|15|NA,11078,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M25 (RH)|aerobic|15|NA,11077,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M10 (GGA)|aerobic|45|NA,11348,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M7 (GN1)|aerobic|45|NA,11333,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M1 (BEN)|aerobic|45|NA,11473,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M59 (0.1xMA)|aerobic|30|NA,11617,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M55 (1xR2A)|aerobic|30|NA,11545,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M52 (1xAIA)|aerobic|30|NA,9249,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M44 (YGCP)|aerobic|30|NA,8834,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M42 (TGY)|aerobic|30|NA,11666,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M47 (0.1xTSA)|aerobic|45|NA,11615,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M44 (YGCP)|aerobic|45|NA,11170,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M40 (T5)|aerobic|45|NA,11255,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M38 (STA)|aerobic|45|NA,11526,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M23 (PDA)|aerobic|45|NA,11314,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M31 (CMCA)|aerobic|15|NA,11591,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M17 (MYP)|aerobic|45|NA,9518,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M36 (SGCY)|aerobic|30|NA,11615,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M35 (SCA)|aerobic|30|NA,11579,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M25 (RH)|aerobic|30|NA,11625,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M14 (LNMS)|aerobic|30|NA,11594,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M13 (KB)|aerobic|30|NA,11010,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M6 (CZA)|aerobic|15|NA,8808,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M8 (GYM)|aerobic|30|NA,11613,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M7 (GN1)|aerobic|30|NA,11674,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M6 (CZA)|aerobic|30|NA,10891,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M20 (PYG)|aerobic|15|NA,11155,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M19 (MM)|aerobic|15|NA,11520,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M18 (MIC)|aerobic|15|NA,11231,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M16 (MCA)|aerobic|15|NA,11034,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M12 (HVA)|aerobic|15|NA,10710,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M7 (GN1)|aerobic|15|NA,11372,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M2 (BHI)|aerobic|15|NA,11403,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M50 (0.1xNA)|aerobic|45|NA,11549,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M59 (0.1xMA)|aerobic|15|NA,11661,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M58 (1xMA)|aerobic|15|NA,11474,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M52 (1xAIA)|aerobic|15|NA,11204,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M39 (STBG)|aerobic|15|NA,11562,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M3 (BRA)|aerobic|15|NA,7646,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M36 (SGCY)|aerobic|15|NA,11526,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M37 (SNA)|aerobic|30|NA,11615,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M26 (RZ1)|aerobic|15|NA,11734,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M27 (RZ2)|aerobic|30|NA,11493,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M25 (RH)|aerobic|30|NA,11631,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M24 (RA)|aerobic|30|NA,8457,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M15 (LB)|aerobic|30|NA,11485,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M8 (GYM)|aerobic|30|NA,10922,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M43 (TCN)|aerobic|45|NA,11202,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M33 (SEAB)|aerobic|45|NA,11690,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M25 (RH)|aerobic|45|NA,11234,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M9 (GLA)|aerobic|45|NA,11662,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M6 (CZA)|aerobic|45|NA,11537,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M1 (BEN)|aerobic|45|NA,11578,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M50 (0.1xNA)|aerobic|30|NA,11199,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M28 (SA)|aerobic|15|NA,11245,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M45 (YMG)|aerobic|30|NA,11125,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M41 (TP)|aerobic|30|NA,11885,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M57 (0.01xR2A)|aerobic|15|NA,11564,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M42 (TGY)|aerobic|15|NA,10894,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M21 (PYS)|aerobic|15|NA,11208,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M34 (SEAR)|aerobic|15|NA,11326,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M30 (SSTY)|aerobic|15|NA,10823,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M8 (GYM)|aerobic|45|NA,11402,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M54 (0.01xAIA)|aerobic|30|NA,9957,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M50 (0.1xNA)|aerobic|30|NA,7743,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M48 (0.01xTSA)|aerobic|45|NA,9764,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M46 (1xTSA)|aerobic|45|NA,11289,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M45 (YMG)|aerobic|45|NA,10754,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M39 (STBG)|aerobic|45|NA,11553,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M34 (SEAR)|aerobic|45|NA,11355,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M33 (SEAB)|aerobic|45|NA,11207,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M31 (CMCA)|aerobic|45|NA,10662,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M27 (RZ2)|aerobic|45|NA,11508,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M18 (MIC)|aerobic|45|NA,11793,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M15 (LB)|aerobic|45|NA,10895,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M13 (KB)|aerobic|45|NA,11308,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M29 (SSM)|aerobic|30|NA,11076,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M20 (PYG)|aerobic|30|NA,11476,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M18 (MIC)|aerobic|30|NA,11428,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M11 (HA)|aerobic|30|NA,11505,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M9 (GLA)|aerobic|30|NA,11569,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M2 (BHI)|aerobic|30|NA,10670,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M22 (PPS)|aerobic|15|NA,11484,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M11 (HA)|aerobic|15|NA,11676,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M9 (GLA)|aerobic|15|NA,11237,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M8 (GYM)|aerobic|15|NA,11028,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M60 (0.01xMA)|aerobic|45|NA,11726,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M58 (1xMA)|aerobic|45|NA,11130,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M56 (0.1xR2A)|aerobic|45|NA,11604,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M55 (1xR2A)|aerobic|45|NA,11426,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M52 (1xAIA)|aerobic|45|NA,11247,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M51 (0.01xNA)|aerobic|45|NA,11662,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M55 (1xR2A)|aerobic|15|NA,11502,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M54 (0.01xAIA)|aerobic|15|NA,7426,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M49 (1xNA)|aerobic|15|NA,11525,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M47 (0.1xTSA)|aerobic|15|NA,11439,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M42 (TGY)|aerobic|15|NA,11541,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M41 (TP)|aerobic|15|NA,11567,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M40 (T5)|aerobic|15|NA,11303,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M37 (SNA)|aerobic|15|NA,11506,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M35 (SCA)|aerobic|15|NA,11701,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M58 (1xMA)|aerobic|45|NA,11272,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M57 (0.01xR2A)|aerobic|45|NA,10562,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M55 (1xR2A)|aerobic|45|NA,11474,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M53 (0.1xAIA)|aerobic|45|NA,10717,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M52 (1xAIA)|aerobic|45|NA,11291,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M51 (0.01xNA)|aerobic|45|NA,11323,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M30 (SSTY)|aerobic|30|NA,10916,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M29 (SSM)|aerobic|30|NA,10797,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M26 (RZ1)|aerobic|30|NA,11608,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M21 (PYS)|aerobic|30|NA,11523,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M20 (PYG)|aerobic|30|NA,10268,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M16 (MCA)|aerobic|30|NA,11155,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M11 (HA)|aerobic|30|NA,11090,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M6 (CZA)|aerobic|30|NA,10632,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M5 (CHIA)|aerobic|30|NA,11696,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M48 (0.01xTSA)|aerobic|45|NA,11562,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M45 (YMG)|aerobic|45|NA,11643,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M38 (STA)|aerobic|45|NA,11477,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M36 (SGCY)|aerobic|45|NA,11049,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M28 (SA)|aerobic|45|NA,10990,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M22 (PPS)|aerobic|45|NA,10829,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M20 (PYG)|aerobic|45|NA,11523,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M14 (LNMS)|aerobic|45|NA,11540,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M13 (KB)|aerobic|45|NA,11154,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M38 (STA)|aerobic|30|NA,11597,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M30 (SSTY)|aerobic|15|NA,11080,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M2 (BHI)|aerobic|15|NA,11057,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M55 (1xR2A)|aerobic|30|NA,11366,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M51 (0.01xNA)|aerobic|30|NA,11668,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M46 (1xTSA)|aerobic|30|NA,10700,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M40 (T5)|aerobic|30|NA,10893,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M39 (STBG)|aerobic|30|NA,10848,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M60 (0.01xMA)|aerobic|15|NA,11267,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M54 (0.01xAIA)|aerobic|15|NA,11521,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M52 (1xAIA)|aerobic|15|NA,11056,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M43 (TCN)|aerobic|15|NA,11523,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M29 (SSM)|aerobic|15|NA,11846,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M27 (RZ2)|aerobic|15|NA,10297,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M26 (RZ1)|aerobic|15|NA,11105,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M12 (HVA)|aerobic|45|NA,11661,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M11 (HA)|aerobic|45|NA,10959,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M12 (HVA)|aerobic|15|NA,9284,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M6 (CZA)|aerobic|45|NA,11489,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M4 (CSA)|aerobic|45|NA,11310,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M3 (BRA)|aerobic|45|NA,11111,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M58 (1xMA)|aerobic|30|NA,11173,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M57 (0.01xR2A)|aerobic|30|NA,11741,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M56 (0.1xR2A)|aerobic|30|NA,9457,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M10 (GGA)|aerobic|15|NA,11526,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M48 (0.01xTSA)|aerobic|30|NA,8833,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M9 (GLA)|aerobic|15|NA,11295,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M34 (SEAR)|aerobic|15|NA,11490,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M36 (SGCY)|aerobic|45|NA,11129,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M20 (PYG)|aerobic|45|NA,11318,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M16 (MCA)|aerobic|45|NA,11492,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M14 (LNMS)|aerobic|45|NA,10429,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M32 (SLA)|aerobic|30|NA,11727,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M31 (CMCA)|aerobic|30|NA,11444,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M24 (RA)|aerobic|30|NA,11423,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M23 (PDA)|aerobic|30|NA,11546,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M21 (PYS)|aerobic|30|NA,11402,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M17 (MYP)|aerobic|30|NA,11555,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M16 (MCA)|aerobic|30|NA,10995,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M12 (HVA)|aerobic|30|NA,10412,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M10 (GGA)|aerobic|30|NA,11324,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M24 (RA)|aerobic|15|NA,11257,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M1 (BEN)|aerobic|15|NA,11697,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M17 (MYP)|aerobic|15|NA,11335,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M15 (LB)|aerobic|15|NA,11503,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M10 (GGA)|aerobic|15|NA,11239,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M6 (CZA)|aerobic|15|NA,11330,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M5 (CHIA)|aerobic|15|NA,10205,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M4 (CSA)|aerobic|15|NA,11621,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M1 (BEN)|aerobic|15|NA,11179,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M59 (0.1xMA)|aerobic|45|NA,11392,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M49 (1xNA)|aerobic|45|NA,10813,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M57 (0.01xR2A)|aerobic|15|NA,11775,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M44 (YGCP)|aerobic|15|NA,10941,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M50 (0.1xNA)|aerobic|45|NA,10740,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M33 (SEAB)|aerobic|30|NA,10645,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M32 (SLA)|aerobic|30|NA,10807,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M23 (PDA)|aerobic|30|NA,11358,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M22 (PPS)|aerobic|30|NA,11422,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M25 (RH)|aerobic|15|NA,11118,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M17 (MYP)|aerobic|30|NA,11384,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M13 (KB)|aerobic|30|NA,10790,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M12 (HVA)|aerobic|30|NA,11297,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M4 (CSA)|aerobic|30|NA,11051,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M1 (BEN)|aerobic|30|NA,11196,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M47 (0.1xTSA)|aerobic|45|NA,11502,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M40 (T5)|aerobic|45|NA,11348,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M39 (STBG)|aerobic|45|NA,11271,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M37 (SNA)|aerobic|45|NA,11689,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M31 (CMCA)|aerobic|45|NA,11553,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M26 (RZ1)|aerobic|45|NA,11484,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M24 (RA)|aerobic|45|NA,11295,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M8 (GYM)|aerobic|45|NA,11116,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M4 (CSA)|aerobic|45|NA,11314,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M58 (1xMA)|aerobic|30|NA,11305,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M49 (1xNA)|aerobic|30|NA,10513,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M44 (YGCP)|aerobic|30|NA,10732,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M27 (RZ2)|aerobic|15|NA,11638,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M51 (0.01xNA)|aerobic|15|NA,11435,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M22 (PPS)|aerobic|15|NA,11057,7542,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M48 (0.01xTSA)|aerobic|15|NA,11089,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M45 (YMG)|aerobic|15|NA,11073,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M38 (STA)|aerobic|15|NA,11190,8737,True
+li2023_desertsoil,rhizosphere,li2023_desertsoil|rhizosphere|M35 (SCA)|aerobic|15|NA,11059,8737,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M20 (PYG)|aerobic|15|NA,11541,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M2 (BHI)|aerobic|45|NA,10808,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M53 (0.1xAIA)|aerobic|30|NA,7590,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M51 (0.01xNA)|aerobic|30|NA,9376,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M49 (1xNA)|aerobic|30|NA,11361,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M47 (0.1xTSA)|aerobic|30|NA,11699,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M46 (1xTSA)|aerobic|30|NA,11409,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M45 (YMG)|aerobic|30|NA,11077,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M43 (TCN)|aerobic|30|NA,11231,7542,True
+li2023_desertsoil,bulk,li2023_desertsoil|bulk|M39 (STBG)|aerobic|30|NA,11549,7542,True
+verhoeven2023_sludge,AS_exp2,verhoeven2023_sludge|AS_exp2|PL8|aerobic|25|NA,148447,39081,True
+verhoeven2023_sludge,AS_exp2,verhoeven2023_sludge|AS_exp2|PL7|aerobic|25|NA,34705,39081,True
+verhoeven2023_sludge,AS_exp2,verhoeven2023_sludge|AS_exp2|PL7|anaerobic|25|NA,81244,39081,True
+verhoeven2023_sludge,AS_exp2,verhoeven2023_sludge|AS_exp2|PL5|anaerobic|25|NA,51180,39081,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 101,27920,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 96,11456,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 94,21700,61486,True
+verhoeven2023_sludge,AS_exp2,verhoeven2023_sludge|AS_exp2|PL10|anaerobic|25|NA,32847,39081,True
+verhoeven2023_sludge,AS_exp2,verhoeven2023_sludge|AS_exp2|PL1|anaerobic|25|NA,37502,39081,True
+verhoeven2023_sludge,AS_exp2,verhoeven2023_sludge|AS_exp2|PL4|anaerobic|25|NA,45881,39081,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 8,18186,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 68,20189,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 63,20998,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 61,23843,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 53,27904,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 51,19579,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 43,19963,61486,True
+verhoeven2023_sludge,AS_exp2,verhoeven2023_sludge|AS_exp2|PL9|anaerobic|25|NA,39417,39081,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 34,21888,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 33,19604,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 23,19078,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 14,35156,61486,True
+verhoeven2023_sludge,AS_exp2,verhoeven2023_sludge|AS_exp2|PL2|anaerobic|25|NA,32787,39081,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 93,23474,61486,True
+verhoeven2023_sludge,AS_exp2,verhoeven2023_sludge|AS_exp2|PL8|anaerobic|25|NA,46255,39081,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 75,16799,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 74,25673,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 41,21869,61486,True
+verhoeven2023_sludge,AS_exp2,verhoeven2023_sludge|AS_exp2|PL6|anaerobic|25|NA,46832,39081,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 92,26177,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 73,22037,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 66,29292,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 65,21812,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 32,23703,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 24,38456,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 11,16212,61486,True
+verhoeven2023_sludge,AS_exp2,verhoeven2023_sludge|AS_exp2|PL3|anaerobic|25|NA,55911,39081,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 72,18518,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 71,22752,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 67,21691,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 64,20956,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 52,30269,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 44,17156,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 31,36330,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 22,4660,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 21,24647,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 13,25062,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 106,23052,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 104,24479,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 103,47558,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 102,40983,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 95,19282,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 91,31650,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 62,23500,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 54,23114,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 42,19833,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 12,23243,61486,True
+verhoeven2023_sludge,AS_exp1,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 105,16684,61486,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + CIP|aerobic|25|HC,294619,34653,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + GEN|aerobic|25|WC,6142,34653,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose|aerobic|25|NA,85860,34653,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + CAR|aerobic|25|LC,78143,34653,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + ERI|aerobic|25|HC,173,34653,False
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + GEN|aerobic|25|HC,73,34653,False
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + STR|aerobic|25|WC,4653,34653,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + AMP|aerobic|25|LC,443440,34653,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + CHL|aerobic|25|HC,297200,34653,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + RIF|aerobic|25|HC,31221,34653,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + ERI|aerobic|25|WC,121890,34653,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + TET|aerobic|25|WC,123043,34653,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + AMP|aerobic|25|WC,449992,34653,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + CIP|aerobic|25|LC,7856,34653,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + CHL|aerobic|25|LC,235195,34653,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + CAR|aerobic|25|WC,207788,34653,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + GEN|aerobic|25|LC,7781,34653,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + NEO|aerobic|25|HC,303858,34653,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + AMP|aerobic|25|HC,198837,34653,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + RIF|aerobic|25|LC,104020,34653,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + ERI|aerobic|25|LC,103846,34653,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + CAR|aerobic|25|HC,99851,34653,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + CIP|aerobic|25|WC,4577,34653,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + CHL|aerobic|25|WC,220361,34653,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + RIF|aerobic|25|WC,218402,34653,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + KAN|aerobic|25|WC,294526,34653,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + STR|aerobic|25|LC,163681,34653,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + TET|aerobic|25|LC,53183,34653,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + STR|aerobic|25|HC,863,34653,False
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + TET|aerobic|25|HC,108615,34653,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + NEO|aerobic|25|LC,631416,34653,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + KAN|aerobic|25|HC,162947,34653,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + NEO|aerobic|25|WC,318192,34653,True
+villanelo2026_sludge_antibiotics,raw_AS,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + KAN|aerobic|25|LC,11107,34653,True
+indraningrat2019_sponges,AS8,indraningrat2019_sponges|AS8|mucin agar|aerobic|30|NA,13140,119249,True
+indraningrat2019_sponges,AS3,indraningrat2019_sponges|AS3|mucin agar|aerobic|30|NA,22966,75570,True
+indraningrat2019_sponges,AS8,indraningrat2019_sponges|AS8|Crenarchaeota agar|aerobic|30|NA,10161,119249,True
+indraningrat2019_sponges,XM11,indraningrat2019_sponges|XM11|mucin agar|aerobic|30|NA,176895,40983,True
+indraningrat2019_sponges,XM9,indraningrat2019_sponges|XM9|mucin agar|aerobic|30|NA,69195,42600,True
+indraningrat2019_sponges,XM5,indraningrat2019_sponges|XM5|mucin agar|aerobic|30|NA,27727,145423,True
+indraningrat2019_sponges,XM6,indraningrat2019_sponges|XM6|mucin agar|aerobic|30|NA,14930,21706,True
+indraningrat2019_sponges,XM9,indraningrat2019_sponges|XM9|Crenarchaeota agar|aerobic|30|NA,35637,42600,True
+indraningrat2019_sponges,XM6,indraningrat2019_sponges|XM6|Crenarchaeota agar|aerobic|30|NA,93629,21706,True
+indraningrat2019_sponges,AS2,indraningrat2019_sponges|AS2|mucin agar|aerobic|30|NA,64654,56035,True
+indraningrat2019_sponges,AS4,indraningrat2019_sponges|AS4|Crenarchaeota agar|aerobic|30|NA,31021,77702,True
+indraningrat2019_sponges,AS3,indraningrat2019_sponges|AS3|Crenarchaeota agar|aerobic|30|NA,15258,75570,True
+indraningrat2019_sponges,AS7,indraningrat2019_sponges|AS7|OLIGO agar|aerobic|30|NA,25810,20497,True
+indraningrat2019_sponges,XM10,indraningrat2019_sponges|XM10|Crenarchaeota agar|aerobic|30|NA,66585,167851,True
+indraningrat2019_sponges,XM5,indraningrat2019_sponges|XM5|Crenarchaeota agar|aerobic|30|NA,43077,145423,True
+indraningrat2019_sponges,AS4,indraningrat2019_sponges|AS4|marine agar 1/10|aerobic|30|NA,70140,77702,True
+indraningrat2019_sponges,AS4,indraningrat2019_sponges|AS4|mucin agar|aerobic|30|NA,9681,77702,True
+indraningrat2019_sponges,XM10,indraningrat2019_sponges|XM10|mucin agar|aerobic|30|NA,134274,167851,True
+indraningrat2019_sponges,XM7,indraningrat2019_sponges|XM7|mucin agar|aerobic|30|NA,39547,19084,True
+indraningrat2019_sponges,XM7,indraningrat2019_sponges|XM7|Crenarchaeota agar|aerobic|30|NA,90715,19084,True
+indraningrat2019_sponges,XM10,indraningrat2019_sponges|XM10|OLIGO agar|aerobic|30|NA,64989,167851,True
+indraningrat2019_sponges,XM9,indraningrat2019_sponges|XM9|OLIGO agar|aerobic|30|NA,120197,42600,True
+indraningrat2019_sponges,XM11,indraningrat2019_sponges|XM11|OLIGO agar|aerobic|30|NA,71622,40983,True
+indraningrat2019_sponges,AS4,indraningrat2019_sponges|AS4|M3 agar|aerobic|30|NA,46141,77702,True
+indraningrat2019_sponges,AS8,indraningrat2019_sponges|AS8|GP agar|aerobic|30|NA,95128,119249,True
+indraningrat2019_sponges,AS7,indraningrat2019_sponges|AS7|mucin agar|aerobic|30|NA,2375,20497,True
+indraningrat2019_sponges,XM14,indraningrat2019_sponges|XM14|mucin agar|aerobic|30|NA,106366,198245,True
+indraningrat2019_sponges,XM14,indraningrat2019_sponges|XM14|Crenarchaeota agar|aerobic|30|NA,174492,198245,True
+indraningrat2019_sponges,XM14,indraningrat2019_sponges|XM14|M3 agar|aerobic|30|NA,216858,198245,True
+indraningrat2019_sponges,XM5,indraningrat2019_sponges|XM5|OLIGO agar|aerobic|30|NA,86064,145423,True
+indraningrat2019_sponges,AS7,indraningrat2019_sponges|AS7|marine agar 1/10|aerobic|30|NA,32905,20497,True
+indraningrat2019_sponges,AS7,indraningrat2019_sponges|AS7|Crenarchaeota agar|aerobic|30|NA,50041,20497,True
+indraningrat2019_sponges,AS2,indraningrat2019_sponges|AS2|Crenarchaeota agar|aerobic|30|NA,29440,56035,True
+indraningrat2019_sponges,AS8,indraningrat2019_sponges|AS8|OLIGO agar|aerobic|30|NA,33625,119249,True
+indraningrat2019_sponges,AS3,indraningrat2019_sponges|AS3|OLIGO agar|aerobic|30|NA,67409,75570,True
+indraningrat2019_sponges,AS4,indraningrat2019_sponges|AS4|OLIGO agar|aerobic|30|NA,43467,77702,True
+indraningrat2019_sponges,AS2,indraningrat2019_sponges|AS2|OLIGO agar|aerobic|30|NA,30815,56035,True
+indraningrat2019_sponges,XM11,indraningrat2019_sponges|XM11|Crenarchaeota agar|aerobic|30|NA,121328,40983,True
+ordonez2025_oak,leaf,ordonez2025_oak|leaf|unresolved|NA|NA|isolation 10,6682,19804,True
+ordonez2025_oak,rhizosphere,ordonez2025_oak|rhizosphere|unresolved|NA|NA|isolation 22,4230,35526,True
+ordonez2025_oak,leaf,ordonez2025_oak|leaf|unresolved|NA|NA|isolation 26,1223,19804,True
+ordonez2025_oak,rhizosphere,ordonez2025_oak|rhizosphere|unresolved|NA|NA|isolation 31,2360,35526,True
+ordonez2025_oak,stem,ordonez2025_oak|stem|unresolved|NA|NA|isolation 39,7,24839,False
+ordonez2025_oak,leaf,ordonez2025_oak|leaf|unresolved|NA|NA|isolation 11,3477,19804,True
+ordonez2025_oak,stem,ordonez2025_oak|stem|unresolved|NA|NA|isolation 21,4412,24839,True
+ordonez2025_oak,leaf,ordonez2025_oak|leaf|unresolved|NA|NA|isolation 27,97,19804,False
+ordonez2025_oak,stem,ordonez2025_oak|stem|unresolved|NA|NA|isolation 30,3287,24839,True
+ordonez2025_oak,rhizosphere,ordonez2025_oak|rhizosphere|unresolved|NA|NA|isolation 32,6824,35526,True
+ordonez2025_oak,rhizosphere,ordonez2025_oak|rhizosphere|unresolved|NA|NA|isolation 35,220,35526,False
+ordonez2025_oak,rhizosphere,ordonez2025_oak|rhizosphere|unresolved|NA|NA|isolation 4,5867,35526,True
+ordonez2025_oak,stem,ordonez2025_oak|stem|unresolved|NA|NA|isolation 41,10978,24839,True
+ordonez2025_oak,leaf,ordonez2025_oak|leaf|unresolved|NA|NA|isolation 8,563,19804,False
+ordonez2025_oak,rhizosphere,ordonez2025_oak|rhizosphere|unresolved|NA|NA|isolation 1,13396,35526,True
+ordonez2025_oak,stem,ordonez2025_oak|stem|unresolved|NA|NA|isolation 13,30,24839,False
+ordonez2025_oak,stem,ordonez2025_oak|stem|unresolved|NA|NA|isolation 15,577,24839,False
+ordonez2025_oak,rhizosphere,ordonez2025_oak|rhizosphere|unresolved|NA|NA|isolation 2,5777,35526,True
+ordonez2025_oak,leaf,ordonez2025_oak|leaf|unresolved|NA|NA|isolation 25,8214,19804,True
+ordonez2025_oak,leaf,ordonez2025_oak|leaf|unresolved|NA|NA|isolation 33,1450,19804,True
+ordonez2025_oak,rhizosphere,ordonez2025_oak|rhizosphere|unresolved|NA|NA|isolation 36,129,35526,False
+ordonez2025_oak,rhizosphere,ordonez2025_oak|rhizosphere|unresolved|NA|NA|isolation 5,4244,35526,True
+ordonez2025_oak,rhizosphere,ordonez2025_oak|rhizosphere|unresolved|NA|NA|isolation 6,4484,35526,True
+ordonez2025_oak,leaf,ordonez2025_oak|leaf|unresolved|NA|NA|isolation 7,3572,19804,True
+ordonez2025_oak,stem,ordonez2025_oak|stem|unresolved|NA|NA|isolation 16,6296,24839,True
+ordonez2025_oak,stem,ordonez2025_oak|stem|unresolved|NA|NA|isolation 17,11817,24839,True
+ordonez2025_oak,rhizosphere,ordonez2025_oak|rhizosphere|unresolved|NA|NA|isolation 23,9700,35526,True
+ordonez2025_oak,rhizosphere,ordonez2025_oak|rhizosphere|unresolved|NA|NA|isolation 24,1696,35526,True
+ordonez2025_oak,rhizosphere,ordonez2025_oak|rhizosphere|unresolved|NA|NA|isolation 3,8454,35526,True
+ordonez2025_oak,leaf,ordonez2025_oak|leaf|unresolved|NA|NA|isolation 37,699,19804,False
+ordonez2025_oak,leaf,ordonez2025_oak|leaf|unresolved|NA|NA|isolation 12,2583,19804,True
+ordonez2025_oak,stem,ordonez2025_oak|stem|unresolved|NA|NA|isolation 14,5852,24839,True
+ordonez2025_oak,stem,ordonez2025_oak|stem|unresolved|NA|NA|isolation 18,485,24839,False
+ordonez2025_oak,stem,ordonez2025_oak|stem|unresolved|NA|NA|isolation 19,8176,24839,True
+ordonez2025_oak,stem,ordonez2025_oak|stem|unresolved|NA|NA|isolation 20,10007,24839,True
+ordonez2025_oak,stem,ordonez2025_oak|stem|unresolved|NA|NA|isolation 29,2622,24839,True
+ordonez2025_oak,leaf,ordonez2025_oak|leaf|unresolved|NA|NA|isolation 34,211,19804,False
+ordonez2025_oak,leaf,ordonez2025_oak|leaf|unresolved|NA|NA|isolation 38,43,19804,False
+ordonez2025_oak,leaf,ordonez2025_oak|leaf|unresolved|NA|NA|isolation 9,1236,19804,True
+yu2020_broiler,E_breast,yu2020_broiler|E_breast|blood agar|aerobic|30|NA,81337,81484,True
+yu2020_broiler,E_breast,yu2020_broiler|E_breast|TSA|aerobic|7|NA,79320,81484,True
+yu2020_broiler,D_breast,yu2020_broiler|D_breast|blood agar|aerobic|7|NA,83520,71669,True
+yu2020_broiler,D_breast,yu2020_broiler|D_breast|blood agar|aerobic|30|NA,72760,71669,True
+yu2020_broiler,D_breast,yu2020_broiler|D_breast|TSA|aerobic|30|NA,71636,71669,True
+yu2020_broiler,C_breast,yu2020_broiler|C_breast|blood agar|aerobic|7|NA,73720,66048,True
+yu2020_broiler,C_breast,yu2020_broiler|C_breast|blood agar|aerobic|30|NA,75096,66048,True
+yu2020_broiler,C_breast,yu2020_broiler|C_breast|plate count agar|aerobic|7|NA,73535,66048,True
+yu2020_broiler,C_neck,yu2020_broiler|C_neck|blood agar|aerobic|30|NA,53845,72184,True
+yu2020_broiler,B_neck,yu2020_broiler|B_neck|plate count agar|aerobic|7|NA,34856,57749,True
+yu2020_broiler,B_back,yu2020_broiler|B_back|TSA|aerobic|30|NA,53983,50169,True
+yu2020_broiler,B_breast,yu2020_broiler|B_breast|plate count agar|aerobic|7|NA,51943,27357,True
+yu2020_broiler,A_back,yu2020_broiler|A_back|TSA|aerobic|30|NA,51585,51888,True
+yu2020_broiler,E_neck,yu2020_broiler|E_neck|plate count agar|aerobic|30|NA,57963,51086,True
+yu2020_broiler,A_back,yu2020_broiler|A_back|plate count agar|aerobic|7|NA,43008,51888,True
+yu2020_broiler,E_back,yu2020_broiler|E_back|TSA|aerobic|7|NA,69346,65001,True
+yu2020_broiler,E_back,yu2020_broiler|E_back|plate count agar|aerobic|30|NA,76442,65001,True
+yu2020_broiler,A_back,yu2020_broiler|A_back|plate count agar|aerobic|30|NA,58046,51888,True
+yu2020_broiler,A_breast,yu2020_broiler|A_breast|blood agar|aerobic|7|NA,53789,45345,True
+yu2020_broiler,D_back,yu2020_broiler|D_back|TSA|aerobic|30|NA,71862,31319,True
+yu2020_broiler,D_back,yu2020_broiler|D_back|plate count agar|aerobic|7|NA,75537,31319,True
+yu2020_broiler,D_back,yu2020_broiler|D_back|plate count agar|aerobic|30|NA,60953,31319,True
+yu2020_broiler,D_breast,yu2020_broiler|D_breast|plate count agar|aerobic|7|NA,50971,71669,True
+yu2020_broiler,D_neck,yu2020_broiler|D_neck|blood agar|aerobic|7|NA,64692,60735,True
+yu2020_broiler,D_neck,yu2020_broiler|D_neck|blood agar|aerobic|30|NA,73874,60735,True
+yu2020_broiler,C_neck,yu2020_broiler|C_neck|TSA|aerobic|7|NA,71576,72184,True
+yu2020_broiler,C_neck,yu2020_broiler|C_neck|TSA|aerobic|30|NA,75222,72184,True
+yu2020_broiler,C_back,yu2020_broiler|C_back|TSA|aerobic|30|NA,43409,66125,True
+yu2020_broiler,C_back,yu2020_broiler|C_back|plate count agar|aerobic|30|NA,83800,66125,True
+yu2020_broiler,C_breast,yu2020_broiler|C_breast|TSA|aerobic|7|NA,67621,66048,True
+yu2020_broiler,B_back,yu2020_broiler|B_back|blood agar|aerobic|7|NA,71797,50169,True
+yu2020_broiler,B_back,yu2020_broiler|B_back|plate count agar|aerobic|30|NA,68221,50169,True
+yu2020_broiler,B_neck,yu2020_broiler|B_neck|blood agar|aerobic|30|NA,52385,57749,True
+yu2020_broiler,A_neck,yu2020_broiler|A_neck|TSA|aerobic|7|NA,49085,45616,True
+yu2020_broiler,A_neck,yu2020_broiler|A_neck|plate count agar|aerobic|7|NA,51331,45616,True
+yu2020_broiler,A_neck,yu2020_broiler|A_neck|plate count agar|aerobic|30|NA,54163,45616,True
+yu2020_broiler,E_neck,yu2020_broiler|E_neck|TSA|aerobic|30|NA,79983,51086,True
+yu2020_broiler,E_back,yu2020_broiler|E_back|plate count agar|aerobic|7|NA,74951,65001,True
+yu2020_broiler,D_back,yu2020_broiler|D_back|blood agar|aerobic|7|NA,35631,31319,True
+yu2020_broiler,A_breast,yu2020_broiler|A_breast|blood agar|aerobic|30|NA,59064,45345,True
+yu2020_broiler,C_neck,yu2020_broiler|C_neck|plate count agar|aerobic|30|NA,70634,72184,True
+yu2020_broiler,C_back,yu2020_broiler|C_back|TSA|aerobic|7|NA,72713,66125,True
+yu2020_broiler,A_breast,yu2020_broiler|A_breast|TSA|aerobic|30|NA,27811,45345,True
+yu2020_broiler,C_breast,yu2020_broiler|C_breast|plate count agar|aerobic|30|NA,75651,66048,True
+yu2020_broiler,C_neck,yu2020_broiler|C_neck|blood agar|aerobic|7|NA,72203,72184,True
+yu2020_broiler,B_neck,yu2020_broiler|B_neck|TSA|aerobic|30|NA,55465,57749,True
+yu2020_broiler,A_breast,yu2020_broiler|A_breast|plate count agar|aerobic|7|NA,58241,45345,True
+yu2020_broiler,B_neck,yu2020_broiler|B_neck|plate count agar|aerobic|30|NA,51970,57749,True
+yu2020_broiler,A_breast,yu2020_broiler|A_breast|plate count agar|aerobic|30|NA,54855,45345,True
+yu2020_broiler,B_breast,yu2020_broiler|B_breast|TSA|aerobic|7|NA,73608,27357,True
+yu2020_broiler,B_neck,yu2020_broiler|B_neck|blood agar|aerobic|7|NA,52029,57749,True
+yu2020_broiler,A_back,yu2020_broiler|A_back|TSA|aerobic|7|NA,49208,51888,True
+yu2020_broiler,E_neck,yu2020_broiler|E_neck|TSA|aerobic|7|NA,77018,51086,True
+yu2020_broiler,E_back,yu2020_broiler|E_back|blood agar|aerobic|7|NA,85840,65001,True
+yu2020_broiler,E_back,yu2020_broiler|E_back|blood agar|aerobic|30|NA,73137,65001,True
+yu2020_broiler,E_breast,yu2020_broiler|E_breast|plate count agar|aerobic|7|NA,78077,81484,True
+yu2020_broiler,E_breast,yu2020_broiler|E_breast|plate count agar|aerobic|30|NA,74456,81484,True
+yu2020_broiler,E_neck,yu2020_broiler|E_neck|blood agar|aerobic|30|NA,88036,51086,True
+yu2020_broiler,D_neck,yu2020_broiler|D_neck|TSA|aerobic|7|NA,77097,60735,True
+yu2020_broiler,D_neck,yu2020_broiler|D_neck|plate count agar|aerobic|7|NA,84149,60735,True
+yu2020_broiler,D_back,yu2020_broiler|D_back|blood agar|aerobic|30|NA,65659,31319,True
+yu2020_broiler,D_breast,yu2020_broiler|D_breast|plate count agar|aerobic|30|NA,72841,71669,True
+yu2020_broiler,C_back,yu2020_broiler|C_back|blood agar|aerobic|7|NA,68722,66125,True
+yu2020_broiler,C_back,yu2020_broiler|C_back|blood agar|aerobic|30|NA,67679,66125,True
+yu2020_broiler,C_back,yu2020_broiler|C_back|plate count agar|aerobic|7|NA,69384,66125,True
+yu2020_broiler,C_breast,yu2020_broiler|C_breast|TSA|aerobic|30|NA,73293,66048,True
+yu2020_broiler,B_neck,yu2020_broiler|B_neck|TSA|aerobic|7|NA,55161,57749,True
+yu2020_broiler,B_back,yu2020_broiler|B_back|blood agar|aerobic|30|NA,38117,50169,True
+yu2020_broiler,B_breast,yu2020_broiler|B_breast|blood agar|aerobic|7|NA,33409,27357,True
+yu2020_broiler,A_back,yu2020_broiler|A_back|blood agar|aerobic|7|NA,52010,51888,True
+yu2020_broiler,A_back,yu2020_broiler|A_back|blood agar|aerobic|30|NA,50979,51888,True
+yu2020_broiler,E_neck,yu2020_broiler|E_neck|plate count agar|aerobic|7|NA,70362,51086,True
+yu2020_broiler,E_back,yu2020_broiler|E_back|TSA|aerobic|30|NA,76455,65001,True
+yu2020_broiler,E_breast,yu2020_broiler|E_breast|blood agar|aerobic|7|NA,78182,81484,True
+yu2020_broiler,E_breast,yu2020_broiler|E_breast|TSA|aerobic|30|NA,85568,81484,True
+yu2020_broiler,E_neck,yu2020_broiler|E_neck|blood agar|aerobic|7|NA,70737,51086,True
+yu2020_broiler,D_neck,yu2020_broiler|D_neck|TSA|aerobic|30|NA,71945,60735,True
+yu2020_broiler,D_neck,yu2020_broiler|D_neck|plate count agar|aerobic|30|NA,77443,60735,True
+yu2020_broiler,D_back,yu2020_broiler|D_back|TSA|aerobic|7|NA,64502,31319,True
+yu2020_broiler,D_breast,yu2020_broiler|D_breast|TSA|aerobic|7|NA,79981,71669,True
+yu2020_broiler,C_neck,yu2020_broiler|C_neck|plate count agar|aerobic|7|NA,69628,72184,True
+yu2020_broiler,A_breast,yu2020_broiler|A_breast|TSA|aerobic|7|NA,43637,45345,True
+yu2020_broiler,B_back,yu2020_broiler|B_back|TSA|aerobic|7|NA,76619,50169,True
+yu2020_broiler,B_back,yu2020_broiler|B_back|plate count agar|aerobic|7|NA,69405,50169,True
+yu2020_broiler,B_breast,yu2020_broiler|B_breast|blood agar|aerobic|30|NA,54329,27357,True
+yu2020_broiler,B_breast,yu2020_broiler|B_breast|TSA|aerobic|30|NA,69041,27357,True
+yu2020_broiler,B_breast,yu2020_broiler|B_breast|plate count agar|aerobic|30|NA,41709,27357,True
+yu2020_broiler,A_neck,yu2020_broiler|A_neck|blood agar|aerobic|7|NA,48517,45616,True
+yu2020_broiler,A_neck,yu2020_broiler|A_neck|TSA|aerobic|30|NA,57011,45616,True
+yu2020_broiler,A_neck,yu2020_broiler|A_neck|blood agar|aerobic|30|NA,51451,45616,True
+zehavi2018_rumen,plated_cow,zehavi2018_rumen|plated_cow|M10 + clarified rumen fluid|anaerobic|39|dilution 10-4,30537,18478,True
+zehavi2018_rumen,plated_cow,zehavi2018_rumen|plated_cow|M10 + clarified rumen fluid|anaerobic|39|dilution 10-6,20428,18478,True
+zehavi2018_rumen,plated_cow,zehavi2018_rumen|plated_cow|M10 + clarified rumen fluid|anaerobic|39|dilution 10-1,60996,18478,True
+zehavi2018_rumen,plated_cow,zehavi2018_rumen|plated_cow|M10 defined|anaerobic|39|dilution 10-6,21755,18478,True
+zehavi2018_rumen,plated_cow,zehavi2018_rumen|plated_cow|M10 + clarified rumen fluid|anaerobic|39|dilution 10-3,37251,18478,True
+zehavi2018_rumen,plated_cow,zehavi2018_rumen|plated_cow|M10 + clarified rumen fluid|anaerobic|39|dilution 10-2,29991,18478,True
+zehavi2018_rumen,plated_cow,zehavi2018_rumen|plated_cow|M10 defined|anaerobic|39|dilution 10-1,26230,18478,True
+zehavi2018_rumen,plated_cow,zehavi2018_rumen|plated_cow|M10 defined|anaerobic|39|dilution 10-5,28095,18478,True
+zehavi2018_rumen,plated_cow,zehavi2018_rumen|plated_cow|M10 defined|anaerobic|39|dilution 10-3,33114,18478,True
+zehavi2018_rumen,plated_cow,zehavi2018_rumen|plated_cow|M10 defined|anaerobic|39|dilution 10-4,32261,18478,True
+zehavi2018_rumen,plated_cow,zehavi2018_rumen|plated_cow|M10 + clarified rumen fluid|anaerobic|39|dilution 10-5,30318,18478,True
+zehavi2018_rumen,plated_cow,zehavi2018_rumen|plated_cow|M10 defined|anaerobic|39|dilution 10-2,36506,18478,True
+hinsu2021_groundnut,R3,hinsu2021_groundnut|R3|Soil Extract agar|aerobic|NA|pooled 27 and 37 C,127090,176976,True
+hinsu2021_groundnut,R3,hinsu2021_groundnut|R3|Nutrient agar|aerobic|NA|pooled 27 and 37 C,94208,176976,True
+hinsu2021_groundnut,R4,hinsu2021_groundnut|R4|YEM agar|aerobic|NA|pooled 27 and 37 C,116417,355642,True
+hinsu2021_groundnut,R4,hinsu2021_groundnut|R4|Soil Extract agar|aerobic|NA|pooled 27 and 37 C,69083,355642,True
+hinsu2021_groundnut,R3,hinsu2021_groundnut|R3|Yeast Mannitol agar|aerobic|NA|pooled 27 and 37 C,58243,176976,True
+hinsu2021_groundnut,R3,hinsu2021_groundnut|R3|YEM agar|aerobic|NA|pooled 27 and 37 C,117376,176976,True
+hinsu2021_groundnut,R4,hinsu2021_groundnut|R4|Yeast Mannitol agar|aerobic|NA|pooled 27 and 37 C,30648,355642,True
+hinsu2021_groundnut,R4,hinsu2021_groundnut|R4|Tryptic soy agar|aerobic|NA|pooled 27 and 37 C,65839,355642,True
+hinsu2021_groundnut,R4,hinsu2021_groundnut|R4|Nutrient agar|aerobic|NA|pooled 27 and 37 C,128040,355642,True
+hinsu2021_groundnut,R3,hinsu2021_groundnut|R3|Azotobacter Mannitol agar|aerobic|NA|pooled 27 and 37 C,78635,176976,True
+hinsu2021_groundnut,R3,hinsu2021_groundnut|R3|Actinomycetes Isolation agar|aerobic|NA|pooled 27 and 37 C,135002,176976,True
+hinsu2021_groundnut,R4,hinsu2021_groundnut|R4|Actinomycetes Isolation agar|aerobic|NA|pooled 27 and 37 C,71846,355642,True
+hinsu2021_groundnut,R4,hinsu2021_groundnut|R4|Azotobacter Mannitol agar|aerobic|NA|pooled 27 and 37 C,181184,355642,True
+hinsu2021_groundnut,R3,hinsu2021_groundnut|R3|Tryptic soy agar|aerobic|NA|pooled 27 and 37 C,149758,176976,True
+hinsu2021_groundnut,R4,hinsu2021_groundnut|R4|R2A agar|aerobic|NA|pooled 27 and 37 C,44748,355642,True
+hinsu2021_groundnut,R3,hinsu2021_groundnut|R3|R2A agar|aerobic|NA|pooled 27 and 37 C,133111,176976,True

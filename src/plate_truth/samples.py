@@ -107,25 +107,25 @@ def parse_zheng2024(meta: pd.DataFrame, habitat: str) -> pd.DataFrame:
     return _sheet(meta, row)
 
 
-# Nielsen et al. 2019 clay till. The compartment is in isolation_source; the sample type is in
+# Krüger et al. 2019 clay till. The compartment is in isolation_source; the sample type is in
 # description. PSM samples labelled with a distance (11.5-25 mm) are dispersal sectors, not
 # whole plates; "NH" PSM samples carry no distance and are taken to be full plates (D-021).
-NIELSEN_COMPARTMENTS = [("plow layer", "plow_layer"), ("biopore", "biopore"),
+KRUGER_COMPARTMENTS = [("plow layer", "plow_layer"), ("biopore", "biopore"),
                         ("matrix 80-120", "matrix_80_120"), ("matrix 300-350", "matrix_300_350"),
                         ("red fracture", "red_fracture")]
 
 
-def nielsen_compartment(isolation_source: str) -> str | None:
+def kruger_compartment(isolation_source: str) -> str | None:
     """Map an isolation_source text to one of the five soil/sediment compartments."""
     text = isolation_source.lower()
-    return next((code for key, code in NIELSEN_COMPARTMENTS if key in text), None)
+    return next((code for key, code in KRUGER_COMPARTMENTS if key in text), None)
 
 
-def parse_nielsen2019(meta: pd.DataFrame) -> pd.DataFrame:
+def parse_kruger2019(meta: pd.DataFrame) -> pd.DataFrame:
     """Clay-till compartments: soil DNA, Nycodenz extracts, reference plates and PSM plates."""
     def row(r):
         desc = _str(r.description).removeprefix("type of sample:")
-        out = {"source_sample": nielsen_compartment(_str(r.isolation_source))}
+        out = {"source_sample": kruger_compartment(_str(r.isolation_source))}
         if desc.startswith("soil sample"):
             return {**out, "kind": "environment"}
         if desc == "Nycodenz extraction":
@@ -140,34 +140,34 @@ def parse_nielsen2019(meta: pd.DataFrame) -> pd.DataFrame:
     return _sheet(meta, row)
 
 
-# Wang et al. 2023 desert soil: BS/RS are the two source soils; plates are
+# Li et al. 2023 desert soil: BS/RS are the two source soils; plates are
 # {B|R}{L|M|H}{medium number}, L/M/H = 15/30/45 C (sample titles BCL ... RCH).
-WANG_SOURCE = {"B": "bulk", "R": "rhizosphere"}
-WANG_TEMPERATURE = {"L": 15, "M": 30, "H": 45}
+LI2023_SOURCE = {"B": "bulk", "R": "rhizosphere"}
+LI2023_TEMPERATURE = {"L": 15, "M": 30, "H": 45}
 # Medium abbreviations M1-M60 in order, from the list above Supplementary Table 8.
-WANG_MEDIA = ("BEN BHI BRA CSA CHIA CZA GN1 GYM GLA GGA HA HVA KB LNMS LB MCA MYP MIC MM PYG "
+LI2023_MEDIA = ("BEN BHI BRA CSA CHIA CZA GN1 GYM GLA GGA HA HVA KB LNMS LB MCA MYP MIC MM PYG "
               "PYS PPS PDA RA RH RZ1 RZ2 SA SSM SSTY CMCA SLA SEAB SEAR SCA SGCY SNA STA STBG T5 "
               "TP TGY TCN YGCP YMG 1xTSA 0.1xTSA 0.01xTSA 1xNA 0.1xNA 0.01xNA 1xAIA 0.1xAIA "
               "0.01xAIA 1xR2A 0.1xR2A 0.01xR2A 1xMA 0.1xMA 0.01xMA").split()
 
 
-def parse_wang2023(meta: pd.DataFrame) -> pd.DataFrame:
+def parse_li2023(meta: pd.DataFrame) -> pd.DataFrame:
     """Desert soil culturomics: 2 source soils x 60 media x 3 temperatures."""
     def row(r):
         name = _str(r.library_name)
         if name in ("BS", "RS"):
-            return {"source_sample": WANG_SOURCE[name[0]], "kind": "environment"}
+            return {"source_sample": LI2023_SOURCE[name[0]], "kind": "environment"}
         m = re.match(r"^([BR])([LMH])(\d+)$", name)
         if not m:
             return {}
-        return {"source_sample": WANG_SOURCE[m[1]], "kind": "plate",
-                "medium": f"M{m[3]} ({WANG_MEDIA[int(m[3]) - 1]})",
-                "temperature_c": WANG_TEMPERATURE[m[2]]}
+        return {"source_sample": LI2023_SOURCE[m[1]], "kind": "plate",
+                "medium": f"M{m[3]} ({LI2023_MEDIA[int(m[3]) - 1]})",
+                "temperature_c": LI2023_TEMPERATURE[m[2]]}
     return _sheet(meta, row)
 
 
-def wang_incubation_days(table9_text: str) -> dict[str, int]:
-    """Plate library name -> incubation days, from the text of Wang et al. Supplementary
+def li2023_incubation_days(table9_text: str) -> dict[str, int]:
+    """Plate library name -> incubation days, from the text of Li et al. Supplementary
     Table 9 (rows: medium no., abbreviation, then six (library, days) pairs)."""
     days = {}
     for line in table9_text.splitlines():
@@ -177,17 +177,17 @@ def wang_incubation_days(table9_text: str) -> dict[str, int]:
     return days
 
 
-# Dueholm et al. 2023: two experiments, each with its own sludge sample, told apart by the
+# Verhoeven et al. 2023: two experiments, each with its own sludge sample, told apart by the
 # sequencing batch in library_name (MQ210129 oxic; MQ210611 mostly anoxic). The medium of each
 # numbered plate is not published, so medium is the plate code.
-DUEHOLM23_BATCH = {"MQ210129": "AS_exp1", "MQ210611": "AS_exp2"}
+VERHOEVEN23_BATCH = {"MQ210129": "AS_exp1", "MQ210611": "AS_exp2"}
 
 
-def parse_dueholm2023(meta: pd.DataFrame) -> pd.DataFrame:
+def parse_verhoeven2023(meta: pd.DataFrame) -> pd.DataFrame:
     """Activated sludge single-cell plating: sludge, strained suspension, plates, controls."""
     def row(r):
         title = _str(r.sample_title)
-        source = DUEHOLM23_BATCH.get(_str(r.library_name)[:8])
+        source = VERHOEVEN23_BATCH.get(_str(r.library_name)[:8])
         if m := re.match(r"^MV-PHN-(?:AS-|PL-AS)([A-D1-3])$", title):
             return {"source_sample": source, "kind": "environment", "replicate": _rep(m[1])}
         if m := re.match(r"^MV-PHN-(?:AS-str-|PL-STR)([A-D1-3])$", title):
@@ -209,12 +209,12 @@ def _rep(code: str) -> int:
     return int(code) if code.isdigit() else "ABCD".index(code) + 1
 
 
-# Dueholm 2026: RAW_n = source sludge; CTRL_n = no antibiotic; {ABX}_{LC|WC|HC}_n = one
+# Villanelo 2026: RAW_n = source sludge; CTRL_n = no antibiotic; {ABX}_{LC|WC|HC}_n = one
 # antibiotic at one of three concentrations (codes kept as written).
-DUEHOLM26_ABX = ("AMP", "CAR", "CHL", "CIP", "ERI", "GEN", "KAN", "NEO", "RIF", "STR", "TET")
+VILLANELO26_ABX = ("AMP", "CAR", "CHL", "CIP", "ERI", "GEN", "KAN", "NEO", "RIF", "STR", "TET")
 
 
-def parse_dueholm2026(meta: pd.DataFrame) -> pd.DataFrame:
+def parse_villanelo2026(meta: pd.DataFrame) -> pd.DataFrame:
     """Activated sludge on ASF agarose with and without antibiotics."""
     def row(r):
         name = _str(r.library_name)
@@ -223,7 +223,7 @@ def parse_dueholm2026(meta: pd.DataFrame) -> pd.DataFrame:
         if m := re.match(r"^CTRL_(\d+)$", name):
             return {"source_sample": "raw_AS", "kind": "plate", "medium": "ASF agarose",
                     "replicate": m[1]}
-        if (m := re.match(r"^([A-Z]{3})_([LWH]C)_(\d+)$", name)) and m[1] in DUEHOLM26_ABX:
+        if (m := re.match(r"^([A-Z]{3})_([LWH]C)_(\d+)$", name)) and m[1] in VILLANELO26_ABX:
             return {"source_sample": "raw_AS", "kind": "plate",
                     "medium": f"ASF agarose + {m[1]}", "condition_detail": m[2],
                     "replicate": m[3]}
@@ -260,7 +260,7 @@ def parse_indraningrat2019(meta: pd.DataFrame) -> pd.DataFrame:
 OAK_TISSUE = {"leaf": "leaf", "stem": "stem", "root": "rhizosphere", "rhizosphere": "rhizosphere"}
 
 
-def parse_fonseca2025(meta: pd.DataFrame) -> pd.DataFrame:
+def parse_ordonez2025(meta: pd.DataFrame) -> pd.DataFrame:
     """Oak tissue microbiota and pooled agar-plate isolates, 16S only."""
     def row(r):
         alias = _str(r.sample_alias)
@@ -275,9 +275,9 @@ def parse_fonseca2025(meta: pd.DataFrame) -> pd.DataFrame:
     return _sheet(meta, row)
 
 
-# Higuera 2024 seawater: aliases {site}-A = seawater, {site}-B = culturable pool of 7 media;
+# Ortiz-Severín 2024 seawater: aliases {site}-A = seawater, {site}-B = culturable pool of 7 media;
 # D-I are subcultures of the pool (D-020) and metaG libraries are shotgun.
-def parse_higuera2024(meta: pd.DataFrame) -> pd.DataFrame:
+def parse_ortizseverin2024(meta: pd.DataFrame) -> pd.DataFrame:
     """Two seawater sites with direct community and culturable-pool libraries."""
     def row(r):
         m = re.match(r"^(PSh|AFS)-([A-Z])$", _str(r.sample_alias))
@@ -293,12 +293,12 @@ def parse_higuera2024(meta: pd.DataFrame) -> pd.DataFrame:
     return _sheet(meta, row)
 
 
-# De Keyser et al. 2020 broiler carcasses: {area}_{carcass}_SH = skin homogenate;
+# Yu et al. 2020 broiler carcasses: {area}_{carcass}_SH = skin homogenate;
 # {area}_{carcass}_{BA|TSA|PCA}{7|30} = plate wash at 7 or 30 C.
 BROILER_MEDIUM = {"BA": "blood agar", "TSA": "TSA", "PCA": "plate count agar"}
 
 
-def parse_dekeyser2020(meta: pd.DataFrame) -> pd.DataFrame:
+def parse_yu2020(meta: pd.DataFrame) -> pd.DataFrame:
     """Skin homogenates and plate washes, linked per carcass and skin area."""
     def row(r):
         m = re.match(r"^(Neck|Breast|Back)_([A-E])_(SH|BA|TSA|PCA)(\d*)$", _str(r.library_name))
@@ -312,10 +312,10 @@ def parse_dekeyser2020(meta: pd.DataFrame) -> pd.DataFrame:
     return _sheet(meta, row)
 
 
-# Bhatt et al. 2021 groundnut: the five rhizosphere samples of each farm (R31-R35, R41-R45)
+# Hinsu et al. 2021 groundnut: the five rhizosphere samples of each farm (R31-R35, R41-R45)
 # were pooled and plated; plates R3-{medium}, R4-{medium}. Other soil libraries in the project
 # belong to a different study and are not linked. Temperatures (27 and 37 C) were pooled.
-def parse_bhatt2021(meta: pd.DataFrame) -> pd.DataFrame:
+def parse_hinsu2021(meta: pd.DataFrame) -> pd.DataFrame:
     """Groundnut rhizosphere: per-farm soil replicates and per-medium pooled plates."""
     def row(r):
         name = _str(r.library_name)
@@ -330,18 +330,44 @@ def parse_bhatt2021(meta: pd.DataFrame) -> pd.DataFrame:
     return _sheet(meta, row)
 
 
+# Zehavi et al. 2018 rumen: one cow's glycerol-stored rumen sample ("Rumen inoculum source
+# Dilution factor 0") was diluted 10-1 to 10-6 ("Rumen inoculum Dilution factor 10-k") and each
+# dilution plated in duplicate on M10 with or without clarified rumen fluid. The 37 "Bovine
+# rumen sample" libraries are other cows and are not linked (D-028).
+RUMEN_MEDIUM = {"with": "M10 + clarified rumen fluid", "without": "M10 defined"}
+
+
+def parse_zehavi2018(meta: pd.DataFrame) -> pd.DataFrame:
+    """The plated cow's rumen sample, its dilutions, and plates per medium and dilution."""
+    def row(r):
+        title = _str(r.sample_title)
+        if title == "Rumen inoculum source Dilution factor 0":
+            return {"source_sample": "plated_cow", "kind": "environment"}
+        if m := re.match(r"^Rumen inoculum Dilution factor (10-\d)$", title):
+            return {"source_sample": "plated_cow", "kind": "inoculum",
+                    "condition_detail": f"dilution {m[1]}"}
+        if m := re.match(r"^Agar plate media M10 (with|without) rumen fluid Dilution factor "
+                         r"(10-\d) rep(\d)$", title):
+            return {"source_sample": "plated_cow", "kind": "plate",
+                    "medium": RUMEN_MEDIUM[m[1]], "condition_detail": f"dilution {m[2]}",
+                    "replicate": m[3]}
+        return {}
+    return _sheet(meta, row)
+
+
 PARSERS = {
     "zheng2024_soil": lambda meta: parse_zheng2024(meta, "soil"),
     "zheng2024_sludge": lambda meta: parse_zheng2024(meta, "sludge"),
-    "lennon2019_claytill": parse_nielsen2019,
-    "wang2023_desertsoil": parse_wang2023,
-    "dueholm2023_sludge": parse_dueholm2023,
-    "dueholm2026_sludge_antibiotics": parse_dueholm2026,
-    "versluis2019_sponges": parse_indraningrat2019,
-    "fonseca2025_oak": parse_fonseca2025,
-    "higuera2024_seawater": parse_higuera2024,
-    "dekeyser2020_broiler": parse_dekeyser2020,
-    "bhatt2021_groundnut": parse_bhatt2021,
+    "kruger2019_claytill": parse_kruger2019,
+    "li2023_desertsoil": parse_li2023,
+    "verhoeven2023_sludge": parse_verhoeven2023,
+    "villanelo2026_sludge_antibiotics": parse_villanelo2026,
+    "indraningrat2019_sponges": parse_indraningrat2019,
+    "ordonez2025_oak": parse_ordonez2025,
+    "ortizseverin2024_seawater": parse_ortizseverin2024,
+    "yu2020_broiler": parse_yu2020,
+    "hinsu2021_groundnut": parse_hinsu2021,
+    "zehavi2018_rumen": parse_zehavi2018,
 }
 
 

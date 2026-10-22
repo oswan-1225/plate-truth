@@ -1,0 +1,3 @@
+study_id,rows_paired,rows_every_read,rows_both,enriched_on_plates_agree,enriched_on_plates_only_paired,enriched_on_plates_only_every_read,enriched_on_plates_both,detected_on_plates_agree,detected_on_plates_only_paired,detected_on_plates_only_every_read,detected_on_plates_both
+zheng2024_soil,67274,93116,65228,0.9908,492,109,1407,0.7091,31,18944,4464
+zheng2024_sludge,33152,51348,32652,0.985,375,114,1130,0.6589,45,11093,3472

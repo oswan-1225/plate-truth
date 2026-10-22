@@ -29,6 +29,8 @@ CREATE TABLE asvs (
     asv_id TEXT PRIMARY KEY, study_id TEXT REFERENCES studies, sequence TEXT, length INTEGER);
 CREATE TABLE abundances (
     run_accession TEXT REFERENCES samples, asv_id TEXT REFERENCES asvs, count INTEGER);
+CREATE TABLE abundances_every_read (
+    run_accession TEXT REFERENCES samples, asv_id TEXT REFERENCES asvs, count INTEGER);
 CREATE TABLE taxonomy (
     asv_id TEXT PRIMARY KEY REFERENCES asvs, domain TEXT, phylum TEXT, class TEXT,
     "order" TEXT, family TEXT, genus TEXT, copy_number REAL, copy_number_rank TEXT,
@@ -48,6 +50,7 @@ CREATE TABLE medium_class (
     medium_class TEXT PRIMARY KEY, definition TEXT);
 CREATE INDEX idx_abund_run ON abundances (run_accession);
 CREATE INDEX idx_abund_asv ON abundances (asv_id);
+CREATE INDEX idx_abund_er_run ON abundances_every_read (run_accession);
 CREATE INDEX idx_samples_study ON samples (study_id, kind);
 CREATE INDEX idx_refstrains ON reference_strains (reference, ref_id);
 """

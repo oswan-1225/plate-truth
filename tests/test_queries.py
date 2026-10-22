@@ -20,7 +20,9 @@ def con(tmp_path):
     tax = pd.DataFrame({"asv_id": ["x", "y", "chl"], "is_organelle": [0, 0, 1]})
     conds = pd.DataFrame({"condition_id": ["c1", "c2"], "study_id": ["s", "s"],
                           "source_sample": ["A", "B"], "medium": ["TSA", "TSA"]})
-    write_tables(db, {"samples": samples, "abundances": abund, "taxonomy": tax,
+    every = pd.DataFrame({"run_accession": ["e1", "p1"], "asv_id": ["x", "x"], "count": [9, 1]})
+    write_tables(db, {"samples": samples, "abundances": abund, "abundances_every_read": every,
+                      "taxonomy": tax,
                       "conditions": conds, "studies": pd.DataFrame({"study_id": ["s"]})})
     c = connect(db)
     yield c
@@ -42,3 +44,11 @@ def test_plate_counts_pool_replicate_plates(con):
 def test_plating_conditions_linked_only(con):
     assert plating_conditions(con)["condition_id"].tolist() == ["c1"]   # B has no environment
     assert len(plating_conditions(con, linked_only=False)) == 2
+
+
+def test_every_read_table_is_selectable_and_validated(con):
+    env = environment_counts(con, table="abundances_every_read")
+    assert env["count"].tolist() == [9]
+    assert plate_counts(con, table="abundances_every_read")["count"].tolist() == [1]
+    with pytest.raises(ValueError):
+        plate_counts(con, table="samples")

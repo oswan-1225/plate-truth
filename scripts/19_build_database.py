@@ -3,7 +3,8 @@
 Reads config/census_studies.yaml, data/processed/sample_sheet.csv and primer_sets.csv,
 config/media.yaml, and for every study that has been processed (scripts 16-18):
 data/interim/phase2/{study}/asv_seqs.fasta, counts.csv, read_qc.csv, taxonomy.csv,
-nearest_relative.csv. Studies not yet processed are skipped and listed. The reference_strains
+nearest_relative.csv, and counts_r1all.csv where it exists (every-read counts, D-030). Studies
+not yet processed are skipped and listed. The reference_strains
 table keeps only reference sequences that are some ASV's nearest relative.
 
 Output: data/plate_truth.sqlite (not committed; rebuilt from the pipeline, D-003)
@@ -35,8 +36,10 @@ def study_outputs(sid: str) -> dict | None:
     qc = pd.read_csv(d / "read_qc.csv").rename(columns={"run": "run_accession"})
     tax = pd.read_csv(d / "taxonomy.csv")
     tax["is_organelle"] = is_organelle(tax).astype(int)
-    return {"asvs": asvs, "abundances": counts, "qc": qc, "taxonomy": tax,
-            "nearest_relative": pd.read_csv(d / "nearest_relative.csv")}
+    every = (pd.read_csv(d / "counts_r1all.csv").rename(columns={"run": "run_accession"})
+             if (d / "counts_r1all.csv").exists() else counts.iloc[0:0])
+    return {"asvs": asvs, "abundances": counts, "abundances_every_read": every, "qc": qc,
+            "taxonomy": tax, "nearest_relative": pd.read_csv(d / "nearest_relative.csv")}
 
 
 def reference_members(nr: pd.DataFrame) -> pd.DataFrame:
@@ -69,7 +72,8 @@ def main() -> None:
     sheet["condition_id"] = condition_ids(sheet)
 
     done, skipped, parts = [], [], {k: [] for k in
-                                    ("asvs", "abundances", "qc", "taxonomy", "nearest_relative")}
+                                    ("asvs", "abundances", "abundances_every_read", "qc",
+                                     "taxonomy", "nearest_relative")}
     for s in studies:
         out = study_outputs(s["id"])
         if out is None:
@@ -96,6 +100,8 @@ def main() -> None:
         "conditions": conditions_table(samples),
         "asvs": t["asvs"],
         "abundances": t["abundances"][t["abundances"]["run_accession"].isin(samples["run_accession"])],
+        "abundances_every_read": t["abundances_every_read"][
+            t["abundances_every_read"]["run_accession"].isin(samples["run_accession"])],
         "taxonomy": t["taxonomy"],
         "nearest_relative": t["nearest_relative"],
         "reference_strains": reference_members(t["nearest_relative"]),

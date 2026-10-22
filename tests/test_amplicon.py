@@ -43,3 +43,25 @@ def test_fastq_urls_pair_or_single():
     assert fastq_urls("ftp.sra.ebi.ac.uk/b/Y_subreads.fastq.gz") == [
         "https://ftp.sra.ebi.ac.uk/b/Y_subreads.fastq.gz"]
     assert fastq_urls(pd.NA) == []
+
+
+def test_asv_end_groups_start_and_end():
+    from plate_truth.amplicon import asv_end_groups
+    asvs = [("a", "ACGTAA"), ("b", "ACGTCC"), ("c", "TTTTAA")]
+    assert asv_end_groups(asvs, 4, "start")["group_id"].tolist() == ["s1", "s1", "s2"]
+    # last two bases: a and c share 'AA'
+    assert asv_end_groups(asvs, 2, "end")["group_id"].tolist() == ["e1", "e2", "e1"]
+
+
+def test_split_group_counts_proportional_equal_and_exact_totals():
+    from plate_truth.amplicon import split_group_counts
+    groups = pd.DataFrame({"asv_id": ["a", "b", "c"], "group_id": ["g1", "g1", "g2"]})
+    gc = pd.DataFrame({"run": ["r", "r", "s"], "group_id": ["g1", "g2", "g1"],
+                       "count": [10, 4, 5]})
+    w = pd.DataFrame({"run": ["r", "r"], "asv_id": ["a", "b"], "count": [3, 1]})
+    out = split_group_counts(gc, groups, w).set_index(["run", "asv_id"])["count"]
+    # run r: g1 = 10 split 3:1 -> 7.5/2.5 -> largest remainder gives 8 and 2 (sum kept at 10)
+    assert out[("r", "a")] + out[("r", "b")] == 10 and out[("r", "a")] in (7, 8)
+    assert out[("r", "c")] == 4
+    # run s has no weights: equal split of 5 -> 3 and 2
+    assert sorted([out[("s", "a")], out[("s", "b")]]) == [2, 3]
