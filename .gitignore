@@ -253,3 +253,5 @@ DECISIONS.md
 # All markdown docs except the README stay local
 *.md
 !README.md
+# The pre-registered analysis plan is committed before any model is fitted
+!ANALYSIS_PLAN.md

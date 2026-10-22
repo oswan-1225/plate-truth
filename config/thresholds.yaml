@@ -65,4 +65,4 @@ environment:
 # source sample's pooled environmental reads (prokaryotic ASVs only) both reach min_pool_reads.
 depth:
   min_pool_reads: 1000
-  sensitivity: [5000, 10000]
+  sensitivity: [5000, 7500]   # 7,500: strictest round level keeping every environmental pool (D-032)
