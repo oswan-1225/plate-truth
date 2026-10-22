@@ -12,6 +12,8 @@ Per study (pooled over its runs): UNOISE3 + uchime3 de novo chimera removal, the
 reads are mapped back to the ASVs.
 
 Usage: python scripts/16_reads_to_asvs.py STUDY_ID [STUDY_ID ...] [--per-run-only]
+       [--tag=NAME --max-ee=X]   (a reprocessing with another expected-error filter, written to
+                                  data/interim/phase2/{study}__{NAME}/ for a sensitivity analysis)
 Outputs (data/interim/phase2/{study}/): derep/, qc/, asv_seqs.fasta, counts.csv, read_qc.csv
 """
 
@@ -35,7 +37,7 @@ from plate_truth.amplicon import (
     otutab_to_long,
 )
 from plate_truth.census import ena_table
-from plate_truth.config import data_path, load_config
+from plate_truth.config import cli_option, data_path, load_config, study_dir
 from plate_truth.http import download
 
 WORKERS = 4
@@ -111,9 +113,13 @@ def run_sheet(study: dict) -> pd.DataFrame:
     return sheet
 
 
-def process_study(study: dict, per_run_only: bool) -> None:
-    """All runs of one study, then pooled denoising and mapping."""
+def process_study(study: dict, per_run_only: bool, tag: str | None = None,
+                  max_ee: float | None = None) -> None:
+    """All runs of one study, then pooled denoising and mapping. tag and max_ee: a
+    reprocessing with another expected-error filter, in its own folder."""
     amp = load_config("thresholds")["amplicon"]
+    if max_ee is not None:
+        amp = {**amp, "max_ee": max_ee}
     refcfg = load_config("thresholds")["reference"]
     sets = pd.read_csv(data_path("processed") / "primer_sets.csv")
     ref = next(r for r in sets.to_dict("records") if study["id"] in r["studies"].split(";"))
@@ -121,7 +127,7 @@ def process_study(study: dict, per_run_only: bool) -> None:
                     f"cultured_{ref['ref_name']}.fasta")
     lo, hi = refcfg["region_length"][ref["region"]]
     sheet = run_sheet(study)
-    out_dir = data_path("interim") / "phase2" / study["id"]
+    out_dir = study_dir(study["id"], tag)
     tmp_root = out_dir / "tmp"
     for sub in ("derep", "qc"):
         (out_dir / sub).mkdir(parents=True, exist_ok=True)
@@ -172,7 +178,9 @@ def main() -> None:
         if studies[sid].get("read_prep") in (None, "unresolved"):
             print(f"{sid}: read_prep unresolved, skipped")
             continue
-        process_study(studies[sid], "--per-run-only" in sys.argv)
+        max_ee = cli_option(sys.argv, "max-ee")
+        process_study(studies[sid], "--per-run-only" in sys.argv, cli_option(sys.argv, "tag"),
+                      float(max_ee) if max_ee else None)
 
 
 if __name__ == "__main__":

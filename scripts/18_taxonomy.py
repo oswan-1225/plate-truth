@@ -4,7 +4,7 @@ Same method as script 06 (Phase 0): VSEARCH SINTAX (cutoff 0.8) against SILVA 13
 rrnDB 5.10 pan-taxa mean copy numbers from the lowest classified rank rrnDB knows (Bacteria
 mean if none). SINTAX runs in parallel chunks with a fixed seed, so results are reproducible.
 
-Usage: python scripts/18_taxonomy.py STUDY_ID [STUDY_ID ...]
+Usage: python scripts/18_taxonomy.py STUDY_ID [STUDY_ID ...] [--tag=NAME]
 Output: data/interim/phase2/{study}/taxonomy.csv
 """
 
@@ -12,7 +12,8 @@ import sys
 
 import pandas as pd
 
-from plate_truth.config import data_path, load_config
+from plate_truth.config import cli_option, data_path, load_config
+from plate_truth.config import study_dir as folder
 from plate_truth.taxonomy import asv_copy_number, copy_number_lookup, parse_sintax, \
     run_sintax_chunks
 
@@ -29,7 +30,7 @@ def main() -> None:
     included = {s["id"] for s in load_config("census_studies")["studies"]
                 if s["decision"] == "include"}
     for sid in [a for a in sys.argv[1:] if a in included]:
-        study_dir = data_path("interim") / "phase2" / sid
+        study_dir = folder(sid, cli_option(sys.argv, "tag"))
         tsv = study_dir / "sintax.tsv"
         if not tsv.exists():
             run_sintax_chunks(study_dir / "asv_seqs.fasta", db, tsv, SINTAX_CUTOFF, seed,

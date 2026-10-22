@@ -41,11 +41,12 @@ PRIMARY_VARIANT = {
     "copy_number": False,
     "equal_group_weight": False,
     "drop_tiers": [],
+    "db_tag": None,                  # a tagged database (scripts 16-19 --tag) instead of the primary
 }
 
 # Sensitivity analyses in the order of ANALYSIS_PLAN.md section 7 (fits run in this order).
-# The maxEE 2 reprocessing of the V1-V3 sludge study needs its own pipeline run and is added
-# separately.
+# verhoeven_maxee2 reads data/interim/plate_truth__maxee2.sqlite, built by scripts 16-19 with
+# --tag=maxee2 (verhoeven2023_sludge reprocessed with --max-ee=2).
 VARIANTS = {
     "primary": {},
     "detected": {"outcome": "detected_on_plates"},
@@ -60,6 +61,7 @@ VARIANTS = {
     "depth5000": {"min_pool_reads": 5000},
     "depth7500": {"min_pool_reads": 7500},
     "zheng_paired": {"every_read_studies": []},
+    "verhoeven_maxee2": {"db_tag": "maxee2"},
     "copy_number": {"copy_number": True},
     "equal_weight": {"equal_group_weight": True},
     "no_tier_c": {"drop_tiers": ["C"]},

@@ -8,11 +8,15 @@ not yet processed are skipped and listed. The reference_strains
 table keeps only reference sequences that are some ASV's nearest relative.
 
 Output: data/plate_truth.sqlite (not committed; rebuilt from the pipeline, D-003)
+With --tag=NAME, studies that have a tagged reprocessing (data/interim/phase2/{study}__{NAME}/)
+use it, and the database is written to data/interim/plate_truth__{NAME}.sqlite instead.
 """
+
+import sys
 
 import pandas as pd
 
-from plate_truth.config import data_path, load_config, project_root
+from plate_truth.config import cli_option, data_path, load_config, project_root, study_dir
 from plate_truth.database import condition_ids, conditions_table, is_organelle, write_tables
 from plate_truth.media import media_table
 from plate_truth.reference import read_fasta
@@ -22,9 +26,10 @@ STUDY_COLS = ["study_id", "study_group", "accession", "doi", "citation", "habita
               "primer_rev", "platform", "read_prep", "incubation_days"]
 
 
-def study_outputs(sid: str) -> dict | None:
-    """The pipeline outputs of one study, or None if it has not been fully processed."""
-    d = data_path("interim") / "phase2" / sid
+def study_outputs(sid: str, tag: str | None = None) -> dict | None:
+    """The pipeline outputs of one study (its tagged reprocessing if one exists), or None if it
+    has not been fully processed."""
+    d = study_dir(sid, tag) if tag and study_dir(sid, tag).exists() else study_dir(sid)
     needed = ["asv_seqs.fasta", "counts.csv", "read_qc.csv", "taxonomy.csv",
               "nearest_relative.csv"]
     if not all((d / f).exists() for f in needed):
@@ -65,6 +70,7 @@ def media_tables() -> tuple[pd.DataFrame, pd.DataFrame]:
 
 
 def main() -> None:
+    tag = cli_option(sys.argv, "tag")
     studies = [s for s in load_config("census_studies")["studies"] if s["decision"] == "include"]
     sets = pd.read_csv(data_path("processed") / "primer_sets.csv")
     ref_of = {sid: r.ref_name for r in sets.itertuples() for sid in r.studies.split(";")}
@@ -75,7 +81,7 @@ def main() -> None:
                                     ("asvs", "abundances", "abundances_every_read", "qc",
                                      "taxonomy", "nearest_relative")}
     for s in studies:
-        out = study_outputs(s["id"])
+        out = study_outputs(s["id"], tag)
         if out is None:
             skipped.append(s["id"])
             continue
@@ -108,7 +114,8 @@ def main() -> None:
         "media": media[media["study_id"].isin(done)],
         "medium_class": classes,
     }
-    db = project_root() / "data" / "plate_truth.sqlite"
+    db = (data_path("interim") / f"plate_truth__{tag}.sqlite" if tag
+          else project_root() / "data" / "plate_truth.sqlite")
     write_tables(db, tables)
     print(f"built {db.name}: studies {len(done)}; skipped (not processed): {skipped}")
     for name, df in tables.items():

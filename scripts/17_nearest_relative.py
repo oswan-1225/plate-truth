@@ -9,7 +9,7 @@ Reference sets: 'all' (every cultured source after the contaminated-genome filte
 'bacdive_strain' and 'refseq_type' (single sources, for the D-016 question of whether the
 relative's source matters).
 
-Usage: python scripts/17_nearest_relative.py STUDY_ID [STUDY_ID ...]
+Usage: python scripts/17_nearest_relative.py STUDY_ID [STUDY_ID ...] [--tag=NAME]
 Output: data/interim/phase2/{study}/nearest_relative.csv (asv_id x reference set); hit files
 are cached in data/interim/phase2/{study}/nr/ (delete it after changing ASVs or reference).
 """
@@ -18,7 +18,7 @@ import sys
 
 import pandas as pd
 
-from plate_truth.config import data_path, load_config
+from plate_truth.config import cli_option, data_path, load_config, study_dir
 from plate_truth.identity import nearest_relative_table, read_hits, search
 from plate_truth.reference import read_fasta, write_fasta
 
@@ -33,16 +33,16 @@ def reference_for(study_id: str) -> str:
     return next(r.ref_name for r in sets.itertuples() if study_id in r.studies.split(";"))
 
 
-def nearest_relatives(study_id: str) -> pd.DataFrame:
+def nearest_relatives(study_id: str, tag: str | None = None) -> pd.DataFrame:
     """Search one study's ASVs against each reference set; return the combined table."""
     ref_name = reference_for(study_id)
     regions = data_path("interim") / "reference" / "regions"
     uniques = dict(read_fasta(regions / f"cultured_{ref_name}.fasta"))
     members = pd.read_csv(regions / f"cultured_{ref_name}_members.csv.gz")
-    study_dir = data_path("interim") / "phase2" / study_id
-    asvs = study_dir / "asv_seqs.fasta"
+    folder = study_dir(study_id, tag)
+    asvs = folder / "asv_seqs.fasta"
     asv_ids = [h.split(";")[0] for h, _ in read_fasta(asvs)]
-    work = study_dir / "nr"
+    work = folder / "nr"
     work.mkdir(exist_ok=True)
 
     tables = []
@@ -76,8 +76,9 @@ def main() -> None:
     included = {s["id"] for s in load_config("census_studies")["studies"]
                 if s["decision"] == "include"}
     for sid in [a for a in sys.argv[1:] if a in included]:
-        nr = nearest_relatives(sid)
-        nr.to_csv(data_path("interim") / "phase2" / sid / "nearest_relative.csv", index=False)
+        tag = cli_option(sys.argv, "tag")
+        nr = nearest_relatives(sid, tag)
+        nr.to_csv(study_dir(sid, tag) / "nearest_relative.csv", index=False)
 
 
 if __name__ == "__main__":

@@ -23,14 +23,18 @@ def main(names: list[str]) -> None:
     out.mkdir(parents=True, exist_ok=True)
     res = data_path("results") / "phase3"
     res.mkdir(parents=True, exist_ok=True)
-    con = connect()
     summaries = []
     for name in names:
         path = out / f"{name}.parquet"
+        tag = VARIANTS[name].get("db_tag")
+        db = data_path("interim") / f"plate_truth__{tag}.sqlite" if tag else None
         if path.exists():
             rows = pd.read_parquet(path)
+        elif db is not None and not db.exists():
+            print(f"{name}: {db.name} not built yet, skipped", flush=True)
+            continue
         else:
-            rows = analysis_rows(con, th, cfg, VARIANTS[name])
+            rows = analysis_rows(connect(db), th, cfg, VARIANTS[name])
             rows.to_parquet(path, index=False)
         s = rows.groupby(["study_group", "study_id"]).agg(
             conditions=("condition_id", "nunique"), asvs=("asv_id", "nunique"),
