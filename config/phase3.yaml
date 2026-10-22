@@ -1,0 +1,63 @@
+# Phase 3 calibration model settings, fixed in ANALYSIS_PLAN.md before any model was fitted.
+# Any change after fitting starts is a logged deviation from the plan.
+
+# Identity: natural cubic spline on [75, 100] percent, interior knots at the identity bin edges.
+# ASVs with no hit at or above 75% get identity 75 and no_hit = 1.
+identity_spline:
+  boundary_knots: [75.0, 100.0]
+  interior_knots: [90.0, 94.5, 97.0, 99.0]
+  no_hit_value: 75.0
+
+# Incubation temperature bands (degrees C). Conditions with no stated temperature, or whose
+# plates were pooled across temperatures, are 'unknown'.
+temperature_bands:
+  cold_max: 20.0        # <= 20: cold
+  warm_min: 33.0        # >= 33: warm; otherwise moderate
+
+# Phylum levels kept as their own fixed effect: the phyla with >= 1,000 prokaryotic ASVs in the
+# database (a count of ASVs, not of outcomes). Every other phylum, and unassigned, is 'other'.
+phyla:
+  - Pseudomonadota
+  - Bacteroidota
+  - Acidobacteriota
+  - Actinomycetota
+  - Bacillota
+  - Planctomycetota
+  - Chloroflexota
+  - Verrucomicrobiota
+
+# Medium classes fitted as levels. 'unresolved' and recipe-pending media are 'unknown'.
+medium_classes: [rich_complex, dilute_oligotrophic, defined_minimal, environment_extract,
+                 selective, other]
+
+# Prediction for a new study: average over the study, source and condition random effects.
+marginal:
+  gauss_hermite_nodes: 40
+
+# Fixed-effect uncertainty for the curve: draws from the fixed-effect covariance.
+curve:
+  n_draws: 1000
+  grid_step: 0.25        # identity grid, percent
+
+# Comparison model: gradient boosting with fixed settings (no tuning).
+lightgbm:
+  n_estimators: 400
+  learning_rate: 0.05
+  num_leaves: 31
+  min_child_samples: 500
+  subsample: 0.8
+  subsample_freq: 1
+  colsample_bytree: 0.8
+  seed: 20261022
+
+# Inference criteria (ANALYSIS_PLAN.md section 8).
+criteria:
+  auc_supported_groups: 8          # identity-only held-out AUC > 0.5 in at least this many groups
+  calibration_slope_range: [0.8, 1.25]
+  oe_range: [0.67, 1.5]
+  calibrated_groups: 7             # groups inside both ranges for "calibrated across studies"
+  proxy_over_groups: 8             # proxy / observed > 1 in at least this many groups
+
+# Parallel R fits (each full-size fit uses ~1 core and a few GB of memory).
+compute:
+  parallel_fits: 4
