@@ -20,6 +20,7 @@ from plate_truth.phase4 import (
     medium_facts,
     member_strains,
     pair_counts,
+    recorded_by_study,
     recorded_shares,
     reportable_taxa,
     strain_classes,
@@ -230,3 +231,10 @@ def test_taxon_oe_and_classify_taxa():
     assert classify_taxa(under, "fam", 5.0, 3, 0.6667, 200, 1).iloc[0]["call"] == "under"
     # fewer than min_groups groups with enough expected events: not evaluated
     assert classify_taxa(t, "fam", 5.0, 3, 0.6667, 200, 1).empty
+
+
+def test_recorded_by_study():
+    rows = pd.DataFrame({"study_id": ["s1", "s2", "s1"], "rec_rich": [0.5, 1.0, 0.0]})
+    out = recorded_by_study(rows, ["rich"])
+    assert out["rec_rich__s1"].tolist() == [0.5, 0.0, 0.0]
+    assert out["rec_rich__s2"].tolist() == [0.0, 1.0, 0.0]

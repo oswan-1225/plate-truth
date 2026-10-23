@@ -1,0 +1,3 @@
+loglik,loglik_null,lr_stat,converged,pdHess,null_converged,null_pdHess,taxon,p_value,sd_taxon_medium,H5a,groups,groups_improved,groups_needed,mean_logloss_diff,mean_logloss_diff_lo,mean_logloss_diff_hi,mean_auc_diff,H5b
+-40515.4783508985,-40734.8046060066,438.6525102161977,True,True,True,True,family,1.063366419973237e-97,0.495537122200632,True,5.0,3.0,4.0,-0.0011361255569477791,-0.0028689090147077283,0.0005945693103399097,-0.0009806583649655475,False
+-50755.9406654342,-50843.2441394546,174.60694804078958,True,True,True,True,phylum_full,3.647620630026361e-40,0.328643601275033,True,,,,,,,,

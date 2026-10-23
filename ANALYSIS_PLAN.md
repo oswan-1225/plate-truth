@@ -516,3 +516,28 @@ through BacDive strains' own 16S only.
   be a set of strains. The shares average over them.
 - The Q7 level shift uses each group's own outcomes (one number per group), so Q7 compares taxa
   within a study and says nothing about a study's overall level.
+
+## 18. Phase 4 deviations and exploratory analyses
+
+No Phase 4 model, metric or criterion was changed after registration.
+
+### Exploratory analysis 2 (2026-10-23, not registered): is the curation effect within studies?
+
+**Status.** Added after the registered Q6 result (H6 supported) was seen. It changes no
+registered verdict and carries none of its own; it is reported beside H6.
+
+**Why.** The registered Q6 model estimates each recorded-class effect (rec_X) once, pooled over
+studies. Most dilute-plate rows come from one study group (Zheng et al. 2024). If taxa whose
+relatives are kept on dilute media do well in that study on every medium, the pooled rec_X
+cannot absorb it, and the match term, which is non-zero mainly on dilute plates, can. The
+registered design does not separate a within-study medium preference from such a study-specific
+effect.
+
+**Method.** The registered Q6 model, refitted on all Q6 rows with every rec_X estimated
+separately per study (rec_X x study), with and without match. The sponge study's few events
+separate one of its terms, so the fit is repeated without that study. And the registered Q6
+model fitted within each study group alone. Script 38.
+
+**Reading.** If match keeps its size with study-specific rec_X effects, the registered result
+reflects medium-specific information; if it shrinks to about 1, the registered result mostly
+reflects differences between studies.

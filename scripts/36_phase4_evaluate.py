@@ -224,11 +224,26 @@ def q7(cfg: dict, p3: dict, seed: int) -> None:
                 print(tag, calls["call"].value_counts().to_dict(), flush=True)
 
 
+def fit_status() -> None:
+    """One row per fit: status, convergence, positive-definite Hessian, warnings."""
+    out = []
+    for path in sorted(FITS.glob("*/*/fit.json")):
+        info = json.loads(path.read_text())
+        w = info.get("warnings") or []
+        out.append({"model": path.parent.parent.name, "fold": path.parent.name,
+                    "status": info.get("status"), "converged": info.get("converged"),
+                    "pdHess": info.get("pdHess"), "n": info.get("n"),
+                    "events": info.get("events"),
+                    "warnings": " | ".join(w if isinstance(w, list) else [w])})
+    pd.DataFrame(out).to_csv(RES / "fit_status.csv", index=False)
+
+
 def main() -> None:
     cfg = load_config("phase4")
     p3 = load_config("phase3")
     seed = load_config("thresholds")["resampling"]["seed"]
     RES.mkdir(parents=True, exist_ok=True)
+    fit_status()
     q5(cfg, p3, seed)
     q6(cfg, p3, seed)
     q7(cfg, p3, seed)

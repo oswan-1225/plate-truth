@@ -1,0 +1,15 @@
+study_id,stratum,a,b,c,d
+hinsu2021_groundnut,dilute_oligotrophic|environment_extract,24.0,11.0,13.0,3.0
+hinsu2021_groundnut,dilute_oligotrophic|rich_complex,33.0,4.0,148.0,67.0
+hinsu2021_groundnut,environment_extract|rich_complex,9.0,5.0,272.0,161.0
+indraningrat2019_sponges,defined_minimal|dilute_oligotrophic,0.0,0.0,2.0,4.0
+indraningrat2019_sponges,dilute_oligotrophic|selective,1.0,2.0,0.0,0.0
+li2023_desertsoil,defined_minimal|dilute_oligotrophic,117.0,98.0,130.0,225.0
+li2023_desertsoil,defined_minimal|environment_extract,26.0,21.0,4.0,0.0
+li2023_desertsoil,defined_minimal|rich_complex,0.0,0.0,1218.0,1568.0
+li2023_desertsoil,dilute_oligotrophic|environment_extract,111.0,69.0,29.0,9.0
+li2023_desertsoil,dilute_oligotrophic|rich_complex,233.0,93.0,3260.0,3257.0
+li2023_desertsoil,environment_extract|rich_complex,0.0,2.0,498.0,845.0
+villanelo2026_sludge_antibiotics,environment_extract|selective,35.0,2.0,0.0,0.0
+zheng2024_sludge,dilute_oligotrophic|environment_extract,83.0,395.0,3.0,9.0
+zheng2024_soil,dilute_oligotrophic|environment_extract,211.0,261.0,4.0,31.0

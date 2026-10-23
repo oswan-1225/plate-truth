@@ -200,6 +200,16 @@ def match_term(rows: pd.DataFrame, classes: list[str], prefix: str = "rec") -> p
     return out
 
 
+
+def recorded_by_study(rows: pd.DataFrame, classes: list[str]) -> pd.DataFrame:
+    """rec_<class> split into one column per study (rec_<class>__<study_id>): the share on that
+    study's rows and 0 elsewhere, so each study gets its own recorded-class effect."""
+    out = {}
+    for c in classes:
+        for s in sorted(rows["study_id"].unique()):
+            out[f"rec_{c}__{s}"] = rows[f"rec_{c}"].where(rows["study_id"] == s, 0.0)
+    return pd.DataFrame(out, index=rows.index)
+
 # --- Q5 ------------------------------------------------------------------------------------------
 
 def taxon_label(tax: pd.DataFrame, rank: str) -> pd.Series:
