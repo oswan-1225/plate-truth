@@ -5,7 +5,6 @@ from scipy.special import expit
 
 from plate_truth.phase3 import (
     criteria_checks,
-    required_groups,
     averaged_curve,
     bootstrap_mean,
     calibration_metrics,
@@ -15,8 +14,14 @@ from plate_truth.phase3 import (
     group_weights,
     keep_levels,
     known_levels,
+    local_recalibration,
     marginal_probability,
+    pilot_split,
     ratio_with_interval,
+    recalibrate_intercept,
+    recalibrate_logistic,
+    recalibration_by_group,
+    required_groups,
     source_recovery,
     temperature_band,
 )
@@ -159,3 +164,49 @@ def test_required_groups_scales_the_share():
     assert required_groups(8, 7, 10) == 6       # 5.6 -> 6
     assert required_groups(7, 7, 10) == 5       # 4.9 -> 5
     assert required_groups(8, 9, 10) == 8       # 7.2 -> 8
+
+
+def test_pilot_split_sizes():
+    rng = np.random.default_rng(0)
+    assert len(pilot_split(np.arange(10), 0.25, rng)) == 3      # ceil(2.5)
+    assert len(pilot_split(np.arange(4), 0.1, rng)) == 1        # at least one
+    assert len(pilot_split(np.arange(4), 1.0, rng)) == 3        # at least one left to score
+
+
+def test_recalibrate_intercept_matches_pilot_events():
+    # pilot: 10 rows at p = 0.1 (E = 1), 2 events: the shift makes each 0.2 (E = 2)
+    y, p = np.array([1, 1] + [0] * 8), np.full(10, 0.1)
+    assert recalibrate_intercept(y, p, np.array([0.1]), 0.5)[0] == pytest.approx(0.2)
+    # no events: target 0.5 events, so each row becomes 0.05, not 0
+    assert recalibrate_intercept(np.zeros(10), p, np.array([0.1]), 0.5)[0] == \
+        pytest.approx(0.05)
+
+
+def test_recalibrate_logistic_reproduces_two_level_rates():
+    # two prediction levels with observed rates 1/4 and 2/4: a two-parameter fit is saturated
+    p = np.array([expit(-2.0)] * 4 + [0.5] * 4)
+    y = np.array([1, 0, 0, 0, 1, 1, 0, 0])
+    new = recalibrate_logistic(y, p, np.array([expit(-2.0), 0.5]))
+    assert new == pytest.approx([0.25, 0.5], abs=1e-6)
+
+
+def test_local_recalibration_scores_only_held_out_conditions():
+    rng = np.random.default_rng(1)
+    n = 4000
+    df = pd.DataFrame({"study_group": "g", "condition_id": rng.integers(0, 8, n).astype(str),
+                       "pred": np.full(n, 0.05)})
+    df["y"] = (rng.random(n) < 0.2).astype(int)                # true rate 4x the prediction
+    s = local_recalibration(df, "pred", 0.25, 5, 10, 0.5, 2)
+    assert set(s["method"]) == {"none", "intercept", "logistic"} and len(s) == 15
+    assert (s["pilot_conditions"] == 2).all()                   # ceil(0.25 * 8)
+    none = s[s["method"] == "none"]["oe"]
+    shifted = s[s["method"] == "intercept"]["oe"]
+    assert (none > 3).all() and (abs(shifted - 1) < 0.2).all()  # the shift fixes the level
+
+
+def test_recalibration_by_group_medians():
+    splits = pd.DataFrame({"study_group": "g", "method": "none", "split": [0, 1, 2],
+                           "oe": [0.5, 1.0, 1.2], "slope": [1.0, 1.0, np.nan]})
+    r = recalibration_by_group(splits, [0.8, 1.25], [0.67, 1.5]).iloc[0]
+    assert r["median_oe"] == 1.0 and r["median_slope"] == 1.0 and r["splits_scored"] == 3
+    assert r["share_splits_in_range"] == pytest.approx(1 / 3) and r["calibrated"]

@@ -9,6 +9,7 @@ everything that transforms data or computes a metric lives here so that it is te
 import numpy as np
 import pandas as pd
 import statsmodels.api as sm
+from scipy.optimize import brentq
 from scipy.special import expit, logit
 from sklearn.metrics import brier_score_loss, roc_auc_score
 
@@ -359,3 +360,77 @@ def criteria_checks(auc: np.ndarray, oe: np.ndarray, slope: np.ndarray, ratio: n
             "median_ratio": float(np.nanmedian(ratio)), "median_ratio_lo": ratio_lo,
             "H3": bool(n_ratio >= need["proxy_over_groups"] and ratio_lo > 1)}
 
+
+
+# --- local recalibration (exploratory, not registered) -------------------------------------------
+
+def pilot_split(conditions: np.ndarray, fraction: float, rng: np.random.Generator) -> set:
+    """A random pilot set of plating conditions: ceil(fraction * n), at least 1 and at most n - 1,
+    so both the pilot and the evaluation set are non-empty."""
+    n = len(conditions)
+    k = min(max(int(np.ceil(fraction * n)), 1), n - 1)
+    return set(rng.choice(conditions, size=k, replace=False))
+
+
+def recalibrate_intercept(y_pilot: np.ndarray, p_pilot: np.ndarray, p_new: np.ndarray,
+                          continuity: float) -> np.ndarray:
+    """Recalibration in the large: shift every prediction's log-odds by the one delta that makes
+    the pilot's predicted events equal its observed events. A pilot with no events targets
+    `continuity` events instead, so delta stays finite."""
+    x = logit(np.clip(p_pilot, 1e-9, 1 - 1e-9))
+    target = max(float(np.sum(y_pilot)), continuity)
+    delta = brentq(lambda d: expit(x + d).sum() - target, -30.0, 30.0)
+    return expit(logit(np.clip(p_new, 1e-9, 1 - 1e-9)) + delta)
+
+
+def recalibrate_logistic(y_pilot: np.ndarray, p_pilot: np.ndarray, p_new: np.ndarray
+                         ) -> np.ndarray:
+    """Logistic recalibration: fit y ~ a + b * logit(p) on the pilot, apply it to p_new. Corrects
+    both the level (a) and the spread (b) of the predictions."""
+    x = logit(np.clip(p_pilot, 1e-9, 1 - 1e-9))
+    fit = sm.GLM(np.asarray(y_pilot, dtype=float), sm.add_constant(x, has_constant="add"),
+                 family=sm.families.Binomial()).fit()
+    a, b = fit.params
+    return expit(a + b * logit(np.clip(p_new, 1e-9, 1 - 1e-9)))
+
+
+def local_recalibration(df: pd.DataFrame, pred: str, fraction: float, n_splits: int,
+                        min_events: int, continuity: float, seed: int) -> pd.DataFrame:
+    """Per held-out group and random pilot split: recalibrate on the pilot conditions and score
+    O/E and slope on the remaining conditions only, with no recalibration ("none"), the
+    intercept shift and logistic recalibration. Logistic recalibration is skipped (NaN) when the
+    pilot has fewer than min_events events. An intercept shift leaves the slope unchanged."""
+    rng = np.random.default_rng(seed)
+    out = []
+    for g, s in df.groupby(GROUP):
+        conds = np.sort(s["condition_id"].unique())
+        for i in range(n_splits):
+            pilot = s["condition_id"].isin(pilot_split(conds, fraction, rng)).to_numpy()
+            yp, pp = s["y"].to_numpy()[pilot], s[pred].to_numpy()[pilot]
+            ye, pe = s["y"].to_numpy()[~pilot], s[pred].to_numpy()[~pilot]
+            base = {GROUP: g, "split": i, "pilot_conditions": int(s.loc[pilot, "condition_id"]
+                    .nunique()), "pilot_events": int(yp.sum()), "eval_events": int(ye.sum())}
+            none = calibration_metrics(ye, pe)
+            out.append({**base, "method": "none", "oe": none["oe"], "slope": none["slope"]})
+            shifted = recalibrate_intercept(yp, pp, pe, continuity)
+            out.append({**base, "method": "intercept", "oe": ye.sum() / shifted.sum(),
+                        "slope": none["slope"]})
+            m = (calibration_metrics(ye, recalibrate_logistic(yp, pp, pe))
+                 if yp.sum() >= min_events else {"oe": np.nan, "slope": np.nan})
+            out.append({**base, "method": "logistic", "oe": m["oe"], "slope": m["slope"]})
+    return pd.DataFrame(out)
+
+
+def recalibration_by_group(splits: pd.DataFrame, slope_range: list, oe_range: list
+                           ) -> pd.DataFrame:
+    """Per group and method: median O/E and slope over the splits that could be scored, the share
+    of all splits with both in range, and whether both medians are in range ("calibrated")."""
+    s = splits.copy()
+    s["in_range"] = (s["slope"].between(*slope_range) & s["oe"].between(*oe_range))
+    g = s.groupby([GROUP, "method"])
+    out = pd.DataFrame({"splits_scored": g["oe"].count(), "median_oe": g["oe"].median(),
+                        "median_slope": g["slope"].median(),
+                        "share_splits_in_range": g["in_range"].mean()}).reset_index()
+    out["calibrated"] = (out["median_slope"].between(*slope_range)
+                         & out["median_oe"].between(*oe_range))
+    return out

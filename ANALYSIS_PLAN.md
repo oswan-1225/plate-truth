@@ -292,3 +292,31 @@ mean AUC stays above 0.5. Both the literal and the scaled readings are reported.
 - Calling the count criteria not applicable for such analyses and describing them in words:
   leaves the analysis without a verdict, where the intent of the rule (a large majority of
   studies) can still be applied.
+
+### Exploratory analysis 1 (2026-10-23, not registered): local recalibration
+
+**Status.** Added after H2 was found unsupported. It is not a deviation: no registered model,
+metric or verdict changes, and it carries no pass/fail verdict of its own. It is reported as
+exploratory.
+
+**Question.** H2 failed because a new study's overall growth rate is not predictable from the
+training studies. If a small local pilot measured that rate, would the predictions for the rest
+of the study fall inside the H2 ranges?
+
+**Method.**
+- Input: the held-out predictions of the primary model (each study predicted by a model that
+  never saw it).
+- Within each study group, a random share of plating conditions (10%, 25% or 50%; at least one
+  condition, and at least one left over) is the pilot. The rest is scored.
+- Intercept recalibration: one shift on the log-odds scale chosen so the pilot's predicted
+  events equal its observed events. A pilot with no events is treated as half an event.
+- Logistic recalibration: regress the pilot's outcomes on the logit of the predictions (an
+  intercept and a slope), when the pilot has at least 10 events.
+- Score O/E and calibration slope on the remaining conditions only, with the H2 ranges, and
+  repeat over 100 random splits. A group counts as calibrated when the median O/E and median
+  slope over its splits are both in range.
+
+**Limits stated in advance.** An intercept shift cannot change the calibration slope, so it can
+help only the groups whose slope is already in range. Pilot and scored conditions share source
+samples and taxa, so this measures what a pilot plating of the same sample would give, not a
+different sample from the same site.

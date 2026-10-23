@@ -74,3 +74,12 @@ criteria:
 # Parallel R fits (each full-size fit uses ~1 core and a few GB of memory).
 compute:
   parallel_fits: 4
+
+# Local recalibration (exploratory, not registered; ANALYSIS_PLAN.md section 10). Each held-out
+# study is split by plating condition: a random pilot share of conditions recalibrates the
+# predictions, the remaining conditions are scored.
+local_recalibration:
+  pilot_fractions: [0.1, 0.25, 0.5]
+  n_splits: 100
+  min_pilot_events: 10             # logistic recalibration needs at least this many pilot events
+  continuity: 0.5                  # intercept shift: a pilot with no events counts as this many
