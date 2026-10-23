@@ -210,4 +210,59 @@ Set now, applied as written:
 
 ## 10. Deviations from this plan
 
-None yet. Each deviation will be listed here with its date, what changed and why.
+Each deviation is listed with its date, what changed and why. The text of sections 1-9 is left
+as registered.
+
+### Deviation 1 (2026-10-22): phylum as a random intercept; curve averaged over the data
+
+**When and what was known.** Decided after the registered primary model had been fitted in all
+ten validation folds and on the full data, from the fits' convergence diagnostics and
+coefficients. No held-out performance metric (AUC, O/E, calibration slope, Brier) had been
+computed or viewed.
+
+**What happened.** Two of the eight phylum levels have almost no enrichment events:
+Planctomycetota 0 of 32,023 rows in every study, and Chloroflexota 2 of 27,412, both in the
+Zheng group. A fixed effect for a level with no events has no finite maximum-likelihood estimate
+(complete separation): the estimate drifts towards minus infinity. In the fold that holds out
+the Zheng group, both levels reached about -23 on the log-odds scale with standard errors near
+300,000. Four of the ten folds reported convergence problems (non-positive-definite Hessian or
+singular convergence).
+
+**Why it matters.**
+- With sum-to-zero coding, the "average phylum" includes these runaway levels. Every other phylum
+  coefficient and the intercept shift to compensate (intercept -17.6 in that fold), so the
+  coefficient table cannot be interpreted.
+- The registered curve, drawn "at average conditions" with all contrasts at zero, inherits the
+  same artefact.
+- Held-out predictions are much less affected (rows of those phyla are predicted near zero, which
+  is also what was observed), but intervals that depend on the covariance matrix are unreliable.
+
+**Change 1: phylum enters as a random intercept, not as fixed levels.**
+- The same nine levels (the eight phyla with at least 1,000 ASVs, and "other") are kept.
+- Their effects are drawn from a common normal distribution whose spread is estimated. A phylum
+  with no events is pulled towards the others by an amount set by the data, so its estimate stays
+  finite and very low, rather than being removed or left unbounded.
+- Phylum is always known for a held-out row, so held-out predictions include the estimated
+  phylum effect. The average over unknown random effects for a new study still covers study,
+  source sample and plate pool only.
+- The identity-only model keeps no phylum term, as registered.
+
+**Change 2: the curve is averaged over the observed rows.**
+- At each identity value, every analysed row is given that identity (with a hit) and the
+  new-study predictions are averaged over a fixed random subsample of rows (seeded).
+- This gives the expected enrichment rate at that identity for the mix of source abundances,
+  depths, conditions and phyla actually studied. It is the standard way to draw a covariate-
+  adjusted curve, and it does not depend on how factor levels are coded.
+- The habitat curves are averaged over the rows of each habitat group (environmental vs
+  host-associated).
+
+**Alternatives considered.**
+- Merging the phyla with almost no events into "other": rejected because it chooses levels from
+  outcomes.
+- A weakly informative prior or bias-reduced (Firth-type) estimation on all fixed effects: valid,
+  but it changes every coefficient a little, where the problem sits in one term.
+- Dropping phylum: loses a registered question, whether relatedness works beyond broad lineage.
+
+**Reporting.** Results from the model exactly as registered (held-out predictions and metrics)
+are kept and reported alongside, so readers can see the change does not drive the conclusions.
+All sensitivity analyses use the revised model. The pass/fail criteria in section 8 are unchanged.
