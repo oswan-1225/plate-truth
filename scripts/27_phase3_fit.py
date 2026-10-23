@@ -15,6 +15,7 @@ Usage: python scripts/27_phase3_fit.py [variant ...]   (default: all variants bu
 """
 
 import sys
+import threading
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
@@ -81,22 +82,34 @@ def main(variants: list[str]) -> None:
     cfg = load_config("phase3")
     seed = load_config("thresholds")["resampling"]["seed"]
     root = data_path("interim") / "phase3"
+    fits = root / cfg["fits_dir"]
     stop = root / "STOP"
-    data = {}
     jobs = []
     for v in variants:
-        rows = pd.read_parquet(root / "rows" / f"{v}.parquet")
-        centers = {c: float(rows[c].median()) for c in CONTINUOUS}
-        data[v] = (rows, centers)
-        jobs += jobs_for(v, sorted(rows[GROUP].unique()))
+        groups = pd.read_parquet(root / "rows" / f"{v}.parquet", columns=[GROUP])[GROUP]
+        jobs += [j for j in jobs_for(v, sorted(groups.unique()))
+                 if not is_done(fits / j[0] / j[1] / j[2])]
     print(f"{len(jobs)} fits queued", flush=True)
+
+    cache, lock = {}, threading.Lock()
+
+    def load(v: str):
+        """Rows and centres of one variant; at most two variants are held in memory (jobs run
+        in variant order, so at most two are in use at once)."""
+        with lock:
+            if v not in cache:
+                while len(cache) >= 2:
+                    cache.pop(next(iter(cache)))
+                rows = pd.read_parquet(root / "rows" / f"{v}.parquet")
+                cache[v] = (rows, {c: float(rows[c].median()) for c in CONTINUOUS})
+            return cache[v]
 
     def work(job):
         if stop.exists():
             return f"stopped before {'/'.join(job)}"
-        rows, centers = data[job[0]]
         try:
-            return run_job(job, rows, cfg, centers, root / cfg["fits_dir"], seed)
+            rows, centers = load(job[0])
+            return run_job(job, rows, cfg, centers, fits, seed)
         except Exception as e:   # one failed fit must not stop the queue; it is reported
             return f"FAILED {'/'.join(job)}: {e}"
 
