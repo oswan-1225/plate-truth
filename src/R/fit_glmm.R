@@ -12,7 +12,8 @@
 #           fixed effects are written, for the curve
 #   n_draws, seed
 # Outputs (outdir): test_eta.csv (row_id, eta: fixed effects plus known random effects),
-#   coef.csv, vcov.csv, ranef_<group>.csv for each known group, grid_X.csv and draws.csv (if
+#   coef.csv, vcov.csv, ranef_<group>.csv for each known group (level, effect = conditional
+#   mode, se = conditional SD), grid_X.csv and draws.csv (if
 #   grid), and fit.json last, which marks the fit complete.
 # Called by plate_truth.rfit; all data preparation and metrics are done in Python.
 
@@ -56,8 +57,11 @@ if (inherits(m, "error")) {
             file.path(spec$outdir, "coef.csv"), row.names = FALSE)
   write.csv(V, file.path(spec$outdir, "vcov.csv"))
   re <- ranef(m)$cond
+  re_sd <- as.data.frame(ranef(m, condVar = TRUE))      # conditional SDs of the modes
   for (g in spec$known) {
-    write.csv(data.frame(level = rownames(re[[g]]), effect = re[[g]][, 1]),
+    s <- re_sd[re_sd$component == "cond" & re_sd$grpvar == g, ]
+    write.csv(data.frame(level = rownames(re[[g]]), effect = re[[g]][, 1],
+                         se = s$condsd[match(rownames(re[[g]]), as.character(s$grp))]),
               file.path(spec$outdir, paste0("ranef_", g, ".csv")), row.names = FALSE)
   }
   rhs <- reformulate(attr(terms(nobars(form)), "term.labels"))

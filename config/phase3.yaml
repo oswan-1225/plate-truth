@@ -31,6 +31,14 @@ phyla:
 medium_classes: [rich_complex, dilute_oligotrophic, defined_minimal, environment_extract,
                  selective, other]
 
+# Media whose recipe was found after this plan was registered (2026-10-23, for Phase 4). They
+# stay 'unknown' here, as registered, so the Phase 3 results reproduce exactly.
+unclassified_at_registration:
+  - [hinsu2021_groundnut, Actinomycetes Isolation agar]
+  - [hinsu2021_groundnut, Azotobacter Mannitol agar]
+  - [hinsu2021_groundnut, YEM agar]
+  - [hinsu2021_groundnut, Yeast Mannitol agar]
+
 # Prediction for a new study: average over the study, source and condition random effects.
 marginal:
   gauss_hermite_nodes: 40

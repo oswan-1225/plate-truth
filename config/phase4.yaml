@@ -1,0 +1,232 @@
+# Phase 4 settings (ANALYSIS_PLAN.md sections 11-17), fixed before any Phase 4 model was fitted.
+# Any change after fitting starts is a logged deviation from the plan.
+
+# --- Collection media: recipe facts from MediaDive compositions --------------------------------
+# Each MediaDive medium is classed by the same ordered rule as the plate media
+# (plate_truth.media.classify_medium). The facts come from its ingredients by these lists.
+# Names are MediaDive ingredient names, matched exactly (case-insensitive).
+collection_media:
+  # R1: antibacterial agents (antibiotics, bile). Antifungals (amphotericin, cycloheximide) and
+  # trace-element solutions are not antibacterial.
+  antibacterial:
+    - (-)-Chloramphenicol
+    - Ampicillin
+    - Ampicillin sodium salt
+    - Na-ampicillin
+    - Erythromycin
+    - Kanamycin sulfate
+    - Penicillin
+    - Rifampicin
+    - Streptomycin sulfate
+    - Vancomycin x HCl
+    - Ox-bile
+    - Desicatted Ox-bile
+    - Oxgall
+  # R2: material taken from an environment (not a food or lab nutrient). Artificial seawater and
+  # sea salts are not habitat material (as for the plate media); "natural or artificial seawater
+  # solution" is ambiguous and not counted.
+  habitat_material:
+    - Soil extract
+    - Soil
+    - Garden soil
+    - air-dried garden soil
+    - Natural sea water
+    - natural seawater
+    - Sea water
+    - Charcoal-filtered, natural seawater
+    - Rumen fluid
+    - Clarified rumen fluid
+    - Cow manure
+    - Dry cow-manure
+    - Dung extract
+    - Sludge
+  # R3: an ingredient is a complex nutrient source if MediaDive flags it complex
+  # (complex_compound = 1) and it is not in this list. These are flagged complex by MediaDive
+  # but are not complex nutrient sources under the plate-media rule (peptone, extract,
+  # hydrolysate, infusion, milk, blood, mucin, serum, whole food material): gelling agents,
+  # single polysaccharides and polymers, lipids, salts, charcoal, enzymes, detergents, and
+  # chemically defined media or supplements sold as one ingredient.
+  not_complex:
+    - Agar
+    - Gellan Gum
+    - Gelrite
+    - Air
+    - Charcoal
+    - Catalase
+    - Amphotericin
+    - Tween
+    - Tween 20
+    - Sea Salt
+    - Sigma Sea salts
+    - Mineral water
+    - Cellulose
+    - Sigmacell alpha Type 50
+    - Starch
+    - Corn starch
+    - Rice starch
+    - Dextrin
+    - Dextran
+    - Inulin
+    - Xylan
+    - Larchwood xylan
+    - Pullulan
+    - Sodium alginate
+    - Chitosan
+    - Colloidal chitin
+    - Carboxymethylcellulose
+    - Sodium polygalacturonate
+    - DNA
+    - Fish-Sperm DNA
+    - Glycerol (anhydrous)
+    - Olive oil
+    - L-α-Phosphatidylcholine
+    - Polar lipid fraction
+    - Fatty acid mixture (see Medium No. 266)
+    - Aminoacids
+    - Yeast Nitrogen Base
+    - Isovitalex
+    - Mycobactine J
+    - CMRL 1066
+    - IMDM-Medium
+    - L-15 powder
+    - Leibovitz's L-15 medium
+    - Gamborg B5 Medium incl. Vitamins
+    - Linsmaier & Skoog Med. incl. vitamins
+    - Murashige & Skoog Medium including vitamins
+    - Murashige & Skoog medium
+    - Czapek solution
+    - Czapek Dox agar
+    - Inorganic salts-starch agar
+    - Glycerol-asparagine agar
+  # Organic matter (g/L) counts every ingredient MediaDive flags complex (so soluble starch,
+  # dextrin and glycerol count, as for the plate media) and every carbon-containing ingredient
+  # (formula with C), except these exact names: gelling agents and insoluble polymers (as for
+  # the plate media, cellulose and chitin are not counted), charcoal, salts, gases and traces
+  # flagged complex, buffers, chelators, dyes and redox indicators, detergents. Carbonate,
+  # bicarbonate, CO2 and cyanide are inorganic carbon and are recognised from the formula.
+  organic_excluded:
+    # flagged complex by MediaDive, not organic nutrients
+    - Air
+    - Catalase
+    - Amphotericin
+    - Sea Salt
+    - Sigma Sea salts
+    - Mineral water
+    # gelling agents, insoluble polymers, charcoal
+    - Agar
+    - Agarose
+    - Plant Agar
+    - Gellan Gum
+    - Gelrite
+    - Cellulose
+    - Cellulose MN 300
+    - Sigmacell alpha Type 50
+    - Chitin
+    - Colloidal chitin
+    - Chitosan
+    - Charcoal
+    - Activated charcoal
+    # buffers
+    - 1 M TRIS, pH 7,8
+    - Bicine
+    - BICINE buffer
+    - Bis-Tris
+    - CAPS buffer
+    - HEPES
+    - HEPES buffer
+    - Homo-PIPES
+    - HOMOPIPES
+    - MES
+    - MES [2-(N-morpholino) ethane sulfonic acid]
+    - MES acids
+    - MES buffer
+    - MES Hydrat
+    - MOPS
+    - MOPS buffer
+    - PIPES
+    - PIPES buffer
+    - Taps
+    - TAPS sodium salt
+    - TES
+    - TES-Puffer
+    - Tricine
+    - Tris
+    - Tris base
+    - Tris buffer
+    - Tris HCl
+    - Tris(hydroxymethyl)aminomethane
+    - Tris(hydroxymethyl)methylamine
+    - Tris-HCl
+    - Tris-HCl buffer
+    # chelators
+    - EDTA
+    - Fe(III)-EDTA
+    - Fe(III)NH4-EDTA
+    - FeNa-EDTA
+    - Mn(II) x EDTA
+    - Na-EDTA
+    - Na-EDTA x 2 H2O
+    - Na2-EDTA
+    - Na2-EDTA x 2 H2O
+    - Na3-EDTA
+    - Na-Nitrilotriacetat
+    - Na3-NTA x H2O
+    - Nitrilotriacetate
+    - Nitrilotriacetic acid
+    - Nitrilotriacetic acid trisodium salt monohydrate
+    - NTA
+    # dyes and redox indicators
+    - Bromocresol purple
+    - Bromothymol blue
+    - Bromothymol blue (5% alcoholic solution)
+    - Congo red
+    - Cresol red
+    - Malachite green
+    - Methylene blue
+    - Phenol red
+    - Resazurin
+    - Sodium resazurin
+    # detergents
+    - Tween
+    - Tween 20
+    - Tween 40
+    - Tween 60
+    - Tween 80
+  # A complete dehydrated agar medium sold as one complex ingredient ("R2A agar", "Nutrient
+  # agar") weighs its agar too. Its organic amount is its g/L minus this much agar (not below 0).
+  composite_agar_g_per_l: 15.0
+
+# --- Rows ---------------------------------------------------------------------------------------
+# Q5 and Q6 use the study groups with at least this many known medium classes among their
+# usable conditions (a medium contrast is informative only within a study).
+min_known_classes: 2
+# Medium classes analysed in Q5 and Q6 (unknown, unresolved and 'other' rows are left out).
+medium_classes: [rich_complex, dilute_oligotrophic, defined_minimal, environment_extract,
+                 selective]
+
+# --- Q5: medium class by taxon ------------------------------------------------------------------
+q5:
+  report_min_rows: 2000          # family (or phylum) reported if it has at least this many rows
+  report_min_classes: 2          # ... in at least this many medium classes (rows, not outcomes)
+  alpha: 0.05                    # likelihood-ratio test of the family x class variance
+  transfer_groups_required: 4    # H5b: held-out log loss improves in at least this many of 5
+
+# --- Q6: the curation hypothesis -----------------------------------------------------------------
+q6:
+  min_share_linked: 0.01         # a recorded-class term is fitted if at least 1% of Q6 ASVs
+                                 # have a linked strain recorded on that class
+  transfer_groups_required: 4    # H6: held-out log loss improves in at least this many of 5
+  close_identity: 97.0           # sensitivity: rows with identity at least this
+  n_boot: 1000
+
+# --- Q7: under-recovered taxa --------------------------------------------------------------------
+q7:
+  min_expected_per_group: 5.0    # a group counts for a taxon if the taxon's expected events there
+                                 # reach this (model quantity, not an outcome)
+  min_groups: 3                  # taxon evaluated if it has at least this many such groups
+  consistency_share: 0.6667      # O/E on the same side of 1 in at least this share of them
+  n_boot: 1000
+
+# Parallel R fits.
+compute:
+  parallel_fits: 4

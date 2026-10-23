@@ -19,10 +19,27 @@ classes:
 media:
 - study_id: hinsu2021_groundnut
   medium: Actinomycetes Isolation agar
-  medium_name: null
+  medium_name: Actinomycete isolation agar
+  antibacterial: false
+  habitat_material: false
+  complex_source: true
+  organic_g_per_l: 12.4
+  composition_source: HiMedia M490 technical data (read 2026-10-23); Hinsu et al. 2021 Table 1 (HiMedia)
+  note: sodium caseinate 2.0 (casein counted as complex, as for the Li et al. casein media) + L-asparagine
+    0.1 + sodium propionate 4.0 + glycerol 5 mL/L (6.3 g at 1.26 g/mL); 6.1 g/L without glycerol, rich
+    either way
 - study_id: hinsu2021_groundnut
   medium: Azotobacter Mannitol agar
-  medium_name: null
+  medium_name: Azotobacter agar (mannitol)
+  antibacterial: false
+  habitat_material: true
+  complex_source: true
+  organic_g_per_l: 25.0
+  composition_source: HiMedia M372 technical data, "Azotobacter Agar (Mannitol)" (read 2026-10-23);
+    Hinsu et al. 2021 Table 1 (HiMedia)
+  note: soil extract 5.0 + mannitol 20.0. The paper gives no product code; M372 is the HiMedia product
+    whose name matches. HiMedia's Ashby's Mannitol Agar (M706) has no soil extract and would be
+    defined_minimal
 - study_id: hinsu2021_groundnut
   medium: Nutrient agar
   medium_name: Nutrient agar
@@ -60,10 +77,25 @@ media:
     2023 Suppl. Table 8 (BD)
 - study_id: hinsu2021_groundnut
   medium: YEM agar
-  medium_name: null
+  medium_name: Yeast extract mannitol agar
+  antibacterial: false
+  habitat_material: false
+  complex_source: true
+  organic_g_per_l: 5.5
+  composition_source: DSMZ yeast extract mannitol recipe, MediaDive solution 3377 (read 2026-10-23);
+    Hinsu et al. 2021 Table 1 (HiMedia)
+  note: HiMedia's own YEM agar sheet was not found. DSMZ yeast extract 0.5 + mannitol 5.0 = 5.5 g/L;
+    HiMedia's yeast mannitol products (M716, M721) have 1.0 + 10.0 = 11 g/L. Rich under either
 - study_id: hinsu2021_groundnut
   medium: Yeast Mannitol agar
-  medium_name: null
+  medium_name: Yeast mannitol agar with Congo red
+  antibacterial: false
+  habitat_material: false
+  complex_source: true
+  organic_g_per_l: 11.0
+  composition_source: HiMedia M721 technical data, "Yeast Mannitol Agar w/ Congo Red" (read
+    2026-10-23); Hinsu et al. 2021 Table 1 ("Yeast mannitol agar w/Congo red", HiMedia)
+  note: yeast extract 1.0 + mannitol 10.0; Congo red is a dye, not antibacterial
 - study_id: yu2020_broiler
   medium: TSA
   medium_name: Tryptic soy agar

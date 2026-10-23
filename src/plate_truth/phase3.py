@@ -187,6 +187,9 @@ def add_features(rows: pd.DataFrame, nr: pd.DataFrame, tax: pd.DataFrame, cfg: d
     out["temperature"] = temperature_band(out["temperature_c"], tb["cold_max"], tb["warm_min"])
     out["oxygen"] = keep_levels(out["oxygen"], OXYGEN_LEVELS, UNKNOWN)
     out["medium"] = keep_levels(out["medium_class"], cfg["medium_classes"], UNKNOWN)
+    pending = {tuple(p) for p in cfg.get("unclassified_at_registration", [])}
+    out.loc[[(s, m) in pending for s, m in zip(out["study_id"], out["medium_label"])],
+            "medium"] = UNKNOWN
     out["phylum"] = keep_levels(out["asv_id"].map(tax["phylum"]), cfg["phyla"], "other")
     out["source_key"] = out["study_id"] + "|" + out["source_sample"].astype(str)
     out["y"] = out[v["outcome"]].astype(int)

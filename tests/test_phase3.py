@@ -4,6 +4,7 @@ import pytest
 from scipy.special import expit
 
 from plate_truth.phase3 import (
+    add_features,
     criteria_checks,
     averaged_curve,
     bootstrap_mean,
@@ -210,3 +211,21 @@ def test_recalibration_by_group_medians():
     r = recalibration_by_group(splits, [0.8, 1.25], [0.67, 1.5]).iloc[0]
     assert r["median_oe"] == 1.0 and r["median_slope"] == 1.0 and r["splits_scored"] == 3
     assert r["share_splits_in_range"] == pytest.approx(1 / 3) and r["calibrated"]
+
+
+def test_add_features_keeps_late_classified_media_unknown():
+    rows = pd.DataFrame({
+        "asv_id": ["a", "a"], "study_id": ["s1", "s1"], "medium": ["M1", "M2"],
+        "medium_class": ["rich_complex", "rich_complex"], "source_sample": ["x", "x"],
+        "env_rel": [0.01, 0.01], "plate_depth": [1000, 1000], "incubation_days": [4.0, 4.0],
+        "temperature_c": [25.0, 25.0], "oxygen": ["aerobic", "aerobic"],
+        "study_group": ["g", "g"], "enriched_on_plates": [True, False]})
+    nr = pd.DataFrame({"asv_id": ["a"], "identity_id1": [99.0]})
+    tax = pd.DataFrame({"phylum": ["Bacillota"]}, index=pd.Index(["a"], name="asv_id"))
+    cfg = {"identity_spline": {**CFG["identity_spline"], "no_hit_value": 75.0},
+           "temperature_bands": {"cold_max": 20.0, "warm_min": 33.0},
+           "medium_classes": ["rich_complex"], "phyla": ["Bacillota"],
+           "unclassified_at_registration": [["s1", "M2"]]}
+    v = {"identity_def": "id1", "outcome": "enriched_on_plates", "equal_group_weight": False}
+    out = add_features(rows, nr, tax, cfg, v)
+    assert out["medium"].tolist() == ["rich_complex", "unknown"]

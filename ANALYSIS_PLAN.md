@@ -320,3 +320,199 @@ of the study fall inside the H2 ranges?
 help only the groups whose slope is already in range. Pilot and scored conditions share source
 samples and taxa, so this measures what a pilot plating of the same sample would give, not a
 different sample from the same site.
+
+## 11. Phase 4: medium classes, the curation hypothesis and under-recovered taxa
+
+Registered 2026-10-23, after the Phase 3 results were final and before any Phase 4 model was
+fitted. Known at registration: every Phase 3 result (including the overall medium-class and
+phylum effects in the primary model); for the Phase 4 data, counts of rows, taxa, plating
+conditions and linked culture-collection records. No enrichment rate by taxon and medium class,
+and no association between culture-collection records and enrichment, had been computed.
+Sections 1-10 are unchanged. Settings are in `config/phase4.yaml`.
+
+**Questions.**
+- Q5 (medium class by taxon). Which medium classes favour which families and phyla, beyond
+  each taxon's overall growth rate and beyond what differs between studies?
+- Q6 (curation hypothesis). Culture collections record the media each strain is kept on. Does
+  knowing that a taxon's nearest cultured relative is kept on medium class X predict that the
+  taxon is enriched on plates of class X specifically, once relatedness is accounted for?
+- Q7 (under-recovered taxa). Which taxa are enriched less often (or more often) than
+  relatedness, source abundance and plating conditions predict, consistently across studies?
+
+**Hypotheses, stated before fitting.**
+- H5 (taxon-specific medium effects). (a) Families differ in which medium classes favour them:
+  the spread of family-by-medium-class effects is above zero. (b) These preferences transfer:
+  estimated in other studies, they improve prediction in a study held out.
+- H6 (curation). The claim tested is that a relative kept on medium class X predicts enrichment
+  on X specifically. From the soil pilot I expect it not to hold: collection records say where a
+  strain is maintained, not where it can grow from a mixed community. I will report whichever
+  way it comes out.
+- Q7 is descriptive: a ranked list with a rule, fixed here, for calling a taxon systematically
+  under- or over-recovered. It has no overall verdict.
+
+## 12. Phase 4 data
+
+- **Rows.** The Phase 3 primary rows (section 3 definitions and outcome unchanged).
+- **Medium classes.** Recomputed from `config/media.yaml` by the section 4 rule. Four media of
+  Hinsu et al. 2021, unknown in Phase 3, now have recipes from the supplier's technical data
+  sheets: actinomycete isolation agar (rich complex), Azotobacter agar with mannitol (habitat
+  extract: it contains soil extract), yeast extract mannitol agar and yeast mannitol agar with
+  Congo red (both rich complex). Phase 3 keeps them unknown, as registered. Two media of the
+  broiler study (Yu et al. 2020) still lack a recipe; that study used only rich media, so it
+  informs no medium contrast either way.
+- **Taxa.** SILVA family (SINTAX, cutoff 0.8). An ASV without a family gets "unassigned family
+  (<phylum>)"; these groups are modelled but not interpreted. Phylum: the full SILVA phylum.
+- **Q5 and Q6 studies.** The study groups with at least two known medium classes among their
+  usable conditions: Hinsu et al. 2021 (rich, dilute, habitat extract), Indraningrat et al.
+  2019 (dilute, defined, selective), Li et al. 2023 (rich, dilute, defined, habitat extract),
+  Villanelo et al. 2026 (selective, habitat extract) and Zheng et al. 2024 (dilute, habitat
+  extract). Only their rows with a known class (rich complex, dilute,
+  defined, habitat extract, selective) are used: 424,879 rows, 442 families (including the
+  unassigned groups), 68 phyla. Reason: a medium contrast is
+  informative only inside a study, where the sample, handling and sequencing are shared.
+- **Q7 studies.** All ten study groups and all Phase 3 rows.
+
+## 13. Q5: medium class by taxon
+
+**Model** (glmmTMB, binomial, logit): the Phase 3 primary fixed effects (identity spline, no-hit
+indicator, log source abundance, log plate depth, log incubation days, medium class, temperature
+band, oxygen; same coding) and random intercepts for
+
+```
+study + source sample + plating condition + family + family:study + family:medium class
+```
+
+- *family:medium class* is the quantity of interest: how much better or worse a family does on
+  one class than its own average and than the class average. As a random effect it is shrunk
+  towards zero when a family has little data on a class, which avoids the separation problem of
+  Deviation 1 (1,457 family-by-class cells, many with few events).
+- *family:study* stops a family that happens to grow well in one study, which used only some
+  classes, from looking like a medium preference.
+- Relatedness and conditions are adjusted as in Phase 3, so a family's class preference is not
+  just its relatives' culture-collection coverage.
+- The same model with phylum in place of family is fitted as a coarser companion.
+
+**Inference.**
+- H5a: likelihood-ratio test of the model against the same model without family:medium class.
+  The variance is zero under the null, on the edge of its range, so the p-value is half the
+  chi-square(1) tail. Supported if p < 0.05. The estimated SD is reported.
+- H5b: leave-one-study-group-out over the Q5 groups. Both models (with and without
+  family:medium class) are refitted without the held-out group and predict it. The family and
+  family:medium class effects are known for a held-out row when the family (and the pair) was
+  seen in training; study, source, condition and family:study effects are averaged over, as in
+  Phase 3. Metric: mean held-out log loss per group (and AUC). Supported if log loss is lower
+  with family:medium class in at least 4 of the 5 groups and the bootstrap interval (groups
+  resampled, 1,000 times) of the mean difference excludes 0. With five groups this interval is
+  crude.
+- Reported: family-by-class effects (conditional modes with 95% intervals from their
+  conditional SDs) for families with at least 2,000 Q5 rows in at least two classes (row counts,
+  not outcomes); the same for phyla. With hundreds of cells, some intervals will exclude zero by
+  chance; this table is descriptive.
+
+## 14. Q6: the curation hypothesis
+
+**Collection records.**
+- Culture-medium entries of every BacDive strain record (cached full crawl). Only entries that
+  link a MediaDive medium are used, because only those have a structured recipe; growth must
+  not be recorded as "no".
+- Each MediaDive medium is classed by the section 4 rule, with the recipe facts computed from
+  its MediaDive ingredients by fixed lists (`config/phase4.yaml`): antibacterial agents
+  (antibiotics and bile; antifungals excluded); habitat material (soil, soil extract, natural
+  seawater, rumen fluid, manure and dung, sludge); complex nutrient source (MediaDive's
+  complex-ingredient flag, minus gelling agents, single polysaccharides, lipids, salts,
+  charcoal, enzymes, detergents and defined media sold as one ingredient); organic g/L (every
+  ingredient MediaDive flags complex, so soluble starch and glycerol count as for the plate
+  media, and every carbon-containing ingredient, minus gelling agents, insoluble polymers,
+  salts, inorganic carbon, buffers, chelators, dyes and detergents). Of 3,342 MediaDive media,
+  1,434 are rich, 487 dilute, 718 defined, 142 habitat extract, 15 selective, 242 unresolved and
+  304 have no recipe. A complete dehydrated agar medium listed as one ingredient counts its
+  weight minus 15 g/L of agar (this moves 8 media, none with a strain record). A complex
+  medium with an organic
+  ingredient of unstated amount is rich if its stated organic part already exceeds 4 g/L and
+  unresolved otherwise.
+- **Link from ASV to strains.** Every tied best hit of the ASV (primary identity, all-sources
+  reference) is followed to BacDive strains: a strain's own 16S links to that strain; a GTDB
+  isolate genome links to every BacDive strain whose record lists that assembly. RefSeq
+  type-material 16S records carry no strain identifier here and are not linked.
+- **Recorded shares.** For each ASV, rec_X is the share of its linked strains (those with at
+  least one classed growth record) that have a growth record on class X. ASVs with no such
+  strain are not in Q6. Q6 has 223,800 rows from 10,918 ASVs (50.1% of the Q5 ASVs). Their
+  linked strains are recorded on rich media for 45.8% of ASVs, dilute 55.4%, defined 18.0%,
+  habitat extract 1.5% and selective 0.1% (so no selective term is fitted).
+
+**Model:** the Phase 3 primary model (fixed effects and random intercepts for study, source
+sample, plating condition and phylum) plus
+
+```
+rec_X for each class X recorded for at least 1% of Q6 ASVs + match
+```
+
+where *match* is rec for the class of the row's own plating medium. The rec_X terms absorb
+"taxa whose relatives are kept on X grow more (or less) everywhere"; *match* measures what is
+specific to the medium actually used.
+
+**Inference.** H6 supported if both:
+- the odds ratio for *match* (all linked strains recorded on the plate's class vs none) has a
+  95% interval above 1 in the full fit; and
+- leave-one-study-group-out over the Q6 groups: mean held-out log loss is lower with *match*
+  than without in at least 4 of the 5 groups.
+Otherwise H6 is not supported, and the odds ratio's upper bound is reported as the largest
+effect compatible with the data.
+
+**Companion: matched plates.** Pairs of usable plating conditions from the same study and source
+sample, with the same oxygen, temperature band and incubation time but different medium classes.
+For an ASV whose linked strains are recorded on exactly one of the two classes (any strain) and
+which was enriched on exactly one of the two plates, the pair falls in one cell of a 2 x 2 table
+(recorded on class x or y; grew on x or y). Tables are pooled over strata (study, class pair) by
+the Mantel-Haenszel odds ratio, with a 95% interval from 1,000 bootstrap resamples of ASVs within
+study groups. An odds ratio above 1 means taxa grew on the class their relatives are kept on more
+often than on the other. Reported with the model result; it has no verdict of its own.
+
+**Sensitivity analyses** (full fit with and without *match*; odds ratio and likelihood-ratio
+test reported): (i) rows with identity at least 97%, where a relative's records are most
+relevant; (ii) indicators (any linked strain recorded on X) instead of shares; (iii) links
+through BacDive strains' own 16S only.
+
+## 15. Q7: under-recovered taxa
+
+- **Model:** the Phase 3 primary model without the phylum term (identity, source abundance,
+  depth and conditions; random study, source sample and plating condition), fitted leave-one-
+  study-group-out over all ten groups with the Phase 3 rows and coding.
+- **Level.** Phase 3 showed that a new study's overall rate is not predictable. Within each
+  held-out group, the new-study predictions are shifted by one constant on the log-odds scale so
+  that predicted events equal observed events. A taxon's ratio then compares it with the rest of
+  its own study.
+- **Per taxon** (family; also phylum): O = observed enriched rows, E = sum of shifted
+  predictions, pooled over groups as O/E, with a 95% interval from 1,000 bootstrap resamples of
+  study groups.
+- **Evaluated:** taxa with E of at least 5 in at least 3 groups (E is a model quantity, not an
+  outcome); only those groups count for the taxon.
+- **Call.** *Systematically under-recovered:* pooled O/E below 1, interval upper bound below 1,
+  and O/E below 1 in at least two thirds of the taxon's groups. *Over-recovered:* the mirror
+  image. Otherwise neither.
+- **Sensitivity:** the identity-only model's Phase 3 held-out predictions in place of the Q7
+  model; no level shift.
+- Many taxa are tested and the intervals are not corrected for multiplicity; the consistency
+  rule guards against a call driven by one study. The list is descriptive.
+
+## 16. Phase 4 outputs
+
+- Q5: likelihood-ratio test and SD; held-out log loss and AUC per group, both models; a
+  family-by-class table and heat map; the phylum version.
+- Q6: odds ratio for *match* with interval, likelihood-ratio test, held-out log loss per group,
+  the matched-plate odds ratio, the three sensitivity analyses; coverage of collection records
+  (share of ASVs linked, classes recorded).
+- Q7: per-taxon O/E with interval, groups and call; the sensitivity analyses.
+- Environmental and host-associated studies are listed separately in every per-group table.
+
+## 17. Phase 4 limitations, stated in advance
+
+- Five study groups inform Q5 and Q6. Transfer tests and bootstrap intervals over five groups
+  are crude.
+- Medium classes are broad; media within a class differ.
+- Culture-collection records are dominated by DSMZ media and by rich media; a class with few
+  records gives the test little power on that class.
+- At the amplified region, tied best hits often span several species, so an ASV's "relative" can
+  be a set of strains. The shares average over them.
+- The Q7 level shift uses each group's own outcomes (one number per group), so Q7 compares taxa
+  within a study and says nothing about a study's overall level.
