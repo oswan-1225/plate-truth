@@ -136,6 +136,9 @@ def curve(fit_dir, rows: pd.DataFrame, centers: dict, cfg: dict, seed: int,
     c = cfg["curve"]
     grid = pd.read_csv(fit_dir / "grid.csv")
     gx = pd.read_csv(fit_dir / "grid_X.csv")
+    # factor coding from all rows, exactly as in the fit; rows are sampled afterwards
+    x_all = design_columns(rows, pd.Series(True, index=rows.index), centers)
+    x_all["(Intercept)"] = 1.0
     if host is not None:
         keep = (grid["host"] == host).to_numpy()
         grid, gx = grid[keep].reset_index(drop=True), gx[keep].reset_index(drop=True)
@@ -148,9 +151,8 @@ def curve(fit_dir, rows: pd.DataFrame, centers: dict, cfg: dict, seed: int,
 
     def row_design(n: int, offset: int):
         sample = rows.sample(min(n, len(rows)), random_state=seed + offset)
-        x = design_columns(sample, pd.Series(True, index=sample.index), centers)
-        x["(Intercept)"] = 1.0
-        return x[other].to_numpy(), sample["phylum"].map(phylum).fillna(0).to_numpy()
+        return (x_all.loc[sample.index, other].to_numpy(),
+                sample["phylum"].map(phylum).fillna(0).to_numpy())
 
     n = cfg["marginal"]["gauss_hermite_nodes"]
     x, u = row_design(c["point_rows"], 0)
