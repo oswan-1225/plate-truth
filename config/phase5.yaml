@@ -1,0 +1,142 @@
+# Phase 5 settings (ANALYSIS_PLAN.md sections 19-25), fixed before any survey data were analysed.
+# Any change after the first survey sample is processed is a logged deviation from the plan.
+
+# --- Habitats: MGnify study biome lineages ------------------------------------------------------
+# A study belongs to a habitat if its MGnify biome lineage starts with one of `lineages` and
+# contains none of the `exclude` words. `training`: a habitat represented among the ten
+# training study groups (false = extrapolation, flagged in every table and figure).
+# `report`: environmental, host_associated or human_gut (human gut is reported separately).
+habitats:
+  soil:
+    lineages: ["root:Environmental:Terrestrial:Soil"]
+    exclude: []
+    training: true
+    report: environmental
+  activated_sludge:
+    lineages: ["root:Engineered:Wastewater:Activated Sludge",
+               "root:Engineered:Wastewater:Nutrient removal:Activated sludge",
+               "root:Engineered:Wastewater:Nutrient removal:Biological phosphorus removal:Activated sludge"]
+    exclude: []
+    training: true
+    report: environmental
+  marine_sponge:
+    lineages: ["root:Host-associated:Porifera"]
+    exclude: []
+    training: true
+    report: host_associated
+  plant:
+    lineages: ["root:Host-associated:Plants"]
+    exclude: []
+    training: true
+    report: host_associated
+  rumen:
+    lineages: ["root:Host-associated:Mammals:Digestive system:Foregut:Rumen",
+               "root:Host-associated:Mammals:Digestive system:Stomach:Rumen"]
+    exclude: []
+    training: true
+    report: host_associated
+  marine_water:
+    lineages: ["root:Environmental:Aquatic:Marine"]
+    exclude: [Sediment, Hydrothermal, Cold seeps, Volcanic, Intertidal, Wetlands, Oil, Fossil,
+              Benthic, Abyssal, Microbialites]
+    training: false
+    report: environmental
+  marine_sediment:
+    lineages: ["root:Environmental:Aquatic:Marine:Sediment",
+               "root:Environmental:Aquatic:Marine:Coastal:Sediment",
+               "root:Environmental:Aquatic:Marine:Oceanic:Sediment",
+               "root:Environmental:Aquatic:Marine:Intertidal zone:Sediment",
+               "root:Environmental:Aquatic:Marine:Neritic zone:Sediment"]
+    exclude: []
+    training: false
+    report: environmental
+  freshwater:
+    lineages: ["root:Environmental:Aquatic:Freshwater"]
+    exclude: [Sediment, Groundwater, Ice, Drinking water, Wetlands, Storm water, Microbialites,
+              Microbial mats]
+    training: false
+    report: environmental
+  human_gut:
+    lineages: ["root:Host-associated:Human:Digestive system"]
+    exclude: [Oral]
+    training: false
+    report: human_gut
+
+# --- Survey selection ---------------------------------------------------------------------------
+selection:
+  seed: 20261023
+  amplicon:
+    studies_per_habitat: 5
+    runs_per_study: 8
+    min_runs_per_study: 3          # fewer eligible runs: study excluded
+    max_screened_per_habitat: 40   # candidates screened, in seeded random order
+    min_ena_read_count: 10000      # read pairs in the ENA run record (pre-screen only)
+    screen_reads: 2000             # read pairs streamed per run for primer detection
+    screen_runs: 2                 # runs screened per study (both must pass)
+    min_primer_pair_share: 0.5     # share of screened pairs with both primers at the read starts
+    primer_max_offset: 12          # primer may start after up to this many bases (spacers)
+    primer_max_mismatches: 2       # IUPAC-aware mismatches allowed per primer
+    min_merge_overlap: 20          # R1 + R2 length - amplicon length (with primers) must reach this
+    # Region references (data/processed/primer_sets.csv) a survey may use: every training
+    # primer pair except the held-out seawater pair. Detection uses the primers listed here;
+    # V4 surveys are cut with the most degenerate V4 pair (same window).
+    references:
+      V4_515FY_806RB: {fwd: [GTGYCAGCMGCCGCGGTAA, GTGCCAGCMGCCGCGGTAA, GTGBCAGCMGCCGCGGTAA],
+                       rev: [GGACTACNVGGGTWTCTAAT, GGACTACHVGGGTWTCTAAT]}
+      V3-V4_341F_806R: {fwd: [CCTACGGGNGGCWGCAG, CCTAYGGGRBGCASCAG],
+                        rev: [GACTACHVGGGTATCTAATCC]}
+      V3-V4_341F_806R_2: {fwd: [CCTAYGGGRBGCASCAG, CCTACGGGNGGCWGCAG],
+                          rev: [GGACTACNNGGGTATCTAAT, GGACTACHVGGGTWTCTAAT]}
+      V1-V3_27F_534R: {fwd: [AGAGTTTGATCCTGGCTCAG, AGRGTTTGATYNTGGCTCAG],
+                       rev: [ATTACCGCGGCTGCTGG]}
+    amplicon_length:                # with primers, for the merge-overlap check
+      V4_515FY_806RB: 292
+      V3-V4_341F_806R: 465
+      V3-V4_341F_806R_2: 466
+      V1-V3_27F_534R: 530
+  shotgun:
+    studies_per_habitat: 3
+    runs_per_study: 5
+    min_runs_per_study: 2
+    max_screened_per_habitat: 40
+    pipeline_version: "5.0"         # MGnify V5 raw-reads analyses publish SSU read FASTAs
+    min_predicted_ssu: 10000        # MGnify 'Predicted SSU sequences' (pre-screen only)
+  # Studies or runs whose title, sample title or alias contain one of these words (case-
+  # insensitive) are not environmental surveys or are controls.
+  exclude_study_words: [culture, cultured, isolate, isolates, enrichment, mock, plate, plates,
+                        cultivation, culturomics]
+  exclude_run_words: [blank, negative, control, mock, ntc, extraction, kitome, standard,
+                      positive]
+
+# --- Samples ------------------------------------------------------------------------------------
+sample:
+  min_prokaryotic_reads: 1000      # same depth rule as the training data
+  min_window_fragments: 1000       # shotgun: fragments placed in the V4 window
+  present_min_reads: 2             # an ASV is present with >= 2 reads (training rule)
+
+# --- Shotgun fragments ----------------------------------------------------------------------------
+shotgun_window:
+  reference: V4_515FY_806RB        # window = this primer pair's amplified region
+  locator_min_id: 0.70             # placement against SILVA 138.2 cut to the window
+  min_overlap: 100                 # bases of the window covered by the fragment
+  pseudo_taxon_rank: genus         # source abundance = share of fragments in the same SINTAX
+                                   # lineage down to this rank (lowest assigned rank if not)
+
+# --- Applying the Phase 3 model -------------------------------------------------------------------
+model:
+  fit: data/interim/phase3/fits_rev1/primary/primary   # 'all' = full data; folds for the check
+  conditions_k: 8                  # median over training groups of the median usable
+                                   # conditions per source sample (8.5), rounded down
+  study_quantiles: [0.1, 0.5, 0.9] # range = 10th-90th percentile of the study effect
+  condition_points: 60             # quantile points representing the condition-mix distribution
+  condition_points_draws: 30
+  source_nodes: 20                 # Gauss-Hermite nodes for the source-sample effect
+  source_nodes_draws: 10
+  n_draws: 200                     # fixed-effect draws used for intervals (of the 1,000)
+  n_replicates: 1000               # habitat replicates: studies resampled x one draw each
+
+# --- Criteria (ANALYSIS_PLAN.md section 23) ---------------------------------------------------------
+criteria:
+  shortcut_studies_share: [2, 3]   # D > 0 in at least two thirds of the studies (rounded up)
+  check_upper_groups: 8            # training check: observed <= upper end in >= 8 of 10 groups
+  check_coverage_groups: 7         # training check: observed inside the range in >= 7 of 10

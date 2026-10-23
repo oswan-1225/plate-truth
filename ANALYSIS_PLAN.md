@@ -541,3 +541,261 @@ model fitted within each study group alone. Script 38.
 **Reading.** If match keeps its size with study-specific rec_X effects, the registered result
 reflects medium-specific information; if it shrinks to about 1, the registered result mostly
 reflects differences between studies.
+
+## 19. Phase 5: what the model can say about public surveys
+
+Registered 2026-10-23, after the Phase 3 and Phase 4 results were final and before any survey
+sample was processed. Sections 1-18 are unchanged. Settings are in `config/phase5.yaml`.
+
+**Why this phase is narrower than first planned.** Phase 3 showed that the model ranks taxa
+well inside a study it has not seen but cannot predict that study's overall level of growth:
+held-out observed-to-expected ratios ranged from 0.20 to 2.8, and H2 failed. A public survey
+is a new study, so no single "recoverable fraction" per habitat can be supported. This phase
+reports only what does not depend on knowing the level:
+
+1. a predicted *range* of recovery across the between-study distribution;
+2. a level-free test of the database shortcut: if the share of reads with a cultured relative
+   exceeds even the upper end of that range, the shortcut overstates recovery whatever the
+   unknown level is;
+3. the *composition* of each habitat in terms of the taxa Phase 4 found to be under- or
+   over-recovered, which needs no level at all.
+
+Every number is a prediction for plating conditions like those in the ten training studies.
+
+**Known at registration.**
+- All Phase 3 and Phase 4 results.
+- MGnify's current API and pipeline documentation (what each analysis publishes; section 21).
+- Numbers of MGnify studies per biome lineage (for example 644 soil, 80 activated sludge, 65
+  sponge, 12 rumen studies), and the biome list.
+- From the training data: 687 usable plating conditions; the median number of usable
+  conditions per source sample is 8.5 over the ten groups (group medians from 2 to 180).
+- The format of one MGnify SSU fragment file (study MGYS00003941; 10,862 fragments, mean
+  length 209 bp), downloaded to check what the files contain. Its identities were not
+  computed; that study is not eligible for selection.
+- No survey sample has been processed, and no identity, share or prediction has been computed
+  for any survey.
+
+**Expectations, stated before analysis.**
+- H3 found the shortcut overstating observed recovery about sixfold in the training studies.
+  I expect the shortcut share to exceed the upper end of the single-condition range in most
+  habitats, including the extrapolated ones.
+- For the more generous comparison (recovery on any of several plates; section 22) I have no
+  firm expectation.
+- Steen et al. (2019) argued that amplicon primers favour cultured taxa. I expect shortcut
+  shares from shotgun fragments to be lower than from amplicons in the same habitat. This is
+  described, not tested, because the two arms differ in window and studies.
+
+## 20. Survey selection
+
+**Source.** MGnify (EMBL-EBI) studies, found through the MGnify API (v2: studies by biome
+lineage and their analyses; v1: per-analysis summaries and download lists). MGnify is used to
+find studies, their biome, the type of sequencing and the runs; amplicon sequences come from
+the raw reads in ENA (section 21).
+
+**Habitats.** Nine, defined by MGnify study biome lineages (`config/phase5.yaml`): soil,
+activated sludge, marine sponge, plant-associated and rumen (represented among the training
+studies), and marine water, marine sediment, freshwater and human gut (extrapolation: no
+training study comes from them). The broiler-carcass training study has no survey counterpart.
+Human gut is reported apart from the environmental habitats, and host-associated habitats
+apart from environmental ones, as in Phase 3.
+
+**Two arms, reported separately.**
+- *Amplicon:* 16S amplicon studies sequenced on Illumina with paired reads.
+- *Shotgun:* metagenomic studies with a MGnify v5.0 raw-reads analysis, which publishes the
+  reads that encode SSU rRNA. (The current v6.0 raw-reads pipeline publishes only taxon counts,
+  not sequences, so it cannot give identities.)
+
+**Order and stopping.** For each habitat and arm, the candidate studies (union over the
+habitat's lineages, minus excluded lineages) are put in a random order with a fixed seed and
+screened one by one until the target number is included (amplicon 5 studies, shotgun 3) or 40
+candidates have been screened. Every screened study is listed in the survey census with its
+decision and reason. A habitat with fewer included studies is reported with what it has.
+
+**Study rules (both arms).**
+- Not one of the training studies' projects, and not the study whose file format was checked.
+- No title word indicating cultures, isolates, enrichments, mock communities or plates
+  (word list in the config).
+- Amplicon: at least 3 eligible runs; shotgun: at least 2.
+
+**Run rules.**
+- One run per biosample (the first by accession); runs whose sample title or alias names a
+  blank, negative or positive control, mock community, extraction kit or standard are dropped.
+- Amplicon: ENA records the run as Illumina, paired layout, at least 10,000 read pairs.
+- Shotgun: MGnify reports at least 10,000 predicted SSU sequences for the analysis.
+- From the eligible runs, up to 8 (amplicon) or 5 (shotgun) are chosen at random with the fixed
+  seed.
+
+**Amplicon primer screen.** The first 2,000 read pairs of the first two chosen runs are
+streamed from ENA. A pair carries a primer pair if one read starts with the forward primer and
+the other with the reverse primer (either way round), allowing up to 12 leading bases (spacers,
+barcodes) and up to 2 mismatches per primer (IUPAC codes respected). The study is eligible only
+if, in both runs, at least half of the pairs carry one of the primer pairs of the training
+region references (V4 515F/806R and its variants, V3-V4 341F/785R and 341F/806R, V1-V3
+27F/534R; the held-out seawater pair is not used), and the read lengths can span the amplicon
+with at least 20 bases of overlap. Studies whose reads have no detectable primers are not
+eligible, because their amplified window cannot be verified.
+
+**Sample depth.** After processing, a sample is used if it has at least 1,000 prokaryotic
+reads (amplicon; the training rule) or at least 1,000 fragments placed in the window
+(shotgun; section 21).
+
+## 21. Sequences and identity
+
+**Amplicon reads to ASVs.** The Phase 2 pipeline, unchanged: merge pairs, keep the window
+between the primers on either strand (cutadapt), expected-error filter (maxEE 1) and the
+region's length window, dereplicate per run; per study, pooled UNOISE3 denoising with de novo
+chimera removal and mapping of every run's reads to the ASVs at 97%. The primers used for
+cutting are those of the matched region reference (for V4, the most degenerate pair, which
+has the same window).
+
+**Amplicon identity.** Each ASV against the cultured reference cut in silico to the same primer
+pair, VSEARCH global alignment, gaps counted (`--iddef 1`), best hit; no hit at 75% or above is
+"no hit". Identity ignoring terminal gaps and gap-blind identity are computed for the
+sensitivity analyses. This is the training definition exactly.
+
+**Shotgun fragments and their window.** MGnify v5.0 "Reads encoding SSU rRNA" are fragments
+of about 200 bp from anywhere along the gene. Identity over a random stretch of 16S is not on
+the same scale as identity over an amplified region (conserved stretches inflate it, variable
+ones deflate it), so fragments are compared over the V4 window only, the region of most
+training rows:
+- *Placement.* Each fragment is searched (both strands) against SILVA 138.2 cut in silico to the
+  515F/806R window. SILVA includes uncultured lineages, so placement does not depend on having a
+  cultured relative. A fragment is in the window if its best placement covers at least 100
+  window bases at 70% identity or more. It is then oriented and trimmed to the covered part.
+- *Identity.* The trimmed fragment against the cultured V4 reference, terminal gaps excluded
+  (`--iddef 2`) and internal gaps counted. For a sequence shorter than the window this is the
+  equivalent of the training definition: the reference's bases outside the fragment's span are
+  not differences, every gap inside it is. No hit at 75% or above is "no hit".
+- Fragments are not denoised, so sequencing errors lower their identities a little; this is
+  a stated limitation (section 25) and one reason the arms are reported separately.
+
+**Taxonomy.** SINTAX against SILVA 138.2 (cutoff 0.8), as in training, for ASVs and trimmed
+fragments. Chloroplast, mitochondrial and non-prokaryotic sequences are removed before any
+share is computed.
+
+## 22. Applying the model: the three outputs
+
+**Model.** The Phase 3 primary model (revised as in Deviation 1), fitted on all ten study
+groups: identity spline and no-hit indicator, log source abundance, log plate depth, log
+incubation days, medium class, temperature band, oxygen; random intercepts for study, source
+sample, plating condition and phylum. It is not refitted.
+
+**Covariates.**
+- *From the survey sample:* identity and no-hit (section 21); phylum (the nine model levels)
+  and its estimated effect; source abundance = the sequence's relative abundance among the
+  sample's prokaryotic reads. For shotgun fragments, which are not taxa, source abundance is
+  the share of the sample's window fragments in the same SINTAX lineage down to genus (the
+  lowest assigned rank when genus is not assigned).
+- *Plating conditions (rule):* the average over the 687 usable training conditions, each study
+  group weighted equally (each condition gets 1/(10 x its group's number of conditions)). A
+  condition contributes its own plate depth, incubation time, medium class, temperature band and
+  oxygen, coded exactly as in the fit. Every caption says that predictions are averaged over
+  the training plating conditions.
+
+**Notation.** For sequence i of a sample: eta_i = intercept + identity terms + abundance term +
+phylum effect; g_k = the contribution of training condition k (weight w_k); u = a study effect;
+s and c = source-sample and plating-condition effects, normal with the fitted SDs.
+
+**Output 1: predicted range of recovery.**
+- *One plating condition:* p1_i(u) = sum over k of w_k x E[expit(eta_i + g_k + u + s + c)].
+- *Any of K plates:* pK_i(u) = 1 - E_s[(1 - pbar_i(u, s))^K], where pbar_i(u, s) = sum over k
+  of w_k x E_c[expit(eta_i + g_k + u + s + c)]. K conditions are drawn from the training mix;
+  they share the study and source effects and have their own condition effects; enrichment on
+  different plates is independent given those effects. Real taxa keep some of their tendency to
+  grow across plates, so independence overstates "any of K", which makes this a generous
+  reference. K = 8 (the training median of conditions per source sample, rounded down).
+- *Recovery share:* R(u) = sum_i a_i p_i(u) / sum_i a_i over the sequences present in the
+  sample (at least 2 reads; for shotgun, every window fragment, each with a_i = 1), the
+  read-weighted share of the sample in taxa predicted to be enriched, as in Phase 3.
+- *Range:* u at the 10th and 90th percentiles of the fitted study distribution (+-1.28 x the
+  study SD). The range is [R(10th), R(90th)].
+- Expectations over s and c use Gauss-Hermite quadrature; the condition mix plus c is
+  represented by equally weighted quantile points of its distribution.
+
+**Output 2: the shortcut test (headline).**
+- Shortcut share S = sum_i a_i x [identity_i >= 94.5%] / sum_i a_i.
+- Per study, D = S - R1(90th), each a mean over the study's samples. Per habitat, the mean of D
+  over studies.
+- **The shortcut overstates recovery whatever the level** in a habitat if the lower 2.5% bound
+  of the habitat's mean D is above 0 and D > 0 in at least two thirds of its studies (rounded
+  up). This is the primary comparison (one plating condition, as Output 1 is defined).
+- Secondary, generous comparison: the same with RK(90th), recovery on any of 8 plates.
+
+**Output 3: composition.**
+- Per sample, the read share in families called under-recovered, over-recovered, neither, or
+  not evaluated in Phase 4 Q7; the same for phyla.
+- The share of shortcut reads (identity at least 94.5%) that sit in under-recovered families:
+  reads the shortcut counts as culturable but whose families seldom grow.
+- The five under-recovered families with the largest mean read share per habitat.
+
+**Aggregation and uncertainty.** Study value = mean over its samples; habitat value = mean over
+studies, each study counting once. Intervals: 1,000 replicates, each resampling the habitat's
+studies with replacement and using one of 200 draws of the fixed effects (draws taken from
+the fit's covariance). A habitat with one study gets intervals from the draws only, and this is
+stated. The random-effect SDs are fixed at their estimates; their uncertainty is not in the
+intervals.
+
+## 23. Training check and criteria
+
+The range and the shortcut test are new uses of the model. Before reading anything into the
+survey results, the same procedure is applied to each training study group with the model
+that never saw it (the Phase 3 leave-one-group-out fits): the group's source samples and taxa
+as the "survey", the other nine groups' conditions as the condition mix, the fold's own SDs.
+Observed recovery comes from the plates (Phase 3 definitions).
+
+- *Coverage:* the group's observed per-condition share (median over its conditions, mean over
+  its sources) lies inside [R1(10th), R1(90th)]. Expected for about 8 of 10 groups if the
+  between-study spread is right. **The range describes the spread** if this holds in at least
+  7 of 10 groups.
+- *Upper end:* the observed per-condition share is at most R1(90th). Expected for about 9 of 10.
+  **The upper end works as an upper reference** if this holds in at least 8 of 10 groups.
+- *Generous upper end:* the group's observed any-condition share is at most RK(90th), with K set
+  to the group's own median number of conditions per source (only this check uses the group's
+  K). Same 8 of 10 rule.
+- If the upper-end check fails, the survey shortcut verdicts are still reported but marked
+  "not supported by the training check", and the summary says so first.
+
+## 24. Sensitivity analyses and comparisons
+
+Each reruns Outputs 1-2 for both arms (unless stated) with one change:
+1. Identity ignoring terminal gaps, and gap-blind identity (amplicon arm).
+2. Shortcut at 97% identity (S only; the threshold used by Martiny 2019).
+3. Condition mix with every training condition weighted equally (instead of every group).
+4. Samples with at least 5,000 prokaryotic reads (or window fragments) only.
+5. Amplicon studies of the V4 region only (region is confounded with study).
+6. Shotgun: source abundance set to the training median instead of the lineage share; and a
+   minimum window overlap of 150 bases.
+
+**Published estimates.** Lloyd et al. 2018 and Martiny 2019 reported per-habitat shares of
+sequences in uncultured lineages or with cultured relatives. Where a habitat matches, their
+numbers are copied from the papers (checked by script, never typed from memory) and set beside
+the shortcut shares here, with the differences in reference set, identity definition and
+window explained. This comparison is descriptive.
+
+## 25. Phase 5 outputs and limitations
+
+**Outputs.** Survey census (every screened study, decision and reason); per sample, study and
+habitat: S, R1 and RK at the 10th and 90th percentiles with intervals, D and the verdict,
+composition tables; the training check table; sensitivity tables; a figure per habitat (range,
+shortcut share, verdict; extrapolated habitats marked). Amplicon and shotgun in separate
+tables and panels.
+
+**Limitations, stated in advance.**
+- MGnify studies are those deposited and analysed there, not a random sample of each habitat.
+  Within that set, selection is random and fixed by seed.
+- Predictions apply to plating conditions like those of the training studies. They say nothing
+  about conditions designed for a particular habitat.
+- Four habitats and the human gut are outside the training habitats; their numbers are
+  extrapolations.
+- Ten training groups estimate the study SD, which sets the width of the range; its own
+  uncertainty is not propagated.
+- "Any of K plates" assumes independence between plates given the shared effects, which
+  overstates it.
+- Shotgun fragments cover part of the V4 window, are not denoised, and their "abundance" is a
+  lineage share rather than a taxon's.
+- Amplicon primer bias (Steen et al. 2019) affects the amplicon arm in the same direction as
+  the training data.
+
+## 26. Phase 5 deviations
+
+None yet.
