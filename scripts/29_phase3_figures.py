@@ -3,7 +3,7 @@
 fig_phase3_calibration.(png|pdf):
   (a) P(enriched on plates) against identity to the nearest cultured relative for a study the
       model has not seen, at average conditions: line = estimate, dark band = 95% interval of the
-      fixed effects, light band = 10th-90th percentile across studies. Points: observed share
+      fixed effects, dashed lines = 10th and 90th percentile across studies. Points: observed share
       enriched per identity bin over all held-out groups (95% Wilson interval) and the mean
       held-out prediction for that bin (black tick).
   (b) held-out calibration per study group: observed / expected (O/E). Shaded: the registered
@@ -52,10 +52,10 @@ def bin_centres(labels: list[str]) -> dict[str, float]:
 
 def panel_curve(ax, curve: pd.DataFrame, calib: pd.DataFrame):
     c = curve[curve["no_hit"] == 0]
-    ax.fill_between(c["identity"], 100 * c["study_p10"], 100 * c["study_p90"], color=BLUE,
-                    alpha=0.12, lw=0, label="Spread across studies (10th-90th)")
-    ax.fill_between(c["identity"], 100 * c["p_lo"], 100 * c["p_hi"], color=BLUE, alpha=0.35,
+    ax.fill_between(c["identity"], 100 * c["p_lo"], 100 * c["p_hi"], color=BLUE, alpha=0.18,
                     lw=0, label="95% interval")
+    for col, lab in (("study_p10", "Study 10th / 90th percentile"), ("study_p90", None)):
+        ax.plot(c["identity"], 100 * c[col], color=BLUE, lw=1.2, ls="--", label=lab)
     ax.plot(c["identity"], 100 * c["p"], color=BLUE, lw=2, label="Model, new study")
     d = calib[calib["model"] == "primary"]
     x = d["identity_bin"].map(bin_centres(list(d["identity_bin"])))
@@ -79,6 +79,10 @@ def panel_oe(ax, by_group: pd.DataFrame, oe_range):
     ax.axvline(1, color=MUTED, lw=1)
     ax.plot(d["oe"], y, "o", ms=8, color=BLUE, mec="white", mew=1)
     ax.set_xscale("log")
+    ticks = [0.2, 0.5, 1, 2, 3]
+    ax.set_xticks(ticks, [f"{t:g}" for t in ticks])
+    ax.xaxis.set_minor_formatter(plt.NullFormatter())
+    ax.set_xlim(0.15, 4)
     ax.set_yticks(y, d["study_group"])
     ax.yaxis.grid(False)
     ax.xaxis.grid(True, color=GRID, linewidth=0.8)
@@ -104,7 +108,8 @@ def panel_recovery(ax, rec: pd.DataFrame):
     ax.yaxis.grid(False)
     ax.xaxis.grid(True, color=GRID, linewidth=0.8)
     ax.set_xlabel("Share of the source community's reads (%)", color=INK)
-    ax.legend(frameon=False, fontsize=7.5, loc="lower right")
+    ax.legend(frameon=False, fontsize=8, loc="upper center", bbox_to_anchor=(0.45, -0.14),
+              ncol=2)
     ax.set_title("c  Recoverable share per study", loc="left", color=INK, fontsize=11)
 
 
