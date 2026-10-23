@@ -14,7 +14,8 @@ temperature_bands:
   cold_max: 20.0        # <= 20: cold
   warm_min: 33.0        # >= 33: warm; otherwise moderate
 
-# Phylum levels kept as their own fixed effect: the phyla with >= 1,000 prokaryotic ASVs in the
+# Phylum levels (a random intercept since Deviation 1; registered as fixed effects): the phyla
+# with >= 1,000 prokaryotic ASVs in the
 # database (a count of ASVs, not of outcomes). Every other phylum, and unassigned, is 'other'.
 phyla:
   - Pseudomonadota
@@ -35,9 +36,19 @@ marginal:
   gauss_hermite_nodes: 40
 
 # Fixed-effect uncertainty for the curve: draws from the fixed-effect covariance.
+# Deviation 1: the curve is the mean prediction over a seeded random subsample of analysed rows
+# (point estimate over point_rows rows; draws over draw_rows rows with draw_nodes quadrature
+# points, to keep the rows x draws x grid computation small).
 curve:
   n_draws: 1000
   grid_step: 0.25        # identity grid, percent
+  point_rows: 20000
+  draw_rows: 2000
+  draw_nodes: 20
+
+# Fits of the revised model (Deviation 1) go to data/interim/phase3/<fits_dir>; the model as
+# registered is in data/interim/phase3/fits.
+fits_dir: fits_rev1
 
 # Comparison model: gradient boosting with fixed settings (no tuning).
 lightgbm:

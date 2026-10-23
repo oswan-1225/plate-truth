@@ -6,15 +6,20 @@
 #   outdir  folder for the outputs
 #   fixed   right-hand side of the fixed-effect formula (columns of input)
 #   random  grouping columns, each given a random intercept
-#   grid    optional CSV of covariate settings: fixed-effect predictions plus n_draws draws
+#   known   grouping columns whose level is known for a held-out row (e.g. phylum): their
+#           estimated effects are added to the held-out predictions and written out
+#   grid    optional CSV of covariate settings: its design matrix and n_draws draws of the
+#           fixed effects are written, for the curve
 #   n_draws, seed
-# Outputs (outdir): test_eta.csv (row_id, eta; fixed effects only), coef.csv, vcov.csv,
-#   grid_eta.csv and grid_draws.csv (if grid), and fit.json last, which marks the fit complete.
+# Outputs (outdir): test_eta.csv (row_id, eta: fixed effects plus known random effects),
+#   coef.csv, vcov.csv, ranef_<group>.csv for each known group, grid_X.csv and draws.csv (if
+#   grid), and fit.json last, which marks the fit complete.
 # Called by plate_truth.rfit; all data preparation and metrics are done in Python.
 
 suppressPackageStartupMessages({
   library(glmmTMB); library(splines); library(jsonlite); library(MASS)
 })
+nobars <- if (requireNamespace("reformulas", quietly = TRUE)) reformulas::nobars else lme4::nobars
 
 spec <- fromJSON(commandArgs(trailingOnly = TRUE)[1])
 dir.create(spec$outdir, showWarnings = FALSE, recursive = TRUE)
@@ -50,20 +55,29 @@ if (inherits(m, "error")) {
   write.csv(data.frame(term = names(b), estimate = b, se = sqrt(diag(V))),
             file.path(spec$outdir, "coef.csv"), row.names = FALSE)
   write.csv(V, file.path(spec$outdir, "vcov.csv"))
-  rhs <- reformulate(attr(terms(lme4::nobars(form)), "term.labels"))
+  re <- ranef(m)$cond
+  for (g in spec$known) {
+    write.csv(data.frame(level = rownames(re[[g]]), effect = re[[g]][, 1]),
+              file.path(spec$outdir, paste0("ranef_", g, ".csv")), row.names = FALSE)
+  }
+  rhs <- reformulate(attr(terms(nobars(form)), "term.labels"))
   if (nrow(test) > 0) {
     X <- model.matrix(rhs, test)[, names(b), drop = FALSE]
-    write.csv(data.frame(row_id = test$row_id, eta = as.vector(X %*% b)),
+    eta <- as.vector(X %*% b)
+    for (g in spec$known) {      # levels unseen in training get 0 (the mean effect)
+      u <- re[[g]][as.character(test[[g]]), 1]
+      eta <- eta + ifelse(is.na(u), 0, u)
+    }
+    write.csv(data.frame(row_id = test$row_id, eta = eta),
               file.path(spec$outdir, "test_eta.csv"), row.names = FALSE)
   }
   if (!is.null(spec$grid)) {
     grid <- read.csv(spec$grid)
     X <- model.matrix(rhs, grid)[, names(b), drop = FALSE]
-    write.csv(data.frame(grid, eta = as.vector(X %*% b)),
-              file.path(spec$outdir, "grid_eta.csv"), row.names = FALSE)
+    write.csv(X, file.path(spec$outdir, "grid_X.csv"), row.names = FALSE)
     set.seed(spec$seed)
-    B <- if (info$pdHess) mvrnorm(spec$n_draws, b, V) else matrix(b, 1)
-    write.csv(X %*% t(B), file.path(spec$outdir, "grid_draws.csv"), row.names = FALSE)
+    B <- if (info$pdHess) mvrnorm(spec$n_draws, b, V) else matrix(b, 1, dimnames = list(NULL, names(b)))
+    write.csv(B, file.path(spec$outdir, "draws.csv"), row.names = FALSE)
   }
 }
 write(toJSON(info, auto_unbox = TRUE, digits = NA, null = "null"),

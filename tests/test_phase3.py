@@ -4,6 +4,7 @@ import pytest
 from scipy.special import expit
 
 from plate_truth.phase3 import (
+    averaged_curve,
     bootstrap_mean,
     calibration_metrics,
     condition_recovery,
@@ -120,3 +121,12 @@ def test_fixed_formula():
     assert fixed_formula("identity_only", cols, CFG) == f"{s} + no_hit"
     assert fixed_formula("no_identity", cols, CFG) == "log_env + medium_a"
     assert fixed_formula("habitat", cols, CFG).endswith(f"host + host:{s} + host:no_hit")
+
+
+def test_averaged_curve():
+    # one row at 0, identity contribution log(3), no random effects -> 3/(1+3) = 0.75
+    assert averaged_curve(np.array([[0.0]]), np.array([[np.log(3)]]), 0.0, 20)[0, 0] ==         pytest.approx(0.75)
+    # rows at -1 and +1 average to exactly 0.5 by symmetry
+    assert averaged_curve(np.array([[-1.0], [1.0]]), np.array([[0.0]]), 0.0, 20)[0, 0] ==         pytest.approx(0.5)
+    # shapes: (rows, draws) and (grid, draws) -> (grid, draws)
+    assert averaged_curve(np.zeros((3, 2)), np.zeros((4, 2)), 1.0, 20).shape == (4, 2)

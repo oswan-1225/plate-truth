@@ -15,7 +15,19 @@ import pandas as pd
 
 from plate_truth.config import project_root
 
+# Random intercepts unknown for a new study (averaged over in its predictions), and phylum,
+# whose level is known for every row (ANALYSIS_PLAN.md Deviation 1).
 RANDOM = ["study_id", "source_key", "condition_id"]
+KNOWN = ["phylum"]
+
+
+def random_effects(model: str) -> tuple[list[str], list[str]]:
+    """(all random-intercept groups, those known for a held-out row) for a named model. The
+    identity-only model has no phylum term."""
+    known = [] if model == "identity_only" else KNOWN
+    return RANDOM + known, known
+
+
 FIT_SCRIPT = project_root() / "src" / "R" / "fit_glmm.R"
 
 
@@ -73,13 +85,16 @@ def is_done(outdir: Path) -> bool:
 
 
 def run_fit(outdir: Path, data: pd.DataFrame, fixed: str, grid: pd.DataFrame | None = None,
-            n_draws: int = 0, seed: int = 0) -> dict:
-    """Write the inputs, run R, delete the (large) input CSV and return fit.json."""
+            n_draws: int = 0, seed: int = 0, random: list[str] | None = None,
+            known: list[str] | None = None) -> dict:
+    """Write the inputs, run R, delete the (large) input CSV and return fit.json.
+    random: random-intercept groups (default RANDOM); known: those whose estimated effects are
+    added to held-out predictions."""
     outdir.mkdir(parents=True, exist_ok=True)
     inp = outdir / "input.csv"
     data.to_csv(inp, index=False)
-    spec = {"input": str(inp), "outdir": str(outdir), "fixed": fixed, "random": RANDOM,
-            "n_draws": n_draws, "seed": seed}
+    spec = {"input": str(inp), "outdir": str(outdir), "fixed": fixed,
+            "random": random or RANDOM, "known": known or [], "n_draws": n_draws, "seed": seed}
     if grid is not None:
         grid.to_csv(outdir / "grid.csv", index=False)
         spec["grid"] = str(outdir / "grid.csv")

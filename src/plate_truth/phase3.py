@@ -27,6 +27,8 @@ UNKNOWN = "unknown"
 GROUP = "study_group"
 OXYGEN_LEVELS = ["aerobic", "anaerobic", "microaerophilic"]
 FACTORS = ["medium", "temperature", "oxygen", "phylum"]
+CODED = ["medium", "temperature", "oxygen"]        # sum-to-zero fixed effects; phylum is a
+                                                    # random intercept (Deviation 1)
 CONTINUOUS = ["log_env", "log_depth", "log2_days"]
 
 # The primary analysis; each sensitivity analysis overrides some of these (ANALYSIS_PLAN.md s7).
@@ -111,13 +113,13 @@ def _safe(level: str) -> str:
 
 def design_columns(rows: pd.DataFrame, train: pd.Series, centers: dict) -> pd.DataFrame:
     """Numeric model inputs: identity, no_hit, centred continuous covariates and effect-coded
-    factors, with factor levels taken from the training rows only."""
+    condition factors, with factor levels taken from the training rows only."""
     out = pd.DataFrame({"identity": rows["identity_model"], "no_hit": rows["no_hit"]},
                        index=rows.index)
     for c in CONTINUOUS:
         out[c] = rows[c] - centers[c]
     out["host"] = np.where(rows["host_associated"].astype(bool), 1.0, -1.0)
-    for f in FACTORS:
+    for f in CODED:
         out = out.join(effect_code(rows[f], known_levels(rows.loc[train, f]), f))
     return out
 
@@ -210,6 +212,22 @@ def marginal_probability(eta: np.ndarray, sigma: float, n_nodes: int) -> np.ndar
     x, w = np.polynomial.hermite_e.hermegauss(n_nodes)   # weight exp(-x^2/2)
     w = w / w.sum()
     return expit(eta[..., None] + sigma * x) @ w
+
+
+def averaged_curve(row_eta: np.ndarray, grid_eta: np.ndarray, sigma: float, n_nodes: int
+                   ) -> np.ndarray:
+    """Expected enrichment rate at each grid point, averaged over a set of rows.
+
+    row_eta: (rows, draws) linear predictor of each row WITHOUT its identity terms (intercept,
+    covariates, phylum effect). grid_eta: (grid, draws) contribution of the identity terms at
+    each grid point. Returns (grid, draws): the mean over rows of the new-study prediction
+    marginal_probability(row_eta + grid_eta, sigma) (ANALYSIS_PLAN.md Deviation 1)."""
+    row_eta = np.atleast_2d(np.asarray(row_eta, dtype=float))
+    grid_eta = np.atleast_2d(np.asarray(grid_eta, dtype=float))
+    out = np.empty(grid_eta.shape)
+    for g in range(grid_eta.shape[0]):
+        out[g] = marginal_probability(row_eta + grid_eta[g], sigma, n_nodes).mean(axis=0)
+    return out
 
 
 # --- metrics ---------------------------------------------------------------------------------
