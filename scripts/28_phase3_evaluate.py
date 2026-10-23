@@ -12,7 +12,12 @@ performance number.
 Outputs: results/phase3/<variant>/ (tables) and results/phase3/summary_variants.csv;
 held-out predictions in data/interim/phase3/heldout/<variant>.parquet.
 
-Usage: python scripts/28_phase3_evaluate.py [variant ...]
+With --registered, the fits of the model exactly as registered (data/interim/phase3/fits/,
+phylum as fixed effects) are evaluated into results/phase3/as_registered/. Their held-out
+predictions are fixed effects only, so the same new-study averaging applies; no curve is drawn,
+because the registered "average conditions" curve is the artefact Deviation 1 describes.
+
+Usage: python scripts/28_phase3_evaluate.py [variant ...] [--registered]
 """
 
 import json
@@ -204,13 +209,19 @@ def recovery(rows: pd.DataFrame, pred: pd.Series, proxy: float, n_boot: int, see
     return pd.DataFrame(out).merge(per_cond.reset_index(), on=GROUP), cond
 
 
-def evaluate_variant(name: str, cfg: dict, th: dict) -> dict | None:
+def results_root(registered: bool):
+    """results/phase3, or results/phase3/as_registered for the model as registered."""
+    base = data_path("results") / "phase3"
+    return base / "as_registered" if registered else base
+
+
+def evaluate_variant(name: str, cfg: dict, th: dict, registered: bool = False) -> dict | None:
     """All outputs for one variant; None if its primary-model folds are not complete."""
     root = data_path("interim") / "phase3"
     rows = pd.read_parquet(root / "rows" / f"{name}.parquet")
-    fits = root / cfg["fits_dir"] / name
+    fits = root / ("fits" if registered else cfg["fits_dir"]) / name
     n_boot, seed = th["resampling"]["n_bootstrap"], th["resampling"]["seed"]
-    out = data_path("results") / "phase3" / name
+    out = results_root(registered) / name
     out.mkdir(parents=True, exist_ok=True)
 
     preds, status = {}, []
@@ -249,7 +260,7 @@ def evaluate_variant(name: str, cfg: dict, th: dict) -> dict | None:
                                                        index=False)
     (root / "heldout").mkdir(exist_ok=True)
     rows.filter(regex="^(study_id|study_group|condition_id|asv_id|y|pred_.*)$").to_parquet(
-        root / "heldout" / f"{name}.parquet", index=False)
+        root / "heldout" / f"{name}{'__registered' if registered else ''}.parquet", index=False)
 
     rec, cond = recovery(rows, preds["primary"], th["identity"]["database_proxy_percent"],
                          n_boot, seed)
@@ -259,13 +270,15 @@ def evaluate_variant(name: str, cfg: dict, th: dict) -> dict | None:
     centers = {c: float(rows[c].median()) for c in CONTINUOUS}    # as in script 27
     full = fits / "primary" / "all"
     if fit_info(full) and fit_info(full)["status"] == "ok":
-        curve(full, rows, centers, cfg, seed).to_csv(out / "curve.csv", index=False)
         coefficients(full).to_csv(out / "coefficients.csv", index=False)
-        pd.read_csv(full / "ranef_phylum.csv").to_csv(out / "phylum_effects.csv", index=False)
+        if not registered:
+            curve(full, rows, centers, cfg, seed).to_csv(out / "curve.csv", index=False)
+            pd.read_csv(full / "ranef_phylum.csv").to_csv(out / "phylum_effects.csv",
+                                                          index=False)
     if name == "primary":
         level_support(rows).to_csv(out / "level_support.csv", index=False)
         hab = fits / "habitat" / "all"
-        if fit_info(hab) and fit_info(hab)["status"] == "ok":
+        if fit_info(hab) and fit_info(hab)["status"] == "ok" and not registered:
             pd.concat([curve(hab, rows, centers, cfg, seed, h) for h in (-1.0, 1.0)]).to_csv(
                 out / "curve_by_host.csv", index=False)
             coefficients(hab).to_csv(out / "coefficients_habitat.csv", index=False)
@@ -313,11 +326,11 @@ def hypotheses(per_group: pd.DataFrame, rec: pd.DataFrame, crit: dict, n_boot: i
     return pd.DataFrame(rows)
 
 
-def main(names: list[str]) -> None:
+def main(names: list[str], registered: bool) -> None:
     cfg, th = load_config("phase3"), load_config("thresholds")
-    heads = [h for n in names if (h := evaluate_variant(n, cfg, th)) is not None]
+    heads = [h for n in names if (h := evaluate_variant(n, cfg, th, registered)) is not None]
     if heads:
-        path = data_path("results") / "phase3" / "summary_variants.csv"
+        path = results_root(registered) / "summary_variants.csv"
         new = pd.DataFrame(heads)
         if path.exists():
             old = pd.read_csv(path)
@@ -326,4 +339,5 @@ def main(names: list[str]) -> None:
 
 
 if __name__ == "__main__":
-    main(sys.argv[1:] or list(VARIANTS))
+    args = [a for a in sys.argv[1:] if not a.startswith("--")]
+    main(args or list(VARIANTS), "--registered" in sys.argv)
