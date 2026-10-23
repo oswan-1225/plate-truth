@@ -266,3 +266,29 @@ singular convergence).
 **Reporting.** Results from the model exactly as registered (held-out predictions and metrics)
 are kept and reported alongside, so readers can see the change does not drive the conclusions.
 All sensitivity analyses use the revised model. The pass/fail criteria in section 8 are unchanged.
+
+### Deviation 2 (2026-10-23): group-count criteria scaled to the number of groups analysed
+
+**When and what was known.** Decided after all sensitivity analyses had been evaluated, so the
+results were known. It changes no verdict in the primary analysis or in any variant with all ten
+groups.
+
+**What happened.** Section 8 states three criteria as counts out of ten validation groups (H1 and
+H3: at least 8; H2: at least 7). The analysis that drops the three single-source studies has
+seven groups, and the plan did not say how a count out of ten applies to fewer groups. Read
+literally, H3 fails there even though all seven groups pass, because eight cannot be reached.
+
+**Change.** Each count is applied as the same share of the groups analysed, rounded up: 8 of 10
+becomes 6 of 7, and 7 of 10 becomes 5 of 7. With ten groups the criteria are exactly as
+registered. The interval parts of H1 and H3 are unchanged.
+
+**Effect.** In the seven-group analysis H3 is supported (7 of 7 groups). H1 is still not
+supported: 5 of 7 groups have AUC above 0.5, one short of 6, although the lower bound of the
+mean AUC stays above 0.5. Both the literal and the scaled readings are reported.
+
+**Alternatives considered.**
+- Applying the counts literally: makes any analysis with fewer than eight groups fail H1 and H3
+  by construction, whatever the data show.
+- Calling the count criteria not applicable for such analyses and describing them in words:
+  leaves the analysis without a verdict, where the intent of the rule (a large majority of
+  studies) can still be applied.

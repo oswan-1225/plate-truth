@@ -326,24 +326,36 @@ def ratio_with_interval(proxy: np.ndarray, observed: np.ndarray, n_boot: int, se
 
 # --- registered criteria -------------------------------------------------------------------------
 
+def required_groups(k: int, n_groups: int, of: int) -> int:
+    """Groups needed to pass a "k of `of` groups" rule when only n_groups are analysed: the same
+    share, rounded up (ANALYSIS_PLAN.md Deviation 2). Integer arithmetic, so k of `of` is
+    returned exactly when n_groups == of."""
+    return -(-k * n_groups // of)
+
+
 def criteria_checks(auc: np.ndarray, oe: np.ndarray, slope: np.ndarray, ratio: np.ndarray,
                     crit: dict, n_boot: int, seed: int) -> dict:
     """The registered pass/fail rules (ANALYSIS_PLAN.md section 8) from per-group values.
 
     auc: held-out AUC per group (identity-only model for H1 as registered; the primary model in
     sensitivity analyses, which refit only the primary model). oe, slope: primary model.
-    ratio: shortcut / observed recovery per group. Group-bootstrap intervals as in the plan."""
+    ratio: shortcut / observed recovery per group. Group-bootstrap intervals as in the plan.
+    Group counts are scaled to the number of groups analysed (required_groups)."""
     auc, oe, slope, ratio = (np.asarray(a, dtype=float) for a in (auc, oe, slope, ratio))
+    need = {k: required_groups(crit[k], len(auc), crit["reference_groups"])
+            for k in ("auc_supported_groups", "calibrated_groups", "proxy_over_groups")}
     auc_lo = np.nanquantile(bootstrap_mean(auc, n_boot, seed), 0.025)
     s_lo, s_hi = crit["calibration_slope_range"]
     o_lo, o_hi = crit["oe_range"]
     n_cal = int(((slope >= s_lo) & (slope <= s_hi) & (oe >= o_lo) & (oe <= o_hi)).sum())
     ratio_lo = np.nanquantile(bootstrap_median(ratio, n_boot, seed), 0.025)
     n_auc, n_ratio = int((auc > 0.5).sum()), int((ratio > 1).sum())
-    return {"groups_auc_above_0.5": n_auc, "mean_auc_lo": auc_lo,
-            "H1": bool(n_auc >= crit["auc_supported_groups"] and auc_lo > 0.5),
-            "groups_calibrated": n_cal, "H2": bool(n_cal >= crit["calibrated_groups"]),
-            "groups_ratio_above_1": n_ratio, "median_ratio": float(np.nanmedian(ratio)),
-            "median_ratio_lo": ratio_lo,
-            "H3": bool(n_ratio >= crit["proxy_over_groups"] and ratio_lo > 1)}
+    return {"groups": len(auc), "groups_auc_above_0.5": n_auc,
+            "groups_needed_h1": need["auc_supported_groups"], "mean_auc_lo": auc_lo,
+            "H1": bool(n_auc >= need["auc_supported_groups"] and auc_lo > 0.5),
+            "groups_calibrated": n_cal, "groups_needed_h2": need["calibrated_groups"],
+            "H2": bool(n_cal >= need["calibrated_groups"]),
+            "groups_ratio_above_1": n_ratio, "groups_needed_h3": need["proxy_over_groups"],
+            "median_ratio": float(np.nanmedian(ratio)), "median_ratio_lo": ratio_lo,
+            "H3": bool(n_ratio >= need["proxy_over_groups"] and ratio_lo > 1)}
 

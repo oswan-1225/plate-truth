@@ -45,6 +45,7 @@ from plate_truth.phase3 import (
     group_metrics,
     marginal_probability,
     ratio_with_interval,
+    required_groups,
     source_recovery,
 )
 from plate_truth.rfit import RANDOM
@@ -297,8 +298,12 @@ def evaluate_variant(name: str, cfg: dict, th: dict, registered: bool = False) -
 
 def hypotheses(per_group: pd.DataFrame, rec: pd.DataFrame, crit: dict, n_boot: int,
                seed: int) -> pd.DataFrame:
-    """The registered criteria (ANALYSIS_PLAN.md section 8), evaluated as written."""
+    """The registered criteria (ANALYSIS_PLAN.md section 8); group counts scaled to the number of
+    groups analysed (Deviation 2), which leaves them as written for all ten groups."""
     pg = per_group.set_index(["model", GROUP])
+    n_groups = pg.loc["primary"].shape[0]
+    need = {k: required_groups(crit[k], n_groups, crit["reference_groups"])
+            for k in ("auc_supported_groups", "calibrated_groups", "proxy_over_groups")}
     io = pg.loc["identity_only"]
     lo1, hi1 = interval(bootstrap_mean(io["auc"].to_numpy(float), n_boot, seed))
     n1 = int((io["auc"] > 0.5).sum())
@@ -312,12 +317,12 @@ def hypotheses(per_group: pd.DataFrame, rec: pd.DataFrame, crit: dict, n_boot: i
     rows = [
         {"hypothesis": "H1 identity ranks growth", "statistic": f"identity-only AUC > 0.5 in {n1} "
          f"groups; mean AUC {io['auc'].mean():.3f} ({lo1:.3f}-{hi1:.3f})",
-         "supported": n1 >= crit["auc_supported_groups"] and lo1 > 0.5},
+         "supported": n1 >= need["auc_supported_groups"] and lo1 > 0.5},
         {"hypothesis": "H2 calibrated across studies", "statistic": f"{n2} groups with slope "
-         f"{s_lo}-{s_hi} and O/E {o_lo}-{o_hi}", "supported": n2 >= crit["calibrated_groups"]},
+         f"{s_lo}-{s_hi} and O/E {o_lo}-{o_hi}", "supported": n2 >= need["calibrated_groups"]},
         {"hypothesis": "H3 shortcut overstates recovery", "statistic": f"ratio > 1 in {n3} "
          f"groups; median {ratio.median():.2f} ({lo3:.2f}-{hi3:.2f})",
-         "supported": n3 >= crit["proxy_over_groups"] and lo3 > 1},
+         "supported": n3 >= need["proxy_over_groups"] and lo3 > 1},
     ]
     if "no_identity" in pg.index.get_level_values(0):
         d = (pr["auc"] - pg.loc["no_identity"]["auc"]).to_numpy(float)

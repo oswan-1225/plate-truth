@@ -1,0 +1,5 @@
+hypothesis,statistic,supported
+H1 identity ranks growth,identity-only AUC > 0.5 in 9 groups; mean AUC 0.801 (0.715-0.870),True
+H2 calibrated across studies,0 groups with slope 0.8-1.25 and O/E 0.67-1.5,False
+H3 shortcut overstates recovery,ratio > 1 in 10 groups; median 5.91 (3.88-33.00),True
+H4 identity adds to covariates,mean AUC gain 0.073 (0.029-0.123),True

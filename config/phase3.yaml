@@ -68,6 +68,8 @@ criteria:
   oe_range: [0.67, 1.5]
   calibrated_groups: 7             # groups inside both ranges for "calibrated across studies"
   proxy_over_groups: 8             # proxy / observed > 1 in at least this many groups
+  reference_groups: 10             # the counts above are out of this many; with fewer groups the
+                                   # same share applies, rounded up (Deviation 2)
 
 # Parallel R fits (each full-size fit uses ~1 core and a few GB of memory).
 compute:

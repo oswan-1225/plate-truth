@@ -1,0 +1,688 @@
+study_id,study_group,condition_id,observed,predicted
+hinsu2021_groundnut,hinsu2021,hinsu2021_groundnut|R3|Actinomycetes Isolation agar|aerobic|NA|pooled 27 and 37 C,0.008723841205723112,0.03556685589579734
+hinsu2021_groundnut,hinsu2021,hinsu2021_groundnut|R3|Azotobacter Mannitol agar|aerobic|NA|pooled 27 and 37 C,0.04054719190753407,0.034957180779512126
+hinsu2021_groundnut,hinsu2021,hinsu2021_groundnut|R3|Nutrient agar|aerobic|NA|pooled 27 and 37 C,0.024909904558235316,0.0373805501907804
+hinsu2021_groundnut,hinsu2021,hinsu2021_groundnut|R3|R2A agar|aerobic|NA|pooled 27 and 37 C,0.03083329090219906,0.048534101507213594
+hinsu2021_groundnut,hinsu2021,hinsu2021_groundnut|R3|Soil Extract agar|aerobic|NA|pooled 27 and 37 C,0.016898906408232772,0.04606967388659935
+hinsu2021_groundnut,hinsu2021,hinsu2021_groundnut|R3|Tryptic soy agar|aerobic|NA|pooled 27 and 37 C,0.028977635963497908,0.03793394244074614
+hinsu2021_groundnut,hinsu2021,hinsu2021_groundnut|R3|YEM agar|aerobic|NA|pooled 27 and 37 C,0.03472564028581612,0.035408157939599144
+hinsu2021_groundnut,hinsu2021,hinsu2021_groundnut|R3|Yeast Mannitol agar|aerobic|NA|pooled 27 and 37 C,0.03942135247826111,0.03462248195714075
+hinsu2021_groundnut,hinsu2021,hinsu2021_groundnut|R4|Actinomycetes Isolation agar|aerobic|NA|pooled 27 and 37 C,0.1381533987845313,0.037353970523344916
+hinsu2021_groundnut,hinsu2021,hinsu2021_groundnut|R4|Azotobacter Mannitol agar|aerobic|NA|pooled 27 and 37 C,0.10497970937868234,0.038485433529624136
+hinsu2021_groundnut,hinsu2021,hinsu2021_groundnut|R4|Nutrient agar|aerobic|NA|pooled 27 and 37 C,0.1360779339844706,0.04048005200135922
+hinsu2021_groundnut,hinsu2021,hinsu2021_groundnut|R4|R2A agar|aerobic|NA|pooled 27 and 37 C,0.1429089692139388,0.05045385217352185
+hinsu2021_groundnut,hinsu2021,hinsu2021_groundnut|R4|Soil Extract agar|aerobic|NA|pooled 27 and 37 C,0.1319776254770335,0.04857456831395479
+hinsu2021_groundnut,hinsu2021,hinsu2021_groundnut|R4|Tryptic soy agar|aerobic|NA|pooled 27 and 37 C,0.1391911311845617,0.03962667405602774
+hinsu2021_groundnut,hinsu2021,hinsu2021_groundnut|R4|YEM agar|aerobic|NA|pooled 27 and 37 C,0.1395848507943293,0.03794067988972742
+hinsu2021_groundnut,hinsu2021,hinsu2021_groundnut|R4|Yeast Mannitol agar|aerobic|NA|pooled 27 and 37 C,0.13438212737954291,0.03633770537638039
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|AS2|Crenarchaeota agar|aerobic|30|NA,0.00044753141670545273,0.013581466793875447
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|AS2|OLIGO agar|aerobic|30|NA,0.0004833339300418889,0.016423511237551838
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|AS2|mucin agar|aerobic|30|NA,0.0005728402133829795,0.016636988757054896
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|AS3|Crenarchaeota agar|aerobic|30|NA,0.0002387046295436763,0.011578520294015565
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|AS3|OLIGO agar|aerobic|30|NA,0.0001458750513878022,0.014399231737885139
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|AS3|mucin agar|aerobic|30|NA,0.00013261368307982018,0.01412791288448109
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|AS4|Crenarchaeota agar|aerobic|30|NA,0.0,0.010245919649771978
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|AS4|M3 agar|aerobic|30|NA,0.0,0.003941290450827999
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|AS4|OLIGO agar|aerobic|30|NA,0.0017654411669952709,0.01249981696707092
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|AS4|marine agar 1/10|aerobic|30|NA,6.443215937938944e-05,0.01260661551499618
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|AS4|mucin agar|aerobic|30|NA,0.0,0.012170010324520367
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|AS7|Crenarchaeota agar|aerobic|30|NA,0.0,0.009954829037597613
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|AS7|OLIGO agar|aerobic|30|NA,0.0,0.011924169448018211
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|AS7|marine agar 1/10|aerobic|30|NA,0.0011757213540390928,0.011975684314336273
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|AS7|mucin agar|aerobic|30|NA,0.0,0.01142885810702897
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|AS8|Crenarchaeota agar|aerobic|30|NA,5.036979826895793e-05,0.01051635744386904
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|AS8|GP agar|aerobic|30|NA,9.234463015975621e-05,0.004181166136494107
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|AS8|OLIGO agar|aerobic|30|NA,9.234463015975621e-05,0.013034709570239441
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|AS8|mucin agar|aerobic|30|NA,0.0,0.012818188985494503
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|XM10|Crenarchaeota agar|aerobic|30|NA,7.75115223859239e-05,0.007619075075231084
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|XM10|OLIGO agar|aerobic|30|NA,7.154909758700667e-05,0.009224709160110037
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|XM10|mucin agar|aerobic|30|NA,8.943637198375835e-05,0.009343771916919331
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|XM11|Crenarchaeota agar|aerobic|30|NA,4.8930860693839605e-05,0.00812060668246233
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|XM11|OLIGO agar|aerobic|30|NA,0.0,0.009745278685524002
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|XM11|mucin agar|aerobic|30|NA,4.8930860693839605e-05,0.009902354853919973
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|XM14|Crenarchaeota agar|aerobic|30|NA,0.0007622143589070552,0.011421221592842028
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|XM14|M3 agar|aerobic|30|NA,0.0,0.004390402391585786
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|XM14|mucin agar|aerobic|30|NA,3.533444047913501e-05,0.013718118912509271
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|XM5|Crenarchaeota agar|aerobic|30|NA,5.5064942216226265e-05,0.006956896930132706
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|XM5|OLIGO agar|aerobic|30|NA,5.5064942216226265e-05,0.00853376141724983
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|XM5|mucin agar|aerobic|30|NA,5.5064942216226265e-05,0.008364229794761263
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|XM6|Crenarchaeota agar|aerobic|30|NA,0.0,0.009159698928836054
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|XM6|mucin agar|aerobic|30|NA,0.0,0.0107512998053864
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|XM7|Crenarchaeota agar|aerobic|30|NA,0.0,0.007983275835647813
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|XM7|mucin agar|aerobic|30|NA,0.0010014230748959046,0.009524571343367056
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|XM9|Crenarchaeota agar|aerobic|30|NA,0.0001412595644496763,0.00823637269978304
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|XM9|OLIGO agar|aerobic|30|NA,0.0006592113007651561,0.010194783657208058
+indraningrat2019_sponges,indraningrat2019,indraningrat2019_sponges|XM9|mucin agar|aerobic|30|NA,0.00023543260741612713,0.01009578634939327
+kruger2019_claytill,kruger2019,kruger2019_claytill|biopore|25% R2A|aerobic|25|PSM full plate,0.03581027709891695,0.10429485142046428
+kruger2019_claytill,kruger2019,kruger2019_claytill|biopore|25% R2A|aerobic|25|reference plate,0.03333457030318131,0.09765517214495019
+kruger2019_claytill,kruger2019,kruger2019_claytill|plow_layer|25% R2A|aerobic|25|PSM full plate,0.007183065723343826,0.08318931943155404
+kruger2019_claytill,kruger2019,kruger2019_claytill|plow_layer|25% R2A|aerobic|25|reference plate,0.00837265426231281,0.07781942674118272
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M1 (BEN)|aerobic|15|NA,0.008561872909698997,0.0395942705653917
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M1 (BEN)|aerobic|30|NA,0.010301003344481606,0.052768867308718284
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M1 (BEN)|aerobic|45|NA,0.004147157190635451,0.006941657999813225
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M10 (GGA)|aerobic|15|NA,0.007224080267558528,0.03170960967297122
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M10 (GGA)|aerobic|30|NA,0.00842809364548495,0.039316613754246325
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M10 (GGA)|aerobic|45|NA,0.0034782608695652175,0.005377813891581838
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M11 (HA)|aerobic|15|NA,0.007892976588628763,0.039555600198846054
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M11 (HA)|aerobic|30|NA,0.008695652173913044,0.05275097873657435
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M11 (HA)|aerobic|45|NA,0.008160535117056856,0.00692525344274991
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M12 (HVA)|aerobic|15|NA,0.08816053511705685,0.031386934762764426
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M12 (HVA)|aerobic|30|NA,0.023277591973244145,0.040879820730697826
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M12 (HVA)|aerobic|45|NA,0.07598662207357859,0.005761189271657163
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M13 (KB)|aerobic|15|NA,0.011772575250836121,0.041008610068938474
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M13 (KB)|aerobic|30|NA,0.015919732441471574,0.0526478355828149
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M13 (KB)|aerobic|45|NA,0.07759197324414716,0.007650853193314442
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M14 (LNMS)|aerobic|15|NA,0.08521739130434781,0.03365167826183364
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M14 (LNMS)|aerobic|30|NA,0.016989966555183946,0.04258267950197738
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M14 (LNMS)|aerobic|45|NA,0.011772575250836121,0.006451129391172344
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M15 (LB)|aerobic|15|NA,0.0817391304347826,0.04090162585102359
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M15 (LB)|aerobic|30|NA,0.015919732441471574,0.052623450097314645
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M15 (LB)|aerobic|45|NA,0.004147157190635451,0.007637144457713112
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M16 (MCA)|aerobic|15|NA,0.006555183946488295,0.03291857025033022
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M16 (MCA)|aerobic|30|NA,0.009230769230769232,0.045303701894825896
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M16 (MCA)|aerobic|45|NA,0.003076923076923077,0.005845064847012443
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M17 (MYP)|aerobic|15|NA,0.0125752508361204,0.041038534715564214
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M17 (MYP)|aerobic|30|NA,0.010167224080267559,0.052761158775111304
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M17 (MYP)|aerobic|45|NA,0.0050836120401337795,0.007656358452076183
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M18 (MIC)|aerobic|15|NA,0.008561872909698997,0.033341956434995844
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M18 (MIC)|aerobic|30|NA,0.01939799331103679,0.042554584222312876
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M18 (MIC)|aerobic|45|NA,0.0018729096989966556,0.00599358174956823
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M19 (MM)|aerobic|15|NA,0.08280936454849498,0.03515397092023249
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M19 (MM)|aerobic|30|NA,0.09591973244147156,0.042583183687978685
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M19 (MM)|aerobic|45|NA,0.08040133779264214,0.006450057841991827
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M2 (BHI)|aerobic|15|NA,0.008695652173913044,0.03791540645057142
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M2 (BHI)|aerobic|30|NA,0.014581939799331105,0.047334023478579776
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M2 (BHI)|aerobic|45|NA,0.0024080267558528427,0.007638455933082137
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M20 (PYG)|aerobic|15|NA,0.01137123745819398,0.0402489069349293
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M20 (PYG)|aerobic|30|NA,0.011638795986622073,0.05274505479964124
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M20 (PYG)|aerobic|45|NA,0.003076923076923077,0.006943216322547706
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M21 (PYS)|aerobic|15|NA,0.011638795986622073,0.04099053495103299
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M21 (PYS)|aerobic|30|NA,0.013645484949832776,0.052729873054957015
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M21 (PYS)|aerobic|45|NA,0.007090301003344482,0.0071083715992970534
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M22 (PPS)|aerobic|15|NA,0.012441471571906355,0.039491550890317195
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M22 (PPS)|aerobic|30|NA,0.010434782608695653,0.05272265946013416
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M22 (PPS)|aerobic|45|NA,0.006020066889632108,0.007639219044821882
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M23 (PDA)|aerobic|15|NA,0.009230769230769232,0.04027634690583614
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M23 (PDA)|aerobic|30|NA,0.010568561872909698,0.05275932949882369
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M23 (PDA)|aerobic|45|NA,0.0026755852842809363,0.006943309617534106
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M24 (RA)|aerobic|15|NA,0.0817391304347826,0.04097720719938511
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M24 (RA)|aerobic|30|NA,0.009632107023411371,0.052734190996172894
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M24 (RA)|aerobic|45|NA,0.00923076923076923,0.007655800740583568
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M25 (RH)|aerobic|15|NA,0.0834782608695652,0.0338325961918683
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M25 (RH)|aerobic|30|NA,0.013377926421404682,0.04383067107036387
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M25 (RH)|aerobic|45|NA,0.0797324414715719,0.005750048884230515
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M26 (RZ1)|aerobic|15|NA,0.005886287625418061,0.03721381403407963
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M26 (RZ1)|aerobic|30|NA,0.004949832775919733,0.049560974752572415
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M26 (RZ1)|aerobic|45|NA,0.003076923076923077,0.007124845336751327
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M27 (RZ2)|aerobic|15|NA,0.020869565217391306,0.03684696417324177
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M27 (RZ2)|aerobic|30|NA,0.0033444816053511705,0.046291724413042815
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M27 (RZ2)|aerobic|45|NA,0.0010702341137123746,0.006944303331303201
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M28 (SA)|aerobic|15|NA,0.07264214046822742,0.04020075291802673
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M28 (SA)|aerobic|30|NA,0.004013377926421405,0.04937150285571138
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M28 (SA)|aerobic|45|NA,0.007759197324414716,0.007645023283510265
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M29 (SSM)|aerobic|15|NA,0.0028093645484949833,0.036820994704774894
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M29 (SSM)|aerobic|30|NA,0.008695652173913044,0.04594727742774359
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M29 (SSM)|aerobic|45|NA,0.0009364548494983278,0.006545571291302487
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M3 (BRA)|aerobic|15|NA,0.08374581939799329,0.04027540234127595
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M3 (BRA)|aerobic|30|NA,0.008561872909698997,0.05275301814390955
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M3 (BRA)|aerobic|45|NA,0.07933110367892977,0.007649332537894183
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M30 (SSTY)|aerobic|15|NA,0.003745819397993311,0.039495340069017976
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M30 (SSTY)|aerobic|30|NA,0.006020066889632108,0.05266712752296391
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M30 (SSTY)|aerobic|45|NA,0.0018729096989966556,0.007657749457896177
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M31 (CMCA)|aerobic|15|NA,0.008160535117056857,0.03846510910293196
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M31 (CMCA)|aerobic|30|NA,0.021270903010033444,0.04951368388037087
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M31 (CMCA)|aerobic|45|NA,0.003076923076923077,0.007127047008561456
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M32 (SLA)|aerobic|15|NA,0.011906354515050168,0.0402730174702802
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M32 (SLA)|aerobic|30|NA,0.013377926421404682,0.05279585743207953
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M32 (SLA)|aerobic|45|NA,0.007090301003344481,0.007652051633607465
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M33 (SEAB)|aerobic|15|NA,0.011237458193979933,0.03889335736029468
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M33 (SEAB)|aerobic|30|NA,0.0125752508361204,0.05011553975815261
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M33 (SEAB)|aerobic|45|NA,0.0054849498327759205,0.0067164003105526955
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M34 (SEAR)|aerobic|15|NA,0.009498327759197324,0.03813782051449996
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M34 (SEAR)|aerobic|30|NA,0.018461538461538463,0.05009329029419074
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M34 (SEAR)|aerobic|45|NA,0.004949832775919733,0.006708113861027725
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M35 (SCA)|aerobic|15|NA,0.005618729096989967,0.03720894279904462
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M35 (SCA)|aerobic|30|NA,0.0048160535117056855,0.049539755797845725
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M35 (SCA)|aerobic|45|NA,0.009364548494983277,0.0071096051686183985
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M36 (SGCY)|aerobic|15|NA,0.010836120401337794,0.04024649534826416
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M36 (SGCY)|aerobic|30|NA,0.010568561872909698,0.0527733190438722
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M36 (SGCY)|aerobic|45|NA,0.0046822742474916385,0.007110668869653917
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M37 (SNA)|aerobic|15|NA,0.019531772575250836,0.030340941670614935
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M37 (SNA)|aerobic|30|NA,0.0025418060200668897,0.03632664283826492
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M37 (SNA)|aerobic|45|NA,0.0006688963210702341,0.005081194663451286
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M38 (STA)|aerobic|15|NA,0.012976588628762543,0.0410167562980205
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M38 (STA)|aerobic|30|NA,0.0860200668896321,0.052769677319135594
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M38 (STA)|aerobic|45|NA,0.0794648829431438,0.007662100881577159
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M39 (STBG)|aerobic|15|NA,0.013511705685618729,0.04104917093087793
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M39 (STBG)|aerobic|30|NA,0.014314381270903011,0.05275993940992031
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M39 (STBG)|aerobic|45|NA,0.0125752508361204,0.0076549627642039314
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M4 (CSA)|aerobic|15|NA,0.007224080267558528,0.03722425019987449
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M4 (CSA)|aerobic|30|NA,0.008160535117056856,0.0473948857884218
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M4 (CSA)|aerobic|45|NA,0.007090301003344481,0.006936532688686395
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M40 (T5)|aerobic|15|NA,0.012575250836120402,0.040210283537599464
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M40 (T5)|aerobic|30|NA,0.012173913043478262,0.05273542329139603
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M40 (T5)|aerobic|45|NA,0.07973244147157191,0.007120468767562262
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M41 (TP)|aerobic|15|NA,0.011103678929765888,0.030348556748433907
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M41 (TP)|aerobic|30|NA,0.0014715719063545152,0.038133675119613755
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M41 (TP)|aerobic|45|NA,0.0010702341137123746,0.005080038539483383
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M42 (TGY)|aerobic|15|NA,0.012575250836120402,0.0402489069349293
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M42 (TGY)|aerobic|30|NA,0.011237458193979933,0.05278360786315043
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M42 (TGY)|aerobic|45|NA,0.0026755852842809363,0.0076395456623411994
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M43 (TCN)|aerobic|15|NA,0.011371237458193979,0.04103951893393257
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M43 (TCN)|aerobic|30|NA,0.014849498327759197,0.05269442522216038
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M43 (TCN)|aerobic|45|NA,0.007090301003344481,0.007652544103437636
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M44 (YGCP)|aerobic|15|NA,0.08441471571906352,0.04094512186884787
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M44 (YGCP)|aerobic|30|NA,0.016187290969899668,0.05213400081061338
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M44 (YGCP)|aerobic|45|NA,0.009096989966555185,0.007642005142023657
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M45 (YMG)|aerobic|15|NA,0.012040133779264214,0.039580313591751216
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M45 (YMG)|aerobic|30|NA,0.019264214046822742,0.05266205434805303
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M45 (YMG)|aerobic|45|NA,0.0737123745819398,0.006946930246853895
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M46 (1xTSA)|aerobic|15|NA,0.011505016722408026,0.041047048285370286
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M46 (1xTSA)|aerobic|30|NA,0.009632107023411371,0.052731313217952706
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M46 (1xTSA)|aerobic|45|NA,0.003879598662207358,0.00762687438355992
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M47 (0.1xTSA)|aerobic|15|NA,0.012842809364548496,0.03444840628675521
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M47 (0.1xTSA)|aerobic|30|NA,0.01565217391304348,0.04543154869992972
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M47 (0.1xTSA)|aerobic|45|NA,0.004147157190635451,0.006450028835795465
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M48 (0.01xTSA)|aerobic|15|NA,0.08414715719063544,0.03334828617372549
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M48 (0.01xTSA)|aerobic|30|NA,0.02100334448160535,0.044855188337728995
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M48 (0.01xTSA)|aerobic|45|NA,0.0865551839464883,0.006451764982727819
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M49 (1xNA)|aerobic|15|NA,0.013377926421404682,0.04024633446879154
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M49 (1xNA)|aerobic|30|NA,0.014581939799331105,0.05272142069930781
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M49 (1xNA)|aerobic|45|NA,0.0020066889632107026,0.007638637754061876
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M5 (CHIA)|aerobic|15|NA,0.08561872909698996,0.03236595213905922
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M5 (CHIA)|aerobic|30|NA,0.023411371237458196,0.040976694271902134
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M5 (CHIA)|aerobic|45|NA,0.07625418060200669,0.005755524885567654
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M50 (0.1xNA)|aerobic|15|NA,0.022876254180602008,0.03408944300342108
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M50 (0.1xNA)|aerobic|30|NA,0.02100334448160535,0.041802331721949464
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M50 (0.1xNA)|aerobic|45|NA,0.08454849498327757,0.006451389544874736
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M51 (0.01xNA)|aerobic|15|NA,0.0777257525083612,0.032660832549716814
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M51 (0.01xNA)|aerobic|30|NA,0.021806020066889635,0.042170655171459535
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M51 (0.01xNA)|aerobic|45|NA,0.07290969899665552,0.00551472163243861
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M52 (1xAIA)|aerobic|15|NA,0.08214046822742474,0.040193987264449414
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M52 (1xAIA)|aerobic|30|NA,0.09872909698996656,0.05224077042029912
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M52 (1xAIA)|aerobic|45|NA,0.08053511705685618,0.007654123090607425
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M53 (0.1xAIA)|aerobic|15|NA,0.09377926421404682,0.03331811143343784
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M53 (0.1xAIA)|aerobic|30|NA,0.01725752508361204,0.041764082315573076
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M53 (0.1xAIA)|aerobic|45|NA,0.07986622073578595,0.006002451845308267
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M54 (0.01xAIA)|aerobic|15|NA,0.08642140468227424,0.031828270928444535
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M54 (0.01xAIA)|aerobic|30|NA,0.022073578595317726,0.04228696269257019
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M54 (0.01xAIA)|aerobic|45|NA,0.07625418060200669,0.005515040762922353
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M55 (1xR2A)|aerobic|15|NA,0.011371237458193979,0.03445727466536417
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M55 (1xR2A)|aerobic|30|NA,0.012040133779264214,0.045404225898802164
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M55 (1xR2A)|aerobic|45|NA,0.005351170568561873,0.0059933099939705765
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M56 (0.1xR2A)|aerobic|15|NA,0.09096989966555183,0.034382197979418945
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M56 (0.1xR2A)|aerobic|30|NA,0.022474916387959867,0.044994602708981715
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M56 (0.1xR2A)|aerobic|45|NA,0.08655518394648828,0.005998113819556351
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M57 (0.01xR2A)|aerobic|15|NA,0.08227424749163878,0.032934450613149445
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M57 (0.01xR2A)|aerobic|30|NA,0.020468227424749165,0.042607238579667986
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M57 (0.01xR2A)|aerobic|45|NA,0.07438127090301003,0.0055144759175584385
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M58 (1xMA)|aerobic|15|NA,0.017391304347826087,0.04103475730754852
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M58 (1xMA)|aerobic|30|NA,0.019130434782608695,0.05268228399850684
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M58 (1xMA)|aerobic|45|NA,0.013511705685618729,0.007650005143715589
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M59 (0.1xMA)|aerobic|15|NA,0.10769230769230768,0.03517397649472155
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M59 (0.1xMA)|aerobic|30|NA,0.11103678929765885,0.04541704348671192
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M59 (0.1xMA)|aerobic|45|NA,0.07999999999999999,0.0064468234411522865
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M6 (CZA)|aerobic|15|NA,0.08133779264214046,0.03346441813118829
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M6 (CZA)|aerobic|30|NA,0.08080267558528428,0.04370047772513803
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M6 (CZA)|aerobic|45|NA,0.08053511705685618,0.006193803022976484
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M60 (0.01xMA)|aerobic|15|NA,0.08214046822742474,0.03241990667151802
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M60 (0.01xMA)|aerobic|30|NA,0.013779264214046823,0.04256291793735807
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M60 (0.01xMA)|aerobic|45|NA,0.07384615384615384,0.005516289487277804
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M7 (GN1)|aerobic|15|NA,0.08133779264214047,0.03266113689838776
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M7 (GN1)|aerobic|30|NA,0.07772575250836118,0.0438390790557691
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M7 (GN1)|aerobic|45|NA,0.08882943143812708,0.006189419527591563
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M8 (GYM)|aerobic|15|NA,0.007357859531772575,0.04024697790635628
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M8 (GYM)|aerobic|30|NA,0.011772575250836121,0.052772914675943895
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M8 (GYM)|aerobic|45|NA,0.0014715719063545152,0.006939434060845926
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M9 (GLA)|aerobic|15|NA,0.08214046822742474,0.04100510846268493
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M9 (GLA)|aerobic|30|NA,0.01391304347826087,0.05276400159399688
+li2023_desertsoil,li2023,li2023_desertsoil|bulk|M9 (GLA)|aerobic|45|NA,0.08133779264214046,0.007661619637813542
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M1 (BEN)|aerobic|15|NA,0.02505484355155294,0.05557671850217859
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M1 (BEN)|aerobic|30|NA,0.03821729592425817,0.07477209322794212
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M1 (BEN)|aerobic|45|NA,0.01778085671400531,0.011132851029605097
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M10 (GGA)|aerobic|15|NA,0.017203556171342803,0.04538227563583495
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M10 (GGA)|aerobic|30|NA,0.026902205288072974,0.06013560788552969
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M10 (GGA)|aerobic|45|NA,0.0031174229303775544,0.007697780798298942
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M11 (HA)|aerobic|15|NA,0.0035792633645075627,0.05316864012664194
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M11 (HA)|aerobic|30|NA,0.03867913635838818,0.0721931537621741
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M11 (HA)|aerobic|45|NA,0.003001962821845053,0.009027859876653662
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M12 (HVA)|aerobic|15|NA,0.027825886156332986,0.043775437461967104
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M12 (HVA)|aerobic|30|NA,0.04814686525805334,0.062365577649971436
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M12 (HVA)|aerobic|45|NA,0.0683523842512412,0.008132433757295991
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M13 (KB)|aerobic|15|NA,0.027825886156332986,0.05737126886031177
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M13 (KB)|aerobic|30|NA,0.05334257014201593,0.07465202097055745
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M13 (KB)|aerobic|45|NA,0.060154716545433556,0.011119408801374112
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M14 (LNMS)|aerobic|15|NA,0.034522572451218106,0.04773544633415386
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M14 (LNMS)|aerobic|30|NA,0.05796097448331601,0.06465177876187979
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M14 (LNMS)|aerobic|45|NA,0.05357349035908095,0.007974416749043834
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M15 (LB)|aerobic|15|NA,0.026902205288072974,0.05742783780999765
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M15 (LB)|aerobic|30|NA,0.05334257014201593,0.07485503390344157
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M15 (LB)|aerobic|45|NA,0.04953238656044336,0.011098244951505834
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M16 (MCA)|aerobic|15|NA,0.031289689412308044,0.045463822362647795
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M16 (MCA)|aerobic|30|NA,0.029326867567255513,0.06454284082089144
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M16 (MCA)|aerobic|45|NA,0.004618404341300081,0.008492614646113316
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M17 (MYP)|aerobic|15|NA,0.025516683985682947,0.05643891300472129
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M17 (MYP)|aerobic|30|NA,0.03683177462186815,0.07482627863458928
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M17 (MYP)|aerobic|45|NA,0.018473617365200323,0.011021712023434794
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M18 (MIC)|aerobic|15|NA,0.03221337028056807,0.04705892949136258
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M18 (MIC)|aerobic|30|NA,0.04549128276180579,0.06421644189212902
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M18 (MIC)|aerobic|45|NA,0.005426625101027595,0.008503965374970111
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M19 (MM)|aerobic|15|NA,0.03244429049763307,0.048424507266725675
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M19 (MM)|aerobic|30|NA,0.03671631451333564,0.06457280834778205
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M19 (MM)|aerobic|45|NA,0.05576723242119848,0.0093647097815868
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M2 (BHI)|aerobic|15|NA,0.007851287380210138,0.05562680605302961
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M2 (BHI)|aerobic|30|NA,0.046184043413000815,0.07435444022304695
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M2 (BHI)|aerobic|45|NA,0.01373975291536774,0.011084740132692636
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M20 (PYG)|aerobic|15|NA,0.024362082900357927,0.05639798389386798
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M20 (PYG)|aerobic|30|NA,0.039256436901050684,0.07449107893358292
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M20 (PYG)|aerobic|45|NA,0.016164415194550284,0.011119912077424743
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M21 (PYS)|aerobic|15|NA,0.027248585613670474,0.05739878888050417
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M21 (PYS)|aerobic|30|NA,0.05034060732017088,0.07486578967880686
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M21 (PYS)|aerobic|45|NA,0.01835815725666782,0.011119610162548598
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M22 (PPS)|aerobic|15|NA,0.017665396605472807,0.0574235455468774
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M22 (PPS)|aerobic|30|NA,0.011546010853250202,0.07483712618524892
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M22 (PPS)|aerobic|45|NA,0.015818034868952776,0.010679051624503897
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M23 (PDA)|aerobic|15|NA,0.028518646807527998,0.05639637942085931
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M23 (PDA)|aerobic|30|NA,0.04029557787784321,0.07481883650634212
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M23 (PDA)|aerobic|45|NA,0.030481468652580532,0.011119710817752898
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M24 (RA)|aerobic|15|NA,0.024131162683292923,0.057371729832840786
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M24 (RA)|aerobic|30|NA,0.0569218335065235,0.07386410536936608
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M24 (RA)|aerobic|45|NA,0.00404110379863757,0.011091002958356482
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M25 (RH)|aerobic|15|NA,0.030712388869645536,0.04535162882128495
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M25 (RH)|aerobic|30|NA,0.03348343147442559,0.0624468642659751
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M25 (RH)|aerobic|45|NA,0.015471654543355272,0.008145182112076953
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M26 (RZ1)|aerobic|15|NA,0.023669322249162912,0.05304702548897047
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M26 (RZ1)|aerobic|30|NA,0.02909594735019051,0.07488972545419033
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M26 (RZ1)|aerobic|45|NA,0.01027594965939268,0.010017005723755447
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M27 (RZ2)|aerobic|15|NA,0.021821960512642884,0.05191642189295674
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M27 (RZ2)|aerobic|30|NA,0.007273986837547627,0.07230596097048116
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M27 (RZ2)|aerobic|45|NA,0.002771042604780048,0.009522994391123763
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M28 (SA)|aerobic|15|NA,0.012700611938575222,0.05482348214374617
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M28 (SA)|aerobic|30|NA,0.012700611938575222,0.07209134402913266
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M28 (SA)|aerobic|45|NA,0.004849324558365085,0.010069774923589932
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M29 (SSM)|aerobic|15|NA,0.004041103798637571,0.05225057517091465
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M29 (SSM)|aerobic|30|NA,0.044105761459415777,0.06627505661976682
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M29 (SSM)|aerobic|45|NA,0.0,0.009040852392639341
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M3 (BRA)|aerobic|15|NA,0.02401570257476042,0.05740699050796203
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M3 (BRA)|aerobic|30|NA,0.026902205288072974,0.07475782641792152
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M3 (BRA)|aerobic|45|NA,0.05472809144440596,0.011104471798601795
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M30 (SSTY)|aerobic|15|NA,0.02239926105530539,0.05632079986729364
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M30 (SSTY)|aerobic|30|NA,0.04526036254474079,0.07468974414449535
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M30 (SSTY)|aerobic|45|NA,0.01997459877612285,0.010677751048084412
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M31 (CMCA)|aerobic|15|NA,0.02678674517954047,0.054153726535406316
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M31 (CMCA)|aerobic|30|NA,0.048955086017780855,0.07430540715616286
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M31 (CMCA)|aerobic|45|NA,0.006812146403417619,0.010643373332111232
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M32 (SLA)|aerobic|15|NA,0.028518646807527998,0.055360105602519125
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M32 (SLA)|aerobic|30|NA,0.034984412885348114,0.07465713529858323
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M32 (SLA)|aerobic|45|NA,0.0511488280798984,0.011097879709134189
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M33 (SEAB)|aerobic|15|NA,0.023900242466227916,0.05442021850262637
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M33 (SEAB)|aerobic|30|NA,0.030019628218450525,0.07091642826771347
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M33 (SEAB)|aerobic|45|NA,0.017434476388407803,0.01047196740366982
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M34 (SEAR)|aerobic|15|NA,0.02505484355155294,0.054441755123858786
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M34 (SEAR)|aerobic|30|NA,0.02909594735019051,0.07099809590112754
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M34 (SEAR)|aerobic|45|NA,0.018127237039602815,0.010059841211858378
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M35 (SCA)|aerobic|15|NA,0.027594965939267985,0.053036968439905935
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M35 (SCA)|aerobic|30|NA,0.030366008544048032,0.07487341119235129
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M35 (SCA)|aerobic|45|NA,0.038448216141323176,0.01008691708695763
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M36 (SGCY)|aerobic|15|NA,0.024131162683292923,0.05644387256947964
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M36 (SGCY)|aerobic|30|NA,0.0399491975522457,0.0748073549656513
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M36 (SGCY)|aerobic|45|NA,0.008428587922872648,0.01066679713708265
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M37 (SNA)|aerobic|15|NA,0.03025054843551553,0.04308015604797989
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M37 (SNA)|aerobic|30|NA,0.0020782819535850364,0.05250930834706902
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M37 (SNA)|aerobic|45|NA,0.0033483431474425583,0.007147594905779878
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M38 (STA)|aerobic|15|NA,0.02690220528807297,0.05735624424986088
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M38 (STA)|aerobic|30|NA,0.04341300080822076,0.07474174049771332
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M38 (STA)|aerobic|45|NA,0.0393718970095832,0.010685986423857314
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M39 (STBG)|aerobic|15|NA,0.024477543008890428,0.05730192550593438
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M39 (STBG)|aerobic|30|NA,0.047107724281260824,0.07466943803469786
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M39 (STBG)|aerobic|45|NA,0.04953238656044336,0.010687268566481641
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M4 (CSA)|aerobic|15|NA,0.00023092021706500404,0.052204738525938724
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M4 (CSA)|aerobic|30|NA,0.040526498094908214,0.06634338571609565
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M4 (CSA)|aerobic|45|NA,0.002193742062117539,0.009029302320626108
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M40 (T5)|aerobic|15|NA,0.025285763768617943,0.05743099617375879
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M40 (T5)|aerobic|30|NA,0.02978870800138552,0.07468288957476442
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M40 (T5)|aerobic|45|NA,0.02066735942731786,0.01007639311883043
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M41 (TP)|aerobic|15|NA,0.02620944463687796,0.04272552141543537
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M41 (TP)|aerobic|30|NA,0.004387484124235077,0.057349115509777095
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M41 (TP)|aerobic|45|NA,0.002771042604780048,0.007580604591864358
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M42 (TGY)|aerobic|15|NA,0.02459300311742293,0.05633749546203597
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M42 (TGY)|aerobic|30|NA,0.03948735711811569,0.07457405193016219
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M42 (TGY)|aerobic|45|NA,0.024477543008890428,0.011123123068758142
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M43 (TCN)|aerobic|15|NA,0.023900242466227916,0.057432348629190666
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M43 (TCN)|aerobic|30|NA,0.03336797136589308,0.07476744130375636
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M43 (TCN)|aerobic|45|NA,0.017434476388407803,0.010617562602497044
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M44 (YGCP)|aerobic|15|NA,0.028865027133125505,0.05741176331782319
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M44 (YGCP)|aerobic|30|NA,0.04375938113381827,0.0746345134690717
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M44 (YGCP)|aerobic|45|NA,0.05137974829696341,0.011112420044215714
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M45 (YMG)|aerobic|15|NA,0.028749567024593,0.0548223563272071
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M45 (YMG)|aerobic|30|NA,0.03013508832698303,0.07475140124605346
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M45 (YMG)|aerobic|45|NA,0.04953238656044338,0.01064806400531847
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M46 (1xTSA)|aerobic|15|NA,0.023669322249162912,0.056416252352457355
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M46 (1xTSA)|aerobic|30|NA,0.04318208059115576,0.07462481509552354
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M46 (1xTSA)|aerobic|45|NA,0.02447754300889043,0.0111184514101026
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M47 (0.1xTSA)|aerobic|15|NA,0.025516683985682947,0.048404542942985546
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M47 (0.1xTSA)|aerobic|30|NA,0.03671631451333564,0.06447462234033484
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M47 (0.1xTSA)|aerobic|45|NA,0.026440364853942962,0.009379779275018388
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M48 (0.01xTSA)|aerobic|15|NA,0.034868952776815614,0.04703119141832125
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M48 (0.01xTSA)|aerobic|30|NA,0.04133471885463572,0.06468043270951543
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M48 (0.01xTSA)|aerobic|45|NA,0.050340607320170885,0.008421415282935074
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M49 (1xNA)|aerobic|15|NA,0.027479505830735478,0.05742648309482363
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M49 (1xNA)|aerobic|30|NA,0.05357349035908094,0.07456757524314332
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M49 (1xNA)|aerobic|45|NA,0.015240734326290266,0.011107715123129767
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M5 (CHIA)|aerobic|15|NA,0.04121925874610322,0.04462798105518085
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M5 (CHIA)|aerobic|30|NA,0.02228380094677289,0.062462422242808235
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M5 (CHIA)|aerobic|45|NA,0.04375938113381827,0.009009450213211985
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M50 (0.1xNA)|aerobic|15|NA,0.03163606973790555,0.04828123562920699
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M50 (0.1xNA)|aerobic|30|NA,0.047107724281260824,0.06455414597683337
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M50 (0.1xNA)|aerobic|45|NA,0.04814686525805335,0.008462973427427004
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M51 (0.01xNA)|aerobic|15|NA,0.0456067428703383,0.04553937150514044
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M51 (0.01xNA)|aerobic|30|NA,0.01547165454335527,0.06467206254753222
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M51 (0.01xNA)|aerobic|45|NA,0.046530423738598316,0.007888644000015965
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M52 (1xAIA)|aerobic|15|NA,0.03082784897817804,0.05637520163952754
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M52 (1xAIA)|aerobic|30|NA,0.043066620482623254,0.07488804141848654
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M52 (1xAIA)|aerobic|45|NA,0.06927606511950121,0.011118552260240102
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M53 (0.1xAIA)|aerobic|15|NA,0.044105761459415777,0.04764336583823527
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M53 (0.1xAIA)|aerobic|30|NA,0.036947234730400645,0.06465624310347305
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M53 (0.1xAIA)|aerobic|45|NA,0.0736635492437363,0.008965942285119944
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M54 (0.01xAIA)|aerobic|15|NA,0.042604780048493246,0.04555524288254007
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M54 (0.01xAIA)|aerobic|30|NA,0.021591040295577877,0.06460096376311258
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M54 (0.01xAIA)|aerobic|45|NA,0.04606858330446831,0.008010620498487267
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M55 (1xR2A)|aerobic|15|NA,0.024823923334487935,0.04845492184435082
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M55 (1xR2A)|aerobic|30|NA,0.04191201939729824,0.06459666884499406
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M55 (1xR2A)|aerobic|45|NA,0.051148828079898394,0.008997557984345097
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M56 (0.1xR2A)|aerobic|15|NA,0.032906130931763075,0.049281519305296166
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M56 (0.1xR2A)|aerobic|30|NA,0.04860870569218335,0.06468509996934203
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M56 (0.1xR2A)|aerobic|45|NA,0.04953238656044338,0.008466582587841354
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M57 (0.01xR2A)|aerobic|15|NA,0.03325251125736058,0.04556313602763761
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M57 (0.01xR2A)|aerobic|30|NA,0.03128968941230805,0.06467600436581684
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M57 (0.01xR2A)|aerobic|45|NA,0.04064195820344072,0.007860280928813215
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M58 (1xMA)|aerobic|15|NA,0.04699226417272833,0.05742580548249538
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M58 (1xMA)|aerobic|30|NA,0.023669322249162912,0.07480361504574064
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M58 (1xMA)|aerobic|45|NA,0.04283570026555826,0.011117593497477332
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M59 (0.1xMA)|aerobic|15|NA,0.03567717353654312,0.04710581591926409
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M59 (0.1xMA)|aerobic|30|NA,0.05218796905669092,0.06460852800075463
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M59 (0.1xMA)|aerobic|45|NA,0.05068698764576839,0.00801809428281314
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M6 (CZA)|aerobic|15|NA,0.02574760420274795,0.04671852940681808
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M6 (CZA)|aerobic|30|NA,0.032790670823230575,0.062196613437396624
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M6 (CZA)|aerobic|45|NA,0.0020782819535850364,0.009006120310075182
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M60 (0.01xMA)|aerobic|15|NA,0.04156563907170073,0.045508034073714586
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M60 (0.01xMA)|aerobic|30|NA,0.016857175845745292,0.06468509996934203
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M60 (0.01xMA)|aerobic|45|NA,0.03775545549012817,0.007900349328083608
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M7 (GN1)|aerobic|15|NA,0.028287726590462994,0.0460259281318986
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M7 (GN1)|aerobic|30|NA,0.056806373397991,0.06025193565608334
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M7 (GN1)|aerobic|45|NA,0.04514490243620829,0.009007286349516672
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M8 (GYM)|aerobic|15|NA,0.024823923334487935,0.0548122019528818
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M8 (GYM)|aerobic|30|NA,0.039025516683985684,0.07469153000462252
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M8 (GYM)|aerobic|45|NA,0.02390024246622792,0.010666157829373442
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M9 (GLA)|aerobic|15|NA,0.02620944463687796,0.05736711656246223
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M9 (GLA)|aerobic|30|NA,0.05403533079321095,0.07460258567744771
+li2023_desertsoil,li2023,li2023_desertsoil|rhizosphere|M9 (GLA)|aerobic|45|NA,0.0048493245583650845,0.010692415828973742
+ordonez2025_oak,ordonez2025,ordonez2025_oak|leaf|unresolved|NA|NA|isolation 10,0.010994578710036989,0.047008107698329325
+ordonez2025_oak,ordonez2025,ordonez2025_oak|leaf|unresolved|NA|NA|isolation 11,0.00567462126969651,0.045882034693418526
+ordonez2025_oak,ordonez2025,ordonez2025_oak|leaf|unresolved|NA|NA|isolation 12,0.009930587221968892,0.04537759907152938
+ordonez2025_oak,ordonez2025,ordonez2025_oak|leaf|unresolved|NA|NA|isolation 25,0.016567867457060344,0.047368957724849524
+ordonez2025_oak,ordonez2025,ordonez2025_oak|leaf|unresolved|NA|NA|isolation 26,0.004002634645589502,0.0441302787698859
+ordonez2025_oak,ordonez2025,ordonez2025_oak|leaf|unresolved|NA|NA|isolation 33,0.0,0.0444116284812336
+ordonez2025_oak,ordonez2025,ordonez2025_oak|leaf|unresolved|NA|NA|isolation 7,0.10346050564928813,0.045928027261996705
+ordonez2025_oak,ordonez2025,ordonez2025_oak|leaf|unresolved|NA|NA|isolation 9,0.008967928256573948,0.0441477055081235
+ordonez2025_oak,ordonez2025,ordonez2025_oak|rhizosphere|unresolved|NA|NA|isolation 1,0.00653668432322777,0.027056328758314027
+ordonez2025_oak,ordonez2025,ordonez2025_oak|rhizosphere|unresolved|NA|NA|isolation 2,0.004987039332807393,0.026234236517256853
+ordonez2025_oak,ordonez2025,ordonez2025_oak|rhizosphere|unresolved|NA|NA|isolation 22,0.009438746759833203,0.025935186644821438
+ordonez2025_oak,ordonez2025,ordonez2025_oak|rhizosphere|unresolved|NA|NA|isolation 23,0.0016341710808069425,0.026738158832506447
+ordonez2025_oak,ordonez2025,ordonez2025_oak|rhizosphere|unresolved|NA|NA|isolation 24,0.0018877493519666405,0.025075468470533463
+ordonez2025_oak,ordonez2025,ordonez2025_oak|rhizosphere|unresolved|NA|NA|isolation 3,0.0013524174461850558,0.02660365319055742
+ordonez2025_oak,ordonez2025,ordonez2025_oak|rhizosphere|unresolved|NA|NA|isolation 31,0.00800180322326158,0.025383326135004873
+ordonez2025_oak,ordonez2025,ordonez2025_oak|rhizosphere|unresolved|NA|NA|isolation 32,0.005071565423193959,0.02639528171369523
+ordonez2025_oak,ordonez2025,ordonez2025_oak|rhizosphere|unresolved|NA|NA|isolation 4,0.0006762087230925279,0.026249147167579614
+ordonez2025_oak,ordonez2025,ordonez2025_oak|rhizosphere|unresolved|NA|NA|isolation 5,0.005578721965513355,0.025938341216299184
+ordonez2025_oak,ordonez2025,ordonez2025_oak|rhizosphere|unresolved|NA|NA|isolation 6,0.003690972613546715,0.025990908433731044
+ordonez2025_oak,ordonez2025,ordonez2025_oak|stem|unresolved|NA|NA|isolation 14,0.003348934796642995,0.04581679446364574
+ordonez2025_oak,ordonez2025,ordonez2025_oak|stem|unresolved|NA|NA|isolation 16,0.00302614590058102,0.045938588578743195
+ordonez2025_oak,ordonez2025,ordonez2025_oak|stem|unresolved|NA|NA|isolation 17,0.0002824402840542285,0.04699877818368548
+ordonez2025_oak,ordonez2025,ordonez2025_oak|stem|unresolved|NA|NA|isolation 19,0.003348934796642995,0.04637602876926652
+ordonez2025_oak,ordonez2025,ordonez2025_oak|stem|unresolved|NA|NA|isolation 20,0.0007262750161394447,0.04671680462036987
+ordonez2025_oak,ordonez2025,ordonez2025_oak|stem|unresolved|NA|NA|isolation 21,0.0007262750161394447,0.04534900032205399
+ordonez2025_oak,ordonez2025,ordonez2025_oak|stem|unresolved|NA|NA|isolation 29,0.03211749515816656,0.044497946400508886
+ordonez2025_oak,ordonez2025,ordonez2025_oak|stem|unresolved|NA|NA|isolation 30,0.03663653970303421,0.04486589901159407
+ordonez2025_oak,ordonez2025,ordonez2025_oak|stem|unresolved|NA|NA|isolation 41,0.006657520981278243,0.04687369176977622
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 101,0.014070926621997059,0.026666724967776216
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 102,0.009347932668736722,0.0273009372525695
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 103,0.011570518058506292,0.02755044998759495
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 104,0.012469357738192514,0.0264524791076927
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 105,0.013368197417878739,0.025836890811433012
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 106,0.01629351201176663,0.02635516220122068
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 11,0.06710246772348423,0.025791335752481912
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 12,0.06556626899820232,0.026368512351918682
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 13,0.05484556300049028,0.02649070383559756
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 14,0.0688511194639647,0.02704590282815488
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 21,0.06760908645203464,0.026463581547520928
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 22,0.05430625919267854,0.02388145913985207
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 23,0.05981369504821049,0.026050704095203946
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 24,0.05072724301356431,0.027194839391764817
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 31,0.048537342703056055,0.0271003463842123
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 32,0.05425723157378657,0.026400244111721486
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 33,0.04580813858473607,0.026094269220395632
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 34,0.058931197908154924,0.02627147183041266
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 41,0.06522307566595849,0.026270071187740895
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 42,0.08883804543226018,0.02611289188266791
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 43,0.0800621016505965,0.02612337355155066
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 44,0.07591109658440921,0.02588124494367799
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 51,0.060271286157868934,0.026092223757558052
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 52,0.049207386827913056,0.02679908732257927
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 53,0.04407582938388625,0.02666578782914195
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 54,0.05411014871711064,0.026359507171954188
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 61,0.05891485536852427,0.026409786219057277
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 62,0.038976957019120774,0.02638631308870469
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 63,0.044092171923516915,0.02620459640069346
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 64,0.033240725608759604,0.026201374743478317
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 65,0.0394018630495179,0.026265862354408014
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 66,0.0386501062265076,0.026745255888591772
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 67,0.05518875633273411,0.026256893279742073
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 68,0.04968132047720216,0.02614144305284846
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 71,0.033861742114724626,0.026333981008587172
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 72,0.03583918941003432,0.02600305839914791
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 73,0.04100343193332244,0.026282416180567186
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 74,0.05855531949664978,0.026529873536946247
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 75,0.04603693413956529,0.025847805577318826
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 8,0.006422618074848831,0.025974164803034175
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 91,0.03855205098872365,0.0268724439552423
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 92,0.04051315574440268,0.026561526671421143
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 93,0.0414937081222422,0.02638452061653726
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 94,0.04597156398104265,0.026257562025357666
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 95,0.04079097891812388,0.026067733146357616
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp1|unresolved|aerobic|25|plate 96,0.03876450400392221,0.025245896246437652
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp2|PL10|anaerobic|25|NA,0.015665661796913245,0.02318364815251679
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp2|PL1|anaerobic|25|NA,0.025714359331117466,0.02337749820248299
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp2|PL2|anaerobic|25|NA,0.03426863518074772,0.023180984390198184
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp2|PL3|anaerobic|25|NA,0.08391950735616191,0.023970723587416264
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp2|PL4|anaerobic|25|NA,0.03027492205817938,0.02367532610678523
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp2|PL5|anaerobic|25|NA,0.07837984076679291,0.023838209195046454
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp2|PL6|anaerobic|25|NA,0.07696271675555898,0.023705821371112403
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp2|PL7|aerobic|25|NA,0.04527067068614568,0.028239699816332176
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp2|PL7|anaerobic|25|NA,0.017031254025920484,0.024538368563046423
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp2|PL8|aerobic|25|NA,0.006879492927262889,0.03088466171078672
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp2|PL8|anaerobic|25|NA,0.0019324418335008116,0.023687389400626827
+verhoeven2023_sludge,verhoeven2023,verhoeven2023_sludge|AS_exp2|PL9|anaerobic|25|NA,0.01630980907474685,0.02345072872951608
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + AMP|aerobic|25|HC,0.00945715359921335,0.013640490084401751
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + AMP|aerobic|25|LC,0.023801949272637877,0.013655893747197634
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + AMP|aerobic|25|WC,0.02571073256789195,0.01365617558077325
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + CAR|aerobic|25|HC,0.020476038985452756,0.013627274799356909
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + CAR|aerobic|25|LC,0.012088960869942447,0.013622574530921243
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + CAR|aerobic|25|WC,0.07447146947392776,0.013641335300293827
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + CHL|aerobic|25|HC,0.018740781444312692,0.013648206798333675
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + CHL|aerobic|25|LC,0.03077190039621714,0.013643713770758379
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + CHL|aerobic|25|WC,0.025913179281024958,0.013642463064783984
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + CIP|aerobic|25|HC,0.009601758394308355,0.01364803928950134
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + CIP|aerobic|25|LC,0.022934320502067847,0.013578601034094296
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + CIP|aerobic|25|WC,0.015241345403013563,0.013568279455699269
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + ERI|aerobic|25|LC,0.01735257541140064,0.013628027133103812
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + ERI|aerobic|25|WC,0.012927668681493478,0.013631099970329286
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + GEN|aerobic|25|LC,0.014373716632443531,0.01357841769373523
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + GEN|aerobic|25|WC,0.0004627353443040171,0.013573897671765754
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + KAN|aerobic|25|HC,0.0022847557625010847,0.013636669717946293
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + KAN|aerobic|25|LC,0.017265812534343637,0.0135852212049744
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + KAN|aerobic|25|WC,0.008791971541776326,0.013648033226411331
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + NEO|aerobic|25|HC,0.007461607426902276,0.013648632288868404
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + NEO|aerobic|25|LC,0.008242473320415304,0.01366268593071678
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + NEO|aerobic|25|WC,0.008184631402377303,0.013649517574336231
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + RIF|aerobic|25|HC,0.043612806200653616,0.013604996953930214
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + RIF|aerobic|25|LC,0.024033316944789888,0.013628059240149535
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + RIF|aerobic|25|WC,0.0189432281574457,0.013642291640955501
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + STR|aerobic|25|LC,0.01489429389478555,0.013636755963677612
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + STR|aerobic|25|WC,0.006536136738294242,0.013568593988138672
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + TET|aerobic|25|HC,0.011221332099372415,0.013628888261550384
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + TET|aerobic|25|LC,0.025623969690834948,0.013615199448550582
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose + TET|aerobic|25|WC,0.020707406657604767,0.013631280568766228
+villanelo2026_sludge_antibiotics,villanelo2026,villanelo2026_sludge_antibiotics|raw_AS|ASF agarose|aerobic|25|NA,0.028747433264887063,0.052513111297877994
+yu2020_broiler,yu2020,yu2020_broiler|A_back|TSA|aerobic|30|NA,0.11824967925041795,0.0872531630345713
+yu2020_broiler,yu2020,yu2020_broiler|A_back|TSA|aerobic|7|NA,0.27621398856965124,0.10060104313170655
+yu2020_broiler,yu2020,yu2020_broiler|A_back|blood agar|aerobic|30|NA,0.1360561408965437,0.09500507525381606
+yu2020_broiler,yu2020,yu2020_broiler|A_back|blood agar|aerobic|7|NA,0.4038917615955834,0.1095057960646719
+yu2020_broiler,yu2020,yu2020_broiler|A_back|plate count agar|aerobic|30|NA,0.17145523113409275,0.09539768910433336
+yu2020_broiler,yu2020,yu2020_broiler|A_back|plate count agar|aerobic|7|NA,0.2368492671358034,0.10886503778596361
+yu2020_broiler,yu2020,yu2020_broiler|A_breast|TSA|aerobic|30|NA,0.23500691131225754,0.08252481506735977
+yu2020_broiler,yu2020,yu2020_broiler|A_breast|TSA|aerobic|7|NA,0.21168680608195478,0.09677695198308953
+yu2020_broiler,yu2020,yu2020_broiler|A_breast|blood agar|aerobic|30|NA,0.08884380434297943,0.09214757288844996
+yu2020_broiler,yu2020,yu2020_broiler|A_breast|blood agar|aerobic|7|NA,0.16827930619342754,0.10589980968103976
+yu2020_broiler,yu2020,yu2020_broiler|A_breast|plate count agar|aerobic|30|NA,0.3166941632853257,0.09193044776724897
+yu2020_broiler,yu2020,yu2020_broiler|A_breast|plate count agar|aerobic|7|NA,0.31562402461318945,0.10616123488539678
+yu2020_broiler,yu2020,yu2020_broiler|A_neck|TSA|aerobic|30|NA,0.12316384180790961,0.087784107899269
+yu2020_broiler,yu2020,yu2020_broiler|A_neck|TSA|aerobic|7|NA,0.22567851999556887,0.10082900598595829
+yu2020_broiler,yu2020,yu2020_broiler|A_neck|blood agar|aerobic|30|NA,0.1713747645951036,0.09527522813496164
+yu2020_broiler,yu2020,yu2020_broiler|A_neck|blood agar|aerobic|7|NA,0.25864628337210593,0.10949416288303952
+yu2020_broiler,yu2020,yu2020_broiler|A_neck|plate count agar|aerobic|30|NA,0.23737675861304974,0.09543029817098095
+yu2020_broiler,yu2020,yu2020_broiler|A_neck|plate count agar|aerobic|7|NA,0.28483438573169384,0.10968418303160975
+yu2020_broiler,yu2020,yu2020_broiler|B_back|TSA|aerobic|30|NA,0.15699301403233273,0.08680354985238574
+yu2020_broiler,yu2020,yu2020_broiler|B_back|TSA|aerobic|7|NA,0.1624287813814902,0.10137192349249204
+yu2020_broiler,yu2020,yu2020_broiler|B_back|blood agar|aerobic|30|NA,0.13061947615308733,0.09352456330937339
+yu2020_broiler,yu2020,yu2020_broiler|B_back|blood agar|aerobic|7|NA,0.07857703690282056,0.1099328905338021
+yu2020_broiler,yu2020,yu2020_broiler|B_back|plate count agar|aerobic|30|NA,0.15783857784220168,0.09527504399264962
+yu2020_broiler,yu2020,yu2020_broiler|B_back|plate count agar|aerobic|7|NA,0.2768013529020958,0.10981792960824449
+yu2020_broiler,yu2020,yu2020_broiler|B_breast|TSA|aerobic|30|NA,0.069575252205636,0.08729470765366276
+yu2020_broiler,yu2020,yu2020_broiler|B_breast|TSA|aerobic|7|NA,0.3112087257566169,0.10096159922918481
+yu2020_broiler,yu2020,yu2020_broiler|B_breast|blood agar|aerobic|30|NA,0.08051967390090459,0.09434443630122462
+yu2020_broiler,yu2020,yu2020_broiler|B_breast|blood agar|aerobic|7|NA,0.29110672672449095,0.10703916947216838
+yu2020_broiler,yu2020,yu2020_broiler|B_breast|plate count agar|aerobic|30|NA,0.05003164203551353,0.0935555506538817
+yu2020_broiler,yu2020,yu2020_broiler|B_breast|plate count agar|aerobic|7|NA,0.2251423891598109,0.10850798408248855
+yu2020_broiler,yu2020,yu2020_broiler|B_neck|TSA|aerobic|30|NA,0.151197892128636,0.0903790715111082
+yu2020_broiler,yu2020,yu2020_broiler|B_neck|TSA|aerobic|7|NA,0.11621211328063655,0.10431899022346575
+yu2020_broiler,yu2020,yu2020_broiler|B_neck|blood agar|aerobic|30|NA,0.1479348793383238,0.09825503366089208
+yu2020_broiler,yu2020,yu2020_broiler|B_neck|blood agar|aerobic|7|NA,0.11457188225235129,0.11313624472171886
+yu2020_broiler,yu2020,yu2020_broiler|B_neck|plate count agar|aerobic|30|NA,0.1617895967474568,0.09823023170745471
+yu2020_broiler,yu2020,yu2020_broiler|B_neck|plate count agar|aerobic|7|NA,0.30724668027709434,0.11174625055430482
+yu2020_broiler,yu2020,yu2020_broiler|C_back|TSA|aerobic|30|NA,0.1362619297684826,0.08125276910080076
+yu2020_broiler,yu2020,yu2020_broiler|C_back|TSA|aerobic|7|NA,0.11799625553678249,0.09554335128881382
+yu2020_broiler,yu2020,yu2020_broiler|C_back|blood agar|aerobic|30|NA,0.12011202946862108,0.08987073501985347
+yu2020_broiler,yu2020,yu2020_broiler|C_back|blood agar|aerobic|7|NA,0.11869643971566432,0.10372615817327395
+yu2020_broiler,yu2020,yu2020_broiler|C_back|plate count agar|aerobic|30|NA,0.11251655326727247,0.09048868597860996
+yu2020_broiler,yu2020,yu2020_broiler|C_back|plate count agar|aerobic|7|NA,0.11728084996270759,0.10375718850710065
+yu2020_broiler,yu2020,yu2020_broiler|C_breast|TSA|aerobic|30|NA,0.02514324027794709,0.08172224874977986
+yu2020_broiler,yu2020,yu2020_broiler|C_breast|TSA|aerobic|7|NA,0.2547086431793247,0.09428103564234055
+yu2020_broiler,yu2020,yu2020_broiler|C_breast|blood agar|aerobic|30|NA,0.22458246982811167,0.08917322356152559
+yu2020_broiler,yu2020,yu2020_broiler|C_breast|blood agar|aerobic|7|NA,0.2417408265268804,0.1028379588995478
+yu2020_broiler,yu2020,yu2020_broiler|C_breast|plate count agar|aerobic|30|NA,0.2392874558088504,0.08919433464343421
+yu2020_broiler,yu2020,yu2020_broiler|C_breast|plate count agar|aerobic|7|NA,0.2543276849932951,0.1028298812814084
+yu2020_broiler,yu2020,yu2020_broiler|C_neck|TSA|aerobic|30|NA,0.12758692774022717,0.07638310554294425
+yu2020_broiler,yu2020,yu2020_broiler|C_neck|TSA|aerobic|7|NA,0.12454881192948226,0.08837580416385339
+yu2020_broiler,yu2020,yu2020_broiler|C_neck|blood agar|aerobic|30|NA,0.11167166051146263,0.0824714989833514
+yu2020_broiler,yu2020,yu2020_broiler|C_neck|blood agar|aerobic|7|NA,0.11862587972963558,0.09627670513364789
+yu2020_broiler,yu2020,yu2020_broiler|C_neck|plate count agar|aerobic|30|NA,0.10085708313009546,0.08320483634144916
+yu2020_broiler,yu2020,yu2020_broiler|C_neck|plate count agar|aerobic|7|NA,0.1126890112187304,0.09616583247838059
+yu2020_broiler,yu2020,yu2020_broiler|D_back|TSA|aerobic|30|NA,0.08002860486282667,0.0875276823458777
+yu2020_broiler,yu2020,yu2020_broiler|D_back|TSA|aerobic|7|NA,0.20107918346118842,0.1006520482083404
+yu2020_broiler,yu2020,yu2020_broiler|D_back|blood agar|aerobic|30|NA,0.04293979976596021,0.0950266670777123
+yu2020_broiler,yu2020,yu2020_broiler|D_back|blood agar|aerobic|7|NA,0.1939929788063971,0.10735041897166585
+yu2020_broiler,yu2020,yu2020_broiler|D_back|plate count agar|aerobic|30|NA,0.10265245091665584,0.09480333057439044
+yu2020_broiler,yu2020,yu2020_broiler|D_back|plate count agar|aerobic|7|NA,0.09166558314913535,0.10986065172770283
+yu2020_broiler,yu2020,yu2020_broiler|D_breast|TSA|aerobic|30|NA,0.20472352495155718,0.08513769538991921
+yu2020_broiler,yu2020,yu2020_broiler|D_breast|TSA|aerobic|7|NA,0.19386952736667698,0.09862757994802895
+yu2020_broiler,yu2020,yu2020_broiler|D_breast|blood agar|aerobic|30|NA,0.10508579291752085,0.09277081095005525
+yu2020_broiler,yu2020,yu2020_broiler|D_breast|blood agar|aerobic|7|NA,0.16164452806874666,0.10729647043495057
+yu2020_broiler,yu2020,yu2020_broiler|D_breast|plate count agar|aerobic|30|NA,0.18242579123255356,0.09277408610005099
+yu2020_broiler,yu2020,yu2020_broiler|D_breast|plate count agar|aerobic|7|NA,0.14881069392569293,0.10567467946941766
+yu2020_broiler,yu2020,yu2020_broiler|D_neck|TSA|aerobic|30|NA,0.10460487028067149,0.08407559426281319
+yu2020_broiler,yu2020,yu2020_broiler|D_neck|TSA|aerobic|7|NA,0.18026341981288566,0.09727871348861152
+yu2020_broiler,yu2020,yu2020_broiler|D_neck|blood agar|aerobic|30|NA,0.14484772078826888,0.09164875755431957
+yu2020_broiler,yu2020,yu2020_broiler|D_neck|blood agar|aerobic|7|NA,0.22508459956207288,0.10512474779570749
+yu2020_broiler,yu2020,yu2020_broiler|D_neck|plate count agar|aerobic|30|NA,0.10322805387830933,0.09178609834798299
+yu2020_broiler,yu2020,yu2020_broiler|D_neck|plate count agar|aerobic|7|NA,0.15584566385774004,0.105980557772508
+yu2020_broiler,yu2020,yu2020_broiler|E_back|TSA|aerobic|30|NA,0.2830753482023762,0.07664740823273236
+yu2020_broiler,yu2020,yu2020_broiler|E_back|TSA|aerobic|7|NA,0.13225486242516366,0.08825858665205125
+yu2020_broiler,yu2020,yu2020_broiler|E_back|blood agar|aerobic|30|NA,0.15812575611874555,0.0833842335733657
+yu2020_broiler,yu2020,yu2020_broiler|E_back|blood agar|aerobic|7|NA,0.15860657009026896,0.09656632623836604
+yu2020_broiler,yu2020,yu2020_broiler|E_back|plate count agar|aerobic|30|NA,0.28552594844433415,0.08350169503607571
+yu2020_broiler,yu2020,yu2020_broiler|E_back|plate count agar|aerobic|7|NA,0.20861122312870303,0.09616185853999962
+yu2020_broiler,yu2020,yu2020_broiler|E_breast|TSA|aerobic|30|NA,0.21303053878165942,0.0951116895302314
+yu2020_broiler,yu2020,yu2020_broiler|E_breast|TSA|aerobic|7|NA,0.25907951444201577,0.10936467321973536
+yu2020_broiler,yu2020,yu2020_broiler|E_breast|blood agar|aerobic|30|NA,0.24915101446053914,0.10332444093853452
+yu2020_broiler,yu2020,yu2020_broiler|E_breast|blood agar|aerobic|7|NA,0.27602217858951084,0.11865710458657816
+yu2020_broiler,yu2020,yu2020_broiler|E_breast|plate count agar|aerobic|30|NA,0.16072068067029724,0.10303818357940693
+yu2020_broiler,yu2020,yu2020_broiler|E_breast|plate count agar|aerobic|7|NA,0.24679237827090972,0.11865224890376133
+yu2020_broiler,yu2020,yu2020_broiler|E_neck|TSA|aerobic|30|NA,0.09676783214025124,0.09062741865297595
+yu2020_broiler,yu2020,yu2020_broiler|E_neck|TSA|aerobic|7|NA,0.11958429470113786,0.10444063306432635
+yu2020_broiler,yu2020,yu2020_broiler|E_neck|blood agar|aerobic|30|NA,0.21944822418111185,0.09896997740846905
+yu2020_broiler,yu2020,yu2020_broiler|E_neck|blood agar|aerobic|7|NA,0.02301366621309827,0.11314044898535108
+yu2020_broiler,yu2020,yu2020_broiler|E_neck|plate count agar|aerobic|30|NA,0.1417499852097261,0.09767047358773609
+yu2020_broiler,yu2020,yu2020_broiler|E_neck|plate count agar|aerobic|7|NA,0.1874223510619417,0.11312198388664223
+zehavi2018_rumen,zehavi2018,zehavi2018_rumen|plated_cow|M10 + clarified rumen fluid|anaerobic|39|dilution 10-1,0.002497692349459738,0.028267389095013012
+zehavi2018_rumen,zehavi2018,zehavi2018_rumen|plated_cow|M10 + clarified rumen fluid|anaerobic|39|dilution 10-2,0.0007058695770212304,0.02754157539519461
+zehavi2018_rumen,zehavi2018,zehavi2018_rumen|plated_cow|M10 + clarified rumen fluid|anaerobic|39|dilution 10-3,0.0008144648965629581,0.027761372710879518
+zehavi2018_rumen,zehavi2018,zehavi2018_rumen|plated_cow|M10 + clarified rumen fluid|anaerobic|39|dilution 10-4,0.0011945485149590055,0.02755980679772219
+zehavi2018_rumen,zehavi2018,zehavi2018_rumen|plated_cow|M10 + clarified rumen fluid|anaerobic|39|dilution 10-5,0.0007058695770212304,0.027552532329597333
+zehavi2018_rumen,zehavi2018,zehavi2018_rumen|plated_cow|M10 + clarified rumen fluid|anaerobic|39|dilution 10-6,0.0007058695770212304,0.02715617266706594
+zehavi2018_rumen,zehavi2018,zehavi2018_rumen|plated_cow|M10 defined|anaerobic|39|dilution 10-1,0.001303143834500733,0.020656708690252934
+zehavi2018_rumen,zehavi2018,zehavi2018_rumen|plated_cow|M10 defined|anaerobic|39|dilution 10-2,0.0007058695770212304,0.020913835195891038
+zehavi2018_rumen,zehavi2018,zehavi2018_rumen|plated_cow|M10 defined|anaerobic|39|dilution 10-3,0.0011402508551881414,0.020837671895625562
+zehavi2018_rumen,zehavi2018,zehavi2018_rumen|plated_cow|M10 defined|anaerobic|39|dilution 10-4,0.008361839604713036,0.020817334196085707
+zehavi2018_rumen,zehavi2018,zehavi2018_rumen|plated_cow|M10 defined|anaerobic|39|dilution 10-5,0.005484063636857252,0.020709890723195498
+zehavi2018_rumen,zehavi2018,zehavi2018_rumen|plated_cow|M10 defined|anaerobic|39|dilution 10-6,0.0007058695770212304,0.020512523664584746
+zheng2024_sludge,zheng2024,zheng2024_sludge|NJ|R2A|aerobic|26|NA,0.042532332081768875,0.025580333276352295
+zheng2024_sludge,zheng2024,zheng2024_sludge|NJ|R2A|anaerobic|26|NA,0.059379780280906694,0.02492311725774466
+zheng2024_sludge,zheng2024,zheng2024_sludge|NJ|extraction medium (filtered wastewater)|aerobic|26|NA,0.053650396328744264,0.01556036928793773
+zheng2024_sludge,zheng2024,zheng2024_sludge|NJ|extraction medium (filtered wastewater)|anaerobic|26|NA,0.06394799054373523,0.014840029665007323
+zheng2024_sludge,zheng2024,zheng2024_sludge|SH|R2A|aerobic|26|NA,0.10575285818535636,0.03427109357104431
+zheng2024_sludge,zheng2024,zheng2024_sludge|SH|R2A|anaerobic|26|NA,0.1518081569772156,0.03358373286329379
+zheng2024_sludge,zheng2024,zheng2024_sludge|SH|extraction medium (filtered wastewater)|aerobic|26|NA,0.1402132490067299,0.020690565327797714
+zheng2024_sludge,zheng2024,zheng2024_sludge|SH|extraction medium (filtered wastewater)|anaerobic|26|NA,0.1340711911132733,0.020051667997856185
+zheng2024_sludge,zheng2024,zheng2024_sludge|SZ|R2A|aerobic|26|NA,0.22967603834833578,0.03850510526057456
+zheng2024_sludge,zheng2024,zheng2024_sludge|SZ|R2A|anaerobic|26|NA,0.22782324224173184,0.037638287196311314
+zheng2024_sludge,zheng2024,zheng2024_sludge|XM1|R2A|aerobic|26|NA,0.1502489776615573,0.039619780084549396
+zheng2024_sludge,zheng2024,zheng2024_sludge|XM1|R2A|anaerobic|26|NA,0.08877514118007067,0.03890216663845998
+zheng2024_sludge,zheng2024,zheng2024_sludge|XM1|R2A|microaerophilic|26|NA,0.15584610676829777,0.03956282078506407
+zheng2024_sludge,zheng2024,zheng2024_sludge|XM1|extraction medium (filtered wastewater)|aerobic|26|NA,0.17815673074248198,0.02383267218763753
+zheng2024_sludge,zheng2024,zheng2024_sludge|XM1|extraction medium (filtered wastewater)|anaerobic|26|NA,0.15039363507385872,0.023234379213141376
+zheng2024_sludge,zheng2024,zheng2024_sludge|XM1|extraction medium (filtered wastewater)|microaerophilic|26|NA,0.15467771997663227,0.02372700656391417
+zheng2024_sludge,zheng2024,zheng2024_sludge|XM2|R2A|aerobic|26|AE,0.14147385055757647,0.036741119951526256
+zheng2024_sludge,zheng2024,zheng2024_sludge|XM2|R2A|anaerobic|26|AN,0.13109010674458824,0.03564524480807395
+zheng2024_sludge,zheng2024,zheng2024_sludge|XM2|extraction medium (filtered wastewater)|aerobic|26|AE,0.1427634325243008,0.022239563226310332
+zheng2024_sludge,zheng2024,zheng2024_sludge|XM2|extraction medium (filtered wastewater)|anaerobic|26|AN,0.16919613572663844,0.021562798032907053
+zheng2024_soil,zheng2024,zheng2024_soil|GD|1% TSA|aerobic|26|NA,0.09977355338462643,0.03019534724708601
+zheng2024_soil,zheng2024,zheng2024_soil|GD|1% TSA|anaerobic|26|NA,0.08890803135013085,0.029224074815872473
+zheng2024_soil,zheng2024,zheng2024_soil|GD|soil extract|aerobic|26|NA,0.0972806828637992,0.018192795069406662
+zheng2024_soil,zheng2024,zheng2024_soil|GD|soil extract|anaerobic|26|NA,0.0956231197426209,0.017496887346080188
+zheng2024_soil,zheng2024,zheng2024_soil|HN|1% TSA|aerobic|26|NA,0.20646947894191403,0.036766883683173913
+zheng2024_soil,zheng2024,zheng2024_soil|HN|soil extract|aerobic|26|NA,0.22456295339868507,0.023031813230178194
+zheng2024_soil,zheng2024,zheng2024_soil|NX|1% TSA|aerobic|26|NA,0.1338771474477815,0.03173653968748319
+zheng2024_soil,zheng2024,zheng2024_soil|NX|1% TSA|anaerobic|26|NA,0.08248671363243111,0.030834260824609206
+zheng2024_soil,zheng2024,zheng2024_soil|NX|1% TSA|microaerophilic|26|NA,0.10367074527252503,0.0317096711379579
+zheng2024_soil,zheng2024,zheng2024_soil|NX|soil extract|aerobic|26|NA,0.12235817575083427,0.019342901286486934
+zheng2024_soil,zheng2024,zheng2024_soil|NX|soil extract|anaerobic|26|NA,0.09788654060066743,0.018328858395810273
+zheng2024_soil,zheng2024,zheng2024_soil|NX|soil extract|microaerophilic|26|NA,0.11631442343344457,0.01900802633115565
+zheng2024_soil,zheng2024,zheng2024_soil|SM|1% TSA|aerobic|26|NA,0.1921334710603854,0.03784237973605707
+zheng2024_soil,zheng2024,zheng2024_soil|SM|1% TSA|anaerobic|26|NA,0.1342119077454533,0.03678629334305761
+zheng2024_soil,zheng2024,zheng2024_soil|SM|1% TSA|microaerophilic|26|NA,0.1676262403901514,0.03751226068026466
+zheng2024_soil,zheng2024,zheng2024_soil|SM|soil extract|aerobic|26|NA,0.20209469299285399,0.022771672468854698
+zheng2024_soil,zheng2024,zheng2024_soil|SM|soil extract|anaerobic|26|NA,0.14570139194635418,0.02219414804368242
+zheng2024_soil,zheng2024,zheng2024_soil|SM|soil extract|microaerophilic|26|NA,0.19657008839367357,0.022576108025445775
+zheng2024_soil,zheng2024,zheng2024_soil|TA|1% TSA|aerobic|26|NA,0.1672380232997298,0.035210785799717925
+zheng2024_soil,zheng2024,zheng2024_soil|TA|1% TSA|anaerobic|26|NA,0.1490078731007234,0.03457171982998623
+zheng2024_soil,zheng2024,zheng2024_soil|TA|1% TSA|microaerophilic|26|NA,0.17973039714128003,0.03529727789698703
+zheng2024_soil,zheng2024,zheng2024_soil|TA|soil extract|aerobic|26|NA,0.1485575666017838,0.021494304466391154
+zheng2024_soil,zheng2024,zheng2024_soil|TA|soil extract|anaerobic|26|NA,0.13186717410882892,0.020598780711247402
+zheng2024_soil,zheng2024,zheng2024_soil|TA|soil extract|microaerophilic|26|NA,0.14955986171232677,0.02126672095713323
+zheng2024_soil,zheng2024,zheng2024_soil|YN|1% TSA|aerobic|26|NA,0.14738714322012367,0.02807270194943093
+zheng2024_soil,zheng2024,zheng2024_soil|YN|1% TSA|anaerobic|26|NA,0.11283137122046244,0.02733655487060111
+zheng2024_soil,zheng2024,zheng2024_soil|YN|1% TSA|microaerophilic|26|NA,0.13252307952909292,0.02792037367987616
+zheng2024_soil,zheng2024,zheng2024_soil|YN|soil extract|aerobic|26|NA,0.14867451511815025,0.016753585684896724
+zheng2024_soil,zheng2024,zheng2024_soil|YN|soil extract|anaerobic|26|NA,0.11467773354789532,0.016623628622289943
+zheng2024_soil,zheng2024,zheng2024_soil|YN|soil extract|microaerophilic|26|NA,0.1304988566104853,0.016645022130703888

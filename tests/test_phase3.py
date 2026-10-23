@@ -5,6 +5,7 @@ from scipy.special import expit
 
 from plate_truth.phase3 import (
     criteria_checks,
+    required_groups,
     averaged_curve,
     bootstrap_mean,
     calibration_metrics,
@@ -135,7 +136,8 @@ def test_averaged_curve():
 
 def test_criteria_checks_hand_values():
     crit = {"calibration_slope_range": [0.8, 1.25], "oe_range": [0.67, 1.5],
-            "auc_supported_groups": 8, "calibrated_groups": 7, "proxy_over_groups": 8}
+            "auc_supported_groups": 8, "calibrated_groups": 7, "proxy_over_groups": 8,
+            "reference_groups": 10}
     auc = np.full(10, 0.8)
     oe = np.array([1.0] * 7 + [0.3] * 3)
     slope = np.array([1.0] * 6 + [2.0] * 4)          # 6 groups in both ranges
@@ -144,3 +146,16 @@ def test_criteria_checks_hand_values():
     assert c["groups_auc_above_0.5"] == 10 and c["H1"]
     assert c["groups_calibrated"] == 6 and not c["H2"]
     assert c["groups_ratio_above_1"] == 9 and c["median_ratio"] == 5.0 and c["H3"]
+    # 7 groups: 8 of 10 scales to ceil(5.6) = 6; all 7 above 1 passes, 5 of 7 AUCs does not
+    c7 = criteria_checks(np.array([0.8] * 5 + [0.45] * 2), oe[:7], slope[:7],
+                         np.full(7, 5.0), crit, 200, 1)
+    assert c7["groups_needed_h1"] == 6 and not c7["H1"]
+    assert c7["groups_needed_h3"] == 6 and c7["H3"]
+
+
+def test_required_groups_scales_the_share():
+    assert required_groups(8, 10, 10) == 8      # unchanged at full size
+    assert required_groups(7, 10, 10) == 7      # no float rounding up (0.7 * 10 = 7.000...01)
+    assert required_groups(8, 7, 10) == 6       # 5.6 -> 6
+    assert required_groups(7, 7, 10) == 5       # 4.9 -> 5
+    assert required_groups(8, 9, 10) == 8       # 7.2 -> 8

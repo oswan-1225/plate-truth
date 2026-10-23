@@ -1,0 +1,2 @@
+groups,mean_auc,mean_auc_lo,mean_auc_hi,pooled_auc,groups_auc_above_0.5,median_oe,median_slope,groups_calibrated,mean_brier,variant,rows,events,median_proxy_over_observed
+10.0,0.7810015119683105,0.6960699931676884,0.8517504370328081,0.7193481777254239,10.0,0.5238374474706877,1.162389150350235,0.0,0.03825531189644625,primary,665023,39280,5.913870886213753
