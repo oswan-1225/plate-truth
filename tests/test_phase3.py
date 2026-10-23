@@ -4,6 +4,7 @@ import pytest
 from scipy.special import expit
 
 from plate_truth.phase3 import (
+    criteria_checks,
     averaged_curve,
     bootstrap_mean,
     calibration_metrics,
@@ -130,3 +131,16 @@ def test_averaged_curve():
     assert averaged_curve(np.array([[-1.0], [1.0]]), np.array([[0.0]]), 0.0, 20)[0, 0] ==         pytest.approx(0.5)
     # shapes: (rows, draws) and (grid, draws) -> (grid, draws)
     assert averaged_curve(np.zeros((3, 2)), np.zeros((4, 2)), 1.0, 20).shape == (4, 2)
+
+
+def test_criteria_checks_hand_values():
+    crit = {"calibration_slope_range": [0.8, 1.25], "oe_range": [0.67, 1.5],
+            "auc_supported_groups": 8, "calibrated_groups": 7, "proxy_over_groups": 8}
+    auc = np.full(10, 0.8)
+    oe = np.array([1.0] * 7 + [0.3] * 3)
+    slope = np.array([1.0] * 6 + [2.0] * 4)          # 6 groups in both ranges
+    ratio = np.array([5.0] * 9 + [0.5])
+    c = criteria_checks(auc, oe, slope, ratio, crit, 200, 1)
+    assert c["groups_auc_above_0.5"] == 10 and c["H1"]
+    assert c["groups_calibrated"] == 6 and not c["H2"]
+    assert c["groups_ratio_above_1"] == 9 and c["median_ratio"] == 5.0 and c["H3"]

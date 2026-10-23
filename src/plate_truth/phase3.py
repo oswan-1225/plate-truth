@@ -322,3 +322,28 @@ def ratio_with_interval(proxy: np.ndarray, observed: np.ndarray, n_boot: int, se
         boots = proxy[idx].mean(axis=1) / observed[idx].mean(axis=1)
     lo, hi = np.nanquantile(boots, [0.025, 0.975])
     return est, lo, hi
+
+
+# --- registered criteria -------------------------------------------------------------------------
+
+def criteria_checks(auc: np.ndarray, oe: np.ndarray, slope: np.ndarray, ratio: np.ndarray,
+                    crit: dict, n_boot: int, seed: int) -> dict:
+    """The registered pass/fail rules (ANALYSIS_PLAN.md section 8) from per-group values.
+
+    auc: held-out AUC per group (identity-only model for H1 as registered; the primary model in
+    sensitivity analyses, which refit only the primary model). oe, slope: primary model.
+    ratio: shortcut / observed recovery per group. Group-bootstrap intervals as in the plan."""
+    auc, oe, slope, ratio = (np.asarray(a, dtype=float) for a in (auc, oe, slope, ratio))
+    auc_lo = np.nanquantile(bootstrap_mean(auc, n_boot, seed), 0.025)
+    s_lo, s_hi = crit["calibration_slope_range"]
+    o_lo, o_hi = crit["oe_range"]
+    n_cal = int(((slope >= s_lo) & (slope <= s_hi) & (oe >= o_lo) & (oe <= o_hi)).sum())
+    ratio_lo = np.nanquantile(bootstrap_median(ratio, n_boot, seed), 0.025)
+    n_auc, n_ratio = int((auc > 0.5).sum()), int((ratio > 1).sum())
+    return {"groups_auc_above_0.5": n_auc, "mean_auc_lo": auc_lo,
+            "H1": bool(n_auc >= crit["auc_supported_groups"] and auc_lo > 0.5),
+            "groups_calibrated": n_cal, "H2": bool(n_cal >= crit["calibrated_groups"]),
+            "groups_ratio_above_1": n_ratio, "median_ratio": float(np.nanmedian(ratio)),
+            "median_ratio_lo": ratio_lo,
+            "H3": bool(n_ratio >= crit["proxy_over_groups"] and ratio_lo > 1)}
+
