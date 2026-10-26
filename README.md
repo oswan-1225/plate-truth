@@ -5,51 +5,38 @@ A cross-study test, against real plate data, of the assumption behind every esti
 
 ## The question
 
-Estimates of how much of the microbial world can be cultured often rest on a shortcut: if an environmental 16S sequence closely matches a strain that someone has grown in a lab, the organism is treated as culturable. That shortcut is disputed (Lloyd et al. 2018; Martiny 2019; Steen et al. 2019), but it has not been tested directly against what actually grows on plates, across many studies.
+Estimates of how much of the microbial world can be cultured often rest on a shortcut: if an environmental 16S sequence closely matches a strain that someone has grown in a lab, the organism is treated as culturable. That shortcut is disputed (Lloyd et al. 2018; Martiny 2019; Steen et al. 2019), but it had not been tested directly against what actually grows on plates, across many studies.
 
 This project measures how well 16S identity to the nearest cultured relative predicts whether an environmental taxon grows on plates, and how that relationship changes with habitat, taxon, medium, temperature, oxygen and incubation time.
 
 Throughout, **"predicted to grow"** (a model or database output) is kept strictly separate from **"detected" or "enriched on plates"** (an observation).
 
-## Status
+## What was found
 
-**In progress.** Three stages are complete: a calibration on one soil dataset, a census of the datasets available for the cross-study analysis, and the reprocessing of those datasets into one database. The cross-study model is next.
+I reprocessed 11 public datasets from 10 independent studies that sequenced both an environmental sample and the communities grown from it on plates (soil, activated sludge, a marine sponge, oak, broiler carcasses, rumen): 665,023 combinations of sequence variant and plating condition. The hypotheses, models and criteria were registered in [ANALYSIS_PLAN.md](ANALYSIS_PLAN.md) before any model was fitted, and every performance number comes from a study held out of the fit.
 
-### First result: the shortcut overstates what grows
+![Growth on plates against identity to the nearest cultured relative, held out one study at a time](figures/fig2_calibration.png)
 
-Using six soils for which both the soil community and the communities grown from it on plates were sequenced (Zheng et al. 2024, BioProject PRJNA1029248), the probability that a taxon grew on plates rises steeply with its 16S identity to the nearest cultured relative:
+- **Identity ranks taxa, but does not set the level.** In a study the model had not seen, identity alone ranked which taxa grew (mean held-out AUC 0.801, 95% interval 0.715-0.870). But the overall rate of growth differed between studies more than tenfold (observed / expected 0.20 to 2.81) and could not be predicted from the plating conditions.
+- **Most taxa with a close cultured relative did not grow.** For a new study, the predicted share enriched was 5.3% at 99% identity (95% interval 1.2-18.8%). No sequence without a cultured relative at 75% identity or above was enriched (0 of 3,059).
+- **The shortcut overstates recovery in every study.** The share of reads with a cultured relative at 94.5% or above exceeded the share actually enriched on plates in all 10 studies, by a median factor of 5.91 (3.88-33.00).
+- **Most families grow less often than relatedness predicts.** 48 of 80 evaluated families were systematically under-recovered relative to their identity to cultured strains, as were 8 of 14 phyla, including Acidobacteriota, Planctomycetota and Verrucomicrobiota; recovery concentrated in a few Pseudomonadota families.
+- **Culture-collection media records are not shown to carry medium-specific information.** The registered test was positive, but the effect disappeared once each study had its own baseline.
+- **In public surveys the shortcut exceeds what one plating could recover.** Across 28 MGnify survey studies from seven habitats, the shortcut counted 44% to 98% of reads as culturable. That is above what one plating is predicted to recover even in a high-recovery study, in every habitat and in both amplicon and shotgun data.
 
-| Identity to nearest cultured relative | Taxa enriched on plates | Taxa detected on plates |
-|---|---|---|
-| below 90% | 0.09% | 0.7% |
-| 90–94.5% | 0.17% | 1.7% |
-| 94.5–97% | 1.8% | 5.7% |
-| 97–99% | 6.8% | 18.3% |
-| 99% or above | 27.3% | 55.9% |
+A cultured relative is useful for ranking which taxa are likely to grow, not as a measure of how much of a community can be grown.
 
-Each soil was predicted from the other five, giving a held-out AUC of 0.88 (95% CI 0.87–0.90) for enrichment on plates, with predicted probabilities matching observed rates in every identity band.
+The full draft is [manuscript/preprint.md](manuscript/preprint.md). Every number in it is filled in from `results/` by `scripts/47_manuscript.py`, and every reference is built from its Crossref record. Figures and their legends are in `figures/` and in the manuscript.
 
-A common database shortcut — counting a taxon as culturable if it has a relative at 94.5% identity or above — covers 50% of soil reads, against 3.3% observed enriched on plates and 13.3% detected. That is an overestimate of roughly 15-fold and 3.8-fold respectively.
+## Interactive tool
 
-Two methodological findings came out of this stage: about 1.3% of genome assemblies labelled as isolates in a standard reference carry 16S genes from unrelated phyla, which inflates the apparent supply of cultured relatives; and once reference sequences are trimmed to the sequenced region, whether alignment gaps are counted makes no difference to the result.
+`app/` is a Streamlit app. Upload one sample's ASV table (counts, identity to the nearest cultured relative and, optionally, phylum and family) to get per-taxon predictions with intervals and the shortcut comparison, or browse the survey results by habitat.
 
-![Growth on plates against identity to the nearest cultured relative](figures/fig_phase0_calibration.png)
+```bash
+streamlit run app/streamlit_app.py
+```
 
-Plain-language caption: `figures/captions.md`. Numbers: `results/phase0/`.
-
-### Dataset census
-
-A literature and archive search (1,120 articles screened, 597 sequencing projects checked against their public records) identified 11 independent studies that sequenced both an environmental sample and the plate-grown communities from it, spanning soil, activated sludge, seawater, marine sponge, plant, food and rumen. The summary table is `data/processed/census.csv`; every study's citation and accession is checked against its publisher record and paper by `scripts/21_verify_references.py`.
-
-### Reprocessed dataset
-
-Ten of those studies (the seawater study is held out because its deposited reads were already trimmed in a way that cannot be undone) were reprocessed from raw reads with one pipeline: 1,358 sequencing runs (128 environmental samples, 1,157 plate communities) in 716 plating conditions, 41,393 sequence variants, each with its identity to the nearest cultured relative. The per-study quality report is in `results/phase2/`.
-
-One finding from this stage affects the first result above: in the soil dataset, 58% of reads were deposited without their mate and could not be used, and which reads lost their mate is not random. Counting every read leaves the identity-growth curve nearly unchanged below 99% identity but lowers the share of the closest relatives that grew. The first result above is from complete read pairs only and will be superseded by the cross-study analysis.
-
-**Next:** fitting and validating the cross-study model, with the analysis plan registered before any model is fitted.
-
-All results so far come from a single dataset, under one set of plating conditions, and should be read that way until the cross-study analysis is done.
+The app needs only the small model bundle in `app/model/` (written by `scripts/48_app_bundle.py`, which checks that it reproduces the registered survey numbers). On a computer with the full pipeline it can also compute identities from uploaded ASV sequences. `app/requirements.txt` lists the packages for Streamlit Community Cloud.
 
 ## Setup
 
@@ -65,29 +52,45 @@ pytest
 
 Copy `.env.example` to `.env` and fill in only the keys you need. Never commit `.env`.
 
+## Running the pipeline
+
+The numbered scripts in `scripts/` run in order; each one's docstring gives its inputs, outputs and options. Downloads and sequence searches are cached, so every step can be resumed.
+
+| Scripts | Step |
+|---|---|
+| 00-10 | Pilot on one soil dataset: reads to ASVs, cultured reference, identity, calibration |
+| 11-14 | Literature and archive census of paired studies; sample sheet |
+| 15-25 | Region references, reads to ASVs, identity, taxonomy, database, quality checks |
+| 26-31 | Cross-study calibration model, held-out evaluation, sensitivity analyses |
+| 32-38 | Media classes, culture-collection records, medium and taxon analyses |
+| 39-45 | Public surveys: selection, processing, application of the model |
+| 46-49 | Figures, manuscript, app bundle, data release |
+
+`scripts/21_verify_references.py` checks every study's DOI, first author, year and accession against Crossref and the paper's full text; it must pass before the manuscript is built.
+
 ## Repository layout
 
 ```
 plate-truth/
 ├── README.md
+├── ANALYSIS_PLAN.md        # pre-registered plan, with dated deviations
 ├── environment.yml
 ├── pyproject.toml
-├── config/                 # thresholds, paths, study list (YAML)
+├── config/                 # thresholds, study lists, model settings (YAML)
 ├── data/
 │   ├── raw/                # downloads (not in git)
 │   ├── interim/            # intermediate files (not in git)
-│   └── processed/          # small harmonized tables (in git)
+│   └── processed/          # census tables and small harmonized tables (in git)
 ├── src/plate_truth/        # importable package
 ├── scripts/                # numbered pipeline entry points, in run order
 ├── tests/                  # pytest
-├── notebooks/              # exploration only, never imported
 ├── results/                # model outputs and tables
-├── figures/                # figures and captions
-├── app/                    # Streamlit tool
-└── manuscript/             # preprint draft
+├── figures/                # figures
+├── app/                    # Streamlit tool and its model bundle
+└── manuscript/             # preprint draft and its template
 ```
 
-`data/plate_truth.sqlite` (the harmonized database) is rebuilt by the pipeline and is not kept in git.
+`data/plate_truth.sqlite` (the harmonized database) is rebuilt by the pipeline and is not kept in git. `scripts/49_data_release.py` exports it, with the census and the analysis table, as a documented data package for Zenodo.
 
 ## Author
 
@@ -95,4 +98,4 @@ Owen Swanson ([@oswan-1225](https://github.com/oswan-1225)).
 
 ## Citing
 
-Not yet available. A bioRxiv preprint and a Zenodo data release are planned.
+A bioRxiv preprint and a Zenodo data release are in preparation. Until then, please cite this repository.

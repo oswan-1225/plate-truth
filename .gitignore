@@ -255,3 +255,9 @@ DECISIONS.md
 !README.md
 # The pre-registered analysis plan is committed before any model is fitted
 !ANALYSIS_PLAN.md
+# The preprint (source and generated text) is committed; the Word export is rebuilt by script 47
+!manuscript/*.md
+manuscript/*.docx
+
+# Zenodo data package, rebuilt by scripts/49_data_release.py
+data/release/

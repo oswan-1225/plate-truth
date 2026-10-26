@@ -149,19 +149,27 @@ def gh_nodes(sigma: float, n_nodes: int) -> tuple[np.ndarray, np.ndarray]:
     return sigma * x, w / w.sum()
 
 
-def recovery_shares(eta: np.ndarray, a: np.ndarray, points: np.ndarray, u: float,
-                    sigma_source: float, k: int, n_nodes: int) -> tuple[float, float]:
-    """Predicted recovery shares of one sample at study effect u (ANALYSIS_PLAN.md s22).
+def taxon_probabilities(eta: np.ndarray, points: np.ndarray, u: float, sigma_source: float,
+                        k: int, n_nodes: int) -> tuple[np.ndarray, np.ndarray]:
+    """Per-sequence predicted probabilities at study effect u (ANALYSIS_PLAN.md s22): p1, of
+    being enriched on one plate drawn from the condition mix, and pK, on any of k plates
+    (independent given the shared study and source effects).
 
-    eta: linear predictor of each sequence without condition terms; a: its weight (relative
-    abundance); points: the condition mix plus condition effect (mixture_points). Returns
-    (R1, RK): the a-weighted share of taxa enriched on one plate, and on any of k plates drawn
-    from the mix (independent given the shared study and source effects)."""
-    eta, a = np.asarray(eta, float), np.asarray(a, float)
+    eta: linear predictor of each sequence without condition terms; points: the condition mix
+    plus condition effect (mixture_points)."""
+    eta = np.asarray(eta, float)
     s, ws = gh_nodes(sigma_source, n_nodes)
     pbar = expit(eta[:, None, None] + u + s[None, :, None] + points[None, None, :]).mean(axis=2)
-    p1 = pbar @ ws
-    pk = 1.0 - ((1.0 - pbar) ** k) @ ws
+    return pbar @ ws, 1.0 - ((1.0 - pbar) ** k) @ ws
+
+
+def recovery_shares(eta: np.ndarray, a: np.ndarray, points: np.ndarray, u: float,
+                    sigma_source: float, k: int, n_nodes: int) -> tuple[float, float]:
+    """Predicted recovery shares of one sample at study effect u: (R1, RK), the a-weighted
+    share (a = relative abundance) of taxa enriched on one plate and on any of k plates
+    (taxon_probabilities)."""
+    a = np.asarray(a, float)
+    p1, pk = taxon_probabilities(eta, points, u, sigma_source, k, n_nodes)
     return float(a @ p1 / a.sum()), float(a @ pk / a.sum())
 
 

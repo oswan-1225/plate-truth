@@ -1,0 +1,25 @@
+# Manuscript references: citation key -> DOI. Author, year, title, journal and pages are read
+# from each DOI's Crossref record by scripts/47_manuscript.py, never typed here. The census
+# studies (config/census_studies.yaml) are cited by their study-group id with the DOI recorded
+# there, which scripts/21_verify_references.py checks against Crossref and the paper.
+# Each DOI below was found by a Crossref bibliographic search on 2026-10-26 and its title
+# confirmed against the work cited.
+references:
+  lloyd2018: 10.1128/mSystems.00055-18
+  martiny2019: 10.1038/s41396-019-0410-3
+  steen2019: 10.1038/s41396-019-0484-y
+  oduwole2025: 10.1101/2025.08.18.670795
+  rappe_review: 10.1146/annurev.micro.57.030502.090759
+  cutadapt: 10.14806/ej.17.1.200
+  vsearch: 10.7717/peerj.2584
+  unoise: 10.1101/081257
+  sintax: 10.1101/074161
+  silva: 10.1093/nar/gks1219
+  glmmtmb: 10.32614/rj-2017-066
+  bacdive: 10.1093/nar/gkab961
+  mediadive: 10.1093/nar/gkac803
+  gtdb: 10.1093/nar/gkab776
+  mgnify: 10.1093/nar/gkac1080
+
+# Census studies cited beyond the analysed ones (the analysed studies are cited in Table S1).
+census_cited: [lau2016]

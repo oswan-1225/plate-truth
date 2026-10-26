@@ -1,0 +1,27 @@
+key,doi,label,first_author,year,title
+glmmtmb,10.32614/rj-2017-066,Brooks et al. 2017,Brooks,2017,glmmTMB Balances Speed and Flexibility Among Packages for Zero-inflated Generalized Linear Mixed Modeling
+sintax,10.1101/074161,Edgar 2016a,Edgar,2016,SINTAX: a simple non-Bayesian taxonomy classifier for 16S and ITS sequences
+unoise,10.1101/081257,Edgar 2016b,Edgar,2016,UNOISE2: improved error-correction for Illumina 16S and ITS amplicon sequencing
+hinsu2021,10.7717/peerj.12035,Hinsu et al. 2021,Hinsu,2021,To culture or not to culture: a snapshot of culture-dependent and culture-independent bacterial diversity from peanut rhizosphere
+indraningrat2019,10.3390/md17100578,Indraningrat et al. 2019,Indraningrat,2019,Cultivation of Sponge-Associated Bacteria from Agelas sventres and Xestospongia muta Collected from Different Depths
+mediadive,10.1093/nar/gkac803,Koblitz et al. 2023,Koblitz,2023,MediaDive: the expert-curated cultivation media database
+kruger2019,10.1128/aem.02658-18,Krüger et al. 2019,Krüger,2019,Bacterial Dispersers along Preferential Flow Paths of a Clay Till Depth Profile
+lau2016,10.1186/s13073-016-0327-7,Lau et al. 2016,Lau,2016,Capturing the diversity of the human gut microbiota through culture-enriched molecular profiling
+li2023,10.1038/s41522-023-00439-8,Li et al. 2023,Li,2023,Capturing the microbial dark matter in desert soils using culturomics-based metagenomics and high-resolution analysis
+lloyd2018,10.1128/mSystems.00055-18,Lloyd et al. 2018,Lloyd,2018,Phylogenetically Novel Uncultured Microbial Cells Dominate Earth Microbiomes
+cutadapt,10.14806/ej.17.1.200,Martin 2011,Martin,2011,Cutadapt removes adapter sequences from high-throughput sequencing reads
+martiny2019,10.1038/s41396-019-0410-3,Martiny 2019,Martiny,2019,High proportions of bacteria are culturable across major biomes
+oduwole2025,10.1101/2025.08.18.670795,Oduwole et al. 2025,Oduwole,2025,Functional genomic signatures predict microbial culturability across the tree of life
+ordonez2025,10.1093/ismeco/ycaf019,Ordonez et al. 2025,Ordonez,2025,Evaluating agar-plating and dilution-to-extinction isolation methods for generating oak-associated microbial culture collections
+gtdb,10.1093/nar/gkab776,Parks et al. 2022,Parks,2022,"GTDB: an ongoing census of bacterial and archaeal diversity through a phylogenetically consistent, rank normalized and complete genome-based taxonomy"
+silva,10.1093/nar/gks1219,Quast et al. 2012,Quast,2012,The SILVA ribosomal RNA gene database project: improved data processing and web-based tools
+rappe_review,10.1146/annurev.micro.57.030502.090759,Rappé and Giovannoni 2003,Rappé,2003,The Uncultured Microbial Majority
+bacdive,10.1093/nar/gkab961,Reimer et al. 2022,Reimer,2022,BacDive in 2022: the knowledge base for standardized bacterial and archaeal data
+mgnify,10.1093/nar/gkac1080,Richardson et al. 2023,Richardson,2023,MGnify: the microbiome sequence data analysis resource in 2023
+vsearch,10.7717/peerj.2584,Rognes et al. 2016,Rognes,2016,VSEARCH: a versatile open source tool for metagenomics
+steen2019,10.1038/s41396-019-0484-y,Steen et al. 2019,Steen,2019,High proportions of bacteria and archaea across most biomes remain uncultured
+verhoeven2023,10.1128/aem.01151-23,Verhoeven et al. 2023,Verhoeven,2023,Amplicon-guided isolation and cultivation of previously uncultured microbial species from activated sludge
+villanelo2026,10.1128/spectrum.01477-26,Villanelo et al. 2026,Villanelo,2026,Application of antibiotics for the selective isolation of previously uncultured species from activated sludge
+yu2020,10.3389/fmicb.2020.539540,Yu et al. 2020,Yu,2020,Analyses of the Bacterial Contamination on Belgian Broiler Carcasses at Retail Level
+zehavi2018,10.3389/fmicb.2018.01999,Zehavi et al. 2018,Zehavi,2018,Insights Into Culturomics of the Rumen Microbiome
+zheng2024,10.1038/s41467-024-53446-4,Zheng et al. 2024,Zheng,2024,Sequencing-guided re-estimation and promotion of cultivability for environmental bacteria
