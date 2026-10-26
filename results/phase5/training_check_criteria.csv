@@ -1,0 +1,4 @@
+check,groups,needed,of,passed
+range describes the spread (observed per-condition inside R1 range),6,7,10,False
+upper end (observed per-condition <= R1 90th),9,8,10,True
+generous upper end (observed any-condition <= any-of-own-K 90th),10,8,10,True

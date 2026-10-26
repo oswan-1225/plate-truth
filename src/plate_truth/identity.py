@@ -9,10 +9,12 @@ VSEARCH identity definitions (manual, vsearch-userfields(7)):
        criticised by Steen et al. 2019).
 """
 
+import shutil
 from pathlib import Path
 
 import pandas as pd
 
+from plate_truth.reference import read_fasta, write_fasta
 from plate_truth.tools import vsearch
 
 FIELDS = ["query", "target", "id1", "id2", "mid", "alnlen", "ids", "mism", "gaps", "ql", "tl",
@@ -28,9 +30,43 @@ def search(query: Path, db: Path, out: Path, iddef: int, min_id: float, maxaccep
     the hits tied at the best identity under iddef (needed to keep exhaustive output small).
     """
     extra = ["--top_hits_only"] if top_hits_only else []
+    part = Path(out).with_name(Path(out).name + ".part")   # an interrupted search never looks done
     vsearch("--usearch_global", query, "--db", db, "--iddef", iddef, "--id", min_id,
             "--maxaccepts", maxaccepts, "--maxrejects", maxrejects, "--strand", "plus",
-            "--threads", threads, "--userout", out, "--userfields", "+".join(FIELDS), *extra)
+            "--threads", threads, "--userout", part, "--userfields", "+".join(FIELDS), *extra)
+    part.replace(out)
+
+
+def chunk_records(records, size: int) -> list[list]:
+    """Split (id, sequence) pairs into consecutive lists of at most size records."""
+    records = list(records)
+    return [records[i:i + size] for i in range(0, len(records), size)]
+
+
+def search_chunked(query: Path, db: Path, out: Path, iddef: int, min_id: float,
+                   maxaccepts: int, maxrejects: int, chunk_size: int, threads: int = 0,
+                   top_hits_only: bool = False) -> None:
+    """search() run on chunks of chunk_size queries, each saved when it finishes, so a stopped
+    search resumes at the first unfinished chunk. Each query is aligned independently, so the
+    joined output equals one search over all queries."""
+    out = Path(out)
+    work = out.with_name(f"{out.stem}_chunks{chunk_size}")
+    work.mkdir(exist_ok=True)
+    done = []
+    for i, recs in enumerate(chunk_records(read_fasta(query), chunk_size)):
+        hits = work / f"hits_{i:04d}.tsv"
+        if not hits.exists():
+            q = work / f"query_{i:04d}.fasta"
+            write_fasta(recs, q)
+            search(q, db, hits, iddef, min_id, maxaccepts, maxrejects, threads, top_hits_only)
+            q.unlink()
+        done.append(hits)
+    part = out.with_name(out.name + ".part")
+    with open(part, "w") as handle:
+        for hits in done:
+            handle.write(hits.read_text())
+    part.replace(out)
+    shutil.rmtree(work)
 
 
 def read_hits(path: Path) -> pd.DataFrame:

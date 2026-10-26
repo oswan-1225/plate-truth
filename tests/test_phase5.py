@@ -214,3 +214,103 @@ def test_spline_basis_zero_at_left_boundary_and_matches_fit():
     grid = pd.read_csv(fit / "grid.csv")
     cols = [c for c in gx.columns if c.startswith("ns(")]
     assert spline_basis(grid["identity"].to_numpy(), cfg) == pytest.approx(gx[cols].to_numpy())
+
+
+def test_mgnify_parsers():
+    from plate_truth.mgnify import analysis_rows, fastq_sequences
+    lines = ["@r1", "ACGT", "+", "IIII", "@r2", "GGCC", "+", "IIII", "@r3", "TTAA"]
+    assert fastq_sequences(lines, 2) == ["ACGT", "GGCC"]
+    assert fastq_sequences(lines, 5) == ["ACGT", "GGCC", "TTAA"]
+    items = [{"accession": "MGYA1", "experiment_type": "Amplicon", "pipeline_version": "V5",
+              "run": {"accession": "ERR1", "sample_accession": "SAMEA1"}, "sample": None}]
+    assert analysis_rows(items) == [{"analysis": "MGYA1", "experiment_type": "Amplicon",
+                                     "pipeline_version": "V5", "run_accession": "ERR1",
+                                     "sample_accession": "SAMEA1"}]
+
+
+def test_sequence_eta_and_condition_effects_by_hand():
+    from plate_truth.phase5 import condition_columns, condition_effects, sequence_eta
+    beta = pd.Series({"(Intercept)": -1.0, "ns(identity, x)1": 2.0, "ns(identity, x)2": 1.0,
+                      "no_hit": -5.0, "log_env": -0.5, "log_depth": 0.1, "medium_a": 0.3})
+    basis = np.array([[0.0, 0.0], [1.0, 0.5]])
+    eta = sequence_eta(basis, np.array([1.0, 0.0]), np.array([-3.0, -1.0]), np.array([0.2, -0.2]),
+                       beta, -2.0)
+    # row 1: -1 + 0 - 5 - 0.5*(-1) + 0.2 = -5.3; row 2: -1 + 2.5 + 0 - 0.5*1 - 0.2 = 0.8
+    assert eta == pytest.approx([-5.3, 0.8])
+    draws = pd.concat([beta, beta + 1.0], axis=1)
+    e2 = sequence_eta(basis, np.array([1.0, 0.0]), np.array([-3.0, -1.0]), np.zeros(2), draws,
+                      -2.0)
+    assert e2.shape == (2, 2)
+    x = pd.DataFrame({"log_depth": [1.0, 2.0], "medium_a": [1.0, -1.0]})
+    assert condition_effects(x, beta) == pytest.approx([0.4, -0.1])
+    assert condition_columns(["identity", "no_hit", "log_env", "log_depth", "host", "medium_a"]) \
+        == ["log_depth", "medium_a"]
+
+
+def test_window_span_from_caln():
+    from plate_truth.phase5 import window_span
+    # 50 flank bases, 150 in the window, window extends 103 beyond the fragment
+    assert window_span("50D150M103I", 200) == (50, 200, 150)
+    # window starts 100 bases before the fragment, 50 flank bases after
+    assert window_span("100I153M50D", 203) == (0, 153, 153)
+    # internal gaps: 2 query-only bases inside, 3 window-only bases inside
+    assert window_span("10M2D20M3I5M", 37) == (0, 37, 38)
+    assert window_span("M", 1) == (0, 1, 1)
+    assert window_span("5D5I", 5) == (0, 0, 0)
+
+
+def _tax(rows):
+    cols = ["domain", "phylum", "class", "order", "family", "genus"]
+    return pd.DataFrame(rows, columns=["asv_id", *cols]).set_index("asv_id")
+
+
+def test_amplicon_samples_depth_presence_and_organelles():
+    from plate_truth.phase5 import amplicon_samples
+    tax = _tax([("a1", "Bacteria", "P1", "C", "O", "F1", "G"),
+                ("a2", "Bacteria", "P2", "C", "Chloroplast", "F", "G"),
+                ("a3", "Archaea", "P3", "C", "O", "F3", None),
+                ("a4", "Bacteria", "P1", "C", "O", "F1", "G2")])
+    counts = pd.DataFrame({"run": ["r1"] * 4 + ["r2"] * 2,
+                           "asv_id": ["a1", "a2", "a3", "a4", "a1", "a3"],
+                           "count": [6, 100, 3, 1, 1, 1]})
+    ident = pd.Series({"a1": 99.0, "a3": None, "a4": 90.0})
+    s, depth = amplicon_samples(counts, ident, tax, 2, 5)
+    # r1: prokaryotic reads 6 + 3 + 1 = 10 (chloroplast dropped); a4 has 1 read: not present
+    assert depth.set_index("run")["prokaryotic_reads"].to_dict() == {"r1": 10, "r2": 2}
+    assert s["run"].unique().tolist() == ["r1"]                  # r2 below depth
+    assert s.set_index("asv_id")["a"].to_dict() == {"a1": 0.6, "a3": 0.3}
+    assert s.set_index("asv_id")["family"].to_dict() == {"a1": "F1", "a3": "F3"}
+
+
+def test_shotgun_samples_weights_and_lineage_share():
+    from plate_truth.phase5 import shotgun_samples
+    f = pd.DataFrame({"run": ["r1"] * 4 + ["r2"],
+                      "domain": ["Bacteria"] * 5, "phylum": ["P"] * 5, "class": ["C"] * 5,
+                      "order": ["O", "O", "O", "Chloroplast", "O"], "family": ["F"] * 5,
+                      "genus": ["G1", "G1", "G2", "G", "G1"], "identity": [99.0] * 5})
+    s, depth = shotgun_samples(f, "genus", 2)
+    assert depth.set_index("run")["used"].to_dict() == {"r1": True, "r2": False}
+    assert s["a"].tolist() == pytest.approx([1 / 3] * 3)
+    assert s["abundance"].tolist() == pytest.approx([2 / 3, 2 / 3, 1 / 3])
+
+
+def test_run_window_qc_flags_other_primer_pair():
+    """r1: 900 of 1,000 reads in the window (0.9, kept); r2: 0 of 500 (0.0, flagged);
+    r3 failed before counting (NaN share, not flagged; its status says why)."""
+    from plate_truth.phase5 import run_window_qc
+    qc = pd.DataFrame({"run": ["r1", "r2", "r3"], "status": ["ok", "ok", "error: x"],
+                       "reads_in": [1000, 500, None], "reads_window": [900, 0, None],
+                       "reads_mapped": [800, None, None]})
+    out = run_window_qc(qc, 0.5).set_index("run")
+    assert out.loc["r1", "window_share"] == pytest.approx(0.9)
+    assert out.loc["r2", "window_share"] == 0.0
+    assert out["low_window_share"].to_dict() == {"r1": False, "r2": True, "r3": False}
+
+
+def test_run_window_qc_merged_share():
+    """1,000 merged reads from 4,000 ENA pairs: merged share 0.25."""
+    from plate_truth.phase5 import run_window_qc
+    qc = pd.DataFrame({"run": ["r1"], "status": ["ok"], "reads_in": [1000],
+                       "reads_window": [900], "reads_mapped": [800]})
+    out = run_window_qc(qc, 0.5, pd.Series({"r1": 4000}))
+    assert out.loc[0, "merged_share"] == pytest.approx(0.25)

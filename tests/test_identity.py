@@ -2,7 +2,14 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from plate_truth.identity import best_hits, nearest_relative_table, read_hits, search
+from plate_truth.identity import (
+    best_hits,
+    chunk_records,
+    nearest_relative_table,
+    read_hits,
+    search,
+    search_chunked,
+)
 from plate_truth.reference import write_fasta
 
 
@@ -44,3 +51,37 @@ def test_search_counts_internal_gap(tmp_path):
     h = read_hits(tmp_path / "h.tsv").iloc[0]
     assert h["id1"] == pytest.approx(99.0)
     assert h["mid"] == pytest.approx(100.0)
+
+
+def test_chunk_records_sizes():
+    """5 records in chunks of 2: [2, 2, 1], order kept."""
+    chunks = chunk_records([(str(i), "A") for i in range(5)], 2)
+    assert [len(c) for c in chunks] == [2, 2, 1]
+    assert [r[0] for c in chunks for r in c] == ["0", "1", "2", "3", "4"]
+
+
+def test_search_chunked_equals_one_search_and_resumes(tmp_path):
+    """Five queries in chunks of 2 give the same hits as one search; a chunk already on disk
+    is reused, not searched again (its marker hit survives into the joined output)."""
+    rng = np.random.default_rng(1)
+    refs = [("r%d" % i, "".join(rng.choice(list("ACGT"), 120))) for i in range(4)]
+    queries = [("q%d" % i, refs[i % 4][1][:60] + "T" + refs[i % 4][1][61:]) for i in range(5)]
+    write_fasta(refs, tmp_path / "r.fa")
+    write_fasta(queries, tmp_path / "q.fa")
+    args = dict(iddef=1, min_id=0.75, maxaccepts=0, maxrejects=0, threads=1,
+                top_hits_only=True)
+    search(tmp_path / "q.fa", tmp_path / "r.fa", tmp_path / "one.tsv", **args)
+    search_chunked(tmp_path / "q.fa", tmp_path / "r.fa", tmp_path / "ch.tsv", chunk_size=2,
+                   **args)
+    key = ["query", "target"]
+    one = read_hits(tmp_path / "one.tsv").sort_values(key).reset_index(drop=True)
+    ch = read_hits(tmp_path / "ch.tsv").sort_values(key).reset_index(drop=True)
+    pd.testing.assert_frame_equal(one, ch)
+    assert not (tmp_path / "ch_chunks2").exists()
+    work = tmp_path / "re_chunks2"
+    work.mkdir()
+    (work / "hits_0000.tsv").write_text("marker\tr0\t1\t1\t1\t1\t1\t0\t0\t1\t1\t1\n")
+    search_chunked(tmp_path / "q.fa", tmp_path / "r.fa", tmp_path / "re.tsv", chunk_size=2,
+                   **args)
+    re_hits = read_hits(tmp_path / "re.tsv")
+    assert "marker" in set(re_hits["query"]) and "q0" not in set(re_hits["query"])

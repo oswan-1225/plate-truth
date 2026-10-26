@@ -17,86 +17,16 @@ Usage: python scripts/16_reads_to_asvs.py STUDY_ID [STUDY_ID ...] [--per-run-onl
 Outputs (data/interim/phase2/{study}/): derep/, qc/, asv_seqs.fasta, counts.csv, read_qc.csv
 """
 
-import gzip
-import shutil
 import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import pandas as pd
 
-from plate_truth.amplicon import (
-    count_fastq_records,
-    cut_window,
-    denoise,
-    fasta_size_total,
-    fastq_urls,
-    filter_derep,
-    map_reads,
-    merge_pairs,
-    orient_reads,
-    otutab_to_long,
-)
+from plate_truth.amplicon import denoise_and_map, process_run
 from plate_truth.census import ena_table
 from plate_truth.config import cli_option, data_path, load_config, study_dir
-from plate_truth.http import download
 
 WORKERS = 4
-
-
-def prepare_reads(raw: list, mode: str, ref: dict, amp: dict, lo: int, hi: int, tmp) -> tuple:
-    """Turn the downloaded files into window reads (FASTQ). Returns (path, reads_in)."""
-    if mode == "pacbio":
-        reads, n_in = raw[0], None
-    elif mode == "merged_primers_removed":
-        if len(raw) != 1:
-            raise ValueError(f"{mode} needs one merged file, got {len(raw)}")
-        reads = tmp / "merged.fq"
-        with gzip.open(raw[0], "rb") as src, open(reads, "wb") as dst:
-            shutil.copyfileobj(src, dst)
-        n_in = count_fastq_records(reads)
-    else:
-        if len(raw) != 2:
-            raise ValueError(f"{mode} needs paired files, got {len(raw)}")
-        reads = tmp / "merged.fq"
-        merge_pairs(raw[0], raw[1], reads)
-        n_in = count_fastq_records(reads)
-    out = tmp / "window.fq"
-    if mode in ("pacbio", "primers_in_reads"):
-        rep = cut_window(reads, out, ref["primer_fwd"], ref["primer_rev"],
-                         amp["primer_error_rate"], lo, hi, tmp / "cutadapt.json")
-        n_in = n_in if n_in is not None else rep["read_counts"]["input"]
-    elif mode in ("primers_removed", "merged_primers_removed"):
-        orient_reads(reads, ref["fasta"], out)
-    else:
-        raise ValueError(f"unknown read_prep {mode!r}")
-    return out, n_in
-
-
-def process_run(row, ref: dict, amp: dict, lo: int, hi: int, out_dir, tmp_root) -> dict:
-    """Download, prepare, filter and dereplicate one run; return read counts."""
-    run, mode = row["run_accession"], row["read_prep"]
-    derep = out_dir / "derep" / f"{run}.fasta"
-    qc_file = out_dir / "qc" / f"{run}.json"
-    if derep.exists() and qc_file.exists():
-        return pd.read_json(qc_file, typ="series").to_dict()
-    urls = fastq_urls(row["fastq_ftp"])
-    if not urls:
-        return {"run": run, "status": "no_fastq"}
-    tmp = tmp_root / run
-    tmp.mkdir(parents=True, exist_ok=True)
-    try:
-        raw = [download(u, tmp / f"raw_{i}.fastq.gz") for i, u in enumerate(urls, 1)]
-        window, n_in = prepare_reads(raw, mode, ref, amp, lo, hi, tmp)
-        n_window = count_fastq_records(window)
-        filter_derep(window, tmp, run, derep, amp["max_ee"], lo, hi)
-        qc = {"run": run, "status": "ok", "read_prep": mode, "reads_in": n_in,
-              "reads_window": n_window, "reads_filtered": fasta_size_total(derep)}
-        pd.Series(qc).to_json(qc_file)
-        return qc
-    except Exception as exc:                                   # noqa: BLE001
-        return {"run": run, "status": f"error: {exc}"}
-    finally:
-        shutil.rmtree(tmp, ignore_errors=True)
 
 
 def run_sheet(study: dict) -> pd.DataFrame:
@@ -150,22 +80,10 @@ def process_study(study: dict, per_run_only: bool, tag: str | None = None,
         return
 
     ok = qc.loc[qc["status"] == "ok", "run"]
-    pooled = out_dir / "all_derep.fasta"
-    with pooled.open("w") as handle:
-        for run in ok:
-            handle.write((out_dir / "derep" / f"{run}.fasta").read_text())
-    work = out_dir / "work"
-    work.mkdir(exist_ok=True)
-    asvs = out_dir / "asv_seqs.fasta"
-    denoise(pooled, work, asvs, amp["unoise_minsize"], amp["unoise_alpha"], f"{study['id']}_")
-    map_reads(pooled, asvs, work / "otutab.tsv", amp["map_id"])
-    counts = otutab_to_long(work / "otutab.tsv")
-    counts.to_csv(out_dir / "counts.csv", index=False)
+    counts = denoise_and_map(out_dir, list(ok), amp, f"{study['id']}_")
     mapped = counts.groupby("run")["count"].sum().rename("reads_mapped")
     qc = qc.merge(mapped, left_on="run", right_index=True, how="left")
     qc.to_csv(out_dir / "read_qc.csv", index=False)
-    pooled.unlink()
-    shutil.rmtree(work)
     print(f"{study['id']}: ASVs {counts['asv_id'].nunique()}; runs {counts['run'].nunique()}")
     print(qc[["reads_in", "reads_window", "reads_filtered", "reads_mapped"]].describe()
           .round(0).to_string())

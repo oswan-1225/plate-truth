@@ -8,6 +8,7 @@ dependencies:
   - numpy
   - pandas
   - scipy
+  - psutil
   - statsmodels
   - scikit-learn
   - lightgbm

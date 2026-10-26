@@ -183,14 +183,15 @@ def spline_basis(values: np.ndarray, cfg: dict) -> np.ndarray:
     """R splines::ns basis of identity with the knots of config/phase3.yaml (5 columns), the
     basis the model was fitted with, evaluated at values."""
     s = cfg["identity_spline"]
-    vals = ",".join(f"{v:.6f}" for v in np.asarray(values, float))
+    vals = "\n".join(f"{v:.6f}" for v in np.asarray(values, float))
     knots = ",".join(f"{k:g}" for k in s["interior_knots"])
     lo, hi = s["boundary_knots"]
-    code = (f"library(splines); x <- c({vals}); "
+    code = (f"library(splines); x <- scan(file('stdin'), quiet = TRUE); "
             f"b <- ns(x, knots = c({knots}), Boundary.knots = c({lo:g}, {hi:g})); "
-            f"write.table(b, stdout(), sep = ',', row.names = FALSE, col.names = FALSE)")
+            f"write.table(format(b, digits = 17), stdout(), sep = ',', row.names = FALSE, "
+            f"col.names = FALSE, quote = FALSE)")
     res = subprocess.run([rscript_exe(), "-e", code], env=r_env(), capture_output=True,
-                         text=True, check=True)
+                         text=True, check=True, input=vals + "\n")
     out = np.loadtxt(res.stdout.strip().splitlines(), delimiter=",", ndmin=2)
     return out
 
@@ -254,3 +255,110 @@ def composition_shares(a: np.ndarray, labels: pd.Series) -> pd.Series:
     """a-weighted share of a sample in each label (e.g. Q7 call of the sequence's family)."""
     a = pd.Series(np.asarray(a, float), index=labels.index)
     return a.groupby(labels).sum() / a.sum()
+
+
+# --- the fitted model's parts ------------------------------------------------------------------
+
+def spline_terms(names) -> list[str]:
+    """Coefficient names of the identity spline basis, in order."""
+    return [n for n in names if str(n).startswith("ns(identity")]
+
+
+def condition_columns(columns) -> list[str]:
+    """Design columns that describe a plating condition (depth, days, medium, temperature,
+    oxygen), as opposed to the sequence (identity, no-hit, abundance, host)."""
+    return [c for c in columns if c not in ("identity", "no_hit", "log_env", "host")]
+
+
+def sequence_eta(basis: np.ndarray, no_hit: np.ndarray, log_env: np.ndarray,
+                 phylum_effect: np.ndarray, beta: pd.Series, env_center: float) -> np.ndarray:
+    """Linear predictor of each sequence without the condition terms: intercept + identity
+    spline + no-hit + centred log source abundance + phylum effect. beta may be a Series of
+    coefficients or a DataFrame of draws (one column per draw) indexed by term."""
+    b = beta if isinstance(beta, pd.DataFrame) else beta.to_frame()
+    sp = spline_terms(b.index)
+    eta = (np.asarray(basis) @ b.loc[sp].to_numpy()
+           + np.outer(no_hit, b.loc["no_hit"].to_numpy())
+           + np.outer(np.asarray(log_env) - env_center, b.loc["log_env"].to_numpy())
+           + b.loc["(Intercept)"].to_numpy()[None, :]
+           + np.asarray(phylum_effect)[:, None])
+    return eta[:, 0] if not isinstance(beta, pd.DataFrame) else eta
+
+
+def condition_effects(x_cond: pd.DataFrame, beta: pd.Series | pd.DataFrame) -> np.ndarray:
+    """Contribution of each plating condition (rows of x_cond) to the linear predictor; one
+    column per draw when beta is a DataFrame of draws."""
+    b = beta if isinstance(beta, pd.DataFrame) else beta.to_frame()
+    cols = list(x_cond.columns)
+    g = x_cond.to_numpy(float) @ b.loc[cols].to_numpy()
+    return g[:, 0] if not isinstance(beta, pd.DataFrame) else g
+
+
+def window_span(caln: str, query_len: int) -> tuple[int, int, int]:
+    """Part of an (oriented) query that lies in the target window, from a VSEARCH caln string
+    (M: both, D: query base absent from the target, I: target base absent from the query).
+    Returns (start, end) of the query slice [start:end] and the number of target (window)
+    bases spanned. Terminal D/I runs are overhangs and are excluded."""
+    ops = [(int(n) if n else 1, op) for n, op in re.findall(r"(\d*)([MDI])", caln)]
+    if not any(op == "M" for _, op in ops):
+        return 0, 0, 0
+    first = next(i for i, (_, op) in enumerate(ops) if op == "M")
+    last = max(i for i, (_, op) in enumerate(ops) if op == "M")
+    start = sum(n for n, op in ops[:first] if op == "D")
+    trail = sum(n for n, op in ops[last + 1:] if op == "D")
+    covered = sum(n for n, op in ops[first:last + 1] if op in "MI")
+    return start, query_len - trail, covered
+
+
+# --- survey samples -------------------------------------------------------------------------------
+
+def is_prokaryote(tax: pd.DataFrame) -> pd.Series:
+    """Bacteria or Archaea, not chloroplast or mitochondria (the training rule)."""
+    organelle = tax["order"].eq("Chloroplast") | tax["family"].eq("Mitochondria")
+    return tax["domain"].isin(["Bacteria", "Archaea"]) & ~organelle
+
+
+def amplicon_samples(counts: pd.DataFrame, identity: pd.Series, tax: pd.DataFrame,
+                     present_min: int, min_reads: int) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Per run (sample): the present prokaryotic ASVs (>= present_min reads) with relative
+    abundance among ALL the run's prokaryotic reads, identity and taxonomy; and a depth table.
+    Runs with fewer than min_reads prokaryotic reads are dropped (listed in the depth table)."""
+    prok = is_prokaryote(tax.reindex(counts["asv_id"].unique()).fillna(""))
+    c = counts[counts["asv_id"].map(prok).fillna(False).astype(bool)]
+    depth = c.groupby("run")["count"].sum().rename("prokaryotic_reads").to_frame()
+    depth["used"] = depth["prokaryotic_reads"] >= min_reads
+    c = c[c["run"].map(depth["used"])].copy()
+    c["a"] = c["count"] / c["run"].map(depth["prokaryotic_reads"])
+    c = c[c["count"] >= present_min]
+    c["identity"] = c["asv_id"].map(identity)
+    return c.join(tax, on="asv_id").reset_index(drop=True), depth.reset_index()
+
+
+def shotgun_samples(frags: pd.DataFrame, rank: str, min_fragments: int
+                    ) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Per run: prokaryotic window fragments, each with weight a = 1 / fragments in the run
+    and a source abundance = share of the run's fragments in the same lineage down to rank."""
+    f = frags[is_prokaryote(frags.fillna(""))].copy()
+    depth = f.groupby("run").size().rename("prokaryotic_reads").to_frame()
+    depth["used"] = depth["prokaryotic_reads"] >= min_fragments
+    f = f[f["run"].map(depth["used"])].copy()
+    f["taxon_key"] = pseudo_taxon(f, rank)
+    f["a"] = 1.0 / f["run"].map(depth["prokaryotic_reads"])
+    f["abundance"] = f.groupby("run")["taxon_key"].transform(lambda k: group_share(k))
+    return f.reset_index(drop=True), depth.reset_index()
+
+
+def run_window_qc(qc: pd.DataFrame, min_share: float,
+                  read_pairs: pd.Series | None = None) -> pd.DataFrame:
+    """Per run: the share of merged reads that lie between the study's primers
+    (reads_window / reads_in), flagged when below min_share (the census primer screen's
+    threshold). A flagged run was probably amplified with another primer pair; the census
+    screens only the first runs of a study, so this catches studies that mix regions.
+    With read_pairs (ENA read pairs per run, indexed by run), also the share of pairs that
+    merged (reads_in / read_pairs): low values mean short overlaps or poor read ends."""
+    out = qc[["run", "status", "reads_in", "reads_window", "reads_mapped"]].copy()
+    if read_pairs is not None:
+        out["merged_share"] = out["reads_in"] / out["run"].map(read_pairs)
+    out["window_share"] = out["reads_window"] / out["reads_in"]
+    out["low_window_share"] = out["window_share"] < min_share
+    return out

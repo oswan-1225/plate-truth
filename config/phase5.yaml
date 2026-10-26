@@ -101,12 +101,30 @@ selection:
     max_screened_per_habitat: 40
     pipeline_version: "5.0"         # MGnify V5 raw-reads analyses publish SSU read FASTAs
     min_predicted_ssu: 10000        # MGnify 'Predicted SSU sequences' (pre-screen only)
+    max_queried_runs: 60            # analyses queried per study, in seeded random order
   # Studies or runs whose title, sample title or alias contain one of these words (case-
   # insensitive) are not environmental surveys or are controls.
   exclude_study_words: [culture, cultured, isolate, isolates, enrichment, mock, plate, plates,
                         cultivation, culturomics]
   exclude_run_words: [blank, negative, control, mock, ntc, extraction, kitome, standard,
                       positive]
+
+# --- Study notes ---------------------------------------------------------------------------------
+# Found while processing; descriptive. No selection rule is changed by them. A variant of script
+# 43 drops the studies flagged lab_reactor (sensitivity analysis).
+study_notes:
+  MGYS00001833:
+    flag: lab_reactor
+    note: "Lab fermentation reactors (study title: Volatile fatty acids (VFAs) production through anaerobic fermentation), not a survey of a treatment plant; kept under the selection rules"
+  MGYS00001910:
+    flag: mixed_region
+    note: "Half the chosen runs (B2 samples) carry V4 primers, not the screened V1-V3 pair; they fail the depth rule, leaving 4 V1-V3 samples"
+  MGYS00002444:
+    flag: no_usable_samples
+    note: "Almost no read pairs merged (150-3,900 per run), so no sample passes the depth rule; 7 of the 8 chosen runs are also RNA-SIP incubation fractions"
+  MGYS00006068:
+    flag: one_sample_replicates
+    note: "Library-kit comparison on one 'high diversity custom soil sample' (MGnify study abstract); the 3 chosen runs are the same soil prepared with different kits, so the soil shotgun result rests on one sample"
 
 # --- Samples ------------------------------------------------------------------------------------
 sample:

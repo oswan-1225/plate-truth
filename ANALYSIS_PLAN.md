@@ -798,4 +798,64 @@ tables and panels.
 
 ## 26. Phase 5 deviations
 
-None yet.
+### Deviation 3 (2026-10-23): what counts as a screened candidate
+
+**When and what was known.** Decided during the census, after the first three soil studies
+had been screened, before any survey sample was processed. Those three studies had no MGnify
+amplicon analysis at all (they were metagenome studies listed under the same soil lineage).
+
+**What happened.** Section 20 caps screening at 40 candidate studies per habitat and arm. A
+biome lineage lists every study of that habitat, whatever its sequencing type. Counted
+literally, the cap would be spent largely on studies that cannot belong to the arm (for
+example, metagenomes in the amplicon arm), so the cap would select fewer eligible studies for
+reasons unrelated to the selection rules.
+
+**Change.**
+- A study is a candidate for the amplicon arm only if MGnify has an amplicon analysis of it,
+  and for the shotgun arm only if it has a v5.0 metagenomic (raw-reads) analysis. Other studies
+  are listed in the census as "not a candidate" and do not count towards the cap of 40.
+- Shotgun arm: at most 60 analyses per study are queried for their SSU count (in the seeded
+  random order), to bound the number of API calls for very large studies. This had not been
+  written down.
+
+**Effect.** None on any result; it changes which studies are screened, by rules applied before
+any sample was processed.
+
+### Note (2026-10-25): a study that mixes two amplified regions (not a deviation)
+
+**What was found.** In activated-sludge study MGYS00001910, the four samples whose names begin
+"B1" carry the V1-V3 primers (27F/534R) found by the census screen, but the four beginning "B2"
+carry the V4 primers (515F/806R). The screen reads only the first two chosen runs, and both
+were B1. The B2 runs have 0 to 2 reads in the V1-V3 window.
+
+**Handling.** The registered rules are applied unchanged: the B2 runs fall below the sample
+depth rule (1,000 prokaryotic reads) and are not used, so the study contributes its four V1-V3
+samples. The V4 runs are not processed as a separate study, because splitting a study by a rule
+written after seeing it would be a new selection rule.
+
+**Added check (descriptive).** For every amplicon run, the share of merged reads lying between
+the study's primers is reported (results/phase5/amplicon/run_qc.csv), and runs below the
+screen's threshold of one half are flagged, so any other study that mixes regions is visible.
+
+**Effect.** None on any registered rule or result.
+
+### Note (2026-10-25): two studies found during processing (not deviations)
+
+**A study with no usable samples.** In marine-sediment study MGYS00002444, almost no read pairs
+merged (150 to 3,900 per run), so no sample passes the depth rule. Seven of its eight chosen
+runs are also RNA stable-isotope-probing fractions from incubations, not field samples. As
+section 20 provides, the habitat is reported with the studies it has; the study is not
+replaced.
+
+**A study of laboratory reactors.** Activated-sludge study MGYS00001833 ("Volatile fatty acids
+(VFAs) production through anaerobic fermentation") appears to sample laboratory fermentation
+reactors rather than a treatment plant. It meets the selection rules and is kept. An added
+sensitivity analysis (exploratory, not registered) repeats the amplicon outputs without it.
+
+**Effect.** None on any registered rule or result; the added analysis is reported as
+exploratory.
+
+**The soil shotgun study.** The only soil study in the shotgun arm (MGYS00006068) compares
+library-preparation kits on one "high diversity custom soil sample", so its runs are technical
+replicates of a single soil. It meets the selection rules and is kept; its results are labelled
+as one sample wherever they appear.

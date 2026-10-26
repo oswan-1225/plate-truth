@@ -1,0 +1,16 @@
+habitat,family_label,mean_read_share,rank
+human_gut,Lachnospiraceae,0.2865654141999196,1.0
+human_gut,Ruminococcaceae,0.08587452034351502,2.0
+human_gut,Clostridiaceae,0.015368099473264965,3.0
+human_gut,Sutterellaceae,0.011843717611812922,4.0
+human_gut,Bifidobacteriaceae,0.011401933308109242,5.0
+plant,Sphingomonadaceae,0.2793103343900567,1.0
+plant,Chitinophagaceae,0.029286164972922368,2.0
+plant,Gemmatimonadaceae,0.009224355286053722,3.0
+plant,Vicinamibacteraceae,0.0073158628712165245,4.0
+plant,Nocardioidaceae,0.00639963803203831,5.0
+soil,Gemmatimonadaceae,0.029366750211197393,1.0
+soil,Vicinamibacteraceae,0.025590034499746336,2.0
+soil,Chitinophagaceae,0.023515340314088366,3.0
+soil,Nitrosomonadaceae,0.020717571340846442,4.0
+soil,Pirellulaceae,0.01536045434733358,5.0
