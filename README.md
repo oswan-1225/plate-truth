@@ -28,16 +28,6 @@ A cultured relative is useful for ranking which taxa are likely to grow, not as 
 
 The full draft is [manuscript/preprint.md](manuscript/preprint.md). Every number in it is filled in from `results/` by `scripts/47_manuscript.py`, and every reference is built from its Crossref record. Figures and their legends are in `figures/` and in the manuscript.
 
-## Interactive tool
-
-`app/` is a Streamlit app. Upload one sample's ASV table (counts, identity to the nearest cultured relative and, optionally, phylum and family) to get per-taxon predictions with intervals and the shortcut comparison, or browse the survey results by habitat.
-
-```bash
-streamlit run app/streamlit_app.py
-```
-
-The app needs only the small model bundle in `app/model/` (written by `scripts/48_app_bundle.py`, which checks that it reproduces the registered survey numbers). On a computer with the full pipeline it can also compute identities from uploaded ASV sequences. `app/requirements.txt` lists the packages for Streamlit Community Cloud.
-
 ## Setup
 
 Requires [conda](https://docs.conda.io/) (Miniconda or Anaconda).
@@ -64,7 +54,7 @@ The numbered scripts in `scripts/` run in order; each one's docstring gives its 
 | 26-31 | Cross-study calibration model, held-out evaluation, sensitivity analyses |
 | 32-38 | Media classes, culture-collection records, medium and taxon analyses |
 | 39-45 | Public surveys: selection, processing, application of the model |
-| 46-49 | Figures, manuscript, app bundle, data release |
+| 46-49 | Figures, manuscript, data release |
 
 `scripts/21_verify_references.py` checks every study's DOI, first author, year and accession against Crossref and the paper's full text; it must pass before the manuscript is built.
 
@@ -86,7 +76,6 @@ plate-truth/
 ├── tests/                  # pytest
 ├── results/                # model outputs and tables
 ├── figures/                # figures
-├── app/                    # Streamlit tool and its model bundle
 └── manuscript/             # preprint draft and its template
 ```
 

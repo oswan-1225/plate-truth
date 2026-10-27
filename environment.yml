@@ -23,8 +23,7 @@ dependencies:
   - pyyaml
   - python-dotenv
   - tqdm
-  # --- app and manuscript ---
-  - streamlit
+  # --- manuscript ---
   - pandoc
   # --- dev ---
   - pytest

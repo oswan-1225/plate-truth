@@ -216,8 +216,6 @@ marimo/_static/
 marimo/_lsp/
 __marimo__/
 
-# Streamlit
-.streamlit/secrets.toml
 
 # ---- plate-truth ----
 # Agent / AI-assistant instructions and working files (kept local, never published)
