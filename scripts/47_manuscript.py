@@ -39,6 +39,7 @@ from plate_truth.report import (
     fmt_interval,
     fmt_pct,
     fmt_share,
+    study_region_labels,
 )
 from plate_truth.tools import cutadapt_exe, vsearch_exe
 
@@ -330,11 +331,13 @@ def study_table() -> str:
     rows = csv("phase3", "rows_summary.csv")
     rows = rows[rows["variant"] == "primary"].set_index("study_id")
     links = csv("phase2", "qc_asvs_links.csv").set_index("study_id")
+    regions = study_region_labels(pd.read_csv(data_path("processed") / "primer_sets.csv"),
+                                  census.reset_index())
     out = []
     for s in rows.index:
         c = census.loc[s]
         out.append(f"| [@{c['study_group']}] | {c['habitat']} | "
-                   f"{c['accession']} | {c['region']} | {int(links.loc[s, 'sources_linked'])} | "
+                   f"{c['accession']} | {regions[s]} | {int(links.loc[s, 'sources_linked'])} | "
                    f"{int(rows.loc[s, 'conditions'])} |")
     return "\n".join(out)
 

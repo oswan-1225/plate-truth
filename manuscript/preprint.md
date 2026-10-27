@@ -149,45 +149,45 @@ All raw reads are public under the accessions in Supplementary Table S1. The cod
 
 # Supplementary Table S1: studies analysed
 
-| Study | Habitat | Accession | Region | Sources | Conditions |
+| Study | Habitat | Accession | Region and primers compared | Sources | Conditions |
 |---|---|---|---|---|---|
-| (Hinsu et al. 2021) | soil | PRJNA665712 | V3-V4 | 2 | 16 |
-| (Indraningrat et al. 2019) | marine sponge | PRJNA453745 | V4 | 12 | 38 |
-| (Krüger et al. 2019) | soil | PRJNA483533 | V3-V4 | 2 | 4 |
-| (Li et al. 2023) | soil | PRJNA889009 | full-length | 2 | 360 |
-| (Ordonez et al. 2025) | plant (oak) | PRJEB82441 | V4 | 3 | 28 |
-| (Verhoeven et al. 2023) | activated sludge | PRJNA981068 | V1-V3 | 2 | 58 |
-| (Villanelo et al. 2026) | activated sludge | PRJEB85528 | full-length | 1 | 31 |
-| (Yu et al. 2020) | food (broiler carcass) | PRJNA635448 | V3-V4 | 15 | 90 |
-| (Zehavi et al. 2018) | rumen | SRP153190 | V4 | 1 | 12 |
-| (Zheng et al. 2024) | activated sludge | PRJNA1029248 | V4 | 5 | 20 |
-| (Zheng et al. 2024) | soil | PRJNA1029248 | V4 | 6 | 30 |
+| (Hinsu et al. 2021) | soil | PRJNA665712 | V3-V4, 341F/806R | 2 | 16 |
+| (Indraningrat et al. 2019) | marine sponge | PRJNA453745 | V4, 515FY/806RB | 12 | 38 |
+| (Krüger et al. 2019) | soil | PRJNA483533 | V3-V4, 341F/806R | 2 | 4 |
+| (Li et al. 2023) | soil | PRJNA889009 | full length, cut to V4, 515F/806R | 2 | 360 |
+| (Ordonez et al. 2025) | plant (oak) | PRJEB82441 | V4, 515F/806R (modified) | 3 | 28 |
+| (Verhoeven et al. 2023) | activated sludge | PRJNA981068 | V1-V3, 27F/534R | 2 | 58 |
+| (Villanelo et al. 2026) | activated sludge | PRJEB85528 | full length, cut to V4, 515F/806R | 1 | 31 |
+| (Yu et al. 2020) | food (broiler carcass) | PRJNA635448 | V3-V4, 341F/806R (modified) | 15 | 90 |
+| (Zehavi et al. 2018) | rumen | SRP153190 | V4, 515F/806R | 1 | 12 |
+| (Zheng et al. 2024) | activated sludge | PRJNA1029248 | V4, 515F/806R | 5 | 20 |
+| (Zheng et al. 2024) | soil | PRJNA1029248 | V4, 515F/806R | 6 | 30 |
 
 # Figure legends
 
 ![](../figures/fig1_census.png)
 
-**Figure 1. The studies analysed.** (a) Plating conditions analysed (log scale) and number of source samples per study, coloured by habitat. (b) Medium classes, temperature bands and oxygen regimes covered by each study's analysed rows (filled), conditions whose class could not be resolved (open), and the amplified 16S region. The two Zheng et al. datasets form one study group.
+**Figure 1. The studies analysed.** (a) Plating conditions analysed (log scale) and number of source samples per study, coloured by habitat. (b) Medium classes, temperature bands and oxygen regimes covered by each study's analysed rows (filled), conditions whose class could not be resolved (open), and the amplified 16S region with the primer pair whose in-silico product formed the study's cultured reference. "Modified" marks a primer pair with the same name but different degenerate bases or length; full-length reads were cut to the V4 window. The two Zheng et al. datasets form one study group.
 
 ![](../figures/fig2_calibration.png)
 
-**Figure 2. Identity to the nearest cultured relative ranks growth in a new study but does not set its level.** (a) Probability that an ASV is enriched on plates (at least 5 reads and at least twice its source relative abundance) against identity to the nearest cultured relative, for a study the model has not seen, averaged over the analysed communities and conditions. Line: estimate; band: 95% interval of the fixed effects; dashed: 10th and 90th percentile study. Orange: observed share enriched per identity bin, pooled over studies, each predicted only from the other studies (95% intervals); black ticks: mean held-out prediction. ASVs without a cultured relative at 75% or above are drawn at 77%. (b) Held-out AUC per study group. (c) Held-out observed / expected enrichments per study group; grey: registered calibration range.
+**Figure 2. Identity to the nearest cultured relative ranks growth in a new study but does not set its level.** (a) Probability that an ASV is enriched on plates (at least 5 reads and at least twice its source relative abundance) against identity to the nearest cultured relative, for a study the model has not seen, averaged over the analysed communities and conditions. Line: estimate; band: 95% interval of the fixed effects; dashed: 10th and 90th percentile study. Orange: observed share enriched per identity bin, pooled over studies (95% intervals). ASVs without a cultured relative at 75% or above are drawn at 77%. (b) Held-out AUC per study group: the probability that a randomly chosen enriched ASV is ranked above a non-enriched one (0.5 = chance). (c) Total observed enrichments divided by total predicted, per held-out study group (log scale); below 1 the model predicted too much growth, above 1 too little; grey: the registered acceptable range (0.67 to 1.5).
 
 ![](../figures/fig3_recovery.png)
 
-**Figure 3. The shortcut overstates recovery in every study.** (a) Per study group, the share of the source community's reads with a cultured relative at 94.5% or above (the shortcut), enriched in any plating condition, enriched in the median condition, and predicted for the median condition by the held-out model. (b) Shortcut share divided by the share enriched in any condition, with 95% intervals from resampling source samples; studies with one source sample have no interval (open).
+**Figure 3. The shortcut overstates recovery in every study.** (a) Per study group, the share of the source community's reads with a cultured relative at 94.5% or above (orange, the shortcut) and in ASVs enriched on any plate (blue), joined by a grey line; open circle: enriched on a typical plate (median condition); cross: predicted for a typical plate by the model with that study held out. (b) Shortcut share divided by the share enriched on any plate, with 95% intervals from resampling source samples; open: studies with one source sample, which have no interval.
 
 ![](../figures/fig4_shifts.png)
 
-**Figure 4. What shifts the curve.** (a) The curve for environmental and host-associated habitats, from a model with an identity-by-habitat-type interaction; bands: 95% intervals. (b) Held-out calibration slope per study group with 95% intervals; above 1, identity separates growers more sharply in that study than the model predicts. (c) Odds ratios with 95% intervals for medium class, temperature band and oxygen relative to the average level of each factor, and for source abundance, plate depth and incubation time, from the full-data model.
+**Figure 4. What shifts the curve.** (a) The curve for environmental and host-associated habitats, from a model with an identity-by-habitat-type interaction; bands: 95% intervals. (b) Held-out calibration slope per study group with 95% intervals: 1 means the predictions separate growers from non-growers as strongly as the model expects; above 1, more strongly; near 0, hardly at all. (c) Odds ratios with 95% intervals for each medium class, temperature band and oxygen regime relative to the average of its factor, and for source abundance, plate depth and incubation time, from the full-data model.
 
 ![](../figures/fig5_medium_taxa.png)
 
-**Figure 5. Medium-class preferences by taxon.** Family-by-medium-class effects (a) and phylum-by-medium-class effects (b) on the log-odds scale, in the five studies that plated on two or more medium classes, adjusted for relatedness, source abundance, depth and conditions. Blue: enriched more often on that class than the taxon's own average and the class average; red: less often. Dots: 95% interval excludes 0. Blank: no rows.
+**Figure 5. Medium-class preferences by taxon.** Phylum-by-medium-class effects (a) and family-by-medium-class effects (b) on the log-odds scale, in the five studies that plated on two or more medium classes, adjusted for relatedness, source abundance, depth and conditions. Each effect is relative to the taxon's own average and the class average. Blue: enriched more often on that class; red: less often. Numbers are shown where the effect is at least 0.25 in size; bold with an asterisk: 95% interval excludes 0; dash: no rows on that class. Panel b shows the 12 of 51 reported families with an effect of at least 0.4 on some class; all 51 are in Supplementary Fig. S5.
 
 ![](../figures/fig6_application.png)
 
-**Figure 6. The shortcut against predicted recovery in public surveys.** Per habitat and survey type, predicted share of reads in taxa enriched on one plate (dark bar, from a low- to a high-recovery study) and on any of 8 plates (light bar), with 95% intervals for the ends, and the shortcut share (diamond, 95% interval over studies). Filled diamond: the shortcut exceeds the one-plate upper end by the registered rule; ringed: it also exceeds the any-of-8 upper end. Predictions are averaged over the plating conditions of the training studies. Habitats marked "extrapolation" have no training study.
+**Figure 6. The shortcut against predicted recovery in public surveys.** Per habitat and survey type: predicted share of the sample's reads in taxa enriched on one plate (dark bar, from a low-recovery study, 10th percentile of the between-study distribution, to a high-recovery one, 90th percentile), with the 95% interval of the high end (black line above the bar); the same on any of 8 plates (light bar; generous, as plates are treated as independent); and the shortcut share (red diamond, 95% interval over studies). The number above each diamond is the shortcut divided by the high end of the one-plate range. Predictions are averaged over the plating conditions of the training studies. Habitats marked * have no training study.
 
 ![](../figures/fig_phase4_curation.png)
 
@@ -204,6 +204,10 @@ All raw reads are public under the accessions in Supplementary Table S1. The cod
 ![](../figures/fig_phase5_composition.png)
 
 **Supplementary Figure S4. Survey composition by the family calls.** Share of each habitat's reads (mean over studies) in families called under-recovered, over-recovered or neither, and in families that could not be evaluated.
+
+![](../figures/fig_phase4_medium_taxa.png)
+
+**Supplementary Figure S5. All reported family-by-medium-class effects.** As Fig. 5, for the 51 families with at least 2,000 analysed rows on at least two medium classes. Dots: 95% interval excludes 0; blank: no rows on that class.
 
 # References
 

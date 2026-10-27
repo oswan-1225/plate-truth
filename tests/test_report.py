@@ -9,7 +9,9 @@ from plate_truth.report import (
     group_habitats,
     level_presence,
     omitted_level,
+    region_label,
     study_label,
+    study_region_labels,
 )
 
 
@@ -23,6 +25,25 @@ def test_group_habitats_joins_in_order_without_repeats():
     census = pd.DataFrame({"study_group": ["z", "z", "z", "k"],
                            "habitat": ["soil", "sludge", "soil", "soil"]})
     assert group_habitats(census) == {"z": "soil + sludge", "k": "soil"}
+
+
+def test_region_label():
+    assert region_label("V4", "515F/806R", "V4_515F_806R", False) == "V4, 515F/806R"
+    assert region_label("V4", "515F/806R", "V4_515F_806R_2", False) == \
+        "V4, 515F/806R (modified)"
+    assert region_label("V4", "515F/806R", "V4_515F_806R", True) == \
+        "full length, cut to V4, 515F/806R"
+
+
+def test_study_region_labels():
+    sets = pd.DataFrame({"ref_name": ["V4_515F_806R", "V4_515F_806R_2"],
+                         "region": ["V4", "V4"], "primers": ["515F/806R", "515F/806R"],
+                         "studies": ["a;b", "c"]})
+    census = pd.DataFrame({"study_id": ["a", "b", "c"],
+                           "region": ["V4", "full-length", "V4"]})
+    assert study_region_labels(sets, census) == {
+        "a": "V4, 515F/806R", "b": "full length, cut to V4, 515F/806R",
+        "c": "V4, 515F/806R (modified)"}
 
 
 def test_level_presence():

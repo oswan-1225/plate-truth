@@ -28,6 +28,22 @@ def group_habitats(census: pd.DataFrame) -> dict[str, str]:
     return {g: " + ".join(hs) for g, hs in out.items()}
 
 
+def region_label(region: str, primers: str, ref_name: str, full_length: bool) -> str:
+    """How a study's compared window is described: 'V4, 515F/806R'. A primer set whose
+    reference name ends in '_2' is a modified version of a same-named pair (more degenerate
+    bases or a shorter primer) and is marked; full-length reads were cut in silico."""
+    label = f"{region}, {primers}" + (" (modified)" if ref_name.endswith("_2") else "")
+    return f"full length, cut to {label}" if full_length else label
+
+
+def study_region_labels(primer_sets: pd.DataFrame, census: pd.DataFrame) -> dict[str, str]:
+    """Study -> region_label of the primer set it was compared with (primer_sets.csv lists
+    each set's studies, ';'-separated; census.csv says which studies are full length)."""
+    full = set(census.loc[census["region"] == "full-length", "study_id"])
+    return {s: region_label(r.region, r.primers, r.ref_name, s in full)
+            for r in primer_sets.itertuples() for s in r.studies.split(";")}
+
+
 def level_presence(level_support: pd.DataFrame, studies: list[str]) -> pd.DataFrame:
     """Boolean table (study x factor:level): does the study have analysed rows at that level?
 
