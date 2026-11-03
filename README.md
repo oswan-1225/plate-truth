@@ -26,8 +26,6 @@ I reprocessed 11 public datasets from 10 independent studies that sequenced both
 
 A cultured relative is useful for ranking which taxa are likely to grow, not as a measure of how much of a community can be grown.
 
-The full draft is [manuscript/preprint.md](manuscript/preprint.md). Every number in it is filled in from `results/` by `scripts/47_manuscript.py`, and every reference is built from its Crossref record. Figures and their legends are in `figures/` and in the manuscript.
-
 ## Setup
 
 Requires [conda](https://docs.conda.io/) (Miniconda or Anaconda).
